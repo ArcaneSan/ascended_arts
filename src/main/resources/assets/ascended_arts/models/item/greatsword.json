@@ -1,0 +1,18 @@
+{
+  "parent": "minecraft:item/handheld",
+  "loader": "forge:separate_transforms",
+  "base": {
+    "parent": "ascended_arts:item/greatsword_3d"
+  },
+  "perspectives": {
+    "gui": {
+      "parent": "ascended_arts:item/greatsword_2d"
+    },
+    "ground": {
+      "parent": "ascended_arts:item/greatsword_2d"
+    },
+    "fixed": {
+      "parent": "ascended_arts:item/greatsword_2d"
+    }
+  }
+}
