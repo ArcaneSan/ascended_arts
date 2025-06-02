@@ -14,13 +14,17 @@ public class AscendedCreativeTab {
             DeferredRegister.create(Registries.CREATIVE_MODE_TAB, Ascended_arts.MOD_ID);
 
     public static final RegistryObject<CreativeModeTab> Ascended_Arts_Tab = CREATIVE_MODE_TABS.register("ascended_arts_tab",
-            () -> CreativeModeTab.builder().icon(() -> new ItemStack(AscendAddontems.Iron_Saber.get()))
+            () -> CreativeModeTab.builder().icon(() -> new ItemStack(AscendAddontems.Iron_Jian.get()))
                     .title(Component.translatable("creativetab.ascended_arts_tab"))
                     .displayItems(((itemDisplayParameters, output) ->
                     {
-                        output.accept(AscendAddontems.Iron_Saber.get());
+                        output.accept(AscendAddontems.Iron_Jian.get());
                         output.accept(AscendAddontems.Greatsword.get());
                         output.accept(AscendAddontems.Scythe.get());
+                        output.accept(AscendAddontems.Diamond_Jian.get());
+                        output.accept(AscendAddontems.Golden_Jian.get());
+                        output.accept(AscendAddontems.Wooden_Jian.get());
+                        output.accept(AscendAddontems.Netherite_Jian.get());
 
                     })).build());
 

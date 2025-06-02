@@ -1,6 +1,7 @@
 {
   "parent": "minecraft:item/handheld",
   "textures": {
-    "layer0": "ascended_arts:item/iron_saber"
+    "layer0": "ascended_arts:item/golden_jian"
+
   }
 }

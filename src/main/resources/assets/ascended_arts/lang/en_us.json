@@ -1,5 +1,9 @@
 {
-  "item.ascended_arts.iron_saber": "Iron Saber",
+  "item.ascended_arts.iron_jian": "Iron Jian",
   "creativetab.ascended_arts_tab": "Ascended Arts",
-  "item.ascended_arts.greatsword": "Regret"
+  "item.ascended_arts.greatsword": "Regret",
+  "item.ascended_arts.diamond_jian": "Diamond Jian",
+  "item.ascended_arts.netherite_jian": "Netherite Jian",
+  "item.ascended_arts.golden_jian": "Golden Jian",
+  "item.ascended_arts.wooden_jian": "Wooden Jian"
 }
