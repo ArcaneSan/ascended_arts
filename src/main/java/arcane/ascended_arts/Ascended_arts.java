@@ -1,6 +1,7 @@
 package arcane.ascended_arts;
 
 import arcane.ascended_arts.gameasset.AscendedAnimations;
+import arcane.ascended_arts.world.capabilities.item.JianWeaponCategories;
 import arcane.ascended_arts.world.item.AscendAddontems;
 import arcane.ascended_arts.world.item.AscendItem;
 import arcane.ascended_arts.world.item.AscendedCreativeTab;
@@ -32,6 +33,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import org.slf4j.Logger;
+import yesman.epicfight.world.capabilities.item.WeaponCategory;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(Ascended_arts.MOD_ID)
@@ -45,9 +47,7 @@ public class Ascended_arts {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MOD_ID);
     // Create a Deferred Register to hold Items which will all be registered under the "ascended_arts" namespace
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MOD_ID);
-    // Create a Deferred Register to hold CreativeModeTabs which will all be registered under the "ascended_arts" namespace
 
-    // Creates a creative tab with the id "ascended_arts:example_tab" for the example item, that is placed after the combat tab
 
 
     public Ascended_arts() {
@@ -56,6 +56,7 @@ public class Ascended_arts {
         AscendAddontems.register(modEventBus);
         AscendedCreativeTab.register(modEventBus);
 
+        WeaponCategory.ENUM_MANAGER.registerEnumCls(MOD_ID, JianWeaponCategories.class);
         modEventBus.addListener(AscendedAnimations::registerAnimations);
 
 

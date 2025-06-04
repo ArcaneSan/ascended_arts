@@ -21,6 +21,6 @@ public class AscendedColliderPresent {
 
     }
 
-    public static final Collider SABER = registerCollider(ResourceLocation.fromNamespaceAndPath(Ascended_arts.MOD_ID, "jian"),
+    public static final Collider JIAN = registerCollider(ResourceLocation.fromNamespaceAndPath(Ascended_arts.MOD_ID, "jian"),
             new MultiOBBCollider(3, 0.4D, 0.4D, 0.9D, 0D, 0D, -0.35D));
 }
