@@ -12,13 +12,13 @@ public class WeaponCategoryMapper {
     private static final Map<AscendedWeaponCategories, WeaponCategory> categoryMap = new HashMap<>();
 
     static {
-        categoryMap.put((AscendedWeaponCategories) AscendedWeaponCategories.JIAN, CapabilityItem.WeaponCategories.SWORD);
+        categoryMap.put(AscendedWeaponCategories.JIAN, CapabilityItem.WeaponCategories.SWORD);
     }
 
     public static CapabilityItem.Builder apply(Item item, AscendedWeaponCategories category) {
         WeaponCategory mappedCategory = categoryMap.getOrDefault(category, category);
         try {
-            Method applyMethod = categoryMap.getClass().getMethod("apply", Item.class);
+            Method applyMethod = mappedCategory.getClass().getMethod("apply", Item.class);
             return (CapabilityItem.Builder) applyMethod.invoke(mappedCategory, item);
         } catch (Exception e) {
             e.printStackTrace();

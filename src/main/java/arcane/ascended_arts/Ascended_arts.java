@@ -5,7 +5,9 @@ import arcane.ascended_arts.skill.guard.AscendedCompatSkills;
 import arcane.ascended_arts.world.capabilities.item.AscendedWeaponCategories;
 import arcane.ascended_arts.world.item.AscendedAddontems;
 import arcane.ascended_arts.world.item.AscendedCreativeTab;
+
 import com.mojang.logging.LogUtils;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -16,7 +18,6 @@ import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DistExecutor;
-import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -24,6 +25,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+
 import org.slf4j.Logger;
 import yesman.epicfight.world.capabilities.item.WeaponCategory;
 
@@ -42,16 +44,17 @@ public class Ascended_arts {
 
 
 
-    public Ascended_arts() {
-        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+    public Ascended_arts(FMLJavaModLoadingContext eventBus) {
+        IEventBus modEventBus = eventBus.getModEventBus();
 
         AscendedAddontems.register(modEventBus);
         AscendedCreativeTab.register(modEventBus);
 
         WeaponCategory.ENUM_MANAGER.registerEnumCls(MOD_ID, AscendedWeaponCategories.class);
 
-        modEventBus.addListener(AscendedAnimations::registerAnimations);
         DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> modEventBus.addListener(AscendedCompatSkills::onIconCreate));
+
+        modEventBus.addListener(AscendedAnimations::registerAnimations);
         modEventBus.addListener(AscendedCompatSkills::forceGuard);
         modEventBus.addListener(this::addCreative);
 
@@ -67,7 +70,7 @@ public class Ascended_arts {
 
 
         // Register our mod's ForgeConfigSpec so that Forge can create and load the config file for us
-        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+        eventBus.registerConfig(ModConfig.Type.CLIENT, Config.SPEC);//i readed all ways wrong the documentation LMAO
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
