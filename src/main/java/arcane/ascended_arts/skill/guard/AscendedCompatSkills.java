@@ -22,6 +22,8 @@ import yesman.epicfight.skill.guard.ParryingSkill;
 import yesman.epicfight.skill.passive.EmergencyEscapeSkill;
 import yesman.epicfight.skill.passive.SwordmasterSkill;
 
+import java.util.List;
+
 
 @Mod.EventBusSubscriber(modid = Ascended_arts.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class AscendedCompatSkills {
@@ -52,7 +54,7 @@ public class AscendedCompatSkills {
             }).addGuardBreakMotion(AscendedWeaponCategories.JIAN, (item, player) -> {
                 return Animations.BIPED_COMMON_NEUTRALIZED;
             }).addAdvancedGuardMotion(AscendedWeaponCategories.JIAN, (item, player) -> {
-                return Animations.SWORD_GUARD_HIT;
+                return List.of(AscendedAnimations.JIAN_GUARD_PARRY);
             });
             System.out.println("[AscendedCompatSkills] Parrying animations have been actualized");
         }

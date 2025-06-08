@@ -33,6 +33,7 @@ public class AscendedAnimations {
 
     public static AnimationManager.AnimationAccessor<StaticAnimation> JIAN_GUARD;
     public static AnimationManager.AnimationAccessor<GuardAnimation> JIAN_GUARD_HIT;
+    public static AnimationManager.AnimationAccessor<BasicAttackAnimation> JIAN_GUARD_PARRY;
 
 
     public static AnimationManager.AnimationAccessor<BasicAttackAnimation> JIAN_AUTO_1;
@@ -56,6 +57,15 @@ public class AscendedAnimations {
 
         JIAN_GUARD = builder.nextAccessor("biped/skill/jian_guard", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED));
         JIAN_GUARD_HIT = builder.nextAccessor("biped/skill/jian_guard_hit", (accessor) -> new GuardAnimation(0, accessor, Armatures.BIPED));
+        JIAN_GUARD_PARRY = builder.nextAccessor("biped/skill/jian_guard_parry", (accessor) ->
+                new BasicAttackAnimation(0.1F, 0F, 0.1F, 0.4F, 0.5F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
+                        .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.adder( 2.1F))
+                        .addProperty(AnimationProperty.AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.setter(90))
+                        .addProperty(AnimationProperty.AttackPhaseProperty.STUN_TYPE, StunType.LONG)
+                        .addProperty(AnimationProperty.AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.setter(3))
+                        .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 2.4F)
+                        .addProperty(AnimationProperty.AttackAnimationProperty.CANCELABLE_MOVE, false)
+                        .addState(EntityState.MOVEMENT_LOCKED, true));
 
         //change times once they work
         JIAN_AUTO_1 = builder.nextAccessor("biped/combat/jian_auto_1", (accessor) ->
