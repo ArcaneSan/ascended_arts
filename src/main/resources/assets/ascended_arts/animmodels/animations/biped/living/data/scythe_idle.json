@@ -1,0 +1,18 @@
+{
+  "layer": "COMPOSITE_LAYER",
+  "priority": "MIDDLE",
+  "masks": [
+    {
+      "livingmotion": "IDLE",
+      "type": "epicfight:none"
+    },
+    {
+      "livingmotion": "CREATIVE_IDLE",
+      "type": "epicfight:none"
+    },
+    {
+      "livingmotion": "JUMP",
+      "type": "epic_fight:none"
+    }
+  ]
+}

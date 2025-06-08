@@ -5,6 +5,7 @@ import arcane.ascended_arts.gameasset.AscendedAnimations;
 import arcane.ascended_arts.gameasset.AscendedColliderPresent;
 
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -22,14 +23,16 @@ import java.util.function.Function;
 public class WeaponCapabilityPresets {
     public static final Function<Item, CapabilityItem.Builder> JIAN = (item) -> {
         WeaponCapability.Builder builder = WeaponCapability.builder()
-                .category(JianWeaponCategories.JIAN) // Updated to use custom category
+                .category(AscendedWeaponCategories.JIAN) // Updated to use custom category
                 .styleProvider((playerpatch) -> CapabilityItem.Styles.OCHS)
+
                 .collider(AscendedColliderPresent.JIAN)
                 .canBePlacedOffhand(true)
                 .newStyleCombo(Styles.OCHS, AscendedAnimations.JIAN_AUTO_1, AscendedAnimations.JIAN_AUTO_2, AscendedAnimations.JIAN_AUTO_3, AscendedAnimations.JIAN_AUTO_4, AscendedAnimations.JIAN_DASH, AscendedAnimations.JIAN_AIRSLASH)
                 .livingMotionModifier(Styles.OCHS, LivingMotions.IDLE, AscendedAnimations.BIPED_HOLD_Jian)
                 .livingMotionModifier(Styles.OCHS, LivingMotions.WALK, AscendedAnimations.BIPED_WALK_JIAN)
-                .livingMotionModifier(Styles.OCHS, LivingMotions.RUN, AscendedAnimations.BIPED_RUN_JIAN);
+                .livingMotionModifier(Styles.OCHS, LivingMotions.RUN, AscendedAnimations.BIPED_RUN_JIAN)
+                .livingMotionModifier(Styles.OCHS, LivingMotions.BLOCK, AscendedAnimations.JIAN_GUARD);
 
 
         return builder;

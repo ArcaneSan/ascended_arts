@@ -3,7 +3,7 @@
   {
     "common":
     {
-      "armor_negation":16.0,
+      "armor_negation":20.0,
       "impact":2.8,
       "max_strikes":4
     }

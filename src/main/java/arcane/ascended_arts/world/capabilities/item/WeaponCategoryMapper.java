@@ -9,13 +9,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class WeaponCategoryMapper {
-    private static final Map<JianWeaponCategories, WeaponCategory> categoryMap = new HashMap<>();
+    private static final Map<AscendedWeaponCategories, WeaponCategory> categoryMap = new HashMap<>();
 
     static {
-        categoryMap.put((JianWeaponCategories) JianWeaponCategories.JIAN, CapabilityItem.WeaponCategories.SWORD);
+        categoryMap.put((AscendedWeaponCategories) AscendedWeaponCategories.JIAN, CapabilityItem.WeaponCategories.SWORD);
     }
 
-    public static CapabilityItem.Builder apply(Item item, JianWeaponCategories category) {
+    public static CapabilityItem.Builder apply(Item item, AscendedWeaponCategories category) {
         WeaponCategory mappedCategory = categoryMap.getOrDefault(category, category);
         try {
             Method applyMethod = categoryMap.getClass().getMethod("apply", Item.class);

@@ -6,13 +6,13 @@ import yesman.epicfight.world.capabilities.item.WeaponCategory;
 
 import java.util.function.Function;
 
-public class JianWeaponCategories implements WeaponCategory, Function<Item, CapabilityItem> {
+public class AscendedWeaponCategories implements WeaponCategory, Function<Item, CapabilityItem> {
     public static WeaponCategory JIAN;
 
 
     final  int id;
 
-    JianWeaponCategories() {
+    AscendedWeaponCategories() {
         this.id = WeaponCategory.ENUM_MANAGER.assign(this);
     }
 
