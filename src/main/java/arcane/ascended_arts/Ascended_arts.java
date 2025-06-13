@@ -1,6 +1,7 @@
 package arcane.ascended_arts;
 
 import arcane.ascended_arts.gameasset.AscendedAnimations;
+import arcane.ascended_arts.skill.AscendedSkillDataKeys;
 import arcane.ascended_arts.skill.guard.AscendedCompatSkills;
 import arcane.ascended_arts.world.capabilities.item.AscendedWeaponCategories;
 import arcane.ascended_arts.world.item.AscendedAddontems;
@@ -57,6 +58,7 @@ public class Ascended_arts {
         modEventBus.addListener(AscendedAnimations::registerAnimations);
         modEventBus.addListener(AscendedCompatSkills::forceGuard);
         modEventBus.addListener(this::addCreative);
+        AscendedSkillDataKeys.DATA_KEYS.register(modEventBus);
 
 
         // Register the commonSetup method for modloading
