@@ -58,6 +58,7 @@ public class Ascended_arts {
         modEventBus.addListener(AscendedAnimations::registerAnimations);
         modEventBus.addListener(AscendedCompatSkills::forceGuard);
         modEventBus.addListener(this::addCreative);
+        modEventBus.addListener(arcane.ascended_arts.gameasset.AscendedSkills::registerAscendedSkills);
         AscendedSkillDataKeys.DATA_KEYS.register(modEventBus);
 
 

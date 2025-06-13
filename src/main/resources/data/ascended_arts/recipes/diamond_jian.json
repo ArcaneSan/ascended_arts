@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+  [
+    " B ",
+    " B ",
+    " S "
+  ],
+  "key":
+  {
+    "B": { "item" : "minecraft:diamond" },
+    "S": { "item" : "minecraft:tripwire_hook" }
+  },
+  "result":
+  {
+    "item" : "ascended_arts:diamond_jian",
+    "count" : 1
+  }
+}

@@ -2,7 +2,7 @@ package arcane.ascended_arts.skill;
 
 import arcane.ascended_arts.Ascended_arts;
 import arcane.ascended_arts.skill.guard.AscendedCompatSkills;
-import arcane.ascended_arts.skill.weaponinnate.CelestialPunishmentSkill;
+import arcane.ascended_arts.skill.weaponinnate.*;
 
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.registries.DeferredRegister;

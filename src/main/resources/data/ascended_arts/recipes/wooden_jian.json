@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+  [
+    " B ",
+    " A ",
+    " S "
+  ],
+  "key":
+  {
+    "B": { "tag" : "minecraft:planks" },
+    "A": { "tag" : "minecraft:wooden_slabs" },
+    "S": { "item" : "minecraft:stick" }
+  },
+  "result":
+  {
+    "item" : "ascended_arts:wooden_jian",
+    "count" : 1
+  }
+}

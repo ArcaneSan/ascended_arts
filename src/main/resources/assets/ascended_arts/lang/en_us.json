@@ -7,5 +7,8 @@
   "item.ascended_arts.golden_jian": "Golden Jian",
   "item.ascended_arts.wooden_jian": "Wooden Jian",
 
-  "epicfight.weapon_category.jian": "Jian"
+  "epicfight.weapon_category.jian": "Jian",
+
+  "skill.ascended_arts.celestial_punishment" : "Celestial Punishment",
+  "skill.ascended_arts.celestial_punishment.tooltip" : "Pin the foes down and slice them from above"
 }
