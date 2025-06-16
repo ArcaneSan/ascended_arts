@@ -19,12 +19,13 @@ public class AscendedCreativeTab {
                     .displayItems(((itemDisplayParameters, output) ->
                     {
                         output.accept(AscendedAddontems.IRON_JIAN.get());
-                        output.accept(AscendedAddontems.GREATSWORD.get());
-                        output.accept(AscendedAddontems.SCYTHE.get());
                         output.accept(AscendedAddontems.DIAMOND_JIAN.get());
                         output.accept(AscendedAddontems.GOLDEN_JIAN.get());
                         output.accept(AscendedAddontems.WOODEN_JIAN.get());
                         output.accept(AscendedAddontems.NETHERITE_JIAN.get());
+
+                        output.accept(AscendedAddontems.GREATSWORD.get());
+                        output.accept(AscendedAddontems.SCYTHE.get());
 
                     })).build());
 
