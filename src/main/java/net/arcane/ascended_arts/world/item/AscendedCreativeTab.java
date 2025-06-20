@@ -1,6 +1,6 @@
-package arcane.ascended_arts.world.item;
+package net.arcane.ascended_arts.world.item;
 
-import arcane.ascended_arts.Ascended_arts;
+import net.arcane.ascended_arts.Ascended_arts;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
@@ -18,10 +18,10 @@ public class AscendedCreativeTab {
                     .title(Component.translatable("creativetab.ascended_arts_tab"))
                     .displayItems(((itemDisplayParameters, output) ->
                     {
+                        output.accept(AscendedAddontems.WOODEN_JIAN.get());
+                        output.accept(AscendedAddontems.GOLDEN_JIAN.get());
                         output.accept(AscendedAddontems.IRON_JIAN.get());
                         output.accept(AscendedAddontems.DIAMOND_JIAN.get());
-                        output.accept(AscendedAddontems.GOLDEN_JIAN.get());
-                        output.accept(AscendedAddontems.WOODEN_JIAN.get());
                         output.accept(AscendedAddontems.NETHERITE_JIAN.get());
 
                         output.accept(AscendedAddontems.GREATSWORD.get());

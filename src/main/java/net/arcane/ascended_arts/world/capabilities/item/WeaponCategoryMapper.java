@@ -1,4 +1,4 @@
-package arcane.ascended_arts.world.capabilities.item;
+package net.arcane.ascended_arts.world.capabilities.item;
 
 import net.minecraft.world.item.Item;
 import yesman.epicfight.world.capabilities.item.CapabilityItem;

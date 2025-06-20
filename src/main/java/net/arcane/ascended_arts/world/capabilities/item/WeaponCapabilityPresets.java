@@ -1,10 +1,10 @@
-package arcane.ascended_arts.world.capabilities.item;
+package net.arcane.ascended_arts.world.capabilities.item;
 
-import arcane.ascended_arts.Ascended_arts;
-import arcane.ascended_arts.gameasset.AscendedAnimations;
-import arcane.ascended_arts.gameasset.AscendedColliderPresent;
+import net.arcane.ascended_arts.Ascended_arts;
+import net.arcane.ascended_arts.gameasset.AscendedAnimations;
+import net.arcane.ascended_arts.gameasset.AscendedColliderPresent;
+import net.arcane.ascended_arts.gameasset.AscendedSkills;
 
-import arcane.ascended_arts.gameasset.AscendedSkills;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.item.Item;
@@ -46,16 +46,26 @@ public class WeaponCapabilityPresets {
                 .collider(AscendedColliderPresent.JIAN)
                 .canBePlacedOffhand(true)
                 .newStyleCombo(Styles.ONE_HAND, AscendedAnimations.JIAN_AUTO_1, AscendedAnimations.JIAN_AUTO_2, AscendedAnimations.JIAN_AUTO_3, AscendedAnimations.JIAN_AUTO_4, AscendedAnimations.JIAN_DASH, AscendedAnimations.JIAN_AIRSLASH)
-                .newStyleCombo(Styles.TWO_HAND, AscendedAnimations.DUAL_JIAN_AUTO_1, AscendedAnimations.DUAL_JIAN_AUTO_2, AscendedAnimations.DUAL_JIAN_AUTO_3, AscendedAnimations.DUAL_JIAN_AUTO_4, AscendedAnimations.JIAN_DASH, AscendedAnimations.JIAN_AIRSLASH)
+                .newStyleCombo(Styles.TWO_HAND, AscendedAnimations.DUAL_JIAN_AUTO_1, AscendedAnimations.DUAL_JIAN_AUTO_2, AscendedAnimations.DUAL_JIAN_AUTO_3, AscendedAnimations.DUAL_JIAN_AUTO_4, AscendedAnimations.DUAL_JIAN_DASH, AscendedAnimations.DUAL_JIAN_AIRSLASH)
                 .innateSkill(Styles.ONE_HAND, (itemstack) -> AscendedSkills.CELESTIAL_PUNISHMENT)
-                .livingMotionModifier(Styles.ONE_HAND, LivingMotions.IDLE, AscendedAnimations.BIPED_HOLD_Jian)
+                .livingMotionModifier(Styles.ONE_HAND, LivingMotions.IDLE, AscendedAnimations.BIPED_HOLD_JIAN)
                 .livingMotionModifier(Styles.ONE_HAND, LivingMotions.WALK, AscendedAnimations.BIPED_WALK_JIAN)
                 .livingMotionModifier(Styles.ONE_HAND, LivingMotions.RUN, AscendedAnimations.BIPED_RUN_JIAN)
                 .livingMotionModifier(Styles.ONE_HAND, LivingMotions.BLOCK, AscendedAnimations.JIAN_GUARD)
-                .livingMotionModifier(Styles.TWO_HAND, LivingMotions.IDLE, AscendedAnimations.BIPED_HOLD_Jian)
+                .livingMotionModifier(Styles.ONE_HAND, LivingMotions.KNEEL, AscendedAnimations.BIPED_HOLD_JIAN)
+                .livingMotionModifier(Styles.ONE_HAND, LivingMotions.SNEAK, AscendedAnimations.BIPED_WALK_JIAN)
+                .livingMotionModifier(Styles.ONE_HAND, LivingMotions.CREATIVE_IDLE, AscendedAnimations.BIPED_HOLD_JIAN)
+                .livingMotionModifier(Styles.ONE_HAND, LivingMotions.CREATIVE_FLY, AscendedAnimations.BIPED_RUN_JIAN)
+                .livingMotionModifier(Styles.ONE_HAND, LivingMotions.SLEEP, AscendedAnimations.BIPED_HOLD_JIAN)
+                .livingMotionModifier(Styles.TWO_HAND, LivingMotions.IDLE, AscendedAnimations.BIPED_HOLD_JIAN)
                 .livingMotionModifier(Styles.TWO_HAND, LivingMotions.WALK, AscendedAnimations.BIPED_WALK_JIAN)
                 .livingMotionModifier(Styles.TWO_HAND, LivingMotions.RUN, AscendedAnimations.BIPED_RUN_JIAN)
-                .livingMotionModifier(Styles.TWO_HAND, LivingMotions.BLOCK, AscendedAnimations.JIAN_GUARD)
+                .livingMotionModifier(Styles.TWO_HAND, LivingMotions.BLOCK, AscendedAnimations.DUAL_JIAN_GUARD)
+                .livingMotionModifier(Styles.TWO_HAND, LivingMotions.KNEEL, AscendedAnimations.BIPED_HOLD_JIAN)
+                .livingMotionModifier(Styles.TWO_HAND, LivingMotions.SNEAK, AscendedAnimations.BIPED_WALK_JIAN)
+                .livingMotionModifier(Styles.TWO_HAND, LivingMotions.CREATIVE_IDLE, AscendedAnimations.BIPED_HOLD_JIAN)
+                .livingMotionModifier(Styles.TWO_HAND, LivingMotions.CREATIVE_FLY, AscendedAnimations.BIPED_RUN_JIAN)
+                .livingMotionModifier(Styles.TWO_HAND, LivingMotions.SLEEP, AscendedAnimations.BIPED_HOLD_JIAN)
                 .weaponCombinationPredicator((entitypatch) -> EpicFightCapabilities.getItemStackCapability(entitypatch.getOriginal().getOffhandItem()).getWeaponCategory() == AscendedWeaponCategories.JIAN);
 
         return builder;

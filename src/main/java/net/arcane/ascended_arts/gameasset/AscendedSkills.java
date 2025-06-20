@@ -1,10 +1,12 @@
-package arcane.ascended_arts.gameasset;
+package net.arcane.ascended_arts.gameasset;
 
-import arcane.ascended_arts.Ascended_arts;
-import arcane.ascended_arts.skill.weaponinnate.CelestialPunishmentSkill;
+import net.arcane.ascended_arts.Ascended_arts;
+import net.arcane.ascended_arts.skill.weaponinnate.CelestialPunishmentSkill;
+
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.RegisterEvent;
+
 import yesman.epicfight.api.animation.property.AnimationProperty;
 import yesman.epicfight.api.forgeevent.SkillBuildEvent;
 import yesman.epicfight.api.utils.math.ValueModifier;

@@ -1,9 +1,9 @@
-package arcane.ascended_arts.skill.guard;
+package net.arcane.ascended_arts.skill.guard;
 
-import arcane.ascended_arts.Ascended_arts;
-import arcane.ascended_arts.gameasset.AscendedAnimations;
-import arcane.ascended_arts.world.capabilities.item.AscendedWeaponCategories;
-import arcane.ascended_arts.world.item.AscendedAddontems;
+import net.arcane.ascended_arts.Ascended_arts;
+import net.arcane.ascended_arts.gameasset.AscendedAnimations;
+import net.arcane.ascended_arts.world.capabilities.item.AscendedWeaponCategories;
+import net.arcane.ascended_arts.world.item.AscendedAddontems;
 
 
 import net.minecraft.resources.ResourceLocation;
@@ -13,6 +13,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
+
 import yesman.epicfight.api.client.forgeevent.WeaponCategoryIconRegisterEvent;
 import yesman.epicfight.api.forgeevent.SkillBuildEvent;
 import yesman.epicfight.api.forgeevent.SkillBuildEvent.ModRegistryWorker.SkillCreateEvent;
@@ -21,6 +22,8 @@ import yesman.epicfight.skill.guard.GuardSkill;
 import yesman.epicfight.skill.guard.ParryingSkill;
 import yesman.epicfight.skill.passive.EmergencyEscapeSkill;
 import yesman.epicfight.skill.passive.SwordmasterSkill;
+
+
 
 import java.util.List;
 
@@ -41,6 +44,7 @@ public class AscendedCompatSkills {
             }).addGuardBreakMotion(AscendedWeaponCategories.JIAN, (item, player) -> {
                 return Animations.BIPED_COMMON_NEUTRALIZED;
             });
+
             System.out.println("[AscendedCompatSkills] Guard animations have been actualized");
         }
     }
@@ -54,11 +58,12 @@ public class AscendedCompatSkills {
             }).addGuardBreakMotion(AscendedWeaponCategories.JIAN, (item, player) -> {
                 return Animations.BIPED_COMMON_NEUTRALIZED;
             }).addAdvancedGuardMotion(AscendedWeaponCategories.JIAN, (item, player) -> {
-                return List.of(AscendedAnimations.JIAN_GUARD_PARRY);
+                return List.of(AscendedAnimations.JIAN_GUARD_PARRY_1, AscendedAnimations.JIAN_GUARD_PARRY_2);
             });
             System.out.println("[AscendedCompatSkills] Parrying animations have been actualized");
         }
     }
+
 
     @SubscribeEvent
     public static void onScapeSkillCreate(SkillCreateEvent<EmergencyEscapeSkill.Builder> event) {

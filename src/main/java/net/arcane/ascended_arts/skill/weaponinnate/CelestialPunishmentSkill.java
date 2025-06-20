@@ -1,6 +1,6 @@
-package arcane.ascended_arts.skill.weaponinnate;
+package net.arcane.ascended_arts.skill.weaponinnate;
 
-import arcane.ascended_arts.gameasset.AscendedAnimations;
+import net.arcane.ascended_arts.gameasset.AscendedAnimations;
 
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;

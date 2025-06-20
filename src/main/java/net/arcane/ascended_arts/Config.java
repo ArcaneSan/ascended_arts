@@ -1,5 +1,6 @@
-package arcane.ascended_arts;
+package net.arcane.ascended_arts;
 
+import net.arcane.ascended_arts.Ascended_arts;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.common.ForgeConfigSpec;

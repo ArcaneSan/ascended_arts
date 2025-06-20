@@ -1,6 +1,6 @@
-package arcane.ascended_arts.world.item;
+package net.arcane.ascended_arts.world.item;
 
-import arcane.ascended_arts.Ascended_arts;
+import net.arcane.ascended_arts.Ascended_arts;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.Tiers;
