@@ -29,4 +29,6 @@ public class AscendedColliderPresent {
             new MultiOBBCollider(3, 0.5D, 0.7D, 1.7D, 0D, 0.1D, -0.8D));
     public static final Collider SCYTHE = registerCollider(ResourceLocation.fromNamespaceAndPath(Ascended_arts.MOD_ID, "scythe"),
             new MultiOBBCollider(3, 0.4D, 1.1D, 1.6D, 0D, -0.45D, -0.35D));
+    public static final Collider SHOULDER = registerCollider(ResourceLocation.fromNamespaceAndPath(Ascended_arts.MOD_ID, "shoulder"),
+            new MultiOBBCollider(3, 0.5D, 0.5D, 0.5D, 0D, 0.5D, 0D));
 }

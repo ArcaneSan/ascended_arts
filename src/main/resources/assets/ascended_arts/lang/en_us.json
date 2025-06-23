@@ -11,5 +11,7 @@
   "epicfight.weapon_category.jian": "Jian",
 
   "skill.ascended_arts.celestial_punishment" : "Celestial Punishment",
-  "skill.ascended_arts.celestial_punishment.tooltip" : "Pin the foes down and slice them from above"
+  "skill.ascended_arts.celestial_punishment.tooltip" : "Pin the foes down and slice them from above",
+  "skill.ascended_arts.celestial_onslaught" : "Celestial Onslaught",
+  "skill.ascended.arts.celestial_onsalught.tooltip" : "Shred your foes from the heavens"
 }
