@@ -13,6 +13,7 @@ public class WeaponCategoryMapper {
 
     static {
         categoryMap.put(AscendedWeaponCategories.JIAN, CapabilityItem.WeaponCategories.SWORD);
+        categoryMap.put(AscendedWeaponCategories.SCYTHE, CapabilityItem.WeaponCategories.GREATSWORD);
     }
 
     public static CapabilityItem.Builder apply(Item item, AscendedWeaponCategories category) {

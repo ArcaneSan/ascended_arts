@@ -25,7 +25,8 @@ public class AscendedCreativeTab {
                         output.accept(AscendedAddontems.NETHERITE_JIAN.get());
 
                         output.accept(AscendedAddontems.GREATSWORD.get());
-                        output.accept(AscendedAddontems.SCYTHE.get());
+                        output.accept(AscendedAddontems.ETHERVEIL_SCYTHE.get());
+                        output.accept(AscendedAddontems.ASCENDED_JIAN.get());
 
                     })).build());
 

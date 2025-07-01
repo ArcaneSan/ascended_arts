@@ -17,8 +17,8 @@ public class AscendedAddontems {
             ITEMS.register("iron_jian", () -> new AscendedItem(new Item.Properties(), Tiers.IRON));
     public static final RegistryObject<Item> GREATSWORD =
             ITEMS.register("greatsword", () -> new AscendLargeItem(new Item.Properties().rarity(Rarity.RARE), Tiers.NETHERITE));
-    public static final RegistryObject<Item> SCYTHE =
-            ITEMS.register("scythe", () -> new AscendLargeItem(new Item.Properties(), Tiers.NETHERITE));
+    public static final RegistryObject<Item> ETHERVEIL_SCYTHE =
+            ITEMS.register("etherveil_scythe", () -> new AscendLargeItem(new Item.Properties(), Tiers.NETHERITE));
     public static final RegistryObject<Item> DIAMOND_JIAN =
             ITEMS.register("diamond_jian", () -> new AscendedItem(new Item.Properties(), Tiers.DIAMOND));
     public static final RegistryObject<Item> NETHERITE_JIAN =
@@ -27,6 +27,8 @@ public class AscendedAddontems {
             ITEMS.register("golden_jian", () -> new AscendedItem(new Item.Properties(), Tiers.GOLD));
     public static final RegistryObject<Item> WOODEN_JIAN =
             ITEMS.register("wooden_jian", () -> new AscendedItem(new Item.Properties(), Tiers.WOOD));
+    public static final RegistryObject<Item> ASCENDED_JIAN =
+            ITEMS.register("ascended_jian",() -> new AscendedItem(new Item.Properties().rarity(Rarity.EPIC), Tiers.NETHERITE));
 
     public  static  void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

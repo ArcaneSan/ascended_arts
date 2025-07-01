@@ -1,0 +1,12 @@
+{
+  "attributes":
+  {
+    "common":
+    {
+      "armor_negation":50.0,
+      "impact":6.8,
+      "max_strikes":8
+    }
+  },
+  "type":"ascended_arts:jian"
+}

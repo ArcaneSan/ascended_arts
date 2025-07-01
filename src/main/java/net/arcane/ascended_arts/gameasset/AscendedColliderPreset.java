@@ -7,7 +7,7 @@ import net.minecraft.resources.ResourceLocation;
 import yesman.epicfight.api.collider.Collider;
 import yesman.epicfight.api.collider.MultiOBBCollider;
 
-public class AscendedColliderPresent {
+public class AscendedColliderPreset {
 
     private static final BiMap<ResourceLocation, Collider> PRESETS = HashBiMap.create();
 

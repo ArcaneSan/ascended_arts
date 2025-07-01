@@ -1,26 +1,31 @@
 {
-  "layer": "COMPOSITE_LAYER",
-  "priority": "HIGH",
-  "masks": [
+  "layer":"COMPOSITE_LAYER",
+  "priority":"MIDDLE",
+  "masks":
+  [
     {
       "livingmotion":"IDLE",
       "type":"none"
     },
     {
-      "livingmotion": "CREATIVE_IDLE",
-      "type": "epicfight:root_upper_joints"
+    "livingmotion":"ALL",
+    "type":"arms"
     },
     {
-      "livingmotion": "JUMP",
-      "type": "upper_joints"
+      "livingmotion":"JUMP",
+      "type":"upper_joints"
     },
     {
-      "livingmotion": "KNEEL",
-      "type": "epicfight:root_upper_joints"
+      "livingmotion": "BLOCK_SHIELD",
+      "type": "right_arms"
     },
     {
-      "livingmotion": "SLEEP",
-      "type": "epicfight:arms"
+      "livingmotion": "EAT",
+      "type": "right_arms"
+    },
+    {
+      "livingmotion": "DRINK",
+      "type": "right_arms"
     }
   ]
 }
