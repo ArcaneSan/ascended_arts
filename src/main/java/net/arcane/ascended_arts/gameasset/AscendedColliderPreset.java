@@ -22,13 +22,15 @@ public class AscendedColliderPreset {
     }
 
     public static final Collider JIAN = registerCollider(ResourceLocation.fromNamespaceAndPath(Ascended_arts.MOD_ID, "jian"),
-            new MultiOBBCollider(3, 0.4D, 0.4D, 0.9D, 0D, 0D, -0.35D));
+            new MultiOBBCollider(3, 0.4D, 0.4D, 0.9D, 0D, 0D, -0.8D));
     public static final Collider KICK = registerCollider(ResourceLocation.fromNamespaceAndPath(Ascended_arts.MOD_ID, "kick"),
             new MultiOBBCollider(3, 0.6D, 0.6D, 0.6D, 0D, 0.7D, -0.3D));
     public static final Collider GREATSWORD = registerCollider(ResourceLocation.fromNamespaceAndPath(Ascended_arts.MOD_ID, "greatsword"),
             new MultiOBBCollider(3, 0.5D, 0.7D, 1.7D, 0D, 0.1D, -0.8D));
     public static final Collider SCYTHE = registerCollider(ResourceLocation.fromNamespaceAndPath(Ascended_arts.MOD_ID, "scythe"),
-            new MultiOBBCollider(3, 0.4D, 1.1D, 1.6D, 0D, -0.45D, -0.35D));
+            new MultiOBBCollider(3, 0.4D, 1.3D, 0.9D, 0D, -0.3D, -0.9D));
+    public static final Collider SCYTHE_BOTTOM = registerCollider(ResourceLocation.fromNamespaceAndPath(Ascended_arts.MOD_ID, "scythe_bottom"),
+            new MultiOBBCollider(3, 0.4D, 0.4D, 0.8D, 0.0D, 0.0D, 0.6D));
     public static final Collider SHOULDER = registerCollider(ResourceLocation.fromNamespaceAndPath(Ascended_arts.MOD_ID, "shoulder"),
             new MultiOBBCollider(3, 0.5D, 0.5D, 0.5D, 0D, 0.5D, 0D));
 }

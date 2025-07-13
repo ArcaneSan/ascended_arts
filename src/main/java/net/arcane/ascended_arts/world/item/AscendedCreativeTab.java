@@ -26,7 +26,7 @@ public class AscendedCreativeTab {
 
                         output.accept(AscendedAddontems.GREATSWORD.get());
                         output.accept(AscendedAddontems.ETHERVEIL_SCYTHE.get());
-                        output.accept(AscendedAddontems.ASCENDED_JIAN.get());
+                        output.accept(AscendedAddontems.SKYSPLITTER_JIAN.get());
 
                     })).build());
 

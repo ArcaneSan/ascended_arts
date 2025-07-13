@@ -27,8 +27,8 @@ public class AscendedAddontems {
             ITEMS.register("golden_jian", () -> new AscendedItem(new Item.Properties(), Tiers.GOLD));
     public static final RegistryObject<Item> WOODEN_JIAN =
             ITEMS.register("wooden_jian", () -> new AscendedItem(new Item.Properties(), Tiers.WOOD));
-    public static final RegistryObject<Item> ASCENDED_JIAN =
-            ITEMS.register("ascended_jian",() -> new AscendedItem(new Item.Properties().rarity(Rarity.EPIC), Tiers.NETHERITE));
+    public static final RegistryObject<Item> SKYSPLITTER_JIAN =
+            ITEMS.register("skysplitter_jian", () -> new AscendedItem(new Item.Properties().rarity(Rarity.EPIC), Tiers.NETHERITE));
 
     public  static  void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

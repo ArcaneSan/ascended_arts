@@ -2,7 +2,7 @@
 {
   "loader": "forge:obj",
   "flip_v": true,
-  "model": "ascended_arts:models/item/obj/ascended_jian.obj",
+  "model": "ascended_arts:models/item/obj/skysplitter_jian.obj",
   "display": {
     "thirdperson_righthand": {
       "rotation": [
@@ -12,12 +12,12 @@
       ],
       "translation": [
         8,
-        4,
+        5,
         -7
       ],
       "scale": [
         1.0,
-        0.5,
+        1,
         1.0
       ]
     },
@@ -29,12 +29,12 @@
       ],
       "translation": [
         8.25,
-        4,
+        5,
         9
       ],
       "scale": [
         1.0,
-        0.5,
+        1,
         1.0
       ]
     },
@@ -51,7 +51,7 @@
       ],
       "scale": [
         1.0,
-        0.5,
+        1,
         1.0
       ]
     },
@@ -68,7 +68,7 @@
       ],
       "scale": [
         1.0,
-        0.5,
+        1,
         1.0
       ]
     },
@@ -85,7 +85,7 @@
       ],
       "scale": [
         1.0,
-        0.5,
+        1,
         1.0
       ]
     }
@@ -94,21 +94,21 @@
     "gui": {
       "parent": "item/generated",
       "textures": {
-        "layer0": "ascended_arts:item/ascended_jian"
+        "layer0": "ascended_arts:item/skysplitter_jian"
       },
 
-    "fixed": {
-      "parent": "item/generated",
-      "textures": {
-        "layer0": "ascended_arts:item/ascended_jian"
-      }
-    },
-    "ground": {
-      "parent": "item/generated",
-      "textures": {
-        "layer0": "ascended_arts:item/ascended_jian"
+      "fixed": {
+        "parent": "item/generated",
+        "textures": {
+          "layer0": "ascended_arts:item/skysplitter_jian"
+        }
+      },
+      "ground": {
+        "parent": "item/generated",
+        "textures": {
+          "layer0": "ascended_arts:item/skysplitter_jian"
+        }
       }
     }
-  }
   }
 }

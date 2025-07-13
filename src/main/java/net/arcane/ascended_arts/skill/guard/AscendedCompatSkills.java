@@ -20,6 +20,7 @@ import yesman.epicfight.api.forgeevent.SkillBuildEvent.ModRegistryWorker.SkillCr
 import yesman.epicfight.gameasset.Animations;
 import yesman.epicfight.skill.guard.GuardSkill;
 import yesman.epicfight.skill.guard.ParryingSkill;
+import yesman.epicfight.skill.identity.MeteorSlamSkill;
 import yesman.epicfight.skill.passive.EmergencyEscapeSkill;
 import yesman.epicfight.skill.passive.SwordmasterSkill;
 
@@ -44,7 +45,11 @@ public class AscendedCompatSkills {
             }).addGuardBreakMotion(AscendedWeaponCategories.JIAN, (item, player) -> {
                 return Animations.BIPED_COMMON_NEUTRALIZED;
             });
-
+            builder.addGuardMotion(AscendedWeaponCategories.SCYTHE, (item, player) -> {
+                return AscendedAnimations.SCYTHE_GUARD_HIT;
+            }).addGuardBreakMotion(AscendedWeaponCategories.SCYTHE, (item, player) -> {
+               return Animations.BIPED_COMMON_NEUTRALIZED;
+            });
             System.out.println("[AscendedCompatSkills] Guard animations have been actualized");
         }
     }
@@ -60,6 +65,13 @@ public class AscendedCompatSkills {
             }).addAdvancedGuardMotion(AscendedWeaponCategories.JIAN, (item, player) -> {
                 return List.of(AscendedAnimations.JIAN_GUARD_PARRY_1, AscendedAnimations.JIAN_GUARD_PARRY_2);
             });
+            builder.addGuardMotion(AscendedWeaponCategories.SCYTHE, (item, player) -> {
+                return AscendedAnimations.SCYTHE_GUARD_HIT;
+            }).addGuardBreakMotion(AscendedWeaponCategories.SCYTHE, (item, player) -> {
+                return Animations.BIPED_COMMON_NEUTRALIZED;
+            }).addAdvancedGuardMotion(AscendedWeaponCategories.SCYTHE, (item, player) -> {
+                return List.of(AscendedAnimations.SCYTHE_GUARD_PARRY_1, AscendedAnimations.SCYTHE_GUARD_PARRY_2);
+            });
             System.out.println("[AscendedCompatSkills] Parrying animations have been actualized");
         }
     }
@@ -71,6 +83,14 @@ public class AscendedCompatSkills {
             EmergencyEscapeSkill.Builder builder = event.getSkillBuilder();
             builder.addAvailableWeaponCategory(AscendedWeaponCategories.JIAN);
             System.out.println("[AscenededCompatSkills] You may now take emergency escape");
+        }
+    }
+    @SubscribeEvent
+    public static void onIdentitySkillCreate(SkillCreateEvent<MeteorSlamSkill.Builder> event) {
+        if (event.getRegistryName().equals(ResourceLocation.fromNamespaceAndPath("epicfight", "meteor_slam"))) {
+            MeteorSlamSkill.Builder builder = event.getSkillBuilder();
+            builder.addSlamMotion(AscendedWeaponCategories.SCYTHE, (item, player) -> Animations.METEOR_SLAM);
+            System.out.println("[AscenededCompatSkills] You may now SLAM IT");
         }
     }
 
@@ -87,6 +107,7 @@ public class AscendedCompatSkills {
     @OnlyIn(Dist.CLIENT)
     public static void onIconCreate(WeaponCategoryIconRegisterEvent icon){
         icon.registerCategory(AscendedWeaponCategories.JIAN, new ItemStack(AscendedAddontems.IRON_JIAN.get()));
+        icon.registerCategory(AscendedWeaponCategories.SCYTHE, new ItemStack(AscendedAddontems.ETHERVEIL_SCYTHE.get()));
         System.out.println("[AscendedCompatSkills] Skill icons have been actualized");
     }
 }

@@ -1,0 +1,14 @@
+# Blender 3.6.4 MTL File: 'skysplitter_jian (joined textured).blend'
+# www.blender.org
+
+newmtl Plane
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd ascended_arts:item/obj/skysplitter_jian_color
+map_Ns ascended_arts:item/obj/skysplitter_jian_roughness
+map_refl ascended_arts:item/obj/skysplitter_jian_metallic
+map_Ke ascended_arts:item/obj/skysplitter_jian_emission_color
