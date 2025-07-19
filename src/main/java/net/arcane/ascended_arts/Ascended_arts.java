@@ -5,7 +5,7 @@ import net.arcane.ascended_arts.gameasset.AscendedSkills;
 import net.arcane.ascended_arts.skill.AscendedSkillDataKeys;
 import net.arcane.ascended_arts.skill.guard.AscendedCompatSkills;
 import net.arcane.ascended_arts.world.capabilities.item.AscendedWeaponCategories;
-import net.arcane.ascended_arts.world.item.AscendedAddontems;
+import net.arcane.ascended_arts.world.item.AscendedAddonItems;
 import net.arcane.ascended_arts.world.item.AscendedCreativeTab;
 
 import com.mojang.logging.LogUtils;
@@ -25,6 +25,7 @@ import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.fml.loading.FMLEnvironment;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
@@ -34,7 +35,7 @@ import yesman.epicfight.world.capabilities.item.WeaponCategory;
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(Ascended_arts.MOD_ID)
 public class Ascended_arts {
-
+    public static AscendedAnimations.IProxy proxy;
     // Define mod id in a common place for everything to reference
     public static final String MOD_ID = "ascended_arts";
     // Directly reference a slf4j logger
@@ -45,11 +46,10 @@ public class Ascended_arts {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MOD_ID);
 
 
-
     public Ascended_arts(FMLJavaModLoadingContext eventBus) {
         IEventBus modEventBus = eventBus.getModEventBus();
 
-        AscendedAddontems.register(modEventBus);
+        AscendedAddonItems.register(modEventBus);
         AscendedCreativeTab.register(modEventBus);
 
         WeaponCategory.ENUM_MANAGER.registerEnumCls(MOD_ID, AscendedWeaponCategories.class);
@@ -61,20 +61,18 @@ public class Ascended_arts {
         modEventBus.addListener(this::addCreative);
         modEventBus.addListener(AscendedSkills::registerAscendedSkills);
         AscendedSkillDataKeys.DATA_KEYS.register(modEventBus);
-
-
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
-
-
-
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
 
-
-
         // Register our mod's ForgeConfigSpec so that Forge can create and load the config file for us
         eventBus.registerConfig(ModConfig.Type.CLIENT, Config.SPEC);//i readed all ways wrong the documentation LMAO
+        if (FMLEnvironment.dist == Dist.CLIENT) {
+            proxy = new AscendedAnimations.ClientProxy();
+        } else {
+            proxy = new AscendedAnimations.ServerProxy();
+        }
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {

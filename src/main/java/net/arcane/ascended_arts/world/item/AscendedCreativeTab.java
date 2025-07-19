@@ -14,19 +14,19 @@ public class AscendedCreativeTab {
             DeferredRegister.create(Registries.CREATIVE_MODE_TAB, Ascended_arts.MOD_ID);
 
     public static final RegistryObject<CreativeModeTab> Ascended_Arts_Tab = CREATIVE_MODE_TABS.register("ascended_arts_tab",
-            () -> CreativeModeTab.builder().icon(() -> new ItemStack(AscendedAddontems.IRON_JIAN.get()))
+            () -> CreativeModeTab.builder().icon(() -> new ItemStack(AscendedAddonItems.IRON_JIAN.get()))
                     .title(Component.translatable("creativetab.ascended_arts_tab"))
                     .displayItems(((itemDisplayParameters, output) ->
                     {
-                        output.accept(AscendedAddontems.WOODEN_JIAN.get());
-                        output.accept(AscendedAddontems.GOLDEN_JIAN.get());
-                        output.accept(AscendedAddontems.IRON_JIAN.get());
-                        output.accept(AscendedAddontems.DIAMOND_JIAN.get());
-                        output.accept(AscendedAddontems.NETHERITE_JIAN.get());
+                        output.accept(AscendedAddonItems.WOODEN_JIAN.get());
+                        output.accept(AscendedAddonItems.GOLDEN_JIAN.get());
+                        output.accept(AscendedAddonItems.IRON_JIAN.get());
+                        output.accept(AscendedAddonItems.DIAMOND_JIAN.get());
+                        output.accept(AscendedAddonItems.NETHERITE_JIAN.get());
 
-                        output.accept(AscendedAddontems.GREATSWORD.get());
-                        output.accept(AscendedAddontems.ETHERVEIL_SCYTHE.get());
-                        output.accept(AscendedAddontems.SKYSPLITTER_JIAN.get());
+                        output.accept(AscendedAddonItems.GREATSWORD.get());
+                        output.accept(AscendedAddonItems.ETHERVEIL_SCYTHE.get());
+                        output.accept(AscendedAddonItems.SKYSPLITTER_JIAN.get());
 
                     })).build());
 

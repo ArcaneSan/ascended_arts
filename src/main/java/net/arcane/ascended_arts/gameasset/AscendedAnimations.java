@@ -3,9 +3,13 @@ package net.arcane.ascended_arts.gameasset;
 import net.arcane.ascended_arts.Ascended_arts;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.Particle;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.phys.Vec3;
@@ -24,11 +28,18 @@ import yesman.epicfight.api.utils.math.Vec3f;
 import yesman.epicfight.gameasset.Animations;
 import yesman.epicfight.gameasset.Armatures;
 import yesman.epicfight.gameasset.EpicFightSounds;
+import yesman.epicfight.particle.EpicFightParticles;
 import yesman.epicfight.world.damagesource.EpicFightDamageType;
 import yesman.epicfight.world.damagesource.StunType;
 
+import javax.annotation.Nullable;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 import java.util.Set;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 import static net.arcane.ascended_arts.api.animation.JointTrack.getJointWithTranslation;
 
@@ -70,7 +81,6 @@ public class AscendedAnimations {
     public static AnimationManager.AnimationAccessor<BasicAttackAnimation> JIAN_AUTO_1;
     public static AnimationManager.AnimationAccessor<BasicAttackAnimation> JIAN_AUTO_2;
     public static AnimationManager.AnimationAccessor<BasicAttackAnimation> JIAN_AUTO_3;
-    public static AnimationManager.AnimationAccessor<BasicAttackAnimation> JIAN_AUTO_4;
     public static AnimationManager.AnimationAccessor<DashAttackAnimation> JIAN_AIRSLASH;
     public static AnimationManager.AnimationAccessor<DashAttackAnimation> JIAN_DASH;
 
@@ -205,31 +215,23 @@ public class AscendedAnimations {
 
         //change times once they work
         JIAN_AUTO_1 = builder.nextAccessor("biped/combat/jian_auto_1", (accessor) ->
-                new BasicAttackAnimation(0.12F, 0.1F, 0.1F, 0.25F, 0.3F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
+                new BasicAttackAnimation(0.12F, 0.1F, 0.15F, 0.3F, 0.31F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
                         .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 2F)
                         .addProperty(AnimationProperty.ActionAnimationProperty.CANCELABLE_MOVE, true));
         JIAN_AUTO_2 = builder.nextAccessor("biped/combat/jian_auto_2", (accessor) ->
-                new BasicAttackAnimation(0.12F, 0.1F, 0.15F, 0.25F, 0.3F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
-                        .addProperty(AnimationProperty.AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.setter(50))
-                        .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 2F));
+                new BasicAttackAnimation(0.12F, accessor, Armatures.BIPED,
+                        new AttackAnimation.Phase(0.0F, 0.0F, 0.08F, 0.12F, 0.14F, 0.15F, Armatures.BIPED.get().handL, AscendedColliderPreset.KICK),
+                        new AttackAnimation.Phase(0.15F, 0.19F, 0.22F, 0.3F, 0.33F, 0.335F, Armatures.BIPED.get().toolR, null))
+                        .addEvents(AnimationEvent.InPeriodEvent.create(0.0F, 0.15F, ReusableEvents.FIRE_PARTICLES_HANDL, AnimationEvent.Side.CLIENT)));
         JIAN_AUTO_3 = builder.nextAccessor("biped/combat/jian_auto_3", (accessor) ->
                 new BasicAttackAnimation(0.12F, accessor, Armatures.BIPED,
-                        new AttackAnimation.Phase(0.0F, 0.1F, 0.2F, 0.3F, 0.31F, 0.32F, Armatures.BIPED.get().toolR, null)
+                        new AttackAnimation.Phase(0.0F, 0.1F, 0.2F, 0.3F, 0.31F, 0.32F, Armatures.BIPED.get().legR, AscendedColliderPreset.KICK)
                                 .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.75F))
                                 .addProperty(AnimationProperty.AttackPhaseProperty.STUN_TYPE, StunType.SHORT),
-                        new AttackAnimation.Phase(0.32F, 0.2F, 0.32F, 0.5F, 0.55F, 0.56F, Armatures.BIPED.get().toolR, null)
-                                .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.75F)))
-                        .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 2F));
-        JIAN_AUTO_4 = builder.nextAccessor("biped/combat/jian_auto_4", (accessor) ->
-                new BasicAttackAnimation(0.12F, accessor, Armatures.BIPED,
-                        new AttackAnimation.Phase(0.0F, 0.0F, 0.2F, 0.3F, 0.35F, 0.36F, InteractionHand.MAIN_HAND, Armatures.BIPED.get().legL, AscendedColliderPreset.KICK)
-                                .addProperty(AnimationProperty.AttackPhaseProperty.STUN_TYPE, StunType.LONG)
-                                .addProperty(AnimationProperty.AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.multiplier(2F))
-                                .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLUNT_HIT.get())
-                                .addProperty(AnimationProperty.AttackPhaseProperty.SWING_SOUND, EpicFightSounds.WHOOSH.get()),
-                        new AttackAnimation.Phase(0.36F, 0.2F, 0.4F, 0.5F, 0.55F, 0.56F, Armatures.BIPED.get().toolR, null)
-                                .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.25F)))
-                        .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 2F));
+                        new AttackAnimation.Phase(0.32F, 0.32F, 0.45F, 0.55F, 0.6F, 0.61F, Armatures.BIPED.get().toolR, null))
+                        .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 2F)
+                        .addEvents(AnimationEvent.InPeriodEvent.create(0.0F, 0.3F, ReusableEvents.FIRE_PARTICLES_LEGR, AnimationEvent.Side.CLIENT)));
+
 
         DUAL_JIAN_AUTO_1 = builder.nextAccessor("biped/combat/dual_jian_auto_1", (accessor) ->
                 new BasicAttackAnimation(0.12F, accessor, Armatures.BIPED,
@@ -310,7 +312,11 @@ public class AscendedAnimations {
                                         player.yCloak = 0.0;
                                         player.yCloakO = 0.0;
                                     }
-                                }, AnimationEvent.Side.BOTH)));
+                                }, AnimationEvent.Side.BOTH))
+                        .addEvents(
+                                AnimationEvent.InTimeEvent.create(0.15F, ReusableEvents.ENDER_PARTICLES, AnimationEvent.Side.CLIENT),
+                                AnimationEvent.InTimeEvent.create(0.21F, ReusableEvents.ENDER_IMAGE, AnimationEvent.Side.CLIENT)
+                        ));
 
         DUAL_JIAN_AIRSLASH = builder.nextAccessor("biped/combat/dual_jian_airslash", (accessor) ->
                 new DashAttackAnimation(0.12F, accessor, Armatures.BIPED,
@@ -365,7 +371,7 @@ public class AscendedAnimations {
         SCYTHE_DASH = builder.nextAccessor("biped/combat/scythe_dash", (accessor) ->
                 new DashAttackAnimation(0.12F, accessor, Armatures.BIPED,
                         new AttackAnimation.Phase(0.0F, 0.2F, 0.2F, 0.5F, 0.6F, 0.7F, Armatures.BIPED.get().toolR, null),
-                        new AttackAnimation.Phase(0.7F, 0.1F, 0.5F, 0.8F, 1.0F, 1.2F, Armatures.BIPED.get().toolR, null))
+                        new AttackAnimation.Phase(0.7F, 0.1F, 0.5F, 0.8F, 1.4F, 1.5F, Armatures.BIPED.get().toolR, null))
                         .addProperty(AnimationProperty.AttackAnimationProperty.FIXED_MOVE_DISTANCE, true)
                         .addProperty(AnimationProperty.ActionAnimationProperty.COORD_SET_BEGIN, MoveCoordFunctions.TRACE_TARGET_DISTANCE)
                         .addProperty(AnimationProperty.AttackAnimationProperty.CANCELABLE_MOVE, true)
@@ -589,5 +595,527 @@ public class AscendedAnimations {
 
 
     }
+    public interface IProxy {
+        @Nullable
+        Entity getClientPlayer();
+    }
+    public static class ClientProxy implements IProxy {
+        @Override
+        public Entity getClientPlayer() {
+            return Minecraft.getInstance().player;
+        }
+    }
+    public static class ServerProxy implements IProxy {
+        @Override
+        public Entity getClientPlayer() {
+            return null;
+        }
+    }
+    // Particles and stuff
+    public static class ReusableEvents {
+        private static final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+        private static final int ENDER_PARTICLE_COUNT = 69;
+        private static final int PARTICLE_COUNT = 20;
+        private static final int FOLLOW_DURATION = 18;
+        private static final int PARTICLE_COUNT_TINY = 12;
+        private static final int FOLLOW_DURATION_TINY = 12;
+        private static final int SPAWN_ALWAYS = 1;
+        private static final int SPAWN_INTERVAL = 2;
+        private static int tickCounter = 1;
+        private static final Map<Entity, Integer> activeParticles = new HashMap<>();
+        private static final Map<Entity, Integer> activeParticlesWither = new HashMap<>();
+        private static final Map<Entity, Integer> activeParticlesWitherBig = new HashMap<>();
+        private static final Map<Entity, Integer> activeParticlesWitherTiny = new HashMap<>();
+        private static final Map<Entity, Integer> activeParticlesAmethyst = new HashMap<>();
 
+        //ENDER
+        private static final AnimationEvent.E0 ENDER_PARTICLES = (entitypatch, self, params) -> {
+            Entity entity = entitypatch.getOriginal();
+            RandomSource random = entitypatch.getOriginal().getRandom();
+            entity.playSound(SoundEvents.FOX_TELEPORT, 1F, 1.2F);
+            scheduler.schedule(() -> {
+                spawnParticlesEnder(entity, random);
+            }, 48, TimeUnit.MILLISECONDS);
+            spawnParticlesEnderDelayed(entity, random);
+        };
+        private static final AnimationEvent.E0 ENDER_IMAGE = (entitypatch, self, params) -> {
+            Entity entity = entitypatch.getOriginal();
+            entity.level().addParticle(
+                    EpicFightParticles.ENTITY_AFTER_IMAGE.get(),
+                    entity.getX(),
+                    entity.getY(),
+                    entity.getZ(),
+                    Double.longBitsToDouble(entity.getId()),
+                    0,
+                    0
+            );
+        };
+
+        //fire?
+        private static final AnimationEvent.E0 FIRE_PARTICLES = (entitypatch, self, params) -> {
+            Entity playerEntity = Ascended_arts.proxy.getClientPlayer();
+            if (playerEntity != null) {
+                spawnFireParticlesFollowingPlayer(playerEntity);
+            }
+        };
+        private static final AnimationEvent.E0 FIRE_PARTICLES_TINY = (entitypatch, self, params) -> {
+            Entity playerEntity = Ascended_arts.proxy.getClientPlayer();
+            if (playerEntity != null) {
+                spawnFireParticlesFollowingPlayer_Tiny(playerEntity);
+            }
+        };
+        private static final AnimationEvent.E0 FIRE_PARTICLES_HANDL = (entitypatch, self, params) -> {
+            Entity entity = entitypatch.getOriginal();
+            Entity playerEntity = Ascended_arts.proxy.getClientPlayer();
+            if (playerEntity != null) {
+                int numParticles = 5;
+                for (int i = 0; i < numParticles; i++) {
+                    Vec3 wep = getJointWithTranslation(Minecraft.getInstance().player, entity, new Vec3f(0F, 0F, 0F), Armatures.BIPED.get().handL);
+                    if (wep != null) {
+                        Vec3 direction = playerEntity.getLookAngle().normalize();
+                        double t = (double)i / numParticles;
+                        Vec3 point = wep.add(direction.scale(t * 2));
+                        Particle particle1 = Minecraft.getInstance().particleEngine.createParticle(ParticleTypes.FLAME,
+                                point.x, point.y, point.z,
+                                0,
+                                0,
+                                0
+                        );
+                        Particle particle2 = Minecraft.getInstance().particleEngine.createParticle(ParticleTypes.SMOKE,
+                                point.x, point.y, point.z,
+                                0,
+                                0,
+                                0
+                        );
+                        if (particle1 != null & particle2 != null) {
+                            particle1.scale(0.86F);
+                            particle1.setLifetime(12);
+                            particle2.scale(0.86F);
+                            particle2.setLifetime(8);
+                        }
+                    }
+                }
+            }
+        };
+        private static final AnimationEvent.E0 FIRE_PARTICLES_LEGR = (entitypatch, self, params) -> {
+            Entity entity = entitypatch.getOriginal();
+            Entity playerEntity = Ascended_arts.proxy.getClientPlayer();
+            if (playerEntity != null) {
+                int numParticles = 2;
+                for (int i = 0; i < numParticles; i++) {
+                    Vec3 wep = getJointWithTranslation(Minecraft.getInstance().player, entity, new Vec3f(0F, 0F, 0F), Armatures.BIPED.get().legR);
+                    if (wep != null) {
+                        Vec3 direction = playerEntity.getLookAngle().normalize();
+                        double t = (double)i / numParticles;
+                        Vec3 point = wep.add(direction.scale(t * 2));
+                        Particle particle1 = Minecraft.getInstance().particleEngine.createParticle(ParticleTypes.FLAME,
+                                point.x, point.y, point.z,
+                                0,
+                                0,
+                                0
+                        );
+                        Particle particle2 = Minecraft.getInstance().particleEngine.createParticle(ParticleTypes.SMOKE,
+                                point.x, point.y, point.z,
+                                0,
+                                0,
+                                0
+                        );
+                        if (particle1 != null & particle2 != null) {
+                            particle1.scale(0.86F);
+                            particle1.setLifetime(6);
+                            particle2.scale(0.86F);
+                            particle2.setLifetime(3);
+                        }
+                    }
+                }
+            }
+        };
+
+
+        //WITHER
+        private static final AnimationEvent.E0 WITHER_PARTICLES = (entitypatch, self, params) -> {
+                Entity playerEntity = Ascended_arts.proxy.getClientPlayer();
+            if (playerEntity != null) {
+                spawnWitherParticlesFollowingPlayer(playerEntity);
+            }
+        };
+        private static final AnimationEvent.E0 WITHER_PARTICLES_TINY = (entitypatch, self, params) -> {
+            Entity playerEntity = Ascended_arts.proxy.getClientPlayer();
+            if (playerEntity != null) {
+                spawnWitherParticlesFollowingPlayer_Tiny(playerEntity);
+            }
+        };
+        private static final AnimationEvent.E0 WITHER_PARTICLES_BIG = (entitypatch, self, params) -> {
+            Entity playerEntity = Ascended_arts.proxy.getClientPlayer();
+            if (playerEntity != null) {
+                spawnWitherParticlesFollowingPlayer_Big(playerEntity);
+            }
+        };
+        private static final AnimationEvent.E0 WITHER_PARTICLES_INSTANT = (entitypatch, self, params) -> {
+            Entity playerEntity = Ascended_arts.proxy.getClientPlayer();
+            Entity entity = entitypatch.getOriginal();
+            RandomSource random = entitypatch.getOriginal().getRandom();
+            if (playerEntity != null) {
+                spawnParticlesWitherInstant(entity, random);
+            }
+        };
+        private static final AnimationEvent.E0 WITHER_PARTICLES_SOUND = (entitypatch, self, params) -> {
+            Entity entity = entitypatch.getOriginal();
+            Entity playerEntity = Ascended_arts.proxy.getClientPlayer();
+            if (playerEntity != null) {
+                entity.playSound(SoundEvents.WITHER_AMBIENT);
+            }
+        };
+
+        //AMETHYST
+        private static final AnimationEvent.E0 AMETHYST_PARTICLES = (entitypatch, self, params) -> {
+            Entity playerEntity = Ascended_arts.proxy.getClientPlayer();
+            if (playerEntity != null) {
+                spawnAmethystParticlesFollowingPlayer(playerEntity);
+            }
+        };
+        private static final AnimationEvent.E0 AMETHYST_IMAGE_PARTICLES_TINY = (entitypatch, self, params) -> {
+            Entity entity = entitypatch.getOriginal();
+            Entity playerEntity = Ascended_arts.proxy.getClientPlayer();
+            if (playerEntity != null) {
+                entity.level().addParticle(
+                        EpicFightParticles.ENTITY_AFTER_IMAGE.get(),
+                        entity.getX(),
+                        entity.getY(),
+                        entity.getZ(),
+                        Double.longBitsToDouble(entity.getId()),
+                        0,
+                        0
+                );
+            }
+        };
+        private static final AnimationEvent.E0 AMETHYST_PARTICLES_TINY = (entitypatch, self, params) -> {
+            Entity playerEntity = Ascended_arts.proxy.getClientPlayer();
+            if (playerEntity != null) {
+                spawnAmethystParticlesFollowingPlayer_Tiny(playerEntity);
+            }
+        };
+
+        //PARTICLE SPAWNERS
+        private static void spawnParticlesEnder(Entity entity, RandomSource random) {
+            ClientLevel clientLevel = Minecraft.getInstance().level;
+            if (clientLevel != null) {
+                double horizontalRadius = 1.2;
+                for (int i = 0; i < ENDER_PARTICLE_COUNT; i++) {
+                    double xOffset = (random.nextDouble() - 0.4) * horizontalRadius;
+                    double yOffset = (random.nextDouble() - random.nextDouble()) * 1.4D;
+                    double zOffset = (random.nextDouble() - 0.4) * horizontalRadius;
+
+                    clientLevel.addParticle(ParticleTypes.PORTAL,
+                            entity.getX() + xOffset,
+                            entity.getY() + yOffset,
+                            entity.getZ() + zOffset,
+                            0,
+                            0.6,
+                            0
+                    );
+                }
+            }
+        }
+
+        public static void spawnParticlesFire() {
+            ClientLevel clientLevel = Minecraft.getInstance().level;
+            if (clientLevel != null) {
+
+                RandomSource random = RandomSource.create();
+                tickCounter++;
+
+                activeParticles.entrySet().removeIf(entry -> {
+                    Entity entity = entry.getKey();
+                    int ticksRemaining = entry.getValue();
+                    if (ticksRemaining <= 0 || !entity.isAlive()) {
+                        return true;
+                    }
+                    if (tickCounter % SPAWN_INTERVAL == 0) {
+                        double sphereRadius = 0.69;
+                        double yStretchFactor = 1.42;
+                        for (int i = 0; i < PARTICLE_COUNT; i++) {
+                            double theta = random.nextDouble() * 2 * Math.PI;
+                            double phi = Math.acos(2 * random.nextDouble() - 1);
+                            double xOffset = sphereRadius * Math.sin(phi) * Math.cos(theta);
+                            double yOffset = sphereRadius * Math.sin(phi) * Math.sin(theta) * yStretchFactor + 0.5;
+                            double zOffset = sphereRadius * Math.cos(phi);
+                            double vxOffset = xOffset * -0.1;
+                            double vyOffset = yOffset * -0.1;
+                            double vzOffset = zOffset * -0.1;
+                            clientLevel.addParticle(ParticleTypes.RAIN,
+                                    entity.getX() + xOffset,
+                                    entity.getY() + yOffset + 0.3,
+                                    entity.getZ() + zOffset,
+                                    vxOffset,
+                                    vyOffset,
+                                    vzOffset
+                            );
+                        }
+                    }
+                    entry.setValue(ticksRemaining - 1);
+                    return false;
+                });
+            }
+        }
+        public static void spawnParticlesFireTiny() {
+            ClientLevel clientLevel = Minecraft.getInstance().level;
+            if (clientLevel != null) {
+
+                RandomSource random = RandomSource.create();
+                tickCounter++;
+
+                activeParticles.entrySet().removeIf(entry -> {
+                    Entity entity = entry.getKey();
+                    int ticksRemaining = entry.getValue();
+
+                    if (ticksRemaining <= 0 || !entity.isAlive()) {
+                        return true;
+                    }
+                    if (tickCounter % SPAWN_INTERVAL == 0) {
+                        double horizontalRadius = 1.2;
+                        for (int i = 0; i < PARTICLE_COUNT_TINY; i++) {
+                            double xOffset = (random.nextDouble() - 0.5) * horizontalRadius;
+                            double yOffset = (random.nextDouble() - random.nextDouble()) * 1.5D;
+                            double zOffset = (random.nextDouble() - 0.5) * horizontalRadius;
+
+                            clientLevel.addParticle(ParticleTypes.FALLING_WATER,
+                                    entity.getX() + xOffset,
+                                    entity.getY() + yOffset,
+                                    entity.getZ() + zOffset,
+                                    0,
+                                    0.5,
+                                    0
+                            );
+                        }
+                    }
+                    entry.setValue(ticksRemaining - 1);
+                    return false;
+                });
+            }
+        }
+
+        public static void spawnParticlesWither() {
+            ClientLevel clientLevel = Minecraft.getInstance().level;
+            if (clientLevel != null) {
+
+                RandomSource random = RandomSource.create();
+                tickCounter++;
+
+                activeParticlesWither.entrySet().removeIf(entry -> {
+                    Entity entity = entry.getKey();
+                    int ticksRemaining = entry.getValue();
+                    if (ticksRemaining <= 0 || !entity.isAlive()) {
+                        return true;
+                    }
+                    if (tickCounter % SPAWN_INTERVAL == 0) {
+                        double sphereRadius = 0.66;
+                        for (int i = 0; i < PARTICLE_COUNT_TINY; i++) {
+                            double theta = random.nextDouble() * 2 * Math.PI;
+                            double phi = Math.acos(2 * random.nextDouble() - 1);
+                            double xOffset = sphereRadius * Math.sin(phi) * Math.cos(theta);
+                            double yOffset = sphereRadius * Math.sin(phi) * Math.sin(theta);
+                            double zOffset = sphereRadius * Math.cos(phi);
+                            double vxOffset = xOffset * 0.2;
+                            double vyOffset = yOffset * 0.2;
+                            double vzOffset = zOffset * 0.2;
+                            clientLevel.addParticle(ParticleTypes.LARGE_SMOKE,
+                                    entity.getX() + xOffset,
+                                    entity.getY() + yOffset + 0.6,
+                                    entity.getZ() + zOffset,
+                                    vxOffset,
+                                    vyOffset,
+                                    vzOffset
+                            );
+                        }
+                    }
+                    entry.setValue(ticksRemaining - 1);
+                    return false;
+                });
+            }
+        }
+        public static void spawnParticlesWitherBig() {
+            ClientLevel clientLevel = Minecraft.getInstance().level;
+            if (clientLevel != null) {
+
+                RandomSource random = RandomSource.create();
+                tickCounter++;
+
+                activeParticlesWitherBig.entrySet().removeIf(entry -> {
+                    Entity entity = entry.getKey();
+                    int ticksRemaining = entry.getValue();
+                    if (ticksRemaining <= 0 || !entity.isAlive()) {
+                        return true;
+                    }
+                    if (tickCounter % SPAWN_ALWAYS == 0) {
+                        double sphereRadius = 2;
+                        for (int i = 0; i < PARTICLE_COUNT; i++) {
+                            double theta = random.nextDouble() * 2 * Math.PI;
+                            double phi = Math.acos(2 * random.nextDouble() - 1);
+                            double xOffset = sphereRadius * Math.sin(phi) * Math.cos(theta);
+                            double yOffset = sphereRadius * Math.sin(phi) * Math.sin(theta);
+                            double zOffset = sphereRadius * Math.cos(phi);
+                            double vxOffset = xOffset * 0.2;
+                            double vyOffset = yOffset * 0.2;
+                            double vzOffset = zOffset * 0.2;
+                            clientLevel.addParticle(ParticleTypes.LARGE_SMOKE,
+                                    entity.getX() + xOffset,
+                                    entity.getY() + yOffset,
+                                    entity.getZ() + zOffset,
+                                    vxOffset,
+                                    vyOffset,
+                                    vzOffset
+                            );
+                        }
+                    }
+                    entry.setValue(ticksRemaining - 1);
+                    return false;
+                });
+            }
+        }
+        public static void spawnParticlesWitherTiny() {
+            ClientLevel clientLevel = Minecraft.getInstance().level;
+            if (clientLevel != null) {
+
+                RandomSource random = RandomSource.create();
+                tickCounter++;
+
+                activeParticlesWitherTiny.entrySet().removeIf(entry -> {
+                    Entity entity = entry.getKey();
+                    int ticksRemaining = entry.getValue();
+
+                    if (ticksRemaining <= 0 || !entity.isAlive()) {
+                        return true;
+                    }
+                    if (tickCounter % SPAWN_INTERVAL == 0) {
+                        double horizontalRadius = 1.2;
+                        for (int i = 0; i < PARTICLE_COUNT; i++) {
+                            double hxOffset = (random.nextDouble() - 0.6) * horizontalRadius;
+                            double hyOffset = (random.nextDouble() - random.nextDouble()) * 1.8D;
+                            double hzOffset = (random.nextDouble() - 0.6) * horizontalRadius;
+                            double vxOffset = random.nextDouble() * (0.06 - (-0.06)) - 0.06;
+                            double vyOffset = 0.066;
+                            double vzOffset = random.nextDouble() * (0.06 - (-0.06)) - 0.06;
+
+                            clientLevel.addParticle(ParticleTypes.SMOKE,
+                                    entity.getX() + hxOffset,
+                                    entity.getY() + hyOffset,
+                                    entity.getZ() + hzOffset,
+                                    vxOffset,
+                                    vyOffset,
+                                    vzOffset
+                            );
+                        }
+                    }
+                    entry.setValue(ticksRemaining - 1);
+                    return false;
+                });
+            }
+        }
+        private static void spawnParticlesWitherInstant(Entity entity, RandomSource random) {
+            ClientLevel clientLevel = Minecraft.getInstance().level;
+            if (clientLevel != null) {
+                double sphereRadius = 0.66;
+                for (int i = 0; i < 18; i++) {
+                    double theta = random.nextDouble() * 2 * Math.PI;
+                    double phi = Math.acos(2 * random.nextDouble() - 1);
+                    double xOffset = sphereRadius * Math.sin(phi) * Math.cos(theta);
+                    double yOffset = sphereRadius * Math.sin(phi) * Math.sin(theta);
+                    double zOffset = sphereRadius * Math.cos(phi);
+                    double vxOffset = xOffset * 0.2;
+                    double vyOffset = yOffset * 0.2;
+                    double vzOffset = zOffset * 0.2;
+
+                    clientLevel.addParticle(ParticleTypes.LARGE_SMOKE,
+                            entity.getX() + xOffset,
+                            entity.getY() + yOffset + 0.6,
+                            entity.getZ() + zOffset,
+                            vxOffset,
+                            vyOffset,
+                            vzOffset
+                    );
+                }
+            }
+        }
+
+        public static void spawnParticlesAmethyst() {
+            ClientLevel clientLevel = Minecraft.getInstance().level;
+            if (clientLevel != null) {
+
+                RandomSource random = RandomSource.create();
+                tickCounter++;
+
+                activeParticlesAmethyst.entrySet().removeIf(entry -> {
+                    Entity entity = entry.getKey();
+                    int ticksRemaining = entry.getValue();
+                    if (ticksRemaining <= 0 || !entity.isAlive()) {
+                        return true;
+                    }
+                    if (tickCounter % SPAWN_INTERVAL == 0) {
+                        double sphereRadius = 1;
+                        double yStretchFactor = 1.2;
+                        for (int i = 0; i < PARTICLE_COUNT; i++) {
+                            double theta = random.nextDouble() * 2 * Math.PI;
+                            double phi = Math.acos(2 * random.nextDouble() - 1);
+                            double xOffset = sphereRadius * Math.sin(phi) * Math.cos(theta);
+                            double yOffset = sphereRadius * Math.sin(phi) * Math.sin(theta) * yStretchFactor + 0.4;
+                            double zOffset = sphereRadius * Math.cos(phi);
+                            double vxOffset = xOffset * -0.64;
+                            double vyOffset = yOffset * -0.64;
+                            double vzOffset = zOffset * -0.64;
+                            clientLevel.addParticle(ParticleTypes.ENCHANT,
+                                    entity.getX() + xOffset,
+                                    entity.getY() + yOffset + 0.7,
+                                    entity.getZ() + zOffset,
+                                    vxOffset,
+                                    vyOffset,
+                                    vzOffset
+                            );
+                        }
+                    }
+                    entry.setValue(ticksRemaining - 1);
+                    return false;
+                });
+            }
+        }
+
+        private static void spawnParticlesEnderDelayed(Entity entity, RandomSource random) {
+            scheduler.schedule(() -> spawnParticlesEnder(entity, random), 144, TimeUnit.MILLISECONDS);
+        }
+        public static void spawnFireParticlesFollowingPlayer(Entity entity) {
+            if (!activeParticles.containsKey(entity)) {
+                activeParticles.put(entity, FOLLOW_DURATION);
+            }
+        }
+        public static void spawnFireParticlesFollowingPlayer_Tiny(Entity entity) {
+            if (!activeParticles.containsKey(entity)) {
+                activeParticles.put(entity, FOLLOW_DURATION_TINY);
+            }
+        }
+        public static void spawnWitherParticlesFollowingPlayer(Entity entity) {
+            if (!activeParticlesWither.containsKey(entity)) {
+                activeParticlesWither.put(entity, FOLLOW_DURATION_TINY);
+            }
+        }
+        public static void spawnWitherParticlesFollowingPlayer_Big(Entity entity) {
+            if (!activeParticlesWitherBig.containsKey(entity)) {
+                activeParticlesWitherBig.put(entity, FOLLOW_DURATION);
+            }
+        }
+        public static void spawnWitherParticlesFollowingPlayer_Tiny(Entity entity) {
+            if (!activeParticlesWitherTiny.containsKey(entity)) {
+                activeParticlesWitherTiny.put(entity, FOLLOW_DURATION_TINY);
+            }
+        }
+        public static void spawnAmethystParticlesFollowingPlayer(Entity entity) {
+            if (!activeParticlesAmethyst.containsKey(entity)) {
+                activeParticlesAmethyst.put(entity, FOLLOW_DURATION);
+            }
+        }
+        public static void spawnAmethystParticlesFollowingPlayer_Tiny(Entity entity) {
+            if (!activeParticlesAmethyst.containsKey(entity)) {
+                activeParticlesAmethyst.put(entity, FOLLOW_DURATION_TINY);
+            }
+        }
+    }
 }

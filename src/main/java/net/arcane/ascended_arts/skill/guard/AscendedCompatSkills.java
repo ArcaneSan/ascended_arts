@@ -3,7 +3,7 @@ package net.arcane.ascended_arts.skill.guard;
 import net.arcane.ascended_arts.Ascended_arts;
 import net.arcane.ascended_arts.gameasset.AscendedAnimations;
 import net.arcane.ascended_arts.world.capabilities.item.AscendedWeaponCategories;
-import net.arcane.ascended_arts.world.item.AscendedAddontems;
+import net.arcane.ascended_arts.world.item.AscendedAddonItems;
 
 
 import net.minecraft.resources.ResourceLocation;
@@ -106,8 +106,8 @@ public class AscendedCompatSkills {
     @SubscribeEvent
     @OnlyIn(Dist.CLIENT)
     public static void onIconCreate(WeaponCategoryIconRegisterEvent icon){
-        icon.registerCategory(AscendedWeaponCategories.JIAN, new ItemStack(AscendedAddontems.IRON_JIAN.get()));
-        icon.registerCategory(AscendedWeaponCategories.SCYTHE, new ItemStack(AscendedAddontems.ETHERVEIL_SCYTHE.get()));
+        icon.registerCategory(AscendedWeaponCategories.JIAN, new ItemStack(AscendedAddonItems.IRON_JIAN.get()));
+        icon.registerCategory(AscendedWeaponCategories.SCYTHE, new ItemStack(AscendedAddonItems.ETHERVEIL_SCYTHE.get()));
         System.out.println("[AscendedCompatSkills] Skill icons have been actualized");
     }
 }
