@@ -33,14 +33,14 @@ public class CelestialPunishmentSkill extends WeaponInnateSkill {
     private static final UUID EVENT_UUID = UUID.fromString("0a57fd2c-ef86-4bc3-84fe-01094f188ee7");
     public final AssetAccessor<? extends AttackAnimation> first;
     public final AssetAccessor<? extends AttackAnimation> second;
-    public final AssetAccessor<? extends AttackAnimation> third;
+    public final AssetAccessor<? extends AttackAnimation> fail;
 
 
     public CelestialPunishmentSkill(SkillBuilder<? extends WeaponInnateSkill> builder) {
         super(builder);
         this.first = AscendedAnimations.CELESTIAL_PUNISHMENT_FIRST;
         this.second = AscendedAnimations.CELESTIAL_PUNISHMENT_SECOND;
-        this.third = AscendedAnimations.CELESTIAL_PUNISHMENT_THIRD;
+        this.fail = AscendedAnimations.CELESTIAL_PUNISHMENT_FAIL;
 
     }
 
@@ -56,16 +56,10 @@ public class CelestialPunishmentSkill extends WeaponInnateSkill {
                     event.getPlayerPatch().reserveAnimation(this.second);
                     event.getPlayerPatch().getCurrenltyHurtEntities();
 
-                }
-            }
-            if (AscendedAnimations.CELESTIAL_PUNISHMENT_SECOND.equals(event.getAnimation())) {
-                List<LivingEntity> hurtEntities = event.getPlayerPatch().getCurrenltyHurtEntities();
-
-                if (!hurtEntities.isEmpty() && hurtEntities.get(0).isAlive()) {
-                    event.getPlayerPatch().getCurrenltyHurtEntities().clear();
+                } else {
                     event.getPlayerPatch().getServerAnimator().getPlayerFor(null).reset();
-                    event.getPlayerPatch().reserveAnimation(this.third);
-                    event.getPlayerPatch().getCurrenltyHurtEntities();
+                    event.getPlayerPatch().reserveAnimation(this.fail);
+                    event.getPlayerPatch().getCurrenltyHurtEntities().clear();
                 }
             }
         });
@@ -76,22 +70,7 @@ public class CelestialPunishmentSkill extends WeaponInnateSkill {
         container.getExecutor().getEventListener().removeListener(PlayerEventListener.EventType.ATTACK_ANIMATION_END_EVENT, EVENT_UUID);
     }
 
-    @Override
-    public boolean checkExecuteCondition(SkillContainer container) {
-        Entity target = container.getExecutor().getTarget();
-        if (target == null || !target.isAlive()) {
-            return false;
-        }
-        Vec3 targetPos = target.position();
-        Vec3 playerPos = container.getExecutor().getOriginal().position();
-        Vec3 predictedTargetPos = targetPos.add(target.getDeltaMovement());
 
-        double distance = playerPos.distanceTo(predictedTargetPos);
-        double minDistance = 1.5;
-        double maxDistance = 8.0;
-
-        return distance >= minDistance && distance <= maxDistance;
-    }
 
     @Override
     public void executeOnServer(SkillContainer container, FriendlyByteBuf args) {
@@ -109,7 +88,7 @@ public class CelestialPunishmentSkill extends WeaponInnateSkill {
         List<Component> list = super.getTooltipOnItem(itemStack, cap, playerCap);
         this.generateTooltipforPhase(list, itemStack, cap, playerCap, (Map) this.properties.get(0), "Pin");
         this.generateTooltipforPhase(list, itemStack, cap, playerCap, (Map) this.properties.get(1), "Kick");
-        this.generateTooltipforPhase(list, itemStack,cap, playerCap, (Map) this.properties.get(2), "Slice");
+
 
         return list;
     }
@@ -118,7 +97,7 @@ public class CelestialPunishmentSkill extends WeaponInnateSkill {
     public WeaponInnateSkill registerPropertiesToAnimation() {
         this.first.get().phases[0].addProperties(this.properties.get(0).entrySet());
         this.second.get().phases[0].addProperties(this.properties.get(1).entrySet());
-        this.third.get().phases[0].addProperties(this.properties.get(2).entrySet());
+
         return this;
     }
 
