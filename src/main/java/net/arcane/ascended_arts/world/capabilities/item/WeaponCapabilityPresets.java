@@ -5,7 +5,6 @@ import net.arcane.ascended_arts.gameasset.AscendedAnimations;
 import net.arcane.ascended_arts.gameasset.AscendedColliderPreset;
 import net.arcane.ascended_arts.gameasset.AscendedSkills;
 
-import net.arcane.ascended_arts.skill.weaponpassive.FloatingPassive;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.item.Item;
@@ -41,17 +40,16 @@ public class WeaponCapabilityPresets {
                 .livingMotionModifier(Styles.COMMON, LivingMotions.IDLE, AscendedAnimations.BIPED_HOLD_JIAN)
                 .livingMotionModifier(Styles.COMMON, LivingMotions.WALK, AscendedAnimations.BIPED_WALK_JIAN)
                 .livingMotionModifier(Styles.COMMON, LivingMotions.RUN, AscendedAnimations.BIPED_RUN_JIAN)
-                .livingMotionModifier(Styles.COMMON, LivingMotions.SWIM, AscendedAnimations.JIAN_SWIM)
-                .livingMotionModifier(Styles.COMMON, LivingMotions.DEATH, AscendedAnimations.JIAN_DEATH)
+                .livingMotionModifier(Styles.COMMON, LivingMotions.SWIM, AscendedAnimations.BIPED_JIAN_SWIM)
                 .livingMotionModifier(Styles.ONE_HAND, LivingMotions.BLOCK, AscendedAnimations.JIAN_GUARD)
                 .livingMotionModifier(Styles.COMMON, LivingMotions.KNEEL, AscendedAnimations.BIPED_HOLD_JIAN)
                 .livingMotionModifier(Styles.COMMON, LivingMotions.SNEAK, AscendedAnimations.BIPED_WALK_JIAN)
                 .livingMotionModifier(Styles.COMMON, LivingMotions.CREATIVE_IDLE, AscendedAnimations.BIPED_HOLD_JIAN)
                 .livingMotionModifier(Styles.COMMON, LivingMotions.CREATIVE_FLY, AscendedAnimations.BIPED_RUN_JIAN)
-                .livingMotionModifier(Styles.COMMON, LivingMotions.SLEEP, AscendedAnimations.JIAN_SLEEP)
+                .livingMotionModifier(Styles.COMMON, LivingMotions.SLEEP, AscendedAnimations.BIPED_JIAN_SLEEP)
                 .livingMotionModifier(Styles.TWO_HAND, LivingMotions.BLOCK, AscendedAnimations.DUAL_JIAN_GUARD)
-                .livingMotionModifier(Styles.COMMON, LivingMotions.EAT, AscendedAnimations.JIAN_EAT)
-                .livingMotionModifier(Styles.COMMON, LivingMotions.DRINK, AscendedAnimations.JIAN_DRINK)
+                .livingMotionModifier(Styles.COMMON, LivingMotions.EAT, AscendedAnimations.BIPED_JIAN_EAT)
+                .livingMotionModifier(Styles.COMMON, LivingMotions.DRINK, AscendedAnimations.BIPED_JIAN_DRINK)
                 .weaponCombinationPredicator((entitypatch) -> EpicFightCapabilities.getItemStackCapability(entitypatch.getOriginal().getOffhandItem()).getWeaponCategory() == AscendedWeaponCategories.JIAN);
 
         return builder;
@@ -59,30 +57,55 @@ public class WeaponCapabilityPresets {
     public static Function<Item, CapabilityItem.Builder> SCYTHE = (item) -> {
         WeaponCapability.Builder builder = WeaponCapability.builder()
                 .category(AscendedWeaponCategories.SCYTHE)
-                .styleProvider((playerpatch) -> Styles.TWO_HAND)
+                .styleProvider((playerpatch) -> Styles.OCHS)
                 .collider(AscendedColliderPreset.SCYTHE)
                 .canBePlacedOffhand(false)
                 .hitSound(EpicFightSounds.BLADE_HIT.get())
                 .swingSound(EpicFightSounds.WHOOSH_BIG.get())
                 .passiveSkill(AscendedSkills.FLOATING_PASSIVE)
-                .innateSkill(Styles.TWO_HAND, (itemstack) -> AscendedSkills.REAPING_GRASP)
-                .newStyleCombo(Styles.TWO_HAND, AscendedAnimations.SCYTHE_AUTO_1, AscendedAnimations.SCYTHE_AUTO_2, AscendedAnimations.SCYTHE_AUTO_3, AscendedAnimations.SCYTHE_AUTO_4, AscendedAnimations.SCYTHE_DASH, AscendedAnimations.SCYTHE_AIRSLASH)
-                .livingMotionModifier(Styles.TWO_HAND, LivingMotions.IDLE, AscendedAnimations.BIPED_HOLD_SCYTHE)
-                .livingMotionModifier(Styles.TWO_HAND, LivingMotions.KNEEL, AscendedAnimations.BIPED_KNEEL_SCYTHE)
-                .livingMotionModifier(Styles.TWO_HAND, LivingMotions.WALK, AscendedAnimations.BIPED_WALK_SCYTHE)
-                .livingMotionModifier(Styles.TWO_HAND, LivingMotions.RUN, AscendedAnimations.BIPED_RUN_SCYTHE)
-                .livingMotionModifier(Styles.TWO_HAND, LivingMotions.SLEEP, AscendedAnimations.SCYTHE_SLEEP)
-                .livingMotionModifier(Styles.TWO_HAND, LivingMotions.SNEAK, AscendedAnimations.BIPED_SNEAK_SCYTHE)
-                .livingMotionModifier(Styles.TWO_HAND, LivingMotions.CREATIVE_IDLE, AscendedAnimations.BIPED_HOLD_SCYTHE)
-                .livingMotionModifier(Styles.TWO_HAND, LivingMotions.CREATIVE_FLY, AscendedAnimations.BIPED_RUN_SCYTHE)
-                .livingMotionModifier(Styles.TWO_HAND, LivingMotions.BLOCK, AscendedAnimations.SCYTHE_GUARD)
+                .innateSkill(Styles.OCHS, (itemstack) -> AscendedSkills.REAPING_GRASP)
+                .newStyleCombo(Styles.OCHS, AscendedAnimations.SCYTHE_AUTO_1, AscendedAnimations.SCYTHE_AUTO_2, AscendedAnimations.SCYTHE_AUTO_3, AscendedAnimations.SCYTHE_AUTO_4, AscendedAnimations.SCYTHE_DASH, AscendedAnimations.SCYTHE_AIRSLASH)
+                .livingMotionModifier(Styles.OCHS, LivingMotions.IDLE, AscendedAnimations.BIPED_HOLD_SCYTHE)
+                .livingMotionModifier(Styles.OCHS, LivingMotions.KNEEL, AscendedAnimations.BIPED_KNEEL_SCYTHE)
+                .livingMotionModifier(Styles.OCHS, LivingMotions.WALK, AscendedAnimations.BIPED_WALK_SCYTHE)
+                .livingMotionModifier(Styles.OCHS, LivingMotions.RUN, AscendedAnimations.BIPED_RUN_SCYTHE)
+                .livingMotionModifier(Styles.OCHS, LivingMotions.SLEEP, AscendedAnimations.BIPED_SCYTHE_SLEEP)
+                .livingMotionModifier(Styles.OCHS, LivingMotions.SNEAK, AscendedAnimations.BIPED_SNEAK_SCYTHE)
+                .livingMotionModifier(Styles.OCHS, LivingMotions.SWIM, AscendedAnimations.BIPED_SCYTHE_SWIM)
+                .livingMotionModifier(Styles.OCHS, LivingMotions.CREATIVE_IDLE, AscendedAnimations.BIPED_HOLD_SCYTHE)
+                .livingMotionModifier(Styles.OCHS, LivingMotions.CREATIVE_FLY, AscendedAnimations.BIPED_RUN_SCYTHE)
+                .livingMotionModifier(Styles.OCHS, LivingMotions.BLOCK, AscendedAnimations.SCYTHE_GUARD)
                 .weaponCombinationPredicator((entitypatch) -> EpicFightCapabilities.getItemStackCapability(entitypatch.getOriginal().getOffhandItem()).getWeaponCategory() == AscendedWeaponCategories.SCYTHE);
       return builder;
+    };
+    public static Function<Item, CapabilityItem.Builder> SWEEPING_SCYTHE = (item) -> {
+        WeaponCapability.Builder builder = WeaponCapability.builder()
+                .category(AscendedWeaponCategories.SWEEPING_SCYTHE)
+                .styleProvider((playerpatch) -> Styles.OCHS)
+                .collider(AscendedColliderPreset.SWEEPING_SCYTHE)
+                .canBePlacedOffhand(true)
+                .hitSound(EpicFightSounds.BLADE_HIT.get())
+                .swingSound(EpicFightSounds.WHOOSH_BIG.get())
+                .innateSkill(Styles.OCHS, (itemstack) -> AscendedSkills.REAPING_GRASP)
+                .newStyleCombo(Styles.OCHS, AscendedAnimations.SCYTHE_AUTO_1, AscendedAnimations.SCYTHE_AUTO_2, AscendedAnimations.SCYTHE_AUTO_3, AscendedAnimations.SCYTHE_AUTO_4, AscendedAnimations.SCYTHE_DASH, AscendedAnimations.SCYTHE_AIRSLASH)
+                .livingMotionModifier(Styles.OCHS, LivingMotions.IDLE, AscendedAnimations.BIPED_HOLD_SCYTHE)
+                .livingMotionModifier(Styles.OCHS, LivingMotions.KNEEL, AscendedAnimations.BIPED_KNEEL_SCYTHE)
+                .livingMotionModifier(Styles.OCHS, LivingMotions.WALK, AscendedAnimations.BIPED_WALK_SCYTHE)
+                .livingMotionModifier(Styles.OCHS, LivingMotions.RUN, AscendedAnimations.BIPED_RUN_SCYTHE)
+                .livingMotionModifier(Styles.OCHS, LivingMotions.SLEEP, AscendedAnimations.BIPED_SCYTHE_SLEEP)
+                .livingMotionModifier(Styles.OCHS, LivingMotions.SNEAK, AscendedAnimations.BIPED_SNEAK_SCYTHE)
+                .livingMotionModifier(Styles.OCHS, LivingMotions.SWIM, AscendedAnimations.BIPED_SCYTHE_SWIM)
+                .livingMotionModifier(Styles.OCHS, LivingMotions.CREATIVE_IDLE, AscendedAnimations.BIPED_HOLD_SCYTHE)
+                .livingMotionModifier(Styles.OCHS, LivingMotions.CREATIVE_FLY, AscendedAnimations.BIPED_RUN_SCYTHE)
+                .livingMotionModifier(Styles.OCHS, LivingMotions.BLOCK, AscendedAnimations.SCYTHE_GUARD)
+                .weaponCombinationPredicator((entitypatch) -> EpicFightCapabilities.getItemStackCapability(entitypatch.getOriginal().getOffhandItem()).getWeaponCategory() == AscendedWeaponCategories.SWEEPING_SCYTHE);
+        return builder;
     };
 
     @SubscribeEvent
     public static void registerMovesets(WeaponCapabilityPresetRegistryEvent event) {
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Ascended_arts.MOD_ID,"jian"), JIAN);
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Ascended_arts.MOD_ID, "scythe"), SCYTHE);
+        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Ascended_arts.MOD_ID, "sweeping_scythe"), SWEEPING_SCYTHE);
     }
 }

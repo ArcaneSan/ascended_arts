@@ -30,14 +30,16 @@ public class CelestialOnslaughtSkill extends WeaponInnateSkill {
     public final AssetAccessor<? extends AttackAnimation> first;
     public final AssetAccessor<? extends AttackAnimation> second;
     public final AssetAccessor<? extends AttackAnimation> third;
-    public final AssetAccessor<? extends AttackAnimation> fourth;
+    public final AssetAccessor<? extends AttackAnimation> fail;
+    public final AssetAccessor<? extends AttackAnimation> land;
 
     public CelestialOnslaughtSkill (SkillBuilder<? extends WeaponInnateSkill> builder) {
         super(builder);
         this.first = AscendedAnimations.CELESTIAL_ONSLAUGHT_FIRST;
         this.second = AscendedAnimations.CELESTIAL_ONSLAUGHT_SECOND;
         this.third = AscendedAnimations.CELESTIAL_ONSLAUGHT_THIRD;
-        this.fourth = AscendedAnimations.CELESTIAL_ONSLAUGHT_FOURTH;
+        this.fail = AscendedAnimations.CELESTIAL_ONSLAUGHT_FAIL;
+        this.land = AscendedAnimations.CELESTIAL_ONSLAUGHT_SECOND_LAND;
     }
 
     @Override
@@ -51,6 +53,10 @@ public class CelestialOnslaughtSkill extends WeaponInnateSkill {
                     event.getPlayerPatch().reserveAnimation(this.second);
                     event.getPlayerPatch().getCurrenltyHurtEntities().clear();
 
+                }else {
+                    event.getPlayerPatch().getServerAnimator().getPlayerFor(null).reset();
+                    event.getPlayerPatch().reserveAnimation(this.fail);
+                    event.getPlayerPatch().getCurrenltyHurtEntities().clear();
                 }
             }
             if (AscendedAnimations.CELESTIAL_ONSLAUGHT_SECOND.equals(event.getAnimation())) {
@@ -61,14 +67,9 @@ public class CelestialOnslaughtSkill extends WeaponInnateSkill {
                     event.getPlayerPatch().reserveAnimation(this.third);
                     event.getPlayerPatch().getCurrenltyHurtEntities().clear();
 
-                }
-            }
-            if (AscendedAnimations.CELESTIAL_ONSLAUGHT_THIRD.equals(event.getAnimation())) {
-                List<LivingEntity> hurtEntities = event.getPlayerPatch().getCurrenltyHurtEntities();
-                if (!hurtEntities.isEmpty() && hurtEntities.get(0).isAlive()){
-
+                }else {
                     event.getPlayerPatch().getServerAnimator().getPlayerFor(null).reset();
-                    event.getPlayerPatch().reserveAnimation(this.fourth);
+                    event.getPlayerPatch().reserveAnimation(this.land);
                     event.getPlayerPatch().getCurrenltyHurtEntities().clear();
                 }
             }
@@ -80,22 +81,6 @@ public class CelestialOnslaughtSkill extends WeaponInnateSkill {
         container.getExecutor().getEventListener().removeListener(PlayerEventListener.EventType.ATTACK_ANIMATION_END_EVENT, EVENT_UUID);
     }
 
-    @Override
-    public boolean checkExecuteCondition(SkillContainer container) {
-        Entity target = container.getExecutor().getTarget();
-        if (target == null || !target.isAlive()) {
-            return false;
-        }
-        Vec3 targetPos = target.position();
-        Vec3 playerPos = container.getExecutor().getOriginal().position();
-        Vec3 predictedTargetPos = targetPos.add(target.getDeltaMovement());
-
-        double distance = playerPos.distanceTo(predictedTargetPos);
-        double minDistance = 1.5;
-        double maxDistance = 8.0;
-
-        return distance >= minDistance && distance <= maxDistance;
-    }
 
     @Override
     public void executeOnServer(SkillContainer container, FriendlyByteBuf args) {
@@ -111,10 +96,10 @@ public class CelestialOnslaughtSkill extends WeaponInnateSkill {
     @Override
     public List<Component> getTooltipOnItem(ItemStack itemStack, CapabilityItem cap, PlayerPatch<?> playerCap) {
         List<Component> list = super.getTooltipOnItem(itemStack, cap, playerCap);
-        this.generateTooltipforPhase(list, itemStack, cap, playerCap, (Map) this.properties.get(0), "Pin");
-        this.generateTooltipforPhase(list, itemStack, cap, playerCap, (Map) this.properties.get(1), "Bash");
-        this.generateTooltipforPhase(list, itemStack, cap, playerCap, (Map) this.properties.get(2), "Shred");
-        this.generateTooltipforPhase(list, itemStack, cap, playerCap, (Map) this.properties.get(3), "Crush");
+        this.generateTooltipforPhase(list, itemStack, cap, playerCap, (Map) this.properties.get(0), "kick");
+        this.generateTooltipforPhase(list, itemStack, cap, playerCap, (Map) this.properties.get(1), "slash");
+        this.generateTooltipforPhase(list, itemStack, cap, playerCap, (Map) this.properties.get(2), "Slam");
+
         return list;
     }
 
@@ -123,7 +108,6 @@ public class CelestialOnslaughtSkill extends WeaponInnateSkill {
         this.first.get().phases[0].addProperties(this.properties.get(0).entrySet());
         this.second.get().phases[0].addProperties(this.properties.get(1).entrySet());
         this.third.get().phases[0].addProperties(this.properties.get(2).entrySet());
-        this.fourth.get().phases[0].addProperties(this.properties.get(3).entrySet());
         return this;
     }
 

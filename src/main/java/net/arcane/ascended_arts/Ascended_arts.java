@@ -36,13 +36,9 @@ import yesman.epicfight.world.capabilities.item.WeaponCategory;
 @Mod(Ascended_arts.MOD_ID)
 public class Ascended_arts {
     public static AscendedAnimations.IProxy proxy;
-    // Define mod id in a common place for everything to reference
     public static final String MOD_ID = "ascended_arts";
-    // Directly reference a slf4j logger
     private static final Logger LOGGER = LogUtils.getLogger();
-    // Create a Deferred Register to hold Blocks which will all be registered under the "ascended_arts" namespace
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MOD_ID);
-    // Create a Deferred Register to hold Items which will all be registered under the "ascended_arts" namespace
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MOD_ID);
 
 
@@ -65,9 +61,6 @@ public class Ascended_arts {
         modEventBus.addListener(this::commonSetup);
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
-
-        // Register our mod's ForgeConfigSpec so that Forge can create and load the config file for us
-        eventBus.registerConfig(ModConfig.Type.CLIENT, Config.SPEC);//i readed all ways wrong the documentation LMAO
         if (FMLEnvironment.dist == Dist.CLIENT) {
             proxy = new AscendedAnimations.ClientProxy();
         } else {

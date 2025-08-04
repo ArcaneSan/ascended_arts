@@ -43,7 +43,7 @@ public class AscendedCompatSkills {
             builder.addGuardMotion(AscendedWeaponCategories.JIAN, (item, player) -> {
               return AscendedAnimations.JIAN_GUARD_HIT;
             }).addGuardBreakMotion(AscendedWeaponCategories.JIAN, (item, player) -> {
-                return Animations.BIPED_COMMON_NEUTRALIZED;
+                return AscendedAnimations.JIAN_GUARD_BREAK;
             });
             builder.addGuardMotion(AscendedWeaponCategories.SCYTHE, (item, player) -> {
                 return AscendedAnimations.SCYTHE_GUARD_HIT;
@@ -61,7 +61,7 @@ public class AscendedCompatSkills {
             builder.addGuardMotion(AscendedWeaponCategories.JIAN, (item, player) -> {
                 return AscendedAnimations.JIAN_GUARD_HIT;
             }).addGuardBreakMotion(AscendedWeaponCategories.JIAN, (item, player) -> {
-                return Animations.BIPED_COMMON_NEUTRALIZED;
+                return AscendedAnimations.JIAN_GUARD_BREAK;
             }).addAdvancedGuardMotion(AscendedWeaponCategories.JIAN, (item, player) -> {
                 return List.of(AscendedAnimations.JIAN_GUARD_PARRY_1, AscendedAnimations.JIAN_GUARD_PARRY_2);
             });

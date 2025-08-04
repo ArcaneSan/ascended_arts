@@ -6,6 +6,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.Particle;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
@@ -29,14 +30,12 @@ import yesman.epicfight.gameasset.Animations;
 import yesman.epicfight.gameasset.Armatures;
 import yesman.epicfight.gameasset.EpicFightSounds;
 import yesman.epicfight.particle.EpicFightParticles;
-import yesman.epicfight.world.damagesource.EpicFightDamageType;
 import yesman.epicfight.world.damagesource.StunType;
 
 import javax.annotation.Nullable;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
-import java.util.Set;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -57,20 +56,21 @@ public class AscendedAnimations {
     public static AnimationManager.AnimationAccessor<StaticAnimation> BIPED_HOLD_JIAN;
     public static AnimationManager.AnimationAccessor<MovementAnimation> BIPED_WALK_JIAN;
     public static AnimationManager.AnimationAccessor<MovementAnimation> BIPED_RUN_JIAN;
-    public static AnimationManager.AnimationAccessor<StaticAnimation> JIAN_SLEEP;
-    public static AnimationManager.AnimationAccessor<MovementAnimation> JIAN_SWIM;
-    public static AnimationManager.AnimationAccessor<StaticAnimation> JIAN_EAT;
-    public static AnimationManager.AnimationAccessor<StaticAnimation> JIAN_DRINK;
-    public static AnimationManager.AnimationAccessor<LongHitAnimation> JIAN_DEATH;
-    public static AnimationManager.AnimationAccessor<StaticAnimation> SCYTHE_SLEEP;
+    public static AnimationManager.AnimationAccessor<StaticAnimation> BIPED_JIAN_SLEEP;
+    public static AnimationManager.AnimationAccessor<MovementAnimation> BIPED_JIAN_SWIM;
+    public static AnimationManager.AnimationAccessor<StaticAnimation> BIPED_JIAN_EAT;
+    public static AnimationManager.AnimationAccessor<StaticAnimation> BIPED_JIAN_DRINK;
+    public static AnimationManager.AnimationAccessor<StaticAnimation> BIPED_SCYTHE_SLEEP;
     public static AnimationManager.AnimationAccessor<StaticAnimation> BIPED_HOLD_SCYTHE;
     public static AnimationManager.AnimationAccessor<StaticAnimation> BIPED_KNEEL_SCYTHE;
     public static AnimationManager.AnimationAccessor<MovementAnimation> BIPED_WALK_SCYTHE;
     public static AnimationManager.AnimationAccessor<MovementAnimation> BIPED_RUN_SCYTHE;
     public static AnimationManager.AnimationAccessor<MovementAnimation> BIPED_SNEAK_SCYTHE;
+    public static AnimationManager.AnimationAccessor<MovementAnimation> BIPED_SCYTHE_SWIM;
 
     public static AnimationManager.AnimationAccessor<StaticAnimation> JIAN_GUARD;
     public static AnimationManager.AnimationAccessor<GuardAnimation> JIAN_GUARD_HIT;
+    public static AnimationManager.AnimationAccessor<LongHitAnimation> JIAN_GUARD_BREAK;
     public static AnimationManager.AnimationAccessor<BasicAttackAnimation> JIAN_GUARD_PARRY_1;
     public static AnimationManager.AnimationAccessor<BasicAttackAnimation> JIAN_GUARD_PARRY_2;
     public static AnimationManager.AnimationAccessor<StaticAnimation> DUAL_JIAN_GUARD;
@@ -103,9 +103,10 @@ public class AscendedAnimations {
     public static AnimationManager.AnimationAccessor<AttackAnimation> CELESTIAL_PUNISHMENT_SECOND;
     public static AnimationManager.AnimationAccessor<AttackAnimation> CELESTIAL_PUNISHMENT_FAIL;
     public static AnimationManager.AnimationAccessor<AttackAnimation> CELESTIAL_ONSLAUGHT_FIRST;
+    public static AnimationManager.AnimationAccessor<AttackAnimation> CELESTIAL_ONSLAUGHT_FAIL;
     public static AnimationManager.AnimationAccessor<AttackAnimation> CELESTIAL_ONSLAUGHT_SECOND;
+    public static AnimationManager.AnimationAccessor<AttackAnimation> CELESTIAL_ONSLAUGHT_SECOND_LAND;
     public static AnimationManager.AnimationAccessor<AttackAnimation> CELESTIAL_ONSLAUGHT_THIRD;
-    public static AnimationManager.AnimationAccessor<AttackAnimation> CELESTIAL_ONSLAUGHT_FOURTH;
 
     public static AnimationManager.AnimationAccessor<AttackAnimation> REAPING_GRASP_1;
     public static AnimationManager.AnimationAccessor<AttackAnimation> REAPING_GRASP_2;
@@ -131,14 +132,13 @@ public class AscendedAnimations {
                 .addEvents(AnimationProperty.StaticAnimationProperty.ON_END_EVENTS, AnimationEvent.SimpleEvent.create(Animations.ReusableSources.REVERT_TO_HANDS, AnimationEvent.Side.CLIENT))
                 .newTimePair(0.0F, 500.0F));
         //Every animation defined with his own hitbox timers and Properties
-        BIPED_HOLD_JIAN = builder.nextAccessor("biped/living/jian_idle", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED));
-        BIPED_WALK_JIAN = builder.nextAccessor("biped/living/jian_walk", (accessor) -> new MovementAnimation(true, accessor, Armatures.BIPED));
-        BIPED_RUN_JIAN = builder.nextAccessor("biped/living/jian_run", (accessor) -> new MovementAnimation(true, accessor, Armatures.BIPED));
-        JIAN_SLEEP = builder.nextAccessor("biped/living/jian_sleep", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED));
-        JIAN_EAT = builder.nextAccessor("biped/living/jian_eat", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED));
-        JIAN_DRINK = builder.nextAccessor("biped/living/jian_drink", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED));
-        JIAN_DEATH = builder.nextAccessor("biped/living/jian_death", (accessor) -> new LongHitAnimation(0.16F, accessor, Armatures.BIPED));
-        JIAN_SWIM = builder.nextAccessor("biped/living/jian_swim", (accessor) -> new MovementAnimation(true, accessor, Armatures.BIPED)
+        BIPED_HOLD_JIAN = builder.nextAccessor("biped/living/jian/jian_idle", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED));
+        BIPED_WALK_JIAN = builder.nextAccessor("biped/living/jian/jian_walk", (accessor) -> new MovementAnimation(true, accessor, Armatures.BIPED));
+        BIPED_RUN_JIAN = builder.nextAccessor("biped/living/jian/jian_run", (accessor) -> new MovementAnimation(true, accessor, Armatures.BIPED));
+        BIPED_JIAN_SLEEP = builder.nextAccessor("biped/living/jian/jian_sleep", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED));
+        BIPED_JIAN_EAT = builder.nextAccessor("biped/living/jian/jian_eat", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED));
+        BIPED_JIAN_DRINK = builder.nextAccessor("biped/living/jian/jian_drink", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED));
+        BIPED_JIAN_SWIM = builder.nextAccessor("biped/living/jian/jian_swim", (accessor) -> new MovementAnimation(true, accessor, Armatures.BIPED)
                 .addProperty(AnimationProperty.StaticAnimationProperty.ON_ITEM_CHANGE_EVENT, AnimationEvent.SimpleEvent.create(Animations.ReusableSources.SET_TOOLS_BACK_WHEN_ITEM_CHANGED, AnimationEvent.Side.CLIENT))
                 .addEvents(AnimationProperty.StaticAnimationProperty.ON_BEGIN_EVENTS,
                         AnimationEvent.SimpleEvent.create(Animations.ReusableSources.SET_TOOLS_BACK, AnimationEvent.Side.CLIENT))
@@ -150,12 +150,14 @@ public class AscendedAnimations {
         BIPED_HOLD_SCYTHE = builder.nextAccessor("biped/living/scythe_idle", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED));
         BIPED_KNEEL_SCYTHE = builder.nextAccessor("biped/living/scythe_kneel", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED));
         BIPED_SNEAK_SCYTHE = builder.nextAccessor("biped/living/scythe_sneak", (accessor) -> new MovementAnimation(true, accessor, Armatures.BIPED));
-        SCYTHE_SLEEP = builder.nextAccessor("biped/living/scythe_sleep", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED));
+        BIPED_SCYTHE_SLEEP = builder.nextAccessor("biped/living/scythe_sleep", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED));
+        BIPED_SCYTHE_SWIM = builder.nextAccessor("biped/living/scythe_swim", (accessor) -> new MovementAnimation(true, accessor, Armatures.BIPED));
 
-        JIAN_GUARD = builder.nextAccessor("biped/skill/jian_guard", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED));
-        DUAL_JIAN_GUARD = builder.nextAccessor("biped/skill/dual_jian_guard", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED));
-        JIAN_GUARD_HIT = builder.nextAccessor("biped/skill/jian_guard_hit", (accessor) -> new GuardAnimation(0, accessor, Armatures.BIPED));
-        DUAL_JIAN_GUARD_HIT = builder.nextAccessor("biped/skill/dual_jian_guard_hit", (accessor) -> new GuardAnimation(0, accessor, Armatures.BIPED));
+        JIAN_GUARD = builder.nextAccessor("biped/skill/jian/jian_guard", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED));
+        DUAL_JIAN_GUARD = builder.nextAccessor("biped/skill/jian/dual_jian_guard", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED));
+        JIAN_GUARD_HIT = builder.nextAccessor("biped/skill/jian/jian_guard_hit", (accessor) -> new GuardAnimation(0, accessor, Armatures.BIPED));
+        JIAN_GUARD_BREAK = builder.nextAccessor("biped/skill/jian/jian_guard_break", (accessor) -> new LongHitAnimation(0.05F, accessor, Armatures.BIPED));
+        DUAL_JIAN_GUARD_HIT = builder.nextAccessor("biped/skill/jian/dual_jian_guard_hit", (accessor) -> new GuardAnimation(0, accessor, Armatures.BIPED));
         SCYTHE_GUARD = builder.nextAccessor("biped/skill/scythe_guard", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED)
                 .addEvents(AnimationEvent.InPeriodEvent.create(0.0F, 0.2F, (entitypatch, self, params) -> {
                     ((LivingEntity)entitypatch.getOriginal()).isInWater();
@@ -185,7 +187,7 @@ public class AscendedAnimations {
                     }
                 }, AnimationEvent.Side.CLIENT)));
         SCYTHE_GUARD_HIT = builder.nextAccessor("biped/skill/scythe_guard_hit", (accessor) -> new GuardAnimation(0, accessor, Armatures.BIPED));
-        JIAN_GUARD_PARRY_1 = builder.nextAccessor("biped/skill/jian_guard_parry_1", (accessor) ->
+        JIAN_GUARD_PARRY_1 = builder.nextAccessor("biped/skill/jian/jian_guard_parry_1", (accessor) ->
                 new BasicAttackAnimation(0.1F, 0F, 0.1F, 0.4F, 0.5F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
                         .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.adder( 2.1F))
                         .addProperty(AnimationProperty.AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.setter(90))
@@ -194,7 +196,7 @@ public class AscendedAnimations {
                         .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 2.4F)
                         .addProperty(AnimationProperty.AttackAnimationProperty.CANCELABLE_MOVE, false)
                         .addState(EntityState.MOVEMENT_LOCKED, true));
-        JIAN_GUARD_PARRY_2 = builder.nextAccessor("biped/skill/jian_guard_parry_2", (accessor) ->
+        JIAN_GUARD_PARRY_2 = builder.nextAccessor("biped/skill/jian/jian_guard_parry_2", (accessor) ->
                 new BasicAttackAnimation(0.1F, 0F, 0.1F, 0.4F, 0.5F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
                         .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.adder( 2.1F))
                         .addProperty(AnimationProperty.AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.setter(90))
@@ -222,18 +224,18 @@ public class AscendedAnimations {
                         .addState(EntityState.MOVEMENT_LOCKED, true));
 
         //change times once they work
-        JIAN_AUTO_1 = builder.nextAccessor("biped/combat/jian_auto_1", (accessor) ->
+        JIAN_AUTO_1 = builder.nextAccessor("biped/combat/jian/jian_auto_1", (accessor) ->
                 new BasicAttackAnimation(0.12F, 0.1F, 0.15F, 0.3F, 0.31F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
                         .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 2F)
                         .addProperty(AnimationProperty.ActionAnimationProperty.CANCELABLE_MOVE, true));
-        JIAN_AUTO_2 = builder.nextAccessor("biped/combat/jian_auto_2", (accessor) ->
+        JIAN_AUTO_2 = builder.nextAccessor("biped/combat/jian/jian_auto_2", (accessor) ->
                 new BasicAttackAnimation(0.12F, accessor, Armatures.BIPED,
                         new AttackAnimation.Phase(0.0F, 0.0F, 0.08F, 0.12F, 0.14F, 0.15F, Armatures.BIPED.get().handL, AscendedColliderPreset.KICK)
                                 .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLUNT_HIT.get())
                                 .addProperty(AnimationProperty.AttackPhaseProperty.SWING_SOUND, EpicFightSounds.WHOOSH_BIG.get()),
                         new AttackAnimation.Phase(0.15F, 0.19F, 0.22F, 0.3F, 0.33F, 0.335F, Armatures.BIPED.get().toolR, null))
                         .addEvents(AnimationEvent.InPeriodEvent.create(0.0F, 0.15F, ReusableEvents.FIRE_PARTICLES_HANDL, AnimationEvent.Side.CLIENT)));
-        JIAN_AUTO_3 = builder.nextAccessor("biped/combat/jian_auto_3", (accessor) ->
+        JIAN_AUTO_3 = builder.nextAccessor("biped/combat/jian/jian_auto_3", (accessor) ->
                 new BasicAttackAnimation(0.12F, accessor, Armatures.BIPED,
                         new AttackAnimation.Phase(0.0F, 0.1F, 0.2F, 0.3F, 0.31F, 0.32F, Armatures.BIPED.get().legR, AscendedColliderPreset.KICK)
                                 .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.75F))
@@ -245,13 +247,13 @@ public class AscendedAnimations {
                         .addEvents(AnimationEvent.InPeriodEvent.create(0.0F, 0.3F, ReusableEvents.FIRE_PARTICLES_LEGR, AnimationEvent.Side.CLIENT)));
 
 
-        DUAL_JIAN_AUTO_1 = builder.nextAccessor("biped/combat/dual_jian_auto_1", (accessor) ->
+        DUAL_JIAN_AUTO_1 = builder.nextAccessor("biped/combat/jian/dual_jian_auto_1", (accessor) ->
                 new BasicAttackAnimation(0.12F, accessor, Armatures.BIPED,
                         new AttackAnimation.Phase(0.0F, 0.2F, 0.2F, 0.4F, 0.5F, 0.51F, Armatures.BIPED.get().toolR, null),
                         new AttackAnimation.Phase(0.51F, 0.2F, 0.5F, 0.55F, 0.6F, 0.6F, Armatures.BIPED.get().toolL, null))
                         .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.8F));
 
-        DUAL_JIAN_AUTO_2 = builder.nextAccessor("biped/combat/dual_jian_auto_2", (accessor) ->
+        DUAL_JIAN_AUTO_2 = builder.nextAccessor("biped/combat/jian/dual_jian_auto_2", (accessor) ->
                 new BasicAttackAnimation(0.12F,accessor, Armatures.BIPED,
                         new AttackAnimation.Phase( 0.0F, 0.2F,0.2F, 0.35F, 0.4F, 0.41F, Armatures.BIPED.get().legR, AscendedColliderPreset.KICK)
                                 .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLUNT_HIT.get())
@@ -260,7 +262,7 @@ public class AscendedAnimations {
                                 .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.8F)
                         .addEvents(AnimationEvent.InPeriodEvent.create(0.0F, 0.35F, ReusableEvents.FIRE_PARTICLES_LEGR, AnimationEvent.Side.CLIENT)));
 
-        DUAL_JIAN_AUTO_3 = builder.nextAccessor("biped/combat/dual_jian_auto_3", (accessor) ->
+        DUAL_JIAN_AUTO_3 = builder.nextAccessor("biped/combat/jian/dual_jian_auto_3", (accessor) ->
                 new BasicAttackAnimation(0.12F, accessor, Armatures.BIPED,
                         new AttackAnimation.Phase(0.0F, 0.2F, 0.4F, 0.5F, 0.6F, 0.61F, Armatures.BIPED.get().legR, null)
                                 .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLUNT_HIT.get())
@@ -271,7 +273,7 @@ public class AscendedAnimations {
                         .addEvents(AnimationEvent.InPeriodEvent.create(0.0F, 0.55F, ReusableEvents.FIRE_PARTICLES_LEGR, AnimationEvent.Side.CLIENT)));
 
 
-        JIAN_AIRSLASH = builder.nextAccessor("biped/combat/jian_airslash", (accessor) ->
+        JIAN_AIRSLASH = builder.nextAccessor("biped/combat/jian/jian_airslash", (accessor) ->
                 new DashAttackAnimation(0.12F, accessor, Armatures.BIPED,
                         new AttackAnimation.Phase(0.0F, 0F, 0.05F, 0.3F, 0.35F, 0.36F, Armatures.BIPED.get().toolR, null)
                                 .addProperty(AnimationProperty.AttackPhaseProperty.STUN_TYPE, StunType.SHORT),
@@ -279,8 +281,7 @@ public class AscendedAnimations {
                                 .addProperty(AnimationProperty.AttackPhaseProperty.STUN_TYPE, StunType.LONG))
                         .addProperty(AnimationProperty.ActionAnimationProperty.MOVE_VERTICAL, true)
                         .addProperty(AnimationProperty.AttackAnimationProperty.NO_GRAVITY_TIME, TimePairList.create(0.15F, 0.9F))
-                        .addProperty(AnimationProperty.AttackAnimationProperty.NO_PHYSICS, false)
-                        .addEvents(AnimationEvent.InTimeEvent.create(0.7F, Animations.ReusableSources.FRACTURE_GROUND_SIMPLE, AnimationEvent.Side.CLIENT).params(new Vec3f(-0.24F,-0.24F, 0.0F),
+                        .addEvents(AnimationEvent.InTimeEvent.create(0.7F, Animations.ReusableSources.FRACTURE_GROUND_SIMPLE, AnimationEvent.Side.CLIENT).params(new Vec3f(0.24F,-0.24F, -0.24F),
                                 Armatures.BIPED.get().toolR, 2.1D, 0.8F))
                         .addEvents(
                                 AnimationEvent.InPeriodEvent.create(0.0F, 0.9F, (entitypatch, self, params) -> {
@@ -292,11 +293,11 @@ public class AscendedAnimations {
                                     }
                                 }, AnimationEvent.Side.BOTH))
                         .addEvents(
-                                AnimationEvent.InTimeEvent.create(0.15F, ReusableEvents.ENDER_PARTICLES, AnimationEvent.Side.CLIENT),
+                                AnimationEvent.InTimeEvent.create(0.15F, ReusableEvents.CHERRY_PARTICLES, AnimationEvent.Side.CLIENT),
                                 AnimationEvent.InTimeEvent.create(0.21F, ReusableEvents.ENDER_IMAGE, AnimationEvent.Side.CLIENT)
                         ));
 
-        JIAN_DASH = builder.nextAccessor("biped/combat/jian_dash", (accessor) ->
+        JIAN_DASH = builder.nextAccessor("biped/combat/jian/jian_dash", (accessor) ->
                 new DashAttackAnimation(0.12F, accessor, Armatures.BIPED,
                         new AttackAnimation.Phase(0.0F, 0.2F, 0.3F, 0.5F, 0.6F, 0.6F, Armatures.BIPED.get().toolR, null),
                         new AttackAnimation.Phase(0.6F, 0.5F, 0.4F, 0.9F, 1F, 1.1F, Armatures.BIPED.get().toolR, null))
@@ -314,28 +315,30 @@ public class AscendedAnimations {
                                     }
                                 }, AnimationEvent.Side.BOTH))
                         .addEvents(
-                                AnimationEvent.InTimeEvent.create(0.15F, ReusableEvents.ENDER_PARTICLES, AnimationEvent.Side.CLIENT),
+                                AnimationEvent.InTimeEvent.create(0.15F, ReusableEvents.CHERRY_PARTICLES, AnimationEvent.Side.CLIENT),
                                 AnimationEvent.InTimeEvent.create(0.21F, ReusableEvents.ENDER_IMAGE, AnimationEvent.Side.CLIENT)
                         ));
 
-        DUAL_JIAN_AIRSLASH = builder.nextAccessor("biped/combat/dual_jian_airslash", (accessor) ->
+        DUAL_JIAN_AIRSLASH = builder.nextAccessor("biped/combat/jian/dual_jian_airslash", (accessor) ->
                 new DashAttackAnimation(0.12F, accessor, Armatures.BIPED,
-                        new AttackAnimation.Phase(0.0F, 0.0F, 0.1F, 0.4F, 0.5F, 0.6F, Armatures.BIPED.get().toolR, null)
+                        new AttackAnimation.Phase(0.0F, 0.0F, 0.05F, 0.2F, 0.25F, 0.26F, Armatures.BIPED.get().toolR, null)
                                 .addProperty(AnimationProperty.AttackPhaseProperty.STUN_TYPE, StunType.SHORT),
-                        new AttackAnimation.Phase(0.1F, 0.2F, 0.5F, 0.9F, 1.0F, 1.1F, Armatures.BIPED.get().toolL, null)
+                        new AttackAnimation.Phase(0.26F, 0.26F, 0.4F, 0.5F, 0.55F, 0.56F, Armatures.BIPED.get().toolL, null)
                                 .addProperty(AnimationProperty.AttackPhaseProperty.STUN_TYPE, StunType.LONG),
-                        new AttackAnimation.Phase(0.2F, 0.2F, 0.5F, 0.9F, 1.0F, 1.1F, Armatures.BIPED.get().toolR, null))
+                        new AttackAnimation.Phase(0.56F, 0.56F, 0.7F, 0.85F, .9F, 0.91F, InteractionHand.MAIN_HAND,
+                                AttackAnimation.JointColliderPair.of(Armatures.BIPED.get().toolR, null), AttackAnimation.JointColliderPair.of(Armatures.BIPED.get().toolL, null)),
+                        new AttackAnimation.Phase(0.91F, 0.91F, 0.95F, 1.1F, 1.2F, 1.25F, InteractionHand.MAIN_HAND,
+                                AttackAnimation.JointColliderPair.of(Armatures.BIPED.get().legR, AscendedColliderPreset.KICK), AttackAnimation.JointColliderPair.of(Armatures.BIPED.get().legL, AscendedColliderPreset.KICK))
+                                .addProperty(AnimationProperty.AttackPhaseProperty.SWING_SOUND, EpicFightSounds.WHOOSH_BIG.get())
+                                .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLUNT_HIT.get()))
                         .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.8F)
                         .addProperty(AnimationProperty.AttackAnimationProperty.NO_GRAVITY_TIME, TimePairList.create(0.15F, 1.0F))
                         .addProperty(AnimationProperty.ActionAnimationProperty.MOVE_VERTICAL, true)
-                        .addProperty(AnimationProperty.ActionAnimationProperty.DEST_LOCATION_PROVIDER, MoveCoordFunctions.SYNCHED_TARGET_ENTITY_LOCATION_VARIABLE)
-                        .addProperty(AnimationProperty.ActionAnimationProperty.COORD_UPDATE_TIME, TimePairList.create(0.0F, 0.75F))
                         .addProperty(AnimationProperty.AttackAnimationProperty.FIXED_MOVE_DISTANCE, true)
                         .addProperty(AnimationProperty.AttackAnimationProperty.CANCELABLE_MOVE, false)
-                        .addProperty(AnimationProperty.ActionAnimationProperty.COORD_SET_BEGIN, null)
-                        .addProperty(AnimationProperty.ActionAnimationProperty.COORD_SET_TICK, MoveCoordFunctions.TRACE_ORIGIN_AS_DESTINATION)
-                        .addProperty(AnimationProperty.ActionAnimationProperty.COORD_GET, MoveCoordFunctions.WORLD_COORD)
-
+                        .addEvents(
+                                AnimationEvent.InTimeEvent.create(0.6F, ReusableEvents.CHERRY_PARTICLES, AnimationEvent.Side.CLIENT)
+                        )
                         .addEvents(
                                 AnimationEvent.InPeriodEvent.create(0.0F, 1.0F, (entitypatch, self, params) -> {
                                     ((LivingEntity) entitypatch.getOriginal()).resetFallDistance();
@@ -344,18 +347,22 @@ public class AscendedAnimations {
                                         player.yCloak = 0.0;
                                         player.yCloakO = 0.0;
                                     }
-                                }, AnimationEvent.Side.BOTH)));
+                                }, AnimationEvent.Side.BOTH))
+                        .addEvents(
+                                AnimationEvent.InTimeEvent.create(1.0F, ReusableEvents.CHERRY_PARTICLES, AnimationEvent.Side.CLIENT),
+                                AnimationEvent.InTimeEvent.create(1.05F, ReusableEvents.ENDER_IMAGE, AnimationEvent.Side.CLIENT)
+                        ));
 
-        DUAL_JIAN_DASH = builder.nextAccessor("biped/combat/dual_jian_dash", (accessor) ->
+        DUAL_JIAN_DASH = builder.nextAccessor("biped/combat/jian/dual_jian_dash", (accessor) ->
                 new DashAttackAnimation(0.12F, accessor, Armatures.BIPED,
-                        new AttackAnimation.Phase(0.0F, 0.0F, 0.2F, 0.4F, 0.45F, 0.46F, Armatures.BIPED.get().toolL, null),
-                        new AttackAnimation.Phase(0.46F, 0.0F, 0.35F, 0.5F, 0.55F, 0.56F, Armatures.BIPED.get().toolR, null),
-                        new AttackAnimation.Phase(0.56F, 0.2F, 0.6F, 0.8F, 0.85F, 0.86F, Armatures.BIPED.get().toolR, null),
-                        new AttackAnimation.Phase(0.86F, 0.2F, 0.6F, 1.0F, 1.1F, 1.3F, Armatures.BIPED.get().toolL, null))
+                        new AttackAnimation.Phase(0.0F, 0.0F, 0.2F, 0.35F, 0.37F, 0.38F, Armatures.BIPED.get().toolL, null),
+                        new AttackAnimation.Phase(0.38F, 0.2F, 0.39F, 0.45F, 0.47F, 0.48F, Armatures.BIPED.get().toolR, null),
+                        new AttackAnimation.Phase(0.48F, 0.48F, 0.55F, 0.8F, 0.85F, 0.86F, InteractionHand.MAIN_HAND,
+                                AttackAnimation.JointColliderPair.of(Armatures.BIPED.get().toolR, null), AttackAnimation.JointColliderPair.of(Armatures.BIPED.get().toolL, null)))
                         .addProperty(AnimationProperty.AttackAnimationProperty.FIXED_MOVE_DISTANCE, true)
                         .addProperty(AnimationProperty.ActionAnimationProperty.COORD_SET_BEGIN, MoveCoordFunctions.TRACE_TARGET_DISTANCE)
                         .addProperty(AnimationProperty.AttackAnimationProperty.CANCELABLE_MOVE, true)
-
+                        .addProperty(AnimationProperty.AttackAnimationProperty.NO_GRAVITY_TIME, TimePairList.create(0.0F, 0.5F))
                         .addEvents(
                                 AnimationEvent.InPeriodEvent.create(0.0F, 1.2F, (entitypatch, self, params) -> {
                                     ((LivingEntity) entitypatch.getOriginal()).resetFallDistance();
@@ -366,19 +373,22 @@ public class AscendedAnimations {
                                     }
                                 }, AnimationEvent.Side.BOTH))
                         .addState(EntityState.LOCKON_ROTATE, true)
-                        .addState(EntityState.MOVEMENT_LOCKED, true));
+                        .addState(EntityState.MOVEMENT_LOCKED, true)
+                        .addEvents(
+                                AnimationEvent.InTimeEvent.create(0.49F, ReusableEvents.CHERRY_PARTICLES, AnimationEvent.Side.CLIENT),
+                                AnimationEvent.InTimeEvent.create(0.51F, ReusableEvents.ENDER_IMAGE, AnimationEvent.Side.CLIENT)
+                        ));
 
         SCYTHE_DASH = builder.nextAccessor("biped/combat/scythe_dash", (accessor) ->
                 new DashAttackAnimation(0.12F, accessor, Armatures.BIPED,
-                        new AttackAnimation.Phase(0.0F, 0.2F, 0.2F, 0.5F, 0.6F, 0.7F, Armatures.BIPED.get().toolR, null),
-                        new AttackAnimation.Phase(0.7F, 0.1F, 0.5F, 0.8F, 1.4F, 1.5F, Armatures.BIPED.get().toolR, null))
+                        new AttackAnimation.Phase(0.0F, 0.2F, 0.3F, 0.48F, 0.49F, 0.5F, Armatures.BIPED.get().toolR, null),
+                        new AttackAnimation.Phase(0.5F, 0.5F, 0.52F, 0.85F, 0.89F, 0.9F, Armatures.BIPED.get().toolR, null))
                         .addProperty(AnimationProperty.AttackAnimationProperty.FIXED_MOVE_DISTANCE, true)
-                        .addProperty(AnimationProperty.ActionAnimationProperty.COORD_SET_BEGIN, MoveCoordFunctions.TRACE_TARGET_DISTANCE)
                         .addProperty(AnimationProperty.AttackAnimationProperty.CANCELABLE_MOVE, false)
                         .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 2.4F)
-                        .addProperty(AnimationProperty.AttackAnimationProperty.NO_GRAVITY_TIME, TimePairList.create(0.0F, 1.2F))
+                        .addProperty(AnimationProperty.AttackAnimationProperty.NO_GRAVITY_TIME, TimePairList.create(0.0F, 1.0F))
                         .addEvents(
-                                AnimationEvent.InPeriodEvent.create(0.0F, 1.2F, (entitypatch, self, params) -> {
+                                AnimationEvent.InPeriodEvent.create(0.0F, 1.0F, (entitypatch, self, params) -> {
                                     ((LivingEntity) entitypatch.getOriginal()).resetFallDistance();
                                     if (entitypatch.getOriginal() instanceof Player) {
                                         Player player = (Player) entitypatch.getOriginal();
@@ -413,20 +423,20 @@ public class AscendedAnimations {
                         new AttackAnimation.Phase(0.13F, 0.2F, 0.4F, 0.55F, 0.8F, 0.81F, Armatures.BIPED.get().toolR, null))
                         .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.2F));
 
-        CELESTIAL_PUNISHMENT_FAIL = builder.nextAccessor("biped/skill/celestial_punishment_fail", (accessor) ->
+        CELESTIAL_PUNISHMENT_FAIL = builder.nextAccessor("biped/skill/jian/celestial_punishment_fail", (accessor) ->
                 new AttackAnimation(0.0F, 0.0F, 0.0F, 0.0F, 0.25F, null, Armatures.BIPED.get().toolR,accessor, Armatures.BIPED)
                         .addProperty(AnimationProperty.AttackPhaseProperty.SWING_SOUND, SoundEvents.EMPTY)
                         .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, SoundEvents.EMPTY)
                         .addProperty(AnimationProperty.AttackAnimationProperty.NO_GRAVITY_TIME, TimePairList.create(0.0F, 0.3F))
                         .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 2.6F));
 
-        CELESTIAL_PUNISHMENT_FIRST = builder.nextAccessor("biped/skill/celestial_punishment_first", (accessor) ->
+        CELESTIAL_PUNISHMENT_FIRST = builder.nextAccessor("biped/skill/jian/celestial_punishment_first", (accessor) ->
                 new AttackAnimation(0.12F, 0.2F, 0.3F, 0.6F, 0.7F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
                         .addProperty(AnimationProperty.AttackPhaseProperty.HIT_PRIORITY, HitEntityList.Priority.TARGET)
                         .addProperty(AnimationProperty.ActionAnimationProperty.CANCELABLE_MOVE, false)
                         .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.8F)
                         .addProperty(AnimationProperty.AttackAnimationProperty.NO_GRAVITY_TIME, TimePairList.create(0.0F, 0.8F)));
-        CELESTIAL_PUNISHMENT_SECOND = builder.nextAccessor("biped/skill/celestial_punishment_second", (accessor) ->
+        CELESTIAL_PUNISHMENT_SECOND = builder.nextAccessor("biped/skill/jian/celestial_punishment_second", (accessor) ->
                 new AttackAnimation(0.12F, accessor, Armatures.BIPED,
                         new AttackAnimation.Phase(0.0F, 0.2F, 0.3F, 0.5F, 0.51F, 0.52F, Armatures.BIPED.get().toolR, null),
                         new AttackAnimation.Phase(0.52F, 0.52F, 0.6F, 0.72F, 0.75F, 0.76F, Armatures.BIPED.get().toolR, null),
@@ -456,29 +466,37 @@ public class AscendedAnimations {
                         .addState(EntityState.LOCKON_ROTATE, true)
                         .addState(EntityState.MOVEMENT_LOCKED, true)
                         .addEvents(
-                                AnimationEvent.InTimeEvent.create(1.20F, ReusableEvents.ENDER_PARTICLES, AnimationEvent.Side.CLIENT),
+                                AnimationEvent.InTimeEvent.create(1.20F, ReusableEvents.CHERRY_PARTICLES, AnimationEvent.Side.CLIENT),
                                 AnimationEvent.InTimeEvent.create(1.25F, ReusableEvents.ENDER_IMAGE, AnimationEvent.Side.CLIENT)
                         ));
 
-        CELESTIAL_ONSLAUGHT_FIRST = builder.nextAccessor("biped/skill/celestial_onslaught_first", (accessor) ->
-                new AttackAnimation(0.12F, accessor, Armatures.BIPED,
-                        new AttackAnimation.Phase(0.0F, 0.0F, 0.1F, 0.4F, 0.42F, 0.43F, Armatures.BIPED.get().toolR, null)
-                                .addProperty(AnimationProperty.AttackPhaseProperty.STUN_TYPE, StunType.HOLD),
-                        new AttackAnimation.Phase(0.43F, 0.0F, 0.2F, 0.5F, 0.6F, 0.7F, Armatures.BIPED.get().toolL, null))
+        CELESTIAL_ONSLAUGHT_FIRST = builder.nextAccessor("biped/skill/jian/celestial_onslaught_first", (accessor) ->
+                new AttackAnimation(0.12F, 0.2F, 0.3F, 0.52F, 0.55F, AscendedColliderPreset.KICK, Armatures.BIPED.get().legR, accessor, Armatures.BIPED)
+                        .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLUNT_HIT.get())
+                        .addProperty(AnimationProperty.AttackPhaseProperty.SWING_SOUND, EpicFightSounds.WHOOSH_BIG.get())
                         .addProperty(AnimationProperty.AttackPhaseProperty.HIT_PRIORITY, HitEntityList.Priority.TARGET)
+                        .addEvents(AnimationEvent.InPeriodEvent.create(0.2F, 0.5F, ReusableEvents.FIRE_PARTICLES_LEGR, AnimationEvent.Side.CLIENT))
+                        .addProperty(AnimationProperty.ActionAnimationProperty.NO_GRAVITY_TIME, TimePairList.create(0.08F, 0.65F))
                         .addProperty(AnimationProperty.ActionAnimationProperty.CANCELABLE_MOVE, false)
                         .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.8F));
+        CELESTIAL_ONSLAUGHT_FAIL = builder.nextAccessor("biped/skill/jian/celestial_onslaught_fail", (accessor) ->
+                new AttackAnimation(0.0F, 0.0F, 0.0F, 0.0F, 0.25F, null, Armatures.BIPED.get().toolR,accessor, Armatures.BIPED)
+                        .addProperty(AnimationProperty.AttackPhaseProperty.SWING_SOUND, SoundEvents.EMPTY)
+                        .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, SoundEvents.EMPTY)
+                        .addProperty(AnimationProperty.AttackAnimationProperty.NO_GRAVITY_TIME, TimePairList.create(0.0F, 0.3F))
+                        .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 2.6F));
 
-        CELESTIAL_ONSLAUGHT_SECOND = builder.nextAccessor("biped/skill/celestial_onslaught_second", (accessor) ->
-                new AttackAnimation(0.12F, 0.2F, 0.3F, 0.9F, 1.0F, AscendedColliderPreset.SHOULDER, Armatures.BIPED.get().handR, accessor, Armatures.BIPED)
+        CELESTIAL_ONSLAUGHT_SECOND = builder.nextAccessor("biped/skill/jian/celestial_onslaught_second", (accessor) ->
+                new AttackAnimation(0.12F, accessor, Armatures.BIPED,
+                        new AttackAnimation.Phase(0.0F, 0.0F, 0.1F, 0.25F, 0.3F, 0.31F, Armatures.BIPED.get().legL, AscendedColliderPreset.KICK)
+                                .addProperty(AnimationProperty.AttackPhaseProperty.SWING_SOUND, EpicFightSounds.WHOOSH_BIG.get())
+                                .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLUNT_HIT.get()),
+                        new AttackAnimation.Phase(0.31F, 0.32F, 0.55F, 0.7F, 0.75F, 0.76F, Armatures.BIPED.get().toolL, null),
+                        new AttackAnimation.Phase(0.76F, 0.76F, 0.8F, 0.92F, 0.94F, 0.95F, Armatures.BIPED.get().toolR, null),
+                        new AttackAnimation.Phase(0.95F, 0.95F, 1.0F, 1.2F, 1.25F, 1.26F, Armatures.BIPED.get().toolL, null))
                 .addProperty(AnimationProperty.AttackPhaseProperty.HIT_PRIORITY, HitEntityList.Priority.TARGET)
-                .addProperty(AnimationProperty.AttackPhaseProperty.SWING_SOUND, EpicFightSounds.WHOOSH_BIG.get())
-                .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLUNT_HIT.get())
-                        .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.8F)
-                .addProperty(AnimationProperty.ActionAnimationProperty.DEST_LOCATION_PROVIDER, MoveCoordFunctions.ATTACK_TARGET_LOCATION)
-                .addProperty(AnimationProperty.ActionAnimationProperty.COORD_SET_BEGIN, MoveCoordFunctions.TRACE_ORIGIN_AS_DESTINATION)
-                .addProperty(AnimationProperty.ActionAnimationProperty.COORD_SET_TICK, MoveCoordFunctions.TRACE_TARGET_DISTANCE)
-                .addProperty(AnimationProperty.ActionAnimationProperty.NO_GRAVITY_TIME, TimePairList.create(0.08F, 1.0F))
+                        .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 2.8F)
+                .addProperty(AnimationProperty.ActionAnimationProperty.NO_GRAVITY_TIME, TimePairList.create(0.08F, 1.25F))
                 .addProperty(AnimationProperty.ActionAnimationProperty.CANCELABLE_MOVE, false)
                 .addProperty(AnimationProperty.AttackAnimationProperty.MOVE_VERTICAL, true)
                 .addEvents(
@@ -492,33 +510,37 @@ public class AscendedAnimations {
                         }, AnimationEvent.Side.BOTH))
                 .addState(EntityState.LOCKON_ROTATE, true)
                 .addState(EntityState.MOVEMENT_LOCKED, true));
+        CELESTIAL_ONSLAUGHT_SECOND_LAND = builder.nextAccessor("biped/skill/jian/celestial_onslaught_second_land", (accessor) ->
+                new AttackAnimation(0.0F, 0.0F, 0.0F, 0.0F, 0.25F, null, Armatures.BIPED.get().toolR,accessor, Armatures.BIPED)
+                        .addProperty(AnimationProperty.AttackPhaseProperty.SWING_SOUND, SoundEvents.EMPTY)
+                        .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, SoundEvents.EMPTY)
+                        .addProperty(AnimationProperty.AttackAnimationProperty.NO_GRAVITY_TIME, TimePairList.create(0.0F, 0.3F))
+                        .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 2.6F)
+                        .addEvents(
+                                AnimationEvent.InTimeEvent.create(0.10F, ReusableEvents.CHERRY_PARTICLES, AnimationEvent.Side.CLIENT),
+                                AnimationEvent.InTimeEvent.create(0.15F, ReusableEvents.ENDER_IMAGE, AnimationEvent.Side.CLIENT)
+                        ));
 
-        CELESTIAL_ONSLAUGHT_THIRD = builder.nextAccessor("biped/skill/celestial_onslaught_third", (accessor) ->
+        CELESTIAL_ONSLAUGHT_THIRD = builder.nextAccessor("biped/skill/jian/celestial_onslaught_third", (accessor) ->
                 new AttackAnimation(0.12F, accessor, Armatures.BIPED,
-                        new AttackAnimation.Phase(0.0F, 0.0F, 0.0F, 0.14F, 0.15F, 0.16F, InteractionHand.OFF_HAND, Armatures.BIPED.get().toolL, null)
+                        new AttackAnimation.Phase(0.0F, 0.2F, 0.3F, 0.5F, 0.6F, 0.62F, Armatures.BIPED.get().toolR, null)
                                 .addProperty(AnimationProperty.AttackPhaseProperty.STUN_TYPE, StunType.SHORT),
-                        new AttackAnimation.Phase(0.16F,  0.1F, 0.12F, 0.2F, 0.25F, 0.26F, InteractionHand.MAIN_HAND, Armatures.BIPED.get().toolR, null)
+                        new AttackAnimation.Phase(0.62F,  0.62F, 0.63F, 0.7F, 0.73F, 0.74F, Armatures.BIPED.get().toolL, null)
                                 .addProperty(AnimationProperty.AttackPhaseProperty.STUN_TYPE, StunType.SHORT),
-                        new AttackAnimation.Phase(0.26F,  0.2F, 0.5F, 0.65F, 0.66F, 0.67F, InteractionHand.OFF_HAND, Armatures.BIPED.get().toolL, null)
-                                .addProperty(AnimationProperty.AttackPhaseProperty.STUN_TYPE, StunType.SHORT),
-                        new AttackAnimation.Phase(0.67F,  0.2F, 0.67F, 0.8F, 0.81F, 0.82F, InteractionHand.MAIN_HAND, Armatures.BIPED.get().toolR, null)
-                                .addProperty(AnimationProperty.AttackPhaseProperty.STUN_TYPE, StunType.SHORT),
-                        new AttackAnimation.Phase(0.82F,  0.2F, 0.82F, 0.95F, 0.96F, 0.97F, InteractionHand.OFF_HAND, Armatures.BIPED.get().toolL, null)
-                                .addProperty(AnimationProperty.AttackPhaseProperty.STUN_TYPE, StunType.SHORT),
-                        new AttackAnimation.Phase(0.97F,  0.2F, 0.97F, 1.05F, 1.06F, 1.07F, InteractionHand.MAIN_HAND, Armatures.BIPED.get().toolR, null)
-                                .addProperty(AnimationProperty.AttackPhaseProperty.STUN_TYPE, StunType.SHORT),
-                        new AttackAnimation.Phase(1.07F,  0.2F, 1.07F, 1.3F, 1.31F, 1.32F, InteractionHand.MAIN_HAND, Armatures.BIPED.get().toolR, null)
-                                .addProperty(AnimationProperty.AttackPhaseProperty.STUN_TYPE, StunType.SHORT),
-                        new AttackAnimation.Phase(1.32F,  0.2F, 1.1F, 1.35F, 1.36F, 1.37F, InteractionHand.OFF_HAND, Armatures.BIPED.get().toolL, null))
-                        .addProperty(AnimationProperty.ActionAnimationProperty.NO_GRAVITY_TIME, TimePairList.create(0.0F, 3.3F))
+                        new AttackAnimation.Phase(0.74F,  0.74F, 0.74F, 0.85F, 0.96F, 1.0F, Armatures.BIPED.get().legR, AscendedColliderPreset.KICK)
+                                .addProperty(AnimationProperty.AttackPhaseProperty.STUN_TYPE, StunType.SHORT)
+                                .addProperty(AnimationProperty.AttackPhaseProperty.SWING_SOUND, EpicFightSounds.WHOOSH_BIG.get())
+                                .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLUNT_HIT.get()))
+                        .addProperty(AnimationProperty.ActionAnimationProperty.NO_GRAVITY_TIME, TimePairList.create(0.0F, 1.1F))
                         .addProperty(AnimationProperty.ActionAnimationProperty.DEST_LOCATION_PROVIDER, MoveCoordFunctions.ATTACK_TARGET_LOCATION)
                         .addProperty(AnimationProperty.ActionAnimationProperty.COORD_SET_BEGIN, MoveCoordFunctions.TRACE_ORIGIN_AS_DESTINATION)
                         .addProperty(AnimationProperty.ActionAnimationProperty.COORD_SET_TICK, MoveCoordFunctions.TRACE_TARGET_DISTANCE)
                         .addProperty(AnimationProperty.ActionAnimationProperty.CANCELABLE_MOVE, false)
+                        .addEvents(AnimationEvent.InPeriodEvent.create(0.7F, 0.85F, ReusableEvents.FIRE_PARTICLES_LEGR, AnimationEvent.Side.CLIENT))
                         .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 3.4F)
                         .addProperty(AnimationProperty.AttackAnimationProperty.MOVE_VERTICAL, true)
                         .addEvents(
-                                AnimationEvent.InPeriodEvent.create(0.0F, 3.3F, (entitypatch, self, params) -> {
+                                AnimationEvent.InPeriodEvent.create(0.0F, 1.2F, (entitypatch, self, params) -> {
                                     ((LivingEntity) entitypatch.getOriginal()).resetFallDistance();
                                     if (entitypatch.getOriginal() instanceof Player) {
                                         Player player = (Player) entitypatch.getOriginal();
@@ -528,33 +550,12 @@ public class AscendedAnimations {
                                 }, AnimationEvent.Side.BOTH)
                         )
                         .addState(EntityState.LOCKON_ROTATE, true)
-                        .addState(EntityState.MOVEMENT_LOCKED, true));
-
-        CELESTIAL_ONSLAUGHT_FOURTH = builder.nextAccessor("biped/skill/celestial_onslaught_fourth", (accessor) ->
-                new AttackAnimation(0.12F, accessor, Armatures.BIPED,
-                        new AttackAnimation.Phase(0.0F, 0.2F, 0.3F, 0.5F, 0.6F, 0.65F, Armatures.BIPED.get().toolR, null),
-                        new AttackAnimation.Phase(0.65F,0.5F, 0.6F, 0.8F, 0.9F, 1.0F, InteractionHand.OFF_HAND, Armatures.BIPED.get().toolL, null))
-                        .addProperty(AnimationProperty.ActionAnimationProperty.NO_GRAVITY_TIME, TimePairList.create(0.0F, 1.3F))
-                        .addProperty(AnimationProperty.ActionAnimationProperty.DEST_LOCATION_PROVIDER, MoveCoordFunctions.ATTACK_TARGET_LOCATION)
-                        .addProperty(AnimationProperty.ActionAnimationProperty.COORD_SET_BEGIN, MoveCoordFunctions.TRACE_ORIGIN_AS_DESTINATION)
-                        .addProperty(AnimationProperty.ActionAnimationProperty.COORD_SET_TICK, MoveCoordFunctions.TRACE_TARGET_DISTANCE)
-                        .addProperty(AnimationProperty.ActionAnimationProperty.CANCELABLE_MOVE, false)
-                        .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 3.4F)
-                        .addProperty(AnimationProperty.AttackAnimationProperty.MOVE_VERTICAL, true)
-                        .addEvents(AnimationEvent.InTimeEvent.create(0.55F, Animations.ReusableSources.FRACTURE_GROUND_SIMPLE, AnimationEvent.Side.CLIENT).params(new Vec3f(2.2F, 0.24F, -1.8F), Armatures.BIPED.get().toolR, 2.1D, 0.55F))
-                        .addEvents(AnimationEvent.InTimeEvent.create(0.90F, Animations.ReusableSources.FRACTURE_GROUND_SIMPLE, AnimationEvent.Side.CLIENT).params(new Vec3f(2.2F, 0.24F, -1.8F), Armatures.BIPED.get().toolL, 2.1D, 0.55F))
+                        .addState(EntityState.MOVEMENT_LOCKED, true)
                         .addEvents(
-                                AnimationEvent.InPeriodEvent.create(0.0F, 1.3F, (entitypatch, self, params) -> {
-                                    ((LivingEntity) entitypatch.getOriginal()).resetFallDistance();
-                                    if (entitypatch.getOriginal() instanceof Player) {
-                                        Player player = (Player) entitypatch.getOriginal();
-                                        player.yCloak = 0.0;
-                                        player.yCloakO = 0.0;
-                                    }
-                                }, AnimationEvent.Side.BOTH)
-                        )
-                        .addState(EntityState.LOCKON_ROTATE, true)
-                        .addState(EntityState.MOVEMENT_LOCKED, true));
+                                AnimationEvent.InTimeEvent.create(0.66F, ReusableEvents.CHERRY_PARTICLES, AnimationEvent.Side.CLIENT),
+                                AnimationEvent.InTimeEvent.create(0.69F, ReusableEvents.ENDER_IMAGE, AnimationEvent.Side.CLIENT)
+                        ));
+
 
         REAPING_GRASP_1 = builder.nextAccessor("biped/skill/reaping_grasp_1", (accessor) ->
                 new AttackAnimation(0.12F, 0.1F, 0.2F, 0.3F, 0.4F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
@@ -612,7 +613,6 @@ public class AscendedAnimations {
         private static final int FOLLOW_DURATION = 18;
         private static final int PARTICLE_COUNT_TINY = 12;
         private static final int FOLLOW_DURATION_TINY = 12;
-        private static final int SPAWN_ALWAYS = 1;
         private static final int SPAWN_INTERVAL = 2;
         private static int tickCounter = 1;
         private static final Map<Entity, Integer> activeParticles = new HashMap<>();
@@ -641,17 +641,18 @@ public class AscendedAnimations {
             );
         };
 
-        //fire?
-        private static final AnimationEvent.E0 FIRE_PARTICLES = (entitypatch, self, params) -> {
+        //cherry
+        private static final AnimationEvent.E0 CHERRY_PARTICLES = (entitypatch, self, params) -> {
             Entity playerEntity = Ascended_arts.proxy.getClientPlayer();
+            playerEntity.playSound(SoundEvents.AMETHYST_BLOCK_CHIME, 1F, 1.2F);
             if (playerEntity != null) {
-                spawnFireParticlesFollowingPlayer(playerEntity);
+                spawnCherryParticlesFollowingPlayer(playerEntity);
             }
         };
-        private static final AnimationEvent.E0 FIRE_PARTICLES_TINY = (entitypatch, self, params) -> {
+        private static final AnimationEvent.E0 CHERRY_PARTICLES_TINY = (entitypatch, self, params) -> {
             Entity playerEntity = Ascended_arts.proxy.getClientPlayer();
             if (playerEntity != null) {
-                spawnFireParticlesFollowingPlayer_Tiny(playerEntity);
+                spawnCherryParticlesFollowingPlayer_Tiny(playerEntity);
             }
         };
         private static final AnimationEvent.E0 FIRE_PARTICLES_HANDL = (entitypatch, self, params) -> {
@@ -743,7 +744,7 @@ public class AscendedAnimations {
             }
         }
 
-        public static void spawnParticlesFire() {
+        public static void spawnParticlesCherry() {
             ClientLevel clientLevel = Minecraft.getInstance().level;
             if (clientLevel != null) {
 
@@ -768,7 +769,7 @@ public class AscendedAnimations {
                             double vxOffset = xOffset * -0.1;
                             double vyOffset = yOffset * -0.1;
                             double vzOffset = zOffset * -0.1;
-                            clientLevel.addParticle(ParticleTypes.RAIN,
+                            clientLevel.addParticle(ParticleTypes.CHERRY_LEAVES,
                                     entity.getX() + xOffset,
                                     entity.getY() + yOffset + 0.3,
                                     entity.getZ() + zOffset,
@@ -783,7 +784,7 @@ public class AscendedAnimations {
                 });
             }
         }
-        public static void spawnParticlesFireTiny() {
+        public static void spawnParticlesCherryTiny() {
             ClientLevel clientLevel = Minecraft.getInstance().level;
             if (clientLevel != null) {
 
@@ -822,12 +823,12 @@ public class AscendedAnimations {
         private static void spawnParticlesEnderDelayed(Entity entity, RandomSource random) {
             scheduler.schedule(() -> spawnParticlesEnder(entity, random), 144, TimeUnit.MILLISECONDS);
         }
-        public static void spawnFireParticlesFollowingPlayer(Entity entity) {
+        public static void spawnCherryParticlesFollowingPlayer(Entity entity) {
             if (!activeParticles.containsKey(entity)) {
                 activeParticles.put(entity, FOLLOW_DURATION);
             }
         }
-        public static void spawnFireParticlesFollowingPlayer_Tiny(Entity entity) {
+        public static void spawnCherryParticlesFollowingPlayer_Tiny(Entity entity) {
             if (!activeParticles.containsKey(entity)) {
                 activeParticles.put(entity, FOLLOW_DURATION_TINY);
             }
