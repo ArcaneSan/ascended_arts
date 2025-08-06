@@ -1,0 +1,16 @@
+{
+  "layer":"COMPOSITE_LAYER",
+  "priority":"MIDDLE",
+  "masks":
+  [
+    {
+      "livingmotion":"RUN",
+      "type":"none"
+    },
+    {
+      "livingmotion":"JUMP",
+      "type":"upper_joints"
+    }
+
+  ]
+}

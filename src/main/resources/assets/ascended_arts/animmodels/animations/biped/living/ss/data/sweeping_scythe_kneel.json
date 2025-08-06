@@ -1,0 +1,31 @@
+{
+  "layer":"COMPOSITE_LAYER",
+  "priority":"MIDDLE",
+  "masks":
+  [
+    {
+      "livingmotion":"KNEEL",
+      "type":"none"
+    },
+    {
+      "livingmotion":"ALL",
+      "type":"arms"
+    },
+    {
+      "livingmotion":"JUMP",
+      "type":"upper_joints"
+    },
+    {
+      "livingmotion": "BLOCK_SHIELD",
+      "type": "right_arms"
+    },
+    {
+      "livingmotion": "EAT",
+      "type": "right_arms"
+    },
+    {
+      "livingmotion": "DRINK",
+      "type": "right_arms"
+    }
+  ]
+}
