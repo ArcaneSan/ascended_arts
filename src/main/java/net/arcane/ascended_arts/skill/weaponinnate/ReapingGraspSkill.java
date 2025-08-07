@@ -39,43 +39,43 @@ public class ReapingGraspSkill extends WeaponInnateSkill {
     public void onInitiate(SkillContainer container) {
         container.getExecutor().getEventListener().addEventListener(PlayerEventListener.EventType.ATTACK_ANIMATION_END_EVENT, EVENT_UUID, (event) ->{
             if (AscendedAnimations.REAPING_GRASP_1.equals(event.getAnimation())) {
-                List<LivingEntity> hurtEntities = event.getPlayerPatch().getCurrenltyHurtEntities();
+                List<LivingEntity> hurtEntities = event.getPlayerPatch().getCurrentlyActuallyHitEntities();
 
                 if (!hurtEntities.isEmpty() && hurtEntities.get(0).isAlive()){
-                    event.getPlayerPatch().getCurrenltyHurtEntities().clear();
+                    event.getPlayerPatch().getCurrentlyActuallyHitEntities().clear();
                     event.getPlayerPatch().getServerAnimator().getPlayerFor(null).reset();
                     event.getPlayerPatch().reserveAnimation(this.second);
-                    event.getPlayerPatch().getCurrenltyHurtEntities();
+                    event.getPlayerPatch().getCurrentlyActuallyHitEntities();
                 }
             }
             if (AscendedAnimations.REAPING_GRASP_2.equals(event.getAnimation())) {
-                List<LivingEntity> hurtEntities = event.getPlayerPatch().getCurrenltyHurtEntities();
+                List<LivingEntity> hurtEntities = event.getPlayerPatch().getCurrentlyActuallyHitEntities();
 
                 if (!hurtEntities.isEmpty() && hurtEntities.get(0).isAlive()){
-                    event.getPlayerPatch().getCurrenltyHurtEntities().clear();
+                    event.getPlayerPatch().getCurrentlyActuallyHitEntities().clear();
                     event.getPlayerPatch().getServerAnimator().getPlayerFor(null).reset();
                     event.getPlayerPatch().reserveAnimation(this.third);
-                    event.getPlayerPatch().getCurrenltyHurtEntities();
+                    event.getPlayerPatch().getCurrentlyActuallyHitEntities();
                 }
             }
             if (AscendedAnimations.REAPING_GRASP_3.equals(event.getAnimation())) {
-                List<LivingEntity> hurtEntities = event.getPlayerPatch().getCurrenltyHurtEntities();
+                List<LivingEntity> hurtEntities = event.getPlayerPatch().getCurrentlyActuallyHitEntities();
 
                 if (!hurtEntities.isEmpty() && hurtEntities.get(0).isAlive()){
-                    event.getPlayerPatch().getCurrenltyHurtEntities().clear();
+                    event.getPlayerPatch().getCurrentlyActuallyHitEntities().clear();
                     event.getPlayerPatch().getServerAnimator().getPlayerFor(null).reset();
                     event.getPlayerPatch().reserveAnimation(this.fourth);
-                    event.getPlayerPatch().getCurrenltyHurtEntities();
+                    event.getPlayerPatch().getCurrentlyActuallyHitEntities();
                 }
             }
             if (AscendedAnimations.REAPING_GRASP_4.equals(event.getAnimation())) {
-                List<LivingEntity> hurtEntities = event.getPlayerPatch().getCurrenltyHurtEntities();
+                List<LivingEntity> hurtEntities = event.getPlayerPatch().getCurrentlyActuallyHitEntities();
 
                 if (!hurtEntities.isEmpty() && hurtEntities.get(0).isAlive()){
-                    event.getPlayerPatch().getCurrenltyHurtEntities().clear();
+                    event.getPlayerPatch().getCurrentlyActuallyHitEntities().clear();
                     event.getPlayerPatch().getServerAnimator().getPlayerFor(null).reset();
                     event.getPlayerPatch().reserveAnimation(this.last);
-                    event.getPlayerPatch().getCurrenltyHurtEntities();
+                    event.getPlayerPatch().getCurrentlyActuallyHitEntities();
                 }
             }
 

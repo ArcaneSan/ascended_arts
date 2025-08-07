@@ -48,18 +48,18 @@ public class CelestialPunishmentSkill extends WeaponInnateSkill {
     public void onInitiate(SkillContainer container) {
         container.getExecutor().getEventListener().addEventListener(PlayerEventListener.EventType.ATTACK_ANIMATION_END_EVENT, EVENT_UUID, (event) -> {
             if (AscendedAnimations.CELESTIAL_PUNISHMENT_FIRST.equals(event.getAnimation())) {
-                List<LivingEntity> hurtEntities = event.getPlayerPatch().getCurrenltyHurtEntities();
+                List<LivingEntity> hurtEntities = event.getPlayerPatch().getCurrentlyActuallyHitEntities();
 
                 if (!hurtEntities.isEmpty() && hurtEntities.get(0).isAlive()) {
-                    event.getPlayerPatch().getCurrenltyHurtEntities().clear();
+                    event.getPlayerPatch().getCurrentlyActuallyHitEntities().clear();
                     event.getPlayerPatch().getServerAnimator().getPlayerFor(null).reset();
                     event.getPlayerPatch().reserveAnimation(this.second);
-                    event.getPlayerPatch().getCurrenltyHurtEntities();
+                    event.getPlayerPatch().getCurrentlyActuallyHitEntities();
 
                 } else {
                     event.getPlayerPatch().getServerAnimator().getPlayerFor(null).reset();
                     event.getPlayerPatch().reserveAnimation(this.fail);
-                    event.getPlayerPatch().getCurrenltyHurtEntities().clear();
+                    event.getPlayerPatch().getCurrentlyActuallyHitEntities().clear();
                 }
             }
         });

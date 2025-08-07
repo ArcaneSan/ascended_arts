@@ -692,7 +692,7 @@ public class AscendedAnimations {
         private static final AnimationEvent.E0 ENDER_IMAGE = (entitypatch, self, params) -> {
             Entity entity = entitypatch.getOriginal();
             entity.level().addParticle(
-                    EpicFightParticles.ENTITY_AFTER_IMAGE.get(),
+                    EpicFightParticles.WHITE_AFTERIMAGE.get(),
                     entity.getX(),
                     entity.getY(),
                     entity.getZ(),
