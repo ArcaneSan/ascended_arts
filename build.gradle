@@ -154,13 +154,13 @@ dependencies {
     // If the group id is "net.minecraft" and the artifact id is one of ["client", "server", "joined"],
     // then special handling is done to allow a setup of a vanilla dependency without the use of an external repository.
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
-    implementation fg.deobf("curse.maven:epic-fight-mod-405076:6854306")
+    implementation fg.deobf("curse.maven:epic-fight-mod-405076:6878218")
 //    implementation fg.deobf("curse.maven:epic-fight-mod-405076:6755960")
 
     //malum stuff
-       implementation fg.deobf("curse.maven:malum-484064:6646111")
-       implementation fg.deobf("curse.maven:lodestone-616457:6213794")
-    implementation fg.deobf("curse.maven:curios-309927:6418456")
+//       implementation fg.deobf("curse.maven:malum-484064:6646111")
+//       implementation fg.deobf("curse.maven:lodestone-616457:6213794")
+//       implementation fg.deobf("curse.maven:curios-309927:6418456")
     // Example mod dependency with JEI - using fg.deobf() ensures the dependency is remapped to your development mappings
     // The JEI API is declared for compile time use, while the full JEI artifact is used at runtime
     // compileOnly fg.deobf("mezz.jei:jei-${mc_version}-common-api:${jei_version}")

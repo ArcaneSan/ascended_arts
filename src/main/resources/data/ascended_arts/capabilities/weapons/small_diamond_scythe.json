@@ -1,0 +1,12 @@
+{
+  "attributes":
+  {
+    "common":
+    {
+      "armor_negation":16.0,
+      "impact":1.2,
+      "max_strikes":6
+    }
+  },
+  "type":"ascended_arts:sweeping_scythe"
+}

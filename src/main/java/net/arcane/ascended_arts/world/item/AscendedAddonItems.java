@@ -29,8 +29,16 @@ public class AscendedAddonItems {
             ITEMS.register("wooden_jian", () -> new AscendedItem(new Item.Properties(), Tiers.WOOD));
     public static final RegistryObject<Item> SKYSPLITTER_JIAN =
             ITEMS.register("skysplitter_jian", () -> new AscendedItem(new Item.Properties().rarity(Rarity.EPIC), Tiers.NETHERITE));
-
-
+    public static final RegistryObject<Item> SMALL_WOODEN_SCYTHE =
+            ITEMS.register("small_wooden_scythe", () -> new AscendedSmallScytheItem(new Item.Properties(), Tiers.WOOD));
+    public static final RegistryObject<Item> SMALL_IRON_SCYTHE =
+            ITEMS.register("small_iron_scythe", () -> new AscendedSmallScytheItem(new Item.Properties(), Tiers.IRON));
+    public static final RegistryObject<Item>  SMALL_GOLDEN_SCYTHE =
+            ITEMS.register("small_golden_scythe", () -> new AscendedSmallScytheItem(new Item.Properties(), Tiers.GOLD));
+    public static final RegistryObject<Item> SMALL_DIAMOND_SCYTHE =
+            ITEMS.register("small_diamond_scythe", () -> new AscendedSmallScytheItem(new Item.Properties(), Tiers.DIAMOND));
+    public static final RegistryObject<Item> SMALL_NETHERITE_SCYTHE =
+            ITEMS.register("small_netherite_scythe", () -> new AscendedSmallScytheItem(new Item.Properties().fireResistant(), Tiers.NETHERITE));
 
 
     public  static  void register(IEventBus eventBus) {

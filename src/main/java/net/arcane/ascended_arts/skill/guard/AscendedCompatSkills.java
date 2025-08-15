@@ -82,6 +82,8 @@ public class AscendedCompatSkills {
         if (event.getRegistryName().equals(ResourceLocation.fromNamespaceAndPath("epicfight", "emergency_escape"))) {
             EmergencyEscapeSkill.Builder builder = event.getSkillBuilder();
             builder.addAvailableWeaponCategory(AscendedWeaponCategories.JIAN);
+            builder.addAvailableWeaponCategory(AscendedWeaponCategories.SCYTHE);
+            builder.addAvailableWeaponCategory(AscendedWeaponCategories.SWEEPING_SCYTHE);
             System.out.println("[AscenededCompatSkills] You may now take emergency escape");
         }
     }

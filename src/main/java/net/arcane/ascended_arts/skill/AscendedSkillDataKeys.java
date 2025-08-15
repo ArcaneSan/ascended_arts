@@ -25,9 +25,11 @@ public class AscendedSkillDataKeys {
     }
     static {
         COMBO_COUNTER = DATA_KEYS.register("combo_counter", () ->
-                SkillDataKey.createSkillDataKey(PacketBufferCodec.INTEGER, 0, false, CelestialPunishmentSkill.class, CelestialOnslaughtSkill.class));
+                SkillDataKey.createSkillDataKey(PacketBufferCodec.INTEGER, 0, false, CelestialPunishmentSkill.class, CelestialOnslaughtSkill.class, ReapingGraspSkill.class, ChasingSweepSkill.class,
+                        UnrelentingAssaultSkill.class));
         LAST_HIT_COUNT = DATA_KEYS.register("last_hit_counter", () ->
-                SkillDataKey.createSkillDataKey(PacketBufferCodec.INTEGER, 0, false, CelestialPunishmentSkill.class, CelestialOnslaughtSkill.class));
+                SkillDataKey.createSkillDataKey(PacketBufferCodec.INTEGER, 0, false, CelestialPunishmentSkill.class, CelestialOnslaughtSkill.class, ReapingGraspSkill.class, ChasingSweepSkill.class,
+                        UnrelentingAssaultSkill.class));
         PENALTY_RESTORE_COUNTER = DATA_KEYS.register("penalty_restore_counter", () ->
                 SkillDataKey.createSkillDataKey(PacketBufferCodec.INTEGER, 0, false, AscendedCompatSkills.class));
         PENALTY = DATA_KEYS.register("penalty", () ->

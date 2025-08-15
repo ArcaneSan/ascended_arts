@@ -33,6 +33,6 @@ public class AscendedColliderPreset {
             new MultiOBBCollider(3, 0.4D, 0.4D, 0.8D, 0.0D, 0.0D, 0.6D));
     public static final Collider SWEEPING_SCYTHE = registerCollider(ResourceLocation.fromNamespaceAndPath(Ascended_arts.MOD_ID, "sweeping_scythe"),
             new MultiOBBCollider(3, 0.2D, 0.65D, 0.5D, 0.0D, -0.15D, -0.7D));
-    public static final Collider SHOULDER = registerCollider(ResourceLocation.fromNamespaceAndPath(Ascended_arts.MOD_ID, "shoulder"),
-            new MultiOBBCollider(3, 0.5D, 0.5D, 0.5D, 0D, 0.5D, 0D));
+    public static final Collider DASH = registerCollider(ResourceLocation.fromNamespaceAndPath(Ascended_arts.MOD_ID, "dash"),
+            new MultiOBBCollider(3, 1.0D, 1.0D, 1.0D, 0.5D, 0.0D, 0D));
 }

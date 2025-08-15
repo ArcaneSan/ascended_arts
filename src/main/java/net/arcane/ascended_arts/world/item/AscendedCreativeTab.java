@@ -23,6 +23,11 @@ public class AscendedCreativeTab {
                         output.accept(AscendedAddonItems.IRON_JIAN.get());
                         output.accept(AscendedAddonItems.DIAMOND_JIAN.get());
                         output.accept(AscendedAddonItems.NETHERITE_JIAN.get());
+                        output.accept(AscendedAddonItems.SMALL_WOODEN_SCYTHE.get());
+                        output.accept(AscendedAddonItems.SMALL_IRON_SCYTHE.get());
+                        output.accept(AscendedAddonItems.SMALL_GOLDEN_SCYTHE.get());
+                        output.accept(AscendedAddonItems.SMALL_DIAMOND_SCYTHE.get());
+                        output.accept(AscendedAddonItems.SMALL_NETHERITE_SCYTHE.get());
 
                         output.accept(AscendedAddonItems.GREATSWORD.get());
                         output.accept(AscendedAddonItems.ETHERVEIL_SCYTHE.get());

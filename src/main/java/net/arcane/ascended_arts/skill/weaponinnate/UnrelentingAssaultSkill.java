@@ -1,0 +1,59 @@
+package net.arcane.ascended_arts.skill.weaponinnate;
+
+import net.arcane.ascended_arts.gameasset.AscendedAnimations;
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.ItemStack;
+import yesman.epicfight.api.animation.types.AttackAnimation;
+import yesman.epicfight.api.asset.AssetAccessor;
+import yesman.epicfight.skill.SkillBuilder;
+import yesman.epicfight.skill.SkillContainer;
+import yesman.epicfight.skill.weaponinnate.WeaponInnateSkill;
+import yesman.epicfight.world.capabilities.entitypatch.player.PlayerPatch;
+import yesman.epicfight.world.capabilities.item.CapabilityItem;
+import yesman.epicfight.world.entity.eventlistener.PlayerEventListener;
+
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+
+public class UnrelentingAssaultSkill extends WeaponInnateSkill {
+    private static final UUID EVENT_UUID = UUID.fromString("aeab22bd-1079-45ec-80ea-c539ae499e06");
+    public final AssetAccessor<? extends AttackAnimation> Strike;
+
+    public UnrelentingAssaultSkill(SkillBuilder<? extends WeaponInnateSkill> builder){
+        super(builder);
+        this.Strike = AscendedAnimations.UNRELENTING_ASSAULT;
+    }
+    @Override
+    public void onInitiate(SkillContainer container) {
+        container.getExecutor().getEventListener().addEventListener(PlayerEventListener.EventType.ATTACK_ANIMATION_END_EVENT, EVENT_UUID, (event) ->{
+
+        });
+    }
+
+    @Override
+    public void onRemoved(SkillContainer container) {
+        container.getExecutor().getEventListener().removeListener(PlayerEventListener.EventType.ATTACK_ANIMATION_END_EVENT, EVENT_UUID);
+    }
+
+    @Override
+    public void executeOnServer(SkillContainer container, FriendlyByteBuf args) {
+        container.getExecutor().playAnimationSynchronized(this.Strike, 0);
+        super.executeOnServer(container, args);
+    }
+
+    @Override
+    public List<Component> getTooltipOnItem(ItemStack itemStack, CapabilityItem cap, PlayerPatch<?> playerCap) {
+        List<Component> list = super.getTooltipOnItem(itemStack, cap, playerCap);
+        this.generateTooltipforPhase(list, itemStack, cap, playerCap, (Map) this.properties.get(0), "Attack");
+        return list;
+    }
+
+
+    @Override
+    public WeaponInnateSkill registerPropertiesToAnimation() {
+        this.Strike.get().phases[0].addProperties(this.properties.get(0).entrySet());
+        return this;
+    }
+}

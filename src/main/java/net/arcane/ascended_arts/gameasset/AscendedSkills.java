@@ -1,9 +1,7 @@
 package net.arcane.ascended_arts.gameasset;
 
 import net.arcane.ascended_arts.Ascended_arts;
-import net.arcane.ascended_arts.skill.weaponinnate.CelestialPunishmentSkill;
-import net.arcane.ascended_arts.skill.weaponinnate.CelestialOnslaughtSkill;
-import net.arcane.ascended_arts.skill.weaponinnate.ReapingGraspSkill;
+import net.arcane.ascended_arts.skill.weaponinnate.*;
 import net.arcane.ascended_arts.skill.weaponpassive.FloatingPassive;
 
 
@@ -32,6 +30,8 @@ public class AscendedSkills {
     public static Skill CELESTIAL_ONSLAUGHT;
     public static Skill FLOATING_PASSIVE;
     public static Skill REAPING_GRASP;
+    public static Skill CHASING_SWEEP;
+    public static Skill UNRELENTING_ASSAULT;
 
 
 
@@ -94,6 +94,23 @@ public class AscendedSkills {
                 .newProperty()
                 .addProperty(AnimationProperty.AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE, EpicFightDamageTypeTags.EXECUTION));
         REAPING_GRASP = reaping_grasp;
+
+        WeaponInnateSkill chasing_sweep = modRegistry.build("chasing_sweep", ChasingSweepSkill::new, WeaponInnateSkill.createWeaponInnateBuilder());
+        chasing_sweep
+                .newProperty()
+                .addProperty(AnimationProperty.AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.setter(50))
+                .addProperty(AnimationProperty.AttackPhaseProperty.MAX_STRIKES_MODIFIER, ValueModifier.multiplier(2))
+                .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.adder(2))
+                .addProperty(AnimationProperty.AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE, EpicFightDamageTypeTags.GUARD_PUNCTURE));
+        CHASING_SWEEP = chasing_sweep;
+
+        WeaponInnateSkill unrelenting_assault = modRegistry.build("unrelenting_assault", UnrelentingAssaultSkill::new, WeaponInnateSkill.createWeaponInnateBuilder());
+        unrelenting_assault
+                .newProperty()
+                .addProperty(AnimationProperty.AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.setter(50))
+                .addProperty(AnimationProperty.AttackPhaseProperty.MAX_STRIKES_MODIFIER, ValueModifier.multiplier(2))
+                .addProperty(AnimationProperty.AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE, EpicFightDamageTypeTags.GUARD_PUNCTURE));
+        UNRELENTING_ASSAULT = unrelenting_assault;
 
         FLOATING_PASSIVE = modRegistry.build("floating_passive", FloatingPassive::new, PassiveSkill.createPassiveBuilder().setCategory(SkillCategories.WEAPON_PASSIVE).setActivateType(Skill.ActivateType.ONE_SHOT));
 
