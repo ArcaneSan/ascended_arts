@@ -1,6 +1,9 @@
 package net.arcane.ascended_arts.world.item;
 
 import net.arcane.ascended_arts.Ascended_arts;
+import net.arcane.ascended_arts.item.AscendedArmorMaterials;
+import net.arcane.ascended_arts.item.custom.RoyalHunterArmorItem;
+import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.Tiers;
@@ -39,6 +42,15 @@ public class AscendedAddonItems {
             ITEMS.register("small_diamond_scythe", () -> new AscendedSmallScytheItem(new Item.Properties(), Tiers.DIAMOND));
     public static final RegistryObject<Item> SMALL_NETHERITE_SCYTHE =
             ITEMS.register("small_netherite_scythe", () -> new AscendedSmallScytheItem(new Item.Properties().fireResistant(), Tiers.NETHERITE));
+
+    public static final RegistryObject<Item> ROYAL_HUNTER_MASK =
+            ITEMS.register("royal_hunter_mask", () -> new RoyalHunterArmorItem(AscendedArmorMaterials.Mythos, ArmorItem.Type.HELMET, new Item.Properties().fireResistant()));
+    public static final RegistryObject<Item> ROYAL_HUNTER_ROBE =
+            ITEMS.register("royal_hunter_robe", () -> new RoyalHunterArmorItem(AscendedArmorMaterials.Mythos, ArmorItem.Type.CHESTPLATE, new Item.Properties().fireResistant()));
+    public static final RegistryObject<Item> ROYAL_HUNTER_LEGGINGS =
+            ITEMS.register("royal_hunter_leggings", () -> new RoyalHunterArmorItem(AscendedArmorMaterials.Mythos, ArmorItem.Type.LEGGINGS, new Item.Properties().fireResistant()));
+    public static final RegistryObject<Item> ROYAL_HUNTER_BOOTS =
+            ITEMS.register("royal_hunter_boots", () -> new RoyalHunterArmorItem(AscendedArmorMaterials.Mythos, ArmorItem.Type.BOOTS, new Item.Properties().fireResistant()));
 
 
     public  static  void register(IEventBus eventBus) {

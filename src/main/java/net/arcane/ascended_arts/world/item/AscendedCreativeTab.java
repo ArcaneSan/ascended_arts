@@ -33,6 +33,11 @@ public class AscendedCreativeTab {
                         output.accept(AscendedAddonItems.ETHERVEIL_SCYTHE.get());
                         output.accept(AscendedAddonItems.SKYSPLITTER_JIAN.get());
 
+                        output.accept(AscendedAddonItems.ROYAL_HUNTER_MASK.get());
+                        output.accept(AscendedAddonItems.ROYAL_HUNTER_ROBE.get());
+                        output.accept(AscendedAddonItems.ROYAL_HUNTER_LEGGINGS.get());
+                        output.accept(AscendedAddonItems.ROYAL_HUNTER_BOOTS.get());
+
                     })).build());
 
     public static void register(IEventBus eventBus) {
