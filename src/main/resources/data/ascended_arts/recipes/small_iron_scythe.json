@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+  [
+    " B ",
+    " AB",
+    "S  "
+  ],
+  "key":
+  {
+    "B": { "item" : "minecraft:iron_ingot" },
+    "A": {"item" :  "minecraft:iron_hoe"},
+    "S": { "item" : "minecraft:stick" }
+  },
+  "result":
+  {
+    "item" : "ascended_arts:small_iron_scythe",
+    "count" : 1
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+  [
+    " B ",
+    " AB",
+    "S  "
+  ],
+  "key":
+  {
+    "B": { "tag" : "minecraft:planks" },
+    "A": { "item" : "minecraft:wooden_hoe" },
+    "S": { "item" : "minecraft:stick" }
+  },
+  "result":
+  {
+    "item" : "ascended_arts:small_wooden_scythe",
+    "count" : 1
+  }
+}

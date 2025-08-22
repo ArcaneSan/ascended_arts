@@ -126,9 +126,8 @@ public class AscendedAnimations {
 
     public static AnimationManager.AnimationAccessor<AttackAnimation> REAPING_GRASP_1;
     public static AnimationManager.AnimationAccessor<AttackAnimation> REAPING_GRASP_2;
-    public static AnimationManager.AnimationAccessor<AttackAnimation> REAPING_GRASP_3;
-    public static AnimationManager.AnimationAccessor<AttackAnimation> REAPING_GRASP_4;
-    public static AnimationManager.AnimationAccessor<AttackAnimation> REAPING_GRASP_FINAL;
+    public static AnimationManager.AnimationAccessor<AttackAnimation> REAPING_GRASP_1_END;
+    public static AnimationManager.AnimationAccessor<AttackAnimation> REAPING_GRASP_2_END;
 
     public static AnimationManager.AnimationAccessor<AttackAnimation> CHASING_SWEEP;
     public static AnimationManager.AnimationAccessor<AttackAnimation> UNRELENTING_ASSAULT;
@@ -164,13 +163,13 @@ public class AscendedAnimations {
                 .addEvents(AnimationProperty.StaticAnimationProperty.ON_END_EVENTS, AnimationEvent.SimpleEvent.create(Animations.ReusableSources.REVERT_TO_HANDS, AnimationEvent.Side.CLIENT))
                 .newTimePair(0.0F, 500.0F));
 
-        BIPED_WALK_SCYTHE = builder.nextAccessor("biped/living/scythe_walk", (accessor) -> new MovementAnimation(true, accessor, Armatures.BIPED));
-        BIPED_RUN_SCYTHE = builder.nextAccessor("biped/living/scythe_run", (accessor) -> new MovementAnimation(true, accessor, Armatures.BIPED));
-        BIPED_HOLD_SCYTHE = builder.nextAccessor("biped/living/scythe_idle", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED));
-        BIPED_KNEEL_SCYTHE = builder.nextAccessor("biped/living/scythe_kneel", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED));
-        BIPED_SNEAK_SCYTHE = builder.nextAccessor("biped/living/scythe_sneak", (accessor) -> new MovementAnimation(true, accessor, Armatures.BIPED));
-        BIPED_SCYTHE_SLEEP = builder.nextAccessor("biped/living/scythe_sleep", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED));
-        BIPED_SCYTHE_SWIM = builder.nextAccessor("biped/living/scythe_swim", (accessor) -> new MovementAnimation(true, accessor, Armatures.BIPED));
+        BIPED_WALK_SCYTHE = builder.nextAccessor("biped/living/scythe/scythe_walk", (accessor) -> new MovementAnimation(true, accessor, Armatures.BIPED));
+        BIPED_RUN_SCYTHE = builder.nextAccessor("biped/living/scythe/scythe_run", (accessor) -> new MovementAnimation(true, accessor, Armatures.BIPED));
+        BIPED_HOLD_SCYTHE = builder.nextAccessor("biped/living/scythe/scythe_idle", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED));
+        BIPED_KNEEL_SCYTHE = builder.nextAccessor("biped/living/scythe/scythe_kneel", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED));
+        BIPED_SNEAK_SCYTHE = builder.nextAccessor("biped/living/scythe/scythe_sneak", (accessor) -> new MovementAnimation(true, accessor, Armatures.BIPED));
+        BIPED_SCYTHE_SLEEP = builder.nextAccessor("biped/living/scythe/scythe_sleep", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED));
+        BIPED_SCYTHE_SWIM = builder.nextAccessor("biped/living/scythe/scythe_swim", (accessor) -> new MovementAnimation(true, accessor, Armatures.BIPED));
 
         BIPED_S_SCYTHE_HOLD = builder.nextAccessor("biped/living/ss/sweeping_scythe_idle", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED));
         BIPED_S_SCYTHE_KNEEL = builder.nextAccessor("biped/living/ss/sweeping_scythe_kneel", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED));
@@ -183,7 +182,7 @@ public class AscendedAnimations {
         JIAN_GUARD_HIT = builder.nextAccessor("biped/skill/jian/jian_guard_hit", (accessor) -> new GuardAnimation(0, accessor, Armatures.BIPED));
         JIAN_GUARD_BREAK = builder.nextAccessor("biped/skill/jian/jian_guard_break", (accessor) -> new LongHitAnimation(0.05F, accessor, Armatures.BIPED));
         DUAL_JIAN_GUARD_HIT = builder.nextAccessor("biped/skill/jian/dual_jian_guard_hit", (accessor) -> new GuardAnimation(0, accessor, Armatures.BIPED));
-        SCYTHE_GUARD = builder.nextAccessor("biped/skill/scythe_guard", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED)
+        SCYTHE_GUARD = builder.nextAccessor("biped/skill/scythe/scythe_guard", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED)
                 .addEvents(AnimationEvent.InPeriodEvent.create(0.0F, 0.2F, (entitypatch, self, params) -> {
                     ((LivingEntity)entitypatch.getOriginal()).isInWater();
                     if (entitypatch.getOriginal() instanceof Player) {
@@ -211,7 +210,7 @@ public class AscendedAnimations {
                         }
                     }
                 }, AnimationEvent.Side.CLIENT)));
-        SCYTHE_GUARD_HIT = builder.nextAccessor("biped/skill/scythe_guard_hit", (accessor) -> new GuardAnimation(0, accessor, Armatures.BIPED));
+        SCYTHE_GUARD_HIT = builder.nextAccessor("biped/skill/scythe/scythe_guard_hit", (accessor) -> new GuardAnimation(0, accessor, Armatures.BIPED));
         JIAN_GUARD_PARRY_1 = builder.nextAccessor("biped/skill/jian/jian_guard_parry_1", (accessor) ->
                 new BasicAttackAnimation(0.1F, 0F, 0.1F, 0.4F, 0.5F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
                         .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.adder( 2.1F))
@@ -230,7 +229,7 @@ public class AscendedAnimations {
                         .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 2.4F)
                         .addProperty(AnimationProperty.AttackAnimationProperty.CANCELABLE_MOVE, false)
                         .addState(EntityState.MOVEMENT_LOCKED, true));
-        SCYTHE_GUARD_PARRY_1 = builder.nextAccessor("biped/skill/scythe_guard_parry_1", (accessor) ->
+        SCYTHE_GUARD_PARRY_1 = builder.nextAccessor("biped/skill/scythe/scythe_guard_parry_1", (accessor) ->
                 new BasicAttackAnimation(0.1F, 0F, 0.1F, 0.4F, 0.5F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
                         .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.adder( 2.1F))
                         .addProperty(AnimationProperty.AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.setter(90))
@@ -239,7 +238,7 @@ public class AscendedAnimations {
                         .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.4F)
                         .addProperty(AnimationProperty.AttackAnimationProperty.CANCELABLE_MOVE, false)
                         .addState(EntityState.MOVEMENT_LOCKED, true));
-        SCYTHE_GUARD_PARRY_2 = builder.nextAccessor("biped/skill/scythe_guard_parry_2", (accessor) ->
+        SCYTHE_GUARD_PARRY_2 = builder.nextAccessor("biped/skill/scythe/scythe_guard_parry_2", (accessor) ->
                 new BasicAttackAnimation(0.1F, 0F, 0.1F, 0.4F, 0.5F, AscendedColliderPreset.KICK, Armatures.BIPED.get().thighL, accessor, Armatures.BIPED)
                         .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.adder( 2.1F))
                         .addProperty(AnimationProperty.AttackPhaseProperty.STUN_TYPE, StunType.KNOCKDOWN)
@@ -404,7 +403,7 @@ public class AscendedAnimations {
                                 AnimationEvent.InTimeEvent.create(0.51F, ReusableEvents.ENDER_IMAGE, AnimationEvent.Side.CLIENT)
                         ));
 
-        SCYTHE_DASH = builder.nextAccessor("biped/combat/scythe_dash", (accessor) ->
+        SCYTHE_DASH = builder.nextAccessor("biped/combat/scythe/scythe_dash", (accessor) ->
                 new DashAttackAnimation(0.12F, accessor, Armatures.BIPED,
                         new AttackAnimation.Phase(0.0F, 0.2F, 0.3F, 0.48F, 0.49F, 0.5F, Armatures.BIPED.get().toolR, null),
                         new AttackAnimation.Phase(0.5F, 0.5F, 0.52F, 0.85F, 0.89F, 0.9F, Armatures.BIPED.get().toolR, null))
@@ -423,26 +422,26 @@ public class AscendedAnimations {
                                 }, AnimationEvent.Side.BOTH))
                         .addState(EntityState.LOCKON_ROTATE, true)
                         .addState(EntityState.MOVEMENT_LOCKED, true));
-        SCYTHE_AIRSLASH = builder.nextAccessor("biped/combat/scythe_airslash", (accessor) ->
+        SCYTHE_AIRSLASH = builder.nextAccessor("biped/combat/scythe/scythe_airslash", (accessor) ->
                 new AirSlashAnimation(0.12F, accessor, Armatures.BIPED,
                         new AttackAnimation.Phase(0.0F, 0.0F, 0.2F, 0.45F, 0.5F, 0.51F, Armatures.BIPED.get().toolR, null),
                         new AttackAnimation.Phase(0.51F, 0.2F, 0.71F, 0.8F, 0.9F, 0.91F, Armatures.BIPED.get().toolR, null))
                         .addProperty(AnimationProperty.ActionAnimationProperty.NO_GRAVITY_TIME, TimePairList.create(0.0F, 1.0F)));
 
-        SCYTHE_AUTO_1 = builder.nextAccessor("biped/combat/scythe_auto_1", (accessor) ->
+        SCYTHE_AUTO_1 = builder.nextAccessor("biped/combat/scythe/scythe_auto_1", (accessor) ->
                 new BasicAttackAnimation(0.12F, 0.02F, 0.15F, 0.3F, 0.5F, AscendedColliderPreset.SCYTHE_BOTTOM, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
                         .addProperty(AnimationProperty.AttackPhaseProperty.STUN_TYPE, StunType.SHORT)
                         .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.2F));
-        SCYTHE_AUTO_2 = builder.nextAccessor("biped/combat/scythe_auto_2", (accessor) ->
+        SCYTHE_AUTO_2 = builder.nextAccessor("biped/combat/scythe/scythe_auto_2", (accessor) ->
                 new BasicAttackAnimation(0.12F, 0.1F, 0.2F, 0.4F, 0.6F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
                         .addProperty(AnimationProperty.AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(25))
                         .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.2F));
-        SCYTHE_AUTO_3 = builder.nextAccessor("biped/combat/scythe_auto_3", (accessor) ->
+        SCYTHE_AUTO_3 = builder.nextAccessor("biped/combat/scythe/scythe_auto_3", (accessor) ->
                 new BasicAttackAnimation(0.12F, accessor, Armatures.BIPED,
                         new AttackAnimation.Phase(0.0F, 0.1F, 0.2F, 0.28F, 0.3F, 0.31F, Armatures.BIPED.get().toolR, null),
                         new AttackAnimation.Phase(0.31F, 0.2F, 0.36F,0.6F, 0.8F, 0.81F, Armatures.BIPED.get().toolR, null))
                         .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.2F));
-        SCYTHE_AUTO_4 = builder.nextAccessor("biped/combat/scythe_auto_4", (accessor) ->
+        SCYTHE_AUTO_4 = builder.nextAccessor("biped/combat/scythe/scythe_auto_4", (accessor) ->
                 new BasicAttackAnimation(0.12F, accessor, Armatures.BIPED,
                         new AttackAnimation.Phase(0.0F, 0.0F, 0.02F, 0.1F, 0.12F, 0.13F, Armatures.BIPED.get().toolR, null),
                         new AttackAnimation.Phase(0.13F, 0.2F, 0.4F, 0.55F, 0.8F, 0.81F, Armatures.BIPED.get().toolR, null))
@@ -621,35 +620,31 @@ public class AscendedAnimations {
                         ));
 
 
-        REAPING_GRASP_1 = builder.nextAccessor("biped/skill/reaping_grasp_1", (accessor) ->
-                new AttackAnimation(0.12F, 0.1F, 0.2F, 0.3F, 0.4F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
-                        .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.8F)
-                        .addProperty(AnimationProperty.AttackAnimationProperty.FIXED_MOVE_DISTANCE, true));
-
-        REAPING_GRASP_2 = builder.nextAccessor("biped/skill/reaping_grasp_2", (accessor) ->
-                new AttackAnimation(0.12F, 0.1F, 0.1F, 0.3F, 0.4F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
-                        .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.8F));
-
-        REAPING_GRASP_3 = builder.nextAccessor("biped/skill/reaping_grasp_3", (accessor) ->
+        REAPING_GRASP_1 = builder.nextAccessor("biped/skill/scythe/reaping_grasp_1", (accessor) ->
                 new AttackAnimation(0.12F, accessor, Armatures.BIPED,
-                        new AttackAnimation.Phase(0.0F, 0.1F, 0.2F, 0.4F, 0.5F, 0.51F, Armatures.BIPED.get().toolR, null),
-                        new AttackAnimation.Phase(0.51F, 0.2F, 0.51F, 0.8F, 0.9F, 0.91F, Armatures.BIPED.get().toolR, null))
-                        .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.8F)
-                        .addProperty(AnimationProperty.AttackAnimationProperty.FIXED_MOVE_DISTANCE, true));
+                        new AttackAnimation.Phase(0.0F, 0.2F, 0.4F, 0.6F, 0.65F, 0.66F, Armatures.BIPED.get().toolR, null),
+                        new AttackAnimation.Phase(0.66F, 0.7F, 1.0F, 1.3F, 1.35F, 1.36F, Armatures.BIPED.get().toolR, null))
+                        .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.6F));
 
-        REAPING_GRASP_4 = builder.nextAccessor("biped/skill/reaping_grasp_4", (accessor) ->
-        new AttackAnimation(0.12F, accessor, Armatures.BIPED,
-                new AttackAnimation.Phase(0.0F, 0.2F, 0.3F, 0.4F, 0.45F, 0.46F, Armatures.BIPED.get().toolR, null),
-                new AttackAnimation.Phase(0.46F, 0.2F, 0.46F, 0.6F, 0.65F, 0.66F, Armatures.BIPED.get().toolR, null)
-                        .addProperty(AnimationProperty.AttackPhaseProperty.STUN_TYPE, StunType.LONG))
-                        .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.8F));
-
-        REAPING_GRASP_FINAL = builder.nextAccessor("biped/skill/reaping_grasp_final", (accessor) ->
+        REAPING_GRASP_2 = builder.nextAccessor("biped/skill/scythe/reaping_grasp_2", (accessor) ->
                 new AttackAnimation(0.12F, accessor, Armatures.BIPED,
-                        new AttackAnimation.Phase(0.0F, 0.2F, 0.5F, 0.8F, 0.85F, 0.86F, Armatures.BIPED.get().toolR, null))
-                        .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.8F)
-                        .addProperty(AnimationProperty.AttackAnimationProperty.FIXED_MOVE_DISTANCE, true)
-                        .addProperty(AnimationProperty.AttackAnimationProperty.MOVE_VERTICAL, true));
+                        new AttackAnimation.Phase(0.0F, 0.2F, 0.6F, 0.85F, 0.89F, 0.9F, Armatures.BIPED.get().toolR, null)
+                                .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.adder(2)),
+                        new AttackAnimation.Phase(0.9F, 1.0F, 1.3F, 1.5F, 1.55F, 1.56F, Armatures.BIPED.get().toolR, null)
+                                .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.adder(4))));
+        REAPING_GRASP_1_END = builder.nextAccessor("biped/skill/scythe/reaping_grasp_1_end", (accessor) ->
+                new AttackAnimation(0.0F, 0.0F, 0.0F, 0.0F, 0.25F, null, Armatures.BIPED.get().toolR,accessor, Armatures.BIPED)
+                        .addProperty(AnimationProperty.AttackPhaseProperty.SWING_SOUND, SoundEvents.EMPTY)
+                        .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, SoundEvents.EMPTY)
+                        .addProperty(AnimationProperty.AttackAnimationProperty.NO_GRAVITY_TIME, TimePairList.create(0.0F, 0.3F))
+                        .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 2.6F));
+        REAPING_GRASP_2_END = builder.nextAccessor("biped/skill/scythe/reaping_grasp_2_end", (accessor) ->
+                new AttackAnimation(0.0F, 0.0F, 0.0F, 0.0F, 0.25F, null, Armatures.BIPED.get().toolR,accessor, Armatures.BIPED)
+                        .addProperty(AnimationProperty.AttackPhaseProperty.SWING_SOUND, SoundEvents.EMPTY)
+                        .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, SoundEvents.EMPTY)
+                        .addProperty(AnimationProperty.AttackAnimationProperty.NO_GRAVITY_TIME, TimePairList.create(0.0F, 0.3F))
+                        .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 2.6F));
+
 
         CHASING_SWEEP = builder.nextAccessor("biped/skill/ss/chasing_sweep", (accessor) ->
                 new AttackAnimation(0.12F, accessor, Armatures.BIPED,

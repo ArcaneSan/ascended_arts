@@ -93,7 +93,7 @@ public class WeaponCapabilityPresets {
                 .livingMotionModifier(Styles.COMMON, LivingMotions.IDLE, AscendedAnimations.BIPED_S_SCYTHE_HOLD)
                 .livingMotionModifier(Styles.COMMON, LivingMotions.KNEEL, AscendedAnimations.BIPED_S_SCYTHE_KNEEL)
                 .livingMotionModifier(Styles.COMMON, LivingMotions.WALK, AscendedAnimations.BIPED_S_SCYTHE_WALK)
-                .livingMotionModifier(Styles.COMMON, LivingMotions.RUN, Animations.BIPED_RUN)
+                .livingMotionModifier(Styles.COMMON, LivingMotions.RUN, AscendedAnimations.BIPED_S_SCYTHE_RUN)
                 .livingMotionModifier(Styles.COMMON, LivingMotions.SNEAK, AscendedAnimations.BIPED_S_SCYTHE_SNEAK)
                 .weaponCombinationPredicator((entitypatch) -> EpicFightCapabilities.getItemStackCapability(entitypatch.getOriginal().getOffhandItem()).getWeaponCategory() == AscendedWeaponCategories.SWEEPING_SCYTHE);
         return builder;

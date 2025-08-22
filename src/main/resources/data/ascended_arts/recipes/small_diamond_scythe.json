@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+  [
+    " B ",
+    " AB",
+    "S  "
+  ],
+  "key":
+  {
+    "B": { "item" : "minecraft:diamond" },
+    "A": {"item" :  "minecraft:diamond_hoe"},
+    "S": { "item" : "minecraft:stick" }
+  },
+  "result":
+  {
+    "item" : "ascended_arts:small_diamond_scythe",
+    "count" : 1
+  }
+}

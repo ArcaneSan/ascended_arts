@@ -1,0 +1,12 @@
+{
+  "layer":"COMPOSITE_LAYER",
+  "priority":"MIDDLE",
+  "masks":
+  [
+    {
+      "livingmotion":"WALK",
+      "type":"arms"
+    }
+
+  ]
+}
