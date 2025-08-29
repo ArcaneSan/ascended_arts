@@ -169,7 +169,8 @@ dependencies {
     // If the group id is "net.minecraft" and the artifact id is one of ["client", "server", "joined"],
     // then special handling is done to allow a setup of a vanilla dependency without the use of an external repository.
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
-    implementation fg.deobf("curse.maven:epic-fight-mod-405076:6878218")
+//    implementation fg.deobf("curse.maven:epic-fight-mod-405076:6878218")
+    implementation fg.deobf("curse.maven:epic-fight-mod-405076:6921772")
             //geckolib
     implementation fg.deobf("curse.maven:geckolib-388172:6789487")
 //    implementation fg.deobf("software.bernie.geckolib:geckolib-forge-${minecraft_version}:${geckolib_version}")

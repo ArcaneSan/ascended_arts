@@ -15,9 +15,13 @@
   "item.ascended_arts.skysplitter_jian": "Skysplitter",
 
   "item.ascended_arts.royal_hunter_mask": "Royal Hunter Mask",
-  "item.ascended_arts.royal_hunter_robe": "Royal Hunter Robe",
+  "item.ascended_arts.royal_hunter_robes": "Royal Hunter Robe",
   "item.ascended_arts.royal_hunter_leggings": "Royal Hunter Leggings",
   "item.ascended_arts.royal_hunter_boots": "Royal Hunter Boots",
+  "item.ascended_arts.void_slayer_halo" : "Void Slayer Halo",
+  "item.ascended_arts.void_slayer_robes" : "Void Slayer Robe",
+  "item.ascended_arts.void_slayer_leggings" : "Void Slayer leggings",
+  "item.ascended_arts.void_slayer_boots" : "Void Slayer boots",
 
 
   "epicfight.weapon_category.jian": "Jian",

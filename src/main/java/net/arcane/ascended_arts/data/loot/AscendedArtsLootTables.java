@@ -23,7 +23,7 @@ public class AscendedArtsLootTables {
                     .add(LootItem.lootTableItem(AscendedAddonItems.SKYSPLITTER_JIAN.get()))
                     .add(LootItem.lootTableItem(AscendedAddonItems.ETHERVEIL_SCYTHE.get()))
                     .add(LootItem.lootTableItem(AscendedAddonItems.ROYAL_HUNTER_MASK.get()))
-                    .add(LootItem.lootTableItem(AscendedAddonItems.ROYAL_HUNTER_ROBE.get()))
+                    .add(LootItem.lootTableItem(AscendedAddonItems.ROYAL_HUNTER_ROBES.get()))
                     .add(LootItem.lootTableItem(AscendedAddonItems.ROYAL_HUNTER_LEGGINGS.get()))
                     .add(LootItem.lootTableItem(AscendedAddonItems.ROYAL_HUNTER_BOOTS.get()))
                     .build());
@@ -33,7 +33,7 @@ public class AscendedArtsLootTables {
                     .add(LootItem.lootTableItem(AscendedAddonItems.SKYSPLITTER_JIAN.get()))
                     .add(LootItem.lootTableItem(AscendedAddonItems.ETHERVEIL_SCYTHE.get()))
                     .add(LootItem.lootTableItem(AscendedAddonItems.ROYAL_HUNTER_MASK.get()))
-                    .add(LootItem.lootTableItem(AscendedAddonItems.ROYAL_HUNTER_ROBE.get()))
+                    .add(LootItem.lootTableItem(AscendedAddonItems.ROYAL_HUNTER_ROBES.get()))
                     .add(LootItem.lootTableItem(AscendedAddonItems.ROYAL_HUNTER_LEGGINGS.get()))
                     .add(LootItem.lootTableItem(AscendedAddonItems.ROYAL_HUNTER_BOOTS.get()))
                     .build());
@@ -47,7 +47,7 @@ public class AscendedArtsLootTables {
         if (event.getName().equals(BuiltInLootTables.END_CITY_TREASURE)) {
             event.getTable().addPool(LootPool.lootPool().when(LootItemRandomChanceCondition.randomChance(0.20F))
                     .add(LootItem.lootTableItem(AscendedAddonItems.ROYAL_HUNTER_MASK.get()))
-                    .add(LootItem.lootTableItem(AscendedAddonItems.ROYAL_HUNTER_ROBE.get()))
+                    .add(LootItem.lootTableItem(AscendedAddonItems.ROYAL_HUNTER_ROBES.get()))
                     .add(LootItem.lootTableItem(AscendedAddonItems.ROYAL_HUNTER_LEGGINGS.get()))
                     .add(LootItem.lootTableItem(AscendedAddonItems.ROYAL_HUNTER_BOOTS.get()))
                     .build());

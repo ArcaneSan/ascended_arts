@@ -34,9 +34,13 @@ public class AscendedCreativeTab {
                         output.accept(AscendedAddonItems.SKYSPLITTER_JIAN.get());
 
                         output.accept(AscendedAddonItems.ROYAL_HUNTER_MASK.get());
-                        output.accept(AscendedAddonItems.ROYAL_HUNTER_ROBE.get());
+                        output.accept(AscendedAddonItems.ROYAL_HUNTER_ROBES.get());
                         output.accept(AscendedAddonItems.ROYAL_HUNTER_LEGGINGS.get());
                         output.accept(AscendedAddonItems.ROYAL_HUNTER_BOOTS.get());
+                        output.accept(AscendedAddonItems.VOID_SLAYER_HALO.get());
+                        output.accept(AscendedAddonItems.VOID_SLAYER_ROBES.get());
+                        output.accept(AscendedAddonItems.VOID_SLAYER_LEGGINGS.get());
+                        output.accept(AscendedAddonItems.VOID_SLAYER_BOOTS.get());
 
                     })).build());
 

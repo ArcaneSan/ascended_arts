@@ -86,4 +86,5 @@ public enum AscendedArmorMaterials implements ArmorMaterial {
     public String getSerializedName() {
         return this.name;
     }
+
 }
