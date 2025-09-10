@@ -98,11 +98,27 @@ public class WeaponCapabilityPresets {
                 .weaponCombinationPredicator((entitypatch) -> EpicFightCapabilities.getItemStackCapability(entitypatch.getOriginal().getOffhandItem()).getWeaponCategory() == AscendedWeaponCategories.SWEEPING_SCYTHE);
         return builder;
     };
+    public static Function<Item, CapabilityItem.Builder> SUP_FLUTE = (item) -> {
+        CapabilityItem.Builder builder = WeaponCapability.builder()
+                .category(AscendedWeaponCategories.SUP_FLUTE)
+                .styleProvider((playerpatch) -> Styles.OCHS)
+                .canBePlacedOffhand(true)
+                .newStyleCombo(Styles.OCHS, AscendedAnimations.FLUTE_AUTO, AscendedAnimations.FLUTE_AUTO_2, AscendedAnimations.FLUTE_DASH, AscendedAnimations.FLUTE_AIRSLASH)
+                .livingMotionModifier(Styles.OCHS, LivingMotions.IDLE, AscendedAnimations.FLUTE_IDLE)
+                .livingMotionModifier(Styles.OCHS, LivingMotions.RUN, AscendedAnimations.FLUTE_IDLE)
+                .livingMotionModifier(Styles.OCHS, LivingMotions.WALK, AscendedAnimations.FLUTE_IDLE)
+                .livingMotionModifier(Styles.OCHS, LivingMotions.SNEAK, AscendedAnimations.FLUTE_IDLE)
+                .livingMotionModifier(Styles.OCHS, LivingMotions.KNEEL, AscendedAnimations.FLUTE_IDLE)
+
+                .weaponCombinationPredicator((entitypatch) -> EpicFightCapabilities.getItemStackCapability(entitypatch.getOriginal().getOffhandItem()).getWeaponCategory() == AscendedWeaponCategories.SUP_FLUTE);
+                return builder;
+    };
 
     @SubscribeEvent
     public static void registerMovesets(WeaponCapabilityPresetRegistryEvent event) {
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Ascended_arts.MOD_ID,"jian"), JIAN);
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Ascended_arts.MOD_ID, "scythe"), SCYTHE);
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Ascended_arts.MOD_ID, "sweeping_scythe"), SWEEPING_SCYTHE);
+        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Ascended_arts.MOD_ID, "flute"), SUP_FLUTE);
     }
 }

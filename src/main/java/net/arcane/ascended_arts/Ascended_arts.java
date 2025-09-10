@@ -38,8 +38,7 @@ public class Ascended_arts {
     public static AscendedAnimations.IProxy proxy;
     public static final String MOD_ID = "ascended_arts";
     private static final Logger LOGGER = LogUtils.getLogger();
-    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MOD_ID);
-    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MOD_ID);
+
 
 
     public Ascended_arts(FMLJavaModLoadingContext eventBus) {

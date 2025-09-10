@@ -8,7 +8,7 @@ import yesman.epicfight.world.capabilities.item.WeaponCategory;
 import java.util.function.Function;
 
 public enum AscendedWeaponCategories implements WeaponCategory, Function<Item, CapabilityItem.Builder> {
-    JIAN, SCYTHE, SWEEPING_SCYTHE;
+    JIAN, SCYTHE, SWEEPING_SCYTHE, SUP_FLUTE, PRAY;
 
     final int id;
 

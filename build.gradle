@@ -176,8 +176,12 @@ dependencies {
 //    implementation fg.deobf("software.bernie.geckolib:geckolib-forge-${minecraft_version}:${geckolib_version}")
     implementation("com.eliotlash.mclib:mclib:20")
 
+//   corail tombstone
+    implementation fg.deobf("curse.maven:corail-tombstone-243707:6956885")
 
-//    implementation fg.deobf("curse.maven:epic-fight-mod-405076:6755960")
+//   supplementaries
+//    implementation fg.deobf("curse.maven:selene-499980:6935940")
+//    implementation fg.deobf("curse.maven:supplementaries-412082:6889003")
 
     //malum stuff
 //       implementation fg.deobf("curse.maven:malum-484064:6646111")

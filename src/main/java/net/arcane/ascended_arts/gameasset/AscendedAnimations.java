@@ -6,7 +6,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.Particle;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.resources.ResourceLocation;
+
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
@@ -133,6 +133,13 @@ public class AscendedAnimations {
     public static AnimationManager.AnimationAccessor<AttackAnimation> UNRELENTING_ASSAULT;
 
     public static AnimationManager.AnimationAccessor<StaticAnimation> TESTER;
+
+    public static AnimationManager.AnimationAccessor<StaticAnimation> FLUTE_IDLE;
+    public static AnimationManager.AnimationAccessor<BasicAttackAnimation> FLUTE_AUTO;
+    public static AnimationManager.AnimationAccessor<BasicAttackAnimation> FLUTE_AUTO_2;
+    public static AnimationManager.AnimationAccessor<DashAttackAnimation> FLUTE_DASH;
+    public static AnimationManager.AnimationAccessor<AirSlashAnimation> FLUTE_AIRSLASH;
+    public static AnimationManager.AnimationAccessor<StaticAnimation> PRAYER_IDLE;
 
 
 
@@ -661,6 +668,28 @@ public class AscendedAnimations {
                         new AttackAnimation.Phase(0.48F,0.48F, 0.6F, 0.88F, 0.92F, 0.93F, InteractionHand.MAIN_HAND, AttackAnimation.JointColliderPair.of(Armatures.BIPED.get().toolR, null),
                                 AttackAnimation.JointColliderPair.of(Armatures.BIPED.get().toolL, null)))
                         .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.8F));
+
+
+        FLUTE_IDLE = builder.nextAccessor("biped/living/compat/flute_idle", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED));
+        FLUTE_AUTO = builder.nextAccessor("biped/combat/compat/flute_auto", (accessor) ->
+                new BasicAttackAnimation(0.12F, 0.1F, 0.2F, 0.4F, 0.5F, AscendedColliderPreset.KICK, Armatures.BIPED.get().legR, accessor, Armatures.BIPED)
+                        .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.setter(5))
+                        .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 2.2F));
+        FLUTE_AUTO_2 = builder.nextAccessor("biped/combat/compat/flute_auto_2", (accessor) ->
+                new BasicAttackAnimation(0.12F, 0.1F, 0.3F, 0.5F, 0.6F, AscendedColliderPreset.KICK, Armatures.BIPED.get().legR, accessor, Armatures.BIPED)
+                        .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.setter(5))
+                        .addProperty(AnimationProperty.AttackAnimationProperty.NO_GRAVITY_TIME, TimePairList.create(0.0F, 0.5F))
+                        .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 2.2F));
+        FLUTE_DASH = builder.nextAccessor("biped/combat/compat/flute_dash", (accessor) ->
+                new DashAttackAnimation(0.12F, 0.2F, 0.4F, 0.6F, 0.7F, AscendedColliderPreset.KICK, Armatures.BIPED.get().legL, accessor, Armatures.BIPED)
+                        .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.setter(5))
+                        .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 2.2F));
+        FLUTE_AIRSLASH = builder.nextAccessor("biped/combat/compat/flute_airslash", (accessor) ->
+                new AirSlashAnimation(0.12F, 0.1F, 0.3F, 0.4F, AscendedColliderPreset.KICK, Armatures.BIPED.get().legR, accessor, Armatures.BIPED)
+                        .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.setter(5))
+                        .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 2.2F));
+
+        PRAYER_IDLE = builder.nextAccessor("biped/living/compat/prayer_idle", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED));
 
 
     }
