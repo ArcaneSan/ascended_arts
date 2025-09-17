@@ -140,6 +140,11 @@ public class AscendedAnimations {
     public static AnimationManager.AnimationAccessor<DashAttackAnimation> FLUTE_DASH;
     public static AnimationManager.AnimationAccessor<AirSlashAnimation> FLUTE_AIRSLASH;
     public static AnimationManager.AnimationAccessor<StaticAnimation> PRAYER_IDLE;
+    public static AnimationManager.AnimationAccessor<BasicAttackAnimation> PRAYER_AUTO;
+    public static AnimationManager.AnimationAccessor<BasicAttackAnimation> PRAYER_AUTO_2;
+    public static AnimationManager.AnimationAccessor<DashAttackAnimation> PRAYER_DASH;
+    public static AnimationManager.AnimationAccessor<AirSlashAnimation> PRAYER_AIRSLASH;
+
 
 
 
@@ -690,6 +695,23 @@ public class AscendedAnimations {
                         .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 2.2F));
 
         PRAYER_IDLE = builder.nextAccessor("biped/living/compat/prayer_idle", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED));
+        PRAYER_AUTO = builder.nextAccessor("biped/combat/compat/prayer_auto", (accessor) ->
+                new BasicAttackAnimation(0.12F, 0.1F, 0.15F, 0.25F, 0.3F, AscendedColliderPreset.KICK, Armatures.BIPED.get().handL, accessor, Armatures.BIPED)
+                        .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.setter(5))
+                        .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 2.2F));
+        PRAYER_AUTO_2 = builder.nextAccessor("biped/combat/compat/prayer_auto_2", (accessor) ->
+                new BasicAttackAnimation(0.12F, 0.1F, 0.25F, 0.4F, 0.45F, AscendedColliderPreset.KICK, Armatures.BIPED.get().handL, accessor, Armatures.BIPED)
+                        .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.setter(5))
+                        .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 2.2F));
+        PRAYER_DASH = builder.nextAccessor("biped/combat/compat/prayer_dash", (accessor) ->
+                new DashAttackAnimation(0.12F, 0.1F, 0.2F, 0.5F, 0.6F, AscendedColliderPreset.KICK, Armatures.BIPED.get().handL, accessor, Armatures.BIPED)
+                        .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.setter(5))
+                        .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 2.2F));
+        PRAYER_AIRSLASH = builder.nextAccessor("biped/combat/compat/prayer_airslash", (accessor) ->
+                new AirSlashAnimation(0.12F, 0.2F, 0.5F, 0.6F, AscendedColliderPreset.KICK, Armatures.BIPED.get().handL, accessor, Armatures.BIPED)
+                        .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.setter(5))
+                        .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 2.2F));
+
 
 
     }

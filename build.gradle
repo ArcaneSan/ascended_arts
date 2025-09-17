@@ -177,7 +177,7 @@ dependencies {
     implementation("com.eliotlash.mclib:mclib:20")
 
 //   corail tombstone
-    implementation fg.deobf("curse.maven:corail-tombstone-243707:6956885")
+//    implementation fg.deobf("curse.maven:corail-tombstone-243707:6956885")
 
 //   supplementaries
 //    implementation fg.deobf("curse.maven:selene-499980:6935940")

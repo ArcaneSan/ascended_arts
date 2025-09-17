@@ -16,6 +16,7 @@ public class WeaponCategoryMapper {
         categoryMap.put(AscendedWeaponCategories.SCYTHE, CapabilityItem.WeaponCategories.GREATSWORD);
         categoryMap.put(AscendedWeaponCategories.SWEEPING_SCYTHE, CapabilityItem.WeaponCategories.SWORD);
         categoryMap.put(AscendedWeaponCategories.SUP_FLUTE, CapabilityItem.WeaponCategories.NOT_WEAPON);
+        categoryMap.put(AscendedWeaponCategories.PRAY, CapabilityItem.WeaponCategories.NOT_WEAPON);
     }
 
     public static CapabilityItem.Builder apply(Item item, AscendedWeaponCategories category) {

@@ -109,9 +109,22 @@ public class WeaponCapabilityPresets {
                 .livingMotionModifier(Styles.OCHS, LivingMotions.WALK, AscendedAnimations.FLUTE_IDLE)
                 .livingMotionModifier(Styles.OCHS, LivingMotions.SNEAK, AscendedAnimations.FLUTE_IDLE)
                 .livingMotionModifier(Styles.OCHS, LivingMotions.KNEEL, AscendedAnimations.FLUTE_IDLE)
-
                 .weaponCombinationPredicator((entitypatch) -> EpicFightCapabilities.getItemStackCapability(entitypatch.getOriginal().getOffhandItem()).getWeaponCategory() == AscendedWeaponCategories.SUP_FLUTE);
                 return builder;
+    };
+    public static Function<Item, CapabilityItem.Builder> PRAY = (item) -> {
+      CapabilityItem.Builder builder = WeaponCapability.builder()
+              .category(AscendedWeaponCategories.PRAY)
+              .styleProvider((playerpatch) -> Styles.OCHS)
+              .canBePlacedOffhand(true)
+              .newStyleCombo(Styles.OCHS, AscendedAnimations.PRAYER_AUTO, AscendedAnimations.PRAYER_AUTO_2, AscendedAnimations.PRAYER_DASH, AscendedAnimations.PRAYER_AIRSLASH)
+              .livingMotionModifier(Styles.OCHS, LivingMotions.IDLE, AscendedAnimations.PRAYER_IDLE)
+              .livingMotionModifier(Styles.OCHS, LivingMotions.KNEEL, AscendedAnimations.PRAYER_IDLE)
+              .livingMotionModifier(Styles.OCHS, LivingMotions.SNEAK, AscendedAnimations.PRAYER_IDLE)
+              .livingMotionModifier(Styles.OCHS, LivingMotions.WALK, AscendedAnimations.PRAYER_IDLE)
+              .livingMotionModifier(Styles.OCHS, LivingMotions.RUN, AscendedAnimations.PRAYER_IDLE)
+              .weaponCombinationPredicator((entitypatch) -> EpicFightCapabilities.getItemStackCapability(entitypatch.getOriginal().getOffhandItem()).getWeaponCategory() == AscendedWeaponCategories.PRAY);
+      return builder;
     };
 
     @SubscribeEvent
@@ -120,5 +133,6 @@ public class WeaponCapabilityPresets {
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Ascended_arts.MOD_ID, "scythe"), SCYTHE);
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Ascended_arts.MOD_ID, "sweeping_scythe"), SWEEPING_SCYTHE);
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Ascended_arts.MOD_ID, "flute"), SUP_FLUTE);
+        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Ascended_arts.MOD_ID, "compat_pray"), PRAY);
     }
 }
