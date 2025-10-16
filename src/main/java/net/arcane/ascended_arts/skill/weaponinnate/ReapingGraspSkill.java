@@ -53,10 +53,9 @@ public class ReapingGraspSkill extends WeaponInnateSkill {
                 }
             }
             if (AscendedAnimations.REAPING_GRASP_2.equals(event.getAnimation())) {
-                    event.getPlayerPatch().getCurrentlyActuallyHitEntities().clear();
                     event.getPlayerPatch().getServerAnimator().getPlayerFor(null).reset();
                     event.getPlayerPatch().reserveAnimation(this.end2);
-                    event.getPlayerPatch().getCurrentlyActuallyHitEntities();
+
 
             }
 

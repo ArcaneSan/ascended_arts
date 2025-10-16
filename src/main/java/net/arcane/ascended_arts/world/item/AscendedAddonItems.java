@@ -1,6 +1,7 @@
 package net.arcane.ascended_arts.world.item;
 
 import net.arcane.ascended_arts.Ascended_arts;
+import net.arcane.ascended_arts.entity.client.armor.IronHanfuArmorItem;
 import net.arcane.ascended_arts.item.AscendedArmorMaterials;
 import net.arcane.ascended_arts.item.AscendedToolTiers;
 import net.arcane.ascended_arts.item.custom.RoyalHunterArmorItem;
@@ -62,6 +63,14 @@ public class AscendedAddonItems {
             ITEMS.register("void_slayer_leggings", () -> new VoidSlayerArmorItem(AscendedArmorMaterials.Mythos, ArmorItem.Type.LEGGINGS, new Item.Properties().fireResistant()));
     public static final RegistryObject<Item> VOID_SLAYER_BOOTS =
             ITEMS.register("void_slayer_boots", () -> new VoidSlayerArmorItem(AscendedArmorMaterials.Mythos, ArmorItem.Type.BOOTS, new Item.Properties().fireResistant()));
+    public static final RegistryObject<Item> IRON_HANFU_HOOD =
+            ITEMS.register("iron_hanfu_hood", () -> new IronHanfuArmorItem(ArmorItem.Type.HELMET, new Item.Properties()));
+    public static final RegistryObject<Item> IRON_HANFU_ROBE =
+            ITEMS.register("iron_hanfu_robe", () -> new IronHanfuArmorItem(ArmorItem.Type.CHESTPLATE, new Item.Properties()));
+    public static final RegistryObject<Item> IRON_HANFU_PANTS =
+            ITEMS.register("iron_hanfu_pants", () -> new IronHanfuArmorItem(ArmorItem.Type.LEGGINGS, new Item.Properties()));
+    public static final RegistryObject<Item> IRON_HANFU_BOOTS =
+            ITEMS.register("iron_hanfu_boots", () -> new IronHanfuArmorItem(ArmorItem.Type.BOOTS, new Item.Properties()));
 
 
     public  static  void register(IEventBus eventBus) {

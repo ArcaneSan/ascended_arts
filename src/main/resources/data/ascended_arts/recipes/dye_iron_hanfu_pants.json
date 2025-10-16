@@ -1,0 +1,14 @@
+{
+  "type": "ascended_arts:dye",
+  "ingredients": [
+    {
+      "tag": "forge:dyes"
+    },
+    {
+      "item": "ascended_arts:iron_hanfu_pants"
+    }
+  ],
+  "result": {
+    "item": "ascended_arts:iron_hanfu_pants"
+  }
+}

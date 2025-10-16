@@ -2,6 +2,7 @@ package net.arcane.ascended_arts;
 
 import net.arcane.ascended_arts.gameasset.AscendedAnimations;
 import net.arcane.ascended_arts.gameasset.AscendedSkills;
+import net.arcane.ascended_arts.recipes.AARecipes;
 import net.arcane.ascended_arts.skill.AscendedSkillDataKeys;
 import net.arcane.ascended_arts.skill.guard.AscendedCompatSkills;
 import net.arcane.ascended_arts.world.capabilities.item.AscendedWeaponCategories;
@@ -58,6 +59,9 @@ public class Ascended_arts {
         AscendedSkillDataKeys.DATA_KEYS.register(modEventBus);
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
+
+        AARecipes.RECIPE_TYPES.register(modEventBus);
+        AARecipes.RECIPE_SERIALIZERS.register(modEventBus);
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
         if (FMLEnvironment.dist == Dist.CLIENT) {

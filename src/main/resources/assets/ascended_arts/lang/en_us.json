@@ -14,6 +14,11 @@
   "item.ascended_arts.etherveil_scythe": "Etherveil",
   "item.ascended_arts.skysplitter_jian": "Skysplitter",
 
+  "item.ascended_arts.iron_hanfu_hood" : "Iron Hanfu Hood",
+  "item.ascended_arts.iron_hanfu_robe" : "Iron Hanfu Robes",
+  "item.ascended_arts.iron_hanfu_pants" : "Iron Hanfu Pants",
+  "item.ascended_arts.iron_hanfu_boots" : "Iron Hanfu Boots",
+
   "item.ascended_arts.royal_hunter_mask": "Royal Hunter Mask",
   "item.ascended_arts.royal_hunter_robes": "Royal Hunter Robe",
   "item.ascended_arts.royal_hunter_leggings": "Royal Hunter Leggings",
@@ -22,6 +27,23 @@
   "item.ascended_arts.void_slayer_robes" : "Void Slayer Robe",
   "item.ascended_arts.void_slayer_leggings" : "Void Slayer leggings",
   "item.ascended_arts.void_slayer_boots" : "Void Slayer boots",
+
+  "black": "Black",
+  "blue": "Blue",
+  "brown" : "Brown",
+  "cyan" : "Cyan",
+  "gray" : "Gray",
+  "green" : "Green",
+  "light_blue" : "Light Blue",
+  "light_gray": "Light Gray",
+  "lime": "Lime",
+  "magenta": "Magenta",
+  "orange" : "Orange",
+  "pink" : "Pink",
+  "purple": "Purple",
+  "red" : "Red",
+  "white" : "White",
+  "yellow" : "Yellow",
 
 
   "epicfight.weapon_category.jian": "Jian",

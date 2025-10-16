@@ -29,6 +29,12 @@ public class AscendedCreativeTab {
                         output.accept(AscendedAddonItems.SMALL_DIAMOND_SCYTHE.get());
                         output.accept(AscendedAddonItems.SMALL_NETHERITE_SCYTHE.get());
 
+                        output.accept(AscendedAddonItems.IRON_HANFU_HOOD.get());
+                        output.accept(AscendedAddonItems.IRON_HANFU_ROBE.get());
+                        output.accept(AscendedAddonItems.IRON_HANFU_PANTS.get());
+                        output.accept(AscendedAddonItems.IRON_HANFU_BOOTS.get());
+
+
                         output.accept(AscendedAddonItems.GREATSWORD.get());
                         output.accept(AscendedAddonItems.ETHERVEIL_SCYTHE.get());
                         output.accept(AscendedAddonItems.SKYSPLITTER_JIAN.get());

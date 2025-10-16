@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "ascended_arts:item/iron_hanfu_robe"
+  }
+}
