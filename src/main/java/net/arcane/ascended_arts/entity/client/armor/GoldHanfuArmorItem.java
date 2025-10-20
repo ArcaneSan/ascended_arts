@@ -22,7 +22,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.function.Consumer;
 
 public class GoldHanfuArmorItem extends ArmorItem implements IDyeable {
-    private static final int[] MAX_DAMAGE_ARRAY = new int[]{13, 15, 16, 11};
+    private static final int[] MAX_DAMAGE_ARRAY = new int[]{14, 16, 17, 12};
 
     public static class Material implements ArmorMaterial {
 
@@ -35,8 +35,9 @@ public class GoldHanfuArmorItem extends ArmorItem implements IDyeable {
         public int getDefenseForType(Type slot) {
             return switch (slot) {
                 case CHESTPLATE -> 5;
-                case HELMET, BOOTS -> 2;
+                case HELMET -> 2;
                 case LEGGINGS -> 3;
+                case BOOTS -> 1;
             };
         }
 

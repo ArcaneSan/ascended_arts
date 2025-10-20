@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "base": {
+    "item": "minecraft:iron_chestplate"
+  },
+  "addition" : {
+    "item": "ascended_arts:hanfu_robe"
+  },
+  "result": {
+    "item": "ascended_arts:iron_hanfu_robe"
+  },
+  "template": {
+    "item": "ascended_arts:hanfu_upgrade"
+  }
+}

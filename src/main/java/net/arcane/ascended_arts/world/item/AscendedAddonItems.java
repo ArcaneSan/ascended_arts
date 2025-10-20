@@ -1,7 +1,7 @@
 package net.arcane.ascended_arts.world.item;
 
 import net.arcane.ascended_arts.Ascended_arts;
-import net.arcane.ascended_arts.entity.client.armor.IronHanfuArmorItem;
+import net.arcane.ascended_arts.entity.client.armor.*;
 import net.arcane.ascended_arts.item.AscendedArmorMaterials;
 import net.arcane.ascended_arts.item.AscendedToolTiers;
 import net.arcane.ascended_arts.item.custom.RoyalHunterArmorItem;
@@ -19,6 +19,11 @@ import net.minecraftforge.registries.RegistryObject;
 public class AscendedAddonItems {
     public static final DeferredRegister<Item> ITEMS =
             DeferredRegister.create(ForgeRegistries.ITEMS, Ascended_arts.MOD_ID);
+
+    public static final RegistryObject<Item> CLOTH =
+            ITEMS.register("cloth", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final RegistryObject<Item> HANFU_UPGRADE =
+            ITEMS.register("hanfu_upgrade", () -> new Item(new Item.Properties().fireResistant().rarity(Rarity.UNCOMMON).stacksTo(16)));
 
     public static final RegistryObject<Item> IRON_JIAN =
             ITEMS.register("iron_jian", () -> new AscendedItem(new Item.Properties(), Tiers.IRON));
@@ -63,6 +68,15 @@ public class AscendedAddonItems {
             ITEMS.register("void_slayer_leggings", () -> new VoidSlayerArmorItem(AscendedArmorMaterials.Mythos, ArmorItem.Type.LEGGINGS, new Item.Properties().fireResistant()));
     public static final RegistryObject<Item> VOID_SLAYER_BOOTS =
             ITEMS.register("void_slayer_boots", () -> new VoidSlayerArmorItem(AscendedArmorMaterials.Mythos, ArmorItem.Type.BOOTS, new Item.Properties().fireResistant()));
+
+    public static final RegistryObject<Item> HANFU_HOOD =
+            ITEMS.register("hanfu_hood", () -> new HanfuArmorItem(ArmorItem.Type.HELMET, new Item.Properties()));
+    public static final RegistryObject<Item> HANFU_ROBE =
+            ITEMS.register("hanfu_robe", () -> new HanfuArmorItem(ArmorItem.Type.CHESTPLATE, new Item.Properties()));
+    public static final RegistryObject<Item> HANFU_PANTS =
+            ITEMS.register("hanfu_pants", () -> new HanfuArmorItem(ArmorItem.Type.LEGGINGS, new Item.Properties()));
+    public static final RegistryObject<Item> HANFU_BOOTS =
+            ITEMS.register("hanfu_boots", () -> new HanfuArmorItem(ArmorItem.Type.BOOTS, new Item.Properties()));
     public static final RegistryObject<Item> IRON_HANFU_HOOD =
             ITEMS.register("iron_hanfu_hood", () -> new IronHanfuArmorItem(ArmorItem.Type.HELMET, new Item.Properties()));
     public static final RegistryObject<Item> IRON_HANFU_ROBE =
@@ -71,6 +85,30 @@ public class AscendedAddonItems {
             ITEMS.register("iron_hanfu_pants", () -> new IronHanfuArmorItem(ArmorItem.Type.LEGGINGS, new Item.Properties()));
     public static final RegistryObject<Item> IRON_HANFU_BOOTS =
             ITEMS.register("iron_hanfu_boots", () -> new IronHanfuArmorItem(ArmorItem.Type.BOOTS, new Item.Properties()));
+    public static final RegistryObject<Item> GOLD_HANFU_HOOD =
+            ITEMS.register("gold_hanfu_hood", () -> new GoldHanfuArmorItem(ArmorItem.Type.HELMET, new Item.Properties()));
+    public static final RegistryObject<Item> GOLD_HANFU_ROBE =
+            ITEMS.register("gold_hanfu_robe", () -> new GoldHanfuArmorItem(ArmorItem.Type.CHESTPLATE, new Item.Properties()));
+    public static final RegistryObject<Item> GOLD_HANFU_PANTS =
+            ITEMS.register("gold_hanfu_pants", () -> new GoldHanfuArmorItem(ArmorItem.Type.LEGGINGS, new Item.Properties()));
+    public static final RegistryObject<Item> GOLD_HANFU_BOOTS =
+            ITEMS.register("gold_hanfu_boots", () -> new GoldHanfuArmorItem(ArmorItem.Type.BOOTS, new Item.Properties()));
+    public static final RegistryObject<Item> DIAMOND_HANFU_HOOD =
+            ITEMS.register("diamond_hanfu_hood", () -> new DiamondHanfuArmorItem(ArmorItem.Type.HELMET, new Item.Properties()));
+    public static final RegistryObject<Item> DIAMOND_HANFU_ROBE =
+            ITEMS.register("diamond_hanfu_robe", () -> new DiamondHanfuArmorItem(ArmorItem.Type.CHESTPLATE, new Item.Properties()));
+    public static final RegistryObject<Item> DIAMOND_HANFU_PANTS =
+            ITEMS.register("diamond_hanfu_pants", () -> new DiamondHanfuArmorItem(ArmorItem.Type.LEGGINGS, new Item.Properties()));
+    public static final RegistryObject<Item> DIAMOND_HANFU_BOOTS =
+            ITEMS.register("diamond_hanfu_boots", () -> new DiamondHanfuArmorItem(ArmorItem.Type.BOOTS, new Item.Properties()));
+    public static final RegistryObject<Item> NETHERITE_HANFU_HOOD =
+            ITEMS.register("netherite_hanfu_hood", () -> new NetheriteHanfuArmorItem(ArmorItem.Type.HELMET, new Item.Properties().fireResistant()));
+    public static final RegistryObject<Item> NETHERITE_HANFU_ROBE =
+            ITEMS.register("netherite_hanfu_robe", () -> new NetheriteHanfuArmorItem(ArmorItem.Type.CHESTPLATE, new Item.Properties().fireResistant()));
+    public static final RegistryObject<Item> NETHERITE_HANFU_PANTS =
+            ITEMS.register("netherite_hanfu_pants", () -> new NetheriteHanfuArmorItem(ArmorItem.Type.LEGGINGS, new Item.Properties().fireResistant()));
+    public static final RegistryObject<Item> NETHERITE_HANFU_BOOTS =
+            ITEMS.register("netherite_hanfu_boots", () -> new NetheriteHanfuArmorItem(ArmorItem.Type.BOOTS, new Item.Properties().fireResistant()));
 
 
     public  static  void register(IEventBus eventBus) {

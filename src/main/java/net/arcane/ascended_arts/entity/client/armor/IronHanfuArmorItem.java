@@ -26,7 +26,7 @@ import java.util.function.Consumer;
 
 
 public class IronHanfuArmorItem extends ArmorItem implements IDyeable {
-    private static final int[] MAX_DAMAGE_ARRAY = new int[]{13, 15, 16, 11};
+    private static final int[] MAX_DAMAGE_ARRAY = new int[]{14, 16, 17, 12};
 
     public static class Material implements ArmorMaterial {
 
@@ -39,8 +39,9 @@ public class IronHanfuArmorItem extends ArmorItem implements IDyeable {
         public int getDefenseForType(Type slot) {
             return switch (slot) {
                 case CHESTPLATE -> 6;
-                case HELMET, BOOTS -> 2;
+                case HELMET -> 2;
                 case LEGGINGS -> 5;
+                case BOOTS -> 2;
             };
         }
 

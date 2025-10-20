@@ -18,6 +18,8 @@ public class AscendedCreativeTab {
                     .title(Component.translatable("creativetab.ascended_arts_tab"))
                     .displayItems(((itemDisplayParameters, output) ->
                     {
+                        output.accept(AscendedAddonItems.CLOTH.get());
+
                         output.accept(AscendedAddonItems.WOODEN_JIAN.get());
                         output.accept(AscendedAddonItems.GOLDEN_JIAN.get());
                         output.accept(AscendedAddonItems.IRON_JIAN.get());
@@ -29,11 +31,27 @@ public class AscendedCreativeTab {
                         output.accept(AscendedAddonItems.SMALL_DIAMOND_SCYTHE.get());
                         output.accept(AscendedAddonItems.SMALL_NETHERITE_SCYTHE.get());
 
+                        output.accept(AscendedAddonItems.HANFU_HOOD.get());
+                        output.accept(AscendedAddonItems.HANFU_ROBE.get());
+                        output.accept(AscendedAddonItems.HANFU_PANTS.get());
+                        output.accept(AscendedAddonItems.HANFU_BOOTS.get());
+                        output.accept(AscendedAddonItems.HANFU_UPGRADE.get());
                         output.accept(AscendedAddonItems.IRON_HANFU_HOOD.get());
                         output.accept(AscendedAddonItems.IRON_HANFU_ROBE.get());
                         output.accept(AscendedAddonItems.IRON_HANFU_PANTS.get());
                         output.accept(AscendedAddonItems.IRON_HANFU_BOOTS.get());
-
+                        output.accept(AscendedAddonItems.GOLD_HANFU_HOOD.get());
+                        output.accept(AscendedAddonItems.GOLD_HANFU_ROBE.get());
+                        output.accept(AscendedAddonItems.GOLD_HANFU_PANTS.get());
+                        output.accept(AscendedAddonItems.GOLD_HANFU_BOOTS.get());
+                        output.accept(AscendedAddonItems.DIAMOND_HANFU_HOOD.get());
+                        output.accept(AscendedAddonItems.DIAMOND_HANFU_ROBE.get());
+                        output.accept(AscendedAddonItems.DIAMOND_HANFU_PANTS.get());
+                        output.accept(AscendedAddonItems.DIAMOND_HANFU_BOOTS.get());
+                        output.accept(AscendedAddonItems.NETHERITE_HANFU_HOOD.get());
+                        output.accept(AscendedAddonItems.NETHERITE_HANFU_ROBE.get());
+                        output.accept(AscendedAddonItems.NETHERITE_HANFU_PANTS.get());
+                        output.accept(AscendedAddonItems.NETHERITE_HANFU_BOOTS.get());
 
                         output.accept(AscendedAddonItems.GREATSWORD.get());
                         output.accept(AscendedAddonItems.ETHERVEIL_SCYTHE.get());

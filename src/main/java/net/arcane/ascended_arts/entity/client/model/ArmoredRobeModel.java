@@ -35,7 +35,7 @@ public class ArmoredRobeModel extends ArmorModel {
         PartDefinition right_leg = root.getChild("right_legging");
 
 
-        PartDefinition Head = Hood.addOrReplaceChild("Head", CubeListBuilder.create().texOffs(4, 25).addBox(-4.25F, -8.0F, -4.25F, 8.5F, 6.0F, 8.5F, new CubeDeformation(0.0F))
+        PartDefinition Head = Hood.addOrReplaceChild("Head", CubeListBuilder.create().texOffs(4, 25).addBox(-4.25F, -8.0F, -4.25F, 8.5F, 8.0F, 8.5F, new CubeDeformation(0.0F))
                 .texOffs(4, 5).addBox(-4.5F, -8.75F, -4.5F, 9.0F, 9.0F, 9.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 0.0F, 0.0F));
 
         PartDefinition Body = Chest.addOrReplaceChild("Body", CubeListBuilder.create().texOffs(34, 42).addBox(-4.5F, 0.0F, -2.5F, 9.0F, 12.0F, 5.0F, new CubeDeformation(0.0F))
@@ -51,7 +51,7 @@ public class ArmoredRobeModel extends ArmorModel {
 
         PartDefinition RightArm = right_arm.addOrReplaceChild("RightArm", CubeListBuilder.create().texOffs(4, 64).addBox(1.5F, -2.25F, -2.5F, 5.0F, 9.0F, 5.0F, new CubeDeformation(0.0F))
                 .texOffs(84, 13).addBox(1.5F, 7.6F, -2.5F, 5.0F, 1.0F, 5.0F, new CubeDeformation(0.0F))
-                .texOffs(52, 63).addBox(0.25F, -2.75F, -3.0F, 6.0F, 4.0F, 6.0F, new CubeDeformation(0.0F)), PartPose.offset(-4.0F, -0.75F, 0.0F));
+                .texOffs(52, 63).addBox(0.25F, -2.75F, -3.0F, 6.0F, 4.0F, 6.0F, new CubeDeformation(0.0F)), PartPose.offset(-4.75F, -0.75F, 0.0F));
 
         PartDefinition LeftLeg = left_leg.addOrReplaceChild("LeftLeg", CubeListBuilder.create().texOffs(29, 65).addBox(-2.25F, -0.1F, -2.5F, 4.75F, 10.0F, 5.0F, new CubeDeformation(0.0F))
                 .texOffs(90, 27).addBox(1.884F, 0.7321F, -2.05F, 1.0F, 3.0F, 4.0F, new CubeDeformation(0.0F))

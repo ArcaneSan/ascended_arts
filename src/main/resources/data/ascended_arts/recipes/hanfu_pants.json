@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+  [
+    "AAA",
+    "A A",
+    "A A"
+  ],
+  "key":
+  {
+    "A": { "item" : "ascended_arts:cloth" }
+
+  },
+  "result":
+  {
+    "item" : "ascended_arts:hanfu_pants",
+    "count" : 1
+  }
+}

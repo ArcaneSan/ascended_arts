@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "base": {
+    "item": "minecraft:iron_helmet"
+  },
+  "addition" : {
+    "item": "ascended_arts:hanfu_hood"
+  },
+  "result": {
+    "item": "ascended_arts:iron_hanfu_hood"
+  },
+  "template": {
+    "item": "ascended_arts:hanfu_upgrade"
+  }
+}
