@@ -24,7 +24,7 @@ public abstract class ArmorModel extends HumanoidModel<LivingEntity> {
     final ModelPart body;
     final ModelPart leftArm;
     final ModelPart rightArm;
-
+    final ModelPart leggings;
     final ModelPart leftLegging;
     final ModelPart rightLegging;
     final ModelPart leftFoot;
@@ -35,7 +35,7 @@ public abstract class ArmorModel extends HumanoidModel<LivingEntity> {
         this.root = root;
         this.head = root.getChild("head");
         this.body = root.getChild("body");
-
+        this.leggings = root.getChild("leggings");
         this.leftArm = root.getChild("left_arm");
         this.rightArm = root.getChild("right_arm");
         this.leftLegging = root.getChild("left_legging");
@@ -47,7 +47,7 @@ public abstract class ArmorModel extends HumanoidModel<LivingEntity> {
     public static PartDefinition createHumanoidAlias(MeshDefinition mesh) {
         PartDefinition root = mesh.getRoot();
         root.addOrReplaceChild("body", new CubeListBuilder(), PartPose.ZERO);
-
+        root.addOrReplaceChild("leggings", new CubeListBuilder(), PartPose.ZERO);
         root.addOrReplaceChild("head", new CubeListBuilder(), PartPose.ZERO);
         root.addOrReplaceChild("left_legging", new CubeListBuilder(), PartPose.ZERO);
         root.addOrReplaceChild("left_foot", new CubeListBuilder(), PartPose.ZERO);
@@ -69,7 +69,7 @@ public abstract class ArmorModel extends HumanoidModel<LivingEntity> {
         if (slot == CHEST) {
             return ImmutableList.of(body, leftArm, rightArm);
         } else if (slot == LEGS) {
-            return ImmutableList.of(leftLegging, rightLegging);
+            return ImmutableList.of(leftLegging, rightLegging, leggings);
         } else if (slot == FEET) {
             return ImmutableList.of(leftFoot, rightFoot);
         } else return ImmutableList.of();
@@ -77,16 +77,21 @@ public abstract class ArmorModel extends HumanoidModel<LivingEntity> {
 
     @Override
     public void renderToBuffer(@NotNull PoseStack matrixStack, @NotNull VertexConsumer buffer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
+        if (slot == LEGS){
+            this.leggings.copyFrom(this.body);
+            this.rightLegging.copyFrom(this.rightLeg);
+            this.leftLegging.copyFrom(this.leftLeg);
+        }
         super.renderToBuffer(matrixStack, buffer, packedLight, packedOverlay, red, green, blue, alpha);
     }
 
     public void copyFromDefault(HumanoidModel<?> model) {
         body.copyFrom(model.body);
-
-        leftLegging.copyFrom(leftLeg);
-        rightLegging.copyFrom(rightLeg);
-        leftFoot.copyFrom(leftLeg);
-        rightFoot.copyFrom(rightLeg);
+        leggings.copyFrom(model.body);
+        leftLegging.copyFrom(model.leftLeg);
+        rightLegging.copyFrom(model.rightLeg);
+        leftFoot.copyFrom(model.leftLeg);
+        rightFoot.copyFrom(model.rightLeg);
     }
 
     public void setRotationAngle(ModelPart modelRenderer, float x, float y, float z) {

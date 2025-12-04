@@ -7,10 +7,8 @@ import net.arcane.ascended_arts.item.AscendedToolTiers;
 import net.arcane.ascended_arts.item.custom.RoyalHunterArmorItem;
 import net.arcane.ascended_arts.item.custom.SkySplitterItem;
 import net.arcane.ascended_arts.item.custom.VoidSlayerArmorItem;
-import net.minecraft.world.item.ArmorItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Rarity;
-import net.minecraft.world.item.Tiers;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.*;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -109,6 +107,40 @@ public class AscendedAddonItems {
             ITEMS.register("netherite_hanfu_pants", () -> new NetheriteHanfuArmorItem(ArmorItem.Type.LEGGINGS, new Item.Properties().fireResistant()));
     public static final RegistryObject<Item> NETHERITE_HANFU_BOOTS =
             ITEMS.register("netherite_hanfu_boots", () -> new NetheriteHanfuArmorItem(ArmorItem.Type.BOOTS, new Item.Properties().fireResistant()));
+
+
+    public static final RegistryObject<Item> SILENCE_HANFU_SMITHING_TEMPLATE =
+            ITEMS.register("silence_hanfu_armor_trim_smithing_template", () -> SmithingTemplateItem.createArmorTrimTemplate(ResourceLocation.fromNamespaceAndPath(Ascended_arts.MOD_ID, "silence_hanfu")));
+    public static final RegistryObject<Item> COAST_HANFU_SMITHING_TEMPLATE =
+            ITEMS.register("coast_hanfu_armor_trim_smithing_template", () -> SmithingTemplateItem.createArmorTrimTemplate(ResourceLocation.fromNamespaceAndPath(Ascended_arts.MOD_ID, "coast_hanfu")));
+    public static final RegistryObject<Item> DUNE_HANFU_SMITHING_TEMPLATE =
+            ITEMS.register("dune_hanfu_armor_trim_smithing_template", () -> SmithingTemplateItem.createArmorTrimTemplate(ResourceLocation.fromNamespaceAndPath(Ascended_arts.MOD_ID, "dune_hanfu")));
+    public static final RegistryObject<Item> EYE_HANFU_SMITHING_TEMPLATE =
+            ITEMS.register("eye_hanfu_armor_trim_smithing_template", () -> SmithingTemplateItem.createArmorTrimTemplate(ResourceLocation.fromNamespaceAndPath(Ascended_arts.MOD_ID, "eye_hanfu")));
+    public static final RegistryObject<Item> HOST_HANFU_SMITHING_TEMPLATE =
+            ITEMS.register("host_hanfu_armor_trim_smithing_template", () -> SmithingTemplateItem.createArmorTrimTemplate(ResourceLocation.fromNamespaceAndPath(Ascended_arts.MOD_ID, "host_hanfu")));
+    public static final RegistryObject<Item> WILD_HANFU_SMITHING_TEMPLATE =
+            ITEMS.register("wild_hanfu_armor_trim_smithing_template", () -> SmithingTemplateItem.createArmorTrimTemplate(ResourceLocation.fromNamespaceAndPath(Ascended_arts.MOD_ID, "wild_hanfu")));
+    public static final RegistryObject<Item> RAISER_HANFU_SMITHING_TEMPLATE =
+            ITEMS.register("raiser_hanfu_armor_trim_smithing_template", () -> SmithingTemplateItem.createArmorTrimTemplate(ResourceLocation.fromNamespaceAndPath(Ascended_arts.MOD_ID, "raiser_hanfu")));
+    public static final RegistryObject<Item> RIB_HANFU_SMITHING_TEMPLATE =
+            ITEMS.register("rib_hanfu_armor_trim_smithing_template", () -> SmithingTemplateItem.createArmorTrimTemplate(ResourceLocation.fromNamespaceAndPath(Ascended_arts.MOD_ID, "rib_hanfu")));
+    public static final RegistryObject<Item> SENTRY_HANFU_SMITHING_TEMPLATE =
+            ITEMS.register("sentry_hanfu_armor_trim_smithing_template", () -> SmithingTemplateItem.createArmorTrimTemplate(ResourceLocation.fromNamespaceAndPath(Ascended_arts.MOD_ID, "sentry_hanfu")));
+    public static final RegistryObject<Item> SNOUT_HANFU_SMITHING_TEMPLATE =
+            ITEMS.register("snout_hanfu_armor_trim_smithing_template", () -> SmithingTemplateItem.createArmorTrimTemplate(ResourceLocation.fromNamespaceAndPath(Ascended_arts.MOD_ID, "snout_hanfu")));
+    public static final RegistryObject<Item> SPIRE_HANFU_SMITHING_TEMPLATE =
+            ITEMS.register("spire_hanfu_armor_trim_smithing_template", () -> SmithingTemplateItem.createArmorTrimTemplate(ResourceLocation.fromNamespaceAndPath(Ascended_arts.MOD_ID, "spire_hanfu")));
+    public static final RegistryObject<Item> TIDE_HANFU_SMITHING_TEMPLATE =
+            ITEMS.register("tide_hanfu_armor_trim_smithing_template", () -> SmithingTemplateItem.createArmorTrimTemplate(ResourceLocation.fromNamespaceAndPath(Ascended_arts.MOD_ID, "tide_hanfu")));
+    public static final RegistryObject<Item> VEX_HANFU_SMITHING_TEMPLATE =
+            ITEMS.register("vex_hanfu_armor_trim_smithing_template", () -> SmithingTemplateItem.createArmorTrimTemplate(ResourceLocation.fromNamespaceAndPath(Ascended_arts.MOD_ID, "vex_hanfu")));
+    public static final RegistryObject<Item> WARD_HANFU_SMITHING_TEMPLATE =
+            ITEMS.register("ward_hanfu_armor_trim_smithing_template", () -> SmithingTemplateItem.createArmorTrimTemplate(ResourceLocation.fromNamespaceAndPath(Ascended_arts.MOD_ID, "ward_hanfu")));
+    public static final RegistryObject<Item> WAYFINDER_HANFU_SMITHING_TEMPLATE =
+            ITEMS.register("wayfinder_hanfu_armor_trim_smithing_template", () -> SmithingTemplateItem.createArmorTrimTemplate(ResourceLocation.fromNamespaceAndPath(Ascended_arts.MOD_ID, "wayfinder_hanfu")));
+    public static final RegistryObject<Item> SHAPER_HANFU_SMITHING_TEMPLATE =
+            ITEMS.register("shaper_hanfu_armor_trim_smithing_template", () -> SmithingTemplateItem.createArmorTrimTemplate(ResourceLocation.fromNamespaceAndPath(Ascended_arts.MOD_ID, "shaper_hanfu")));
 
 
     public  static  void register(IEventBus eventBus) {

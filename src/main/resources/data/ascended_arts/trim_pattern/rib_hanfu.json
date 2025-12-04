@@ -1,0 +1,8 @@
+{
+  "asset_id": "ascended_arts:rib_hanfu",
+  "decal": false,
+  "description": {
+    "translate": "trim_pattern.ascended_arts.rib_hanfu"
+  },
+  "template_item": "ascended_arts:rib_hanfu_armor_trim_smithing_template"
+}

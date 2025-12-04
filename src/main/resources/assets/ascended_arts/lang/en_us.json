@@ -69,5 +69,32 @@
   "skill.ascended_arts.celestial_punishment" : "Celestial Punishment",
   "skill.ascended_arts.celestial_punishment.tooltip" : "Pin the foes down and slice them from above",
   "skill.ascended_arts.celestial_onslaught" : "Celestial Onslaught",
-  "skill.ascended.arts.celestial_onsalught.tooltip" : "Shred your foes from the heavens"
+  "skill.ascended.arts.celestial_onslaught.tooltip" : "Shred your foes from the heavens",
+
+  "trim_pattern.ascended_arts.silence_hanfu" : "Silence for Hanfu Armor Only",
+  "trim_pattern.ascended_arts.coast_hanfu" : "Coast for Hanfu Armor Only",
+  "trim_pattern.ascended_arts.dune_hanfu" : "Dune for Hanfu Armor Only",
+  "trim_pattern.ascended_arts.eye_hanfu" : "Eye for Hanfu Armor Only",
+  "trim_pattern.ascended_arts.host_hanfu" : "Host for Hanfu Armor Only",
+  "trim_pattern.ascended_arts.raiser_hanfu" : "Raiser for Hanfu Armor Only",
+  "trim_pattern.ascended_arts.rib_hanfu" : "Rib for Hanfu Armor Only",
+  "trim_pattern.ascended_arts.sentry_hanfu" : "Sentry for Hanfu Armor Only",
+  "trim_pattern.ascended_arts.shaper_hanfu" : "Shaper for Hanfu Armor Only",
+  "trim_pattern.ascended_arts.snout_hanfu" : "Snout for Hanfu Armor Only",
+  "trim_pattern.ascended_arts.spire_hanfu" : "Spire for Hanfu Armor Only",
+  "trim_pattern.ascended_arts.tide_hanfu" : "Tide for Hanfu Armor Only",
+  "trim_pattern.ascended_arts.vex_hanfu" : "Vex for Hanfu Armor Only",
+  "trim_pattern.ascended_arts.ward_hanfu" : "Ward for Hanfu Armor Only",
+  "trim_pattern.ascended_arts.wayfinder_hanfu" : "Wayfinder for Hanfu Armor Only",
+  "trim_pattern.ascended_arts.wild_hanfu" : "Wild for Hanfu Armor Only"
+
+
+
+
+
+
+
+
+
+
 }

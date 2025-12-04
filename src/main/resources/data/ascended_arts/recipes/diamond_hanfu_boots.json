@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "base": {
+    "item": "minecraft:diamond_boots"
+  },
+  "addition" : {
+    "item": "ascended_arts:hanfu_boots"
+  },
+  "result": {
+    "item": "ascended_arts:diamond_hanfu_boots"
+  },
+  "template": {
+    "item": "ascended_arts:hanfu_upgrade"
+  }
+}

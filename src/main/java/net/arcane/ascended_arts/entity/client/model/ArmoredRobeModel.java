@@ -33,6 +33,7 @@ public class ArmoredRobeModel extends ArmorModel {
         PartDefinition Hood = root.getChild("head");
         PartDefinition left_leg = root.getChild("left_legging");
         PartDefinition right_leg = root.getChild("right_legging");
+        PartDefinition waists = root.getChild("leggings");
 
 
         PartDefinition Head = Hood.addOrReplaceChild("Head", CubeListBuilder.create().texOffs(4, 25).addBox(-4.25F, -8.0F, -4.25F, 8.5F, 8.0F, 8.5F, new CubeDeformation(0.0F))
@@ -74,6 +75,9 @@ public class ArmoredRobeModel extends ArmorModel {
 
         PartDefinition RightBoot = right_foot.addOrReplaceChild("RightBoot", CubeListBuilder.create().texOffs(90, 47).addBox(-2.7F, 10.15F, -4.0F, 5.0F, 2.0F, 1.0F, new CubeDeformation(0.0F))
                 .texOffs(66, 21).addBox(-2.7F, 9.15F, -3.0F, 5.0F, 3.0F, 6.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 0.0F, 0.0F));
+
+        PartDefinition waist = waists.addOrReplaceChild("waist", CubeListBuilder.create().texOffs(87, 54).addBox(-4.35F, 8.0F, -2.25F, 8.7F, 4.25F, 4.5F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 0.0F, 0.0F));
+
 
         return LayerDefinition.create(mesh, 128, 128);
     }

@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing_trim",
+  "addition": {
+    "tag": "minecraft:trim_materials"
+  },
+  "base": {
+    "tag": "ascended_arts:hanfu_trims"
+  },
+  "template": {
+    "item": "ascended_arts:ward_hanfu_armor_trim_smithing_template"
+  }
+}

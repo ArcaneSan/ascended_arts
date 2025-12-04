@@ -66,6 +66,30 @@ public class AscendedCreativeTab {
                         output.accept(AscendedAddonItems.VOID_SLAYER_LEGGINGS.get());
                         output.accept(AscendedAddonItems.VOID_SLAYER_BOOTS.get());
 
+                        output.accept(AscendedAddonItems.SILENCE_HANFU_SMITHING_TEMPLATE.get());
+                        output.accept(AscendedAddonItems.COAST_HANFU_SMITHING_TEMPLATE.get());
+                        output.accept(AscendedAddonItems.DUNE_HANFU_SMITHING_TEMPLATE.get());
+                        output.accept(AscendedAddonItems.EYE_HANFU_SMITHING_TEMPLATE.get());
+                        output.accept(AscendedAddonItems.HOST_HANFU_SMITHING_TEMPLATE.get());
+                        output.accept(AscendedAddonItems.RAISER_HANFU_SMITHING_TEMPLATE.get());
+                        output.accept(AscendedAddonItems.RIB_HANFU_SMITHING_TEMPLATE.get());
+                        output.accept(AscendedAddonItems.SENTRY_HANFU_SMITHING_TEMPLATE.get());
+                        output.accept(AscendedAddonItems.SHAPER_HANFU_SMITHING_TEMPLATE.get());
+                        output.accept(AscendedAddonItems.SNOUT_HANFU_SMITHING_TEMPLATE.get());
+                        output.accept(AscendedAddonItems.SPIRE_HANFU_SMITHING_TEMPLATE.get());
+                        output.accept(AscendedAddonItems.TIDE_HANFU_SMITHING_TEMPLATE.get());
+                        output.accept(AscendedAddonItems.VEX_HANFU_SMITHING_TEMPLATE.get());
+                        output.accept(AscendedAddonItems.WARD_HANFU_SMITHING_TEMPLATE.get());
+                        output.accept(AscendedAddonItems.WAYFINDER_HANFU_SMITHING_TEMPLATE.get());
+                        output.accept(AscendedAddonItems.WILD_HANFU_SMITHING_TEMPLATE.get());
+
+
+
+
+
+
+
+
                     })).build());
 
     public static void register(IEventBus eventBus) {
