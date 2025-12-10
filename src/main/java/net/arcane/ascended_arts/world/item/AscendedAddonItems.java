@@ -2,11 +2,10 @@ package net.arcane.ascended_arts.world.item;
 
 import net.arcane.ascended_arts.Ascended_arts;
 import net.arcane.ascended_arts.entity.client.armor.*;
+import net.arcane.ascended_arts.entity.client.armor.VoidSlayerArmorItem;
 import net.arcane.ascended_arts.item.AscendedArmorMaterials;
 import net.arcane.ascended_arts.item.AscendedToolTiers;
-import net.arcane.ascended_arts.item.custom.RoyalHunterArmorItem;
 import net.arcane.ascended_arts.item.custom.SkySplitterItem;
-import net.arcane.ascended_arts.item.custom.VoidSlayerArmorItem;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.*;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -51,21 +50,21 @@ public class AscendedAddonItems {
             ITEMS.register("small_netherite_scythe", () -> new AscendedSmallScytheItem(new Item.Properties().fireResistant(), Tiers.NETHERITE));
 
     public static final RegistryObject<Item> ROYAL_HUNTER_MASK =
-            ITEMS.register("royal_hunter_mask", () -> new RoyalHunterArmorItem(AscendedArmorMaterials.Mythos, ArmorItem.Type.HELMET, new Item.Properties().fireResistant()));
+            ITEMS.register("royal_hunter_mask", () -> new RoyalHunterArmorItem(ArmorItem.Type.HELMET, new Item.Properties().fireResistant().rarity(Rarity.EPIC)));
     public static final RegistryObject<Item> ROYAL_HUNTER_ROBES =
-            ITEMS.register("royal_hunter_robes", () -> new RoyalHunterArmorItem(AscendedArmorMaterials.Mythos, ArmorItem.Type.CHESTPLATE, new Item.Properties().fireResistant()));
+            ITEMS.register("royal_hunter_robes", () -> new RoyalHunterArmorItem(ArmorItem.Type.CHESTPLATE, new Item.Properties().fireResistant().rarity(Rarity.EPIC)));
     public static final RegistryObject<Item> ROYAL_HUNTER_LEGGINGS =
-            ITEMS.register("royal_hunter_leggings", () -> new RoyalHunterArmorItem(AscendedArmorMaterials.Mythos, ArmorItem.Type.LEGGINGS, new Item.Properties().fireResistant()));
+            ITEMS.register("royal_hunter_leggings", () -> new RoyalHunterArmorItem(ArmorItem.Type.LEGGINGS, new Item.Properties().fireResistant().rarity(Rarity.EPIC)));
     public static final RegistryObject<Item> ROYAL_HUNTER_BOOTS =
-            ITEMS.register("royal_hunter_boots", () -> new RoyalHunterArmorItem(AscendedArmorMaterials.Mythos, ArmorItem.Type.BOOTS, new Item.Properties().fireResistant()));
+            ITEMS.register("royal_hunter_boots", () -> new RoyalHunterArmorItem(ArmorItem.Type.BOOTS, new Item.Properties().fireResistant().rarity(Rarity.EPIC)));
     public static final RegistryObject<Item> VOID_SLAYER_HALO =
-            ITEMS.register("void_slayer_halo", () -> new VoidSlayerArmorItem(AscendedArmorMaterials.Mythos, ArmorItem.Type.HELMET, new Item.Properties().fireResistant()));
+            ITEMS.register("void_slayer_halo", () -> new VoidSlayerArmorItem(ArmorItem.Type.HELMET, new Item.Properties().fireResistant().rarity(Rarity.EPIC)));
     public static final RegistryObject<Item> VOID_SLAYER_ROBES =
-            ITEMS.register("void_slayer_robes", () -> new VoidSlayerArmorItem(AscendedArmorMaterials.Mythos, ArmorItem.Type.CHESTPLATE, new Item.Properties().fireResistant()));
+            ITEMS.register("void_slayer_robes", () -> new VoidSlayerArmorItem(ArmorItem.Type.CHESTPLATE, new Item.Properties().fireResistant().rarity(Rarity.EPIC)));
     public static final RegistryObject<Item> VOID_SLAYER_LEGGINGS =
-            ITEMS.register("void_slayer_leggings", () -> new VoidSlayerArmorItem(AscendedArmorMaterials.Mythos, ArmorItem.Type.LEGGINGS, new Item.Properties().fireResistant()));
+            ITEMS.register("void_slayer_leggings", () -> new VoidSlayerArmorItem(ArmorItem.Type.LEGGINGS, new Item.Properties().fireResistant().rarity(Rarity.EPIC)));
     public static final RegistryObject<Item> VOID_SLAYER_BOOTS =
-            ITEMS.register("void_slayer_boots", () -> new VoidSlayerArmorItem(AscendedArmorMaterials.Mythos, ArmorItem.Type.BOOTS, new Item.Properties().fireResistant()));
+            ITEMS.register("void_slayer_boots", () -> new VoidSlayerArmorItem(ArmorItem.Type.BOOTS, new Item.Properties().fireResistant().rarity(Rarity.EPIC)));
 
     public static final RegistryObject<Item> HANFU_HOOD =
             ITEMS.register("hanfu_hood", () -> new HanfuArmorItem(ArmorItem.Type.HELMET, new Item.Properties()));
