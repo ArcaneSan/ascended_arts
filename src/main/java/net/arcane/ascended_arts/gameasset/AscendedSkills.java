@@ -1,6 +1,7 @@
 package net.arcane.ascended_arts.gameasset;
 
 import net.arcane.ascended_arts.Ascended_arts;
+import net.arcane.ascended_arts.skill.ascension_path.QiBuildingSkill;
 import net.arcane.ascended_arts.skill.weaponinnate.*;
 import net.arcane.ascended_arts.skill.weaponpassive.FloatingPassive;
 
@@ -32,6 +33,7 @@ public class AscendedSkills {
     public static Skill REAPING_GRASP;
     public static Skill CHASING_SWEEP;
     public static Skill UNRELENTING_ASSAULT;
+    public static Skill QI_BUILDING;
 
 
 
@@ -39,6 +41,9 @@ public class AscendedSkills {
     @SubscribeEvent
     public static void buildSkillEvent(SkillBuildEvent build) {
         SkillBuildEvent.ModRegistryWorker modRegistry = build.createRegistryWorker(Ascended_arts.MOD_ID);
+
+        QI_BUILDING = modRegistry.build("qi_building", QiBuildingSkill::new, QiBuildingSkill.createQiBuildingBuilder());
+
 
         WeaponInnateSkill celestial_punishment = modRegistry.build("celestial_punishment", CelestialPunishmentSkill :: new, WeaponInnateSkill.createWeaponInnateBuilder());
         celestial_punishment
@@ -112,8 +117,10 @@ public class AscendedSkills {
     }
 
     public AscendedSkills() {
+
     }
     public static void registerAscendedSkills(RegisterEvent bus) {
+
     }
 
 }

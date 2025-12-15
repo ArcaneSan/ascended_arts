@@ -1,0 +1,13 @@
+{
+  "nodes": [
+    {
+      "ability_points": 5,
+      "hidden": false,
+      "position_in_screen": [
+        20,
+        30
+      ],
+      "skill": "ascended_arts:qi_building"
+    }
+  ]
+}

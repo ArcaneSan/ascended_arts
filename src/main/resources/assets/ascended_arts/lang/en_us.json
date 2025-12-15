@@ -69,7 +69,14 @@
   "skill.ascended_arts.celestial_punishment" : "Celestial Punishment",
   "skill.ascended_arts.celestial_punishment.tooltip" : "Pin the foes down and slice them from above",
   "skill.ascended_arts.celestial_onslaught" : "Celestial Onslaught",
-  "skill.ascended.arts.celestial_onslaught.tooltip" : "Shred your foes from the heavens",
+  "skill.ascended_arts.celestial_onslaught.tooltip" : "Shred your foes from the heavens",
+
+  "skill_tree.ascended_arts.path_to_ascension": "Path to Ascension",
+
+  "skill.ascended_arts.qi_building" : "Qi Building",
+  "epicfight.skill_slot.ascension_path": "Path to Ascension",
+  "skill.epicfight.ascension_path.category" : "Inner Cultivation",
+  "skill.ascended_arts.qi_building.tooltip" : "The first step towards ascension. You aren't too much different from a mortal, with a small bonus. Regain %s%% of missing stamina when killing your target.",
 
   "trim_pattern.ascended_arts.silence_hanfu" : "Silence for Hanfu Armor Only",
   "trim_pattern.ascended_arts.coast_hanfu" : "Coast for Hanfu Armor Only",

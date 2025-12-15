@@ -1,9 +1,11 @@
 package net.arcane.ascended_arts;
 
+import net.arcane.ascended_arts.compat.EpicSkillsCompat;
 import net.arcane.ascended_arts.gameasset.AscendedAnimations;
 import net.arcane.ascended_arts.gameasset.AscendedSkills;
 import net.arcane.ascended_arts.recipes.AARecipes;
 import net.arcane.ascended_arts.skill.AscendedSkillDataKeys;
+import net.arcane.ascended_arts.skill.AscendedSkillSlots;
 import net.arcane.ascended_arts.skill.guard.AscendedCompatSkills;
 import net.arcane.ascended_arts.world.capabilities.item.AscendedWeaponCategories;
 import net.arcane.ascended_arts.world.item.AscendedAddonItems;
@@ -21,6 +23,7 @@ import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DistExecutor;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -31,6 +34,8 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import org.slf4j.Logger;
+import yesman.epicfight.main.EpicFightSharedConstants;
+import yesman.epicfight.skill.SkillSlot;
 import yesman.epicfight.world.capabilities.item.WeaponCategory;
 
 // The value here should match an entry in the META-INF/mods.toml file
@@ -49,6 +54,11 @@ public class Ascended_arts {
         AscendedCreativeTab.register(modEventBus);
 
         WeaponCategory.ENUM_MANAGER.registerEnumCls(MOD_ID, AscendedWeaponCategories.class);
+        AscendedSkillSlots.ENUM_MANAGER.registerEnumCls(MOD_ID, AscendedSkillSlots.class);
+
+        if (EpicFightSharedConstants.isPhysicalClient() && ModList.get().isLoaded("epicskills")) {
+            EpicSkillsCompat.registerCategorySlotTexture();
+        }
 
         DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> modEventBus.addListener(AscendedCompatSkills::onIconCreate));
 

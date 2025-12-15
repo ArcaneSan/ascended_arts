@@ -1,0 +1,19 @@
+{
+  "regen_rate": 5,
+  "attribute_modifiers": [
+    {
+      "attribute": "minecraft:generic.attack_damage",
+      "name": "qi_building_skill_stat",
+      "uuid": "89a938db-f471-4ca6-986b-7d32756b92e2",
+      "operation": "multiply_total",
+      "amount": 0.1
+    },
+    {
+      "attribute": "epicfight:staminar",
+      "name": "qi_building_skill_stat",
+      "uuid": "89a938db-f471-4ca6-986b-7d32756b92e2",
+      "operation": "addition",
+      "amount": 3.0
+    }
+  ]
+}
