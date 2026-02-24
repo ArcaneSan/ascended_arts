@@ -2,17 +2,17 @@
   "parent": "minecraft:item/handheld",
   "loader": "forge:separate_transforms",
   "base": {
-    "parent": "ascended_arts:item/diamond_jian_3d"
+    "parent": "ascended_arts:item/template_jian",
+    "textures": {
+      "layer0": "ascended_arts:item/diamond_jian"
+    }
   },
   "perspectives": {
     "gui": {
-      "parent": "ascended_arts:item/diamond_jian_2d"
-    },
-    "ground": {
-      "parent": "ascended_arts:item/diamond_jian_2d"
-    },
-    "fixed": {
-      "parent": "ascended_arts:item/diamond_jian_2d"
+      "parent": "minecraft:item/handheld",
+      "textures": {
+        "layer0": "ascended_arts:item/diamond_jian_gui"
+      }
     }
   }
 }

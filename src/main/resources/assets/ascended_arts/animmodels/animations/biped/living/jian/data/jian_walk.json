@@ -1,20 +1,24 @@
 {
-  "layer":"COMPOSITE_LAYER",
-  "priority":"MIDDLE",
-  "masks":
-  [
-    {
-      "livingmotion":"WALK",
-      "type":"none"
+  "multilayer": {
+    "base": {
+      "priority":"LOWEST",
+      "masks":
+      [
+        {
+          "livingmotion":"ALL",
+          "type":"none"
+        }
+      ]
     },
-    {
-      "livingmotion":"ALL",
-      "type":"arms"
-    },
-    {
-      "livingmotion":"JUMP",
-      "type":"upper_joints"
+    "composite": {
+      "priority":"LOWEST",
+      "masks":
+      [
+        {
+          "livingmotion":"ALL",
+          "type":"arms"
+        }
+      ]
     }
-
-  ]
+  }
 }

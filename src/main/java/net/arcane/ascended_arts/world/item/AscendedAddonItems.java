@@ -17,6 +17,9 @@ public class AscendedAddonItems {
     public static final DeferredRegister<Item> ITEMS =
             DeferredRegister.create(ForgeRegistries.ITEMS, Ascended_arts.MOD_ID);
 
+    public static final RegistryObject<Item> TESTER =
+            ITEMS.register("tester", () -> new AscendedItem(new Item.Properties(), Tiers.DIAMOND));
+
     public static final RegistryObject<Item> CLOTH =
             ITEMS.register("cloth", () -> new Item(new Item.Properties().stacksTo(64)));
     public static final RegistryObject<Item> HANFU_UPGRADE =

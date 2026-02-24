@@ -8,6 +8,7 @@ import net.arcane.ascended_arts.skill.AscendedSkillDataKeys;
 import net.arcane.ascended_arts.skill.AscendedSkillSlots;
 import net.arcane.ascended_arts.skill.guard.AscendedCompatSkills;
 import net.arcane.ascended_arts.world.capabilities.item.AscendedWeaponCategories;
+import net.arcane.ascended_arts.world.capabilities.provider.CompatItemCapabilityProvider;
 import net.arcane.ascended_arts.world.item.AscendedAddonItems;
 import net.arcane.ascended_arts.world.item.AscendedCreativeTab;
 
@@ -53,6 +54,7 @@ public class Ascended_arts {
         AscendedAddonItems.register(modEventBus);
         AscendedCreativeTab.register(modEventBus);
 
+        modEventBus.addListener(this::doCommonStuff);
         WeaponCategory.ENUM_MANAGER.registerEnumCls(MOD_ID, AscendedWeaponCategories.class);
         AscendedSkillSlots.ENUM_MANAGER.registerEnumCls(MOD_ID, AscendedSkillSlots.class);
 
@@ -81,6 +83,10 @@ public class Ascended_arts {
         }
     }
 
+    private void doCommonStuff(final FMLCommonSetupEvent event){
+        event.enqueueWork(CompatItemCapabilityProvider::registerWeaponTypesByClass);
+    }
+
     private void commonSetup(final FMLCommonSetupEvent event) {
         // Some common setup code
 
@@ -97,7 +103,7 @@ public class Ascended_arts {
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {
         // Do something when the server starts
-        LOGGER.info("HELLO from server starting");
+        LOGGER.info("The Server is Starting~!");
     }
 
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent

@@ -1,31 +1,19 @@
 {
   "layer":"COMPOSITE_LAYER",
-  "priority":"MIDDLE",
+  "priority":"LOWEST",
   "masks":
   [
+    {
+      "livingmotion":"ALL",
+      "type":"arms"
+    },
     {
       "livingmotion":"IDLE",
       "type":"none"
     },
     {
-    "livingmotion":"ALL",
-    "type":"arms"
-    },
-    {
-      "livingmotion":"JUMP",
-      "type":"upper_joints"
-    },
-    {
-      "livingmotion": "BLOCK_SHIELD",
-      "type": "right_arms"
-    },
-    {
-      "livingmotion": "EAT",
-      "type": "right_arms"
-    },
-    {
-      "livingmotion": "DRINK",
-      "type": "right_arms"
+      "livingmotion":"SWIM",
+      "type":"right_arms"
     }
   ]
 }

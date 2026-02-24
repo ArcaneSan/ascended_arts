@@ -9,7 +9,6 @@ import yesman.epicfight.gameasset.EpicFightSounds;
 import yesman.epicfight.network.EntityPairingPacketTypes;
 import yesman.epicfight.network.EpicFightNetworkManager;
 import yesman.epicfight.network.server.SPEntityPairingPacket;
-import yesman.epicfight.skill.Skill;
 import yesman.epicfight.skill.SkillBuilder;
 import yesman.epicfight.skill.SkillContainer;
 import yesman.epicfight.world.entity.eventlistener.PlayerEventListener;
@@ -17,7 +16,7 @@ import yesman.epicfight.world.entity.eventlistener.PlayerEventListener;
 import java.util.List;
 import java.util.UUID;
 
-public class QiBuildingSkill extends Skill {
+public class QiBuildingSkill extends AscensionSkill {
 
     private static final UUID EVENT_UUID = UUID.fromString("89a938db-f471-4ca6-986b-7d32756b92e2");
 

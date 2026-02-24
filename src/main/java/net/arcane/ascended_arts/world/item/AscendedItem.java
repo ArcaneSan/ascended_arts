@@ -7,7 +7,7 @@ import yesman.epicfight.world.item.WeaponItem;
 
 public class AscendedItem extends WeaponItem {
     public AscendedItem(Item.Properties build, Tier materialIn) {
-        super(materialIn, 4, -2.2F, build);
+        super(materialIn, 3, -2.2F, build);
     }
 
     @Override

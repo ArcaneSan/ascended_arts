@@ -98,6 +98,7 @@ minecraft {
         client {
             // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
             property 'forge.enabledGameTestNamespaces', mod_id
+
         }
 
         server {
@@ -170,8 +171,7 @@ dependencies {
     // then special handling is done to allow a setup of a vanilla dependency without the use of an external repository.
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
 //    implementation fg.deobf("curse.maven:epic-fight-mod-405076:6878218")
-    implementation fg.deobf("curse.maven:epic-fight-mod-405076:7316952")
-
+    implementation fg.deobf("curse.maven:epic-fight-mod-405076:7345468")
     //epic fight skill tree
     implementation fg.deobf("curse.maven:epic-fight-skill-tree-1295882:7303977")
 
@@ -181,11 +181,11 @@ dependencies {
     implementation("com.eliotlash.mclib:mclib:20")
 
 //   corail tombstone
-//    implementation fg.deobf("curse.maven:corail-tombstone-243707:6956885")
+//    implementation fg.deobf("curse.maven:corail-tombstone-243707:6900426")
 
 //   supplementaries
-//    implementation fg.deobf("curse.maven:selene-499980:6935940")
-//    implementation fg.deobf("curse.maven:supplementaries-412082:6889003")
+    implementation fg.deobf("curse.maven:selene-499980:6935940")
+    implementation fg.deobf("curse.maven:supplementaries-412082:6889003")
 
     //malum stuff
 //       implementation fg.deobf("curse.maven:malum-484064:6646111")

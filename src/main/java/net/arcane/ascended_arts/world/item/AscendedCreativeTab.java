@@ -18,6 +18,8 @@ public class AscendedCreativeTab {
                     .title(Component.translatable("creativetab.ascended_arts_tab"))
                     .displayItems(((itemDisplayParameters, output) ->
                     {
+                        output.accept(AscendedAddonItems.TESTER.get());
+
                         output.accept(AscendedAddonItems.CLOTH.get());
 
                         output.accept(AscendedAddonItems.WOODEN_JIAN.get());

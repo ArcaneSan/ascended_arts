@@ -23,7 +23,7 @@ import yesman.epicfight.skill.guard.ParryingSkill;
 import yesman.epicfight.skill.identity.MeteorSlamSkill;
 import yesman.epicfight.skill.passive.EmergencyEscapeSkill;
 import yesman.epicfight.skill.passive.SwordmasterSkill;
-
+import yesman.epicfight.world.capabilities.item.CapabilityItem;
 
 
 import java.util.List;
@@ -40,9 +40,9 @@ public class AscendedCompatSkills {
         if (event.getRegistryName().equals(ResourceLocation.fromNamespaceAndPath("epicfight","guard"))) {
             GuardSkill.Builder builder = event.getSkillBuilder();
 
-            builder.addGuardMotion(AscendedWeaponCategories.JIAN, (item, player) -> {
-              return AscendedAnimations.JIAN_GUARD_HIT;
-            }).addGuardBreakMotion(AscendedWeaponCategories.JIAN, (item, player) -> {
+            builder.addGuardMotion(AscendedWeaponCategories.JIAN, (itemCap, playerPatch) -> itemCap.getStyle(playerPatch) == CapabilityItem.Styles.ONE_HAND ?
+                    AscendedAnimations.JIAN_GUARD_HIT : AscendedAnimations.JIAN_DUAL_GUARD_HIT)
+            .addGuardBreakMotion(AscendedWeaponCategories.JIAN, (item, player) -> {
                 return AscendedAnimations.JIAN_GUARD_BREAK;
             });
             builder.addGuardMotion(AscendedWeaponCategories.SCYTHE, (item, player) -> {
@@ -62,9 +62,10 @@ public class AscendedCompatSkills {
                 return AscendedAnimations.JIAN_GUARD_HIT;
             }).addGuardBreakMotion(AscendedWeaponCategories.JIAN, (item, player) -> {
                 return AscendedAnimations.JIAN_GUARD_BREAK;
-            }).addAdvancedGuardMotion(AscendedWeaponCategories.JIAN, (item, player) -> {
-                return List.of(AscendedAnimations.JIAN_GUARD_PARRY_1, AscendedAnimations.JIAN_GUARD_PARRY_2);
-            });
+            }).addAdvancedGuardMotion(AscendedWeaponCategories.JIAN, (itemCap, playerPatch) ->  itemCap.getStyle(playerPatch) == CapabilityItem.Styles.ONE_HAND ?
+                    List.of(AscendedAnimations.JIAN_GUARD_PARRY_1, AscendedAnimations.JIAN_GUARD_PARRY_2)
+                    : List.of(AscendedAnimations.JIAN_DUAL_GUARD_PARRY_1, AscendedAnimations.JIAN_DUAL_GUARD_PARRY_2)
+            );
             builder.addGuardMotion(AscendedWeaponCategories.SCYTHE, (item, player) -> {
                 return AscendedAnimations.SCYTHE_GUARD_HIT;
             }).addGuardBreakMotion(AscendedWeaponCategories.SCYTHE, (item, player) -> {
