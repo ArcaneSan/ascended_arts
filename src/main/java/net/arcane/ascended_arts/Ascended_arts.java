@@ -1,5 +1,6 @@
 package net.arcane.ascended_arts;
 
+
 import net.arcane.ascended_arts.compat.EpicSkillsCompat;
 import net.arcane.ascended_arts.gameasset.AscendedAnimations;
 import net.arcane.ascended_arts.gameasset.AscendedSkills;
@@ -8,7 +9,7 @@ import net.arcane.ascended_arts.skill.AscendedSkillDataKeys;
 import net.arcane.ascended_arts.skill.AscendedSkillSlots;
 import net.arcane.ascended_arts.skill.guard.AscendedCompatSkills;
 import net.arcane.ascended_arts.world.capabilities.item.AscendedWeaponCategories;
-import net.arcane.ascended_arts.world.capabilities.provider.CompatItemCapabilityProvider;
+
 import net.arcane.ascended_arts.world.item.AscendedAddonItems;
 import net.arcane.ascended_arts.world.item.AscendedCreativeTab;
 
@@ -35,6 +36,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import org.slf4j.Logger;
+import yesman.epicfight.api.animation.LivingMotion;
 import yesman.epicfight.main.EpicFightSharedConstants;
 import yesman.epicfight.skill.SkillSlot;
 import yesman.epicfight.world.capabilities.item.WeaponCategory;
@@ -57,6 +59,7 @@ public class Ascended_arts {
         modEventBus.addListener(this::doCommonStuff);
         WeaponCategory.ENUM_MANAGER.registerEnumCls(MOD_ID, AscendedWeaponCategories.class);
         AscendedSkillSlots.ENUM_MANAGER.registerEnumCls(MOD_ID, AscendedSkillSlots.class);
+
 
         if (EpicFightSharedConstants.isPhysicalClient() && ModList.get().isLoaded("epicskills")) {
             EpicSkillsCompat.registerCategorySlotTexture();
@@ -84,7 +87,7 @@ public class Ascended_arts {
     }
 
     private void doCommonStuff(final FMLCommonSetupEvent event){
-        event.enqueueWork(CompatItemCapabilityProvider::registerWeaponTypesByClass);
+
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {

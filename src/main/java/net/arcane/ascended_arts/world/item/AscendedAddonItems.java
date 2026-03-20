@@ -26,31 +26,31 @@ public class AscendedAddonItems {
             ITEMS.register("hanfu_upgrade", () -> new Item(new Item.Properties().fireResistant().rarity(Rarity.UNCOMMON).stacksTo(16)));
 
     public static final RegistryObject<Item> IRON_JIAN =
-            ITEMS.register("iron_jian", () -> new AscendedItem(new Item.Properties(), Tiers.IRON));
+            ITEMS.register("iron_jian", () -> new AscendedItem(new Item.Properties(), AscendedToolTiers.IronPlus));
     public static final RegistryObject<Item> GREATSWORD =
-            ITEMS.register("greatsword", () -> new AscendLargeItem(new Item.Properties().rarity(Rarity.RARE), Tiers.NETHERITE));
+            ITEMS.register("greatsword", () -> new AscendLargeItem(new Item.Properties().rarity(Rarity.RARE).fireResistant(), AscendedToolTiers.Mythos));
     public static final RegistryObject<Item> ETHERVEIL_SCYTHE =
-            ITEMS.register("etherveil_scythe", () -> new AscendLargeItem(new Item.Properties(), Tiers.NETHERITE));
+            ITEMS.register("etherveil_scythe", () -> new AscendLargeItem(new Item.Properties().fireResistant(), AscendedToolTiers.Mythos));
     public static final RegistryObject<Item> DIAMOND_JIAN =
-            ITEMS.register("diamond_jian", () -> new AscendedItem(new Item.Properties(), Tiers.DIAMOND));
+            ITEMS.register("diamond_jian", () -> new AscendedItem(new Item.Properties(), AscendedToolTiers.DiamondPlus));
     public static final RegistryObject<Item> NETHERITE_JIAN =
-            ITEMS.register("netherite_jian", () -> new AscendedItem(new Item.Properties().fireResistant(), Tiers.NETHERITE));
+            ITEMS.register("netherite_jian", () -> new AscendedItem(new Item.Properties().fireResistant(), AscendedToolTiers.NetheritePlus));
     public static final RegistryObject<Item> GOLDEN_JIAN =
-            ITEMS.register("golden_jian", () -> new AscendedItem(new Item.Properties(), Tiers.GOLD));
+            ITEMS.register("golden_jian", () -> new AscendedItem(new Item.Properties(), AscendedToolTiers.GoldPlus));
     public static final RegistryObject<Item> WOODEN_JIAN =
-            ITEMS.register("wooden_jian", () -> new AscendedItem(new Item.Properties(), Tiers.WOOD));
+            ITEMS.register("wooden_jian", () -> new AscendedItem(new Item.Properties(), AscendedToolTiers.WoodPlus));
     public static final RegistryObject<Item> SKYSPLITTER_JIAN =
             ITEMS.register("skysplitter_jian", () -> new SkySplitterItem(new Item.Properties().fireResistant(), AscendedToolTiers.Mythos));
     public static final RegistryObject<Item> SMALL_WOODEN_SCYTHE =
-            ITEMS.register("small_wooden_scythe", () -> new AscendedSmallScytheItem(new Item.Properties(), Tiers.WOOD));
+            ITEMS.register("small_wooden_scythe", () -> new AscendedSmallScytheItem(new Item.Properties(), AscendedToolTiers.WoodPlus));
     public static final RegistryObject<Item> SMALL_IRON_SCYTHE =
-            ITEMS.register("small_iron_scythe", () -> new AscendedSmallScytheItem(new Item.Properties(), Tiers.IRON));
+            ITEMS.register("small_iron_scythe", () -> new AscendedSmallScytheItem(new Item.Properties(), AscendedToolTiers.IronPlus));
     public static final RegistryObject<Item>  SMALL_GOLDEN_SCYTHE =
-            ITEMS.register("small_golden_scythe", () -> new AscendedSmallScytheItem(new Item.Properties(), Tiers.GOLD));
+            ITEMS.register("small_golden_scythe", () -> new AscendedSmallScytheItem(new Item.Properties(), AscendedToolTiers.GoldPlus));
     public static final RegistryObject<Item> SMALL_DIAMOND_SCYTHE =
-            ITEMS.register("small_diamond_scythe", () -> new AscendedSmallScytheItem(new Item.Properties(), Tiers.DIAMOND));
+            ITEMS.register("small_diamond_scythe", () -> new AscendedSmallScytheItem(new Item.Properties(), AscendedToolTiers.DiamondPlus));
     public static final RegistryObject<Item> SMALL_NETHERITE_SCYTHE =
-            ITEMS.register("small_netherite_scythe", () -> new AscendedSmallScytheItem(new Item.Properties().fireResistant(), Tiers.NETHERITE));
+            ITEMS.register("small_netherite_scythe", () -> new AscendedSmallScytheItem(new Item.Properties().fireResistant(), AscendedToolTiers.NetheritePlus));
 
     public static final RegistryObject<Item> ROYAL_HUNTER_MASK =
             ITEMS.register("royal_hunter_mask", () -> new RoyalHunterArmorItem(ArmorItem.Type.HELMET, new Item.Properties().fireResistant().rarity(Rarity.EPIC)));

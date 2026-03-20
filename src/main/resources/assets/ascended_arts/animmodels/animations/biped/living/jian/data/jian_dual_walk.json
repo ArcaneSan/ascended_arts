@@ -1,11 +1,11 @@
 {
   "multilayer": {
     "base": {
-      "priority":"LOWEST",
+      "priority":"MIDDLE",
       "masks":
       [
         {
-          "livingmotion":"ALL",
+          "livingmotion":"IDLE",
           "type":"none"
         }
       ]

@@ -4,9 +4,11 @@
     "common":
     {
       "armor_negation":6.0,
-      "impact":1.2,
+      "impact": 0.9,
       "max_strikes":4
     }
   },
+  "hit_particle":"blunt",
+  "hit_sound":"entity.hit.blunt",
   "type":"ascended_arts:sweeping_scythe"
 }
