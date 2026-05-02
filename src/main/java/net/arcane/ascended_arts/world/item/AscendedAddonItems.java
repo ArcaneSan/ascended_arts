@@ -5,7 +5,7 @@ import net.arcane.ascended_arts.Ascended_arts;
 import net.arcane.ascended_arts.entity.client.armor.*;
 import net.arcane.ascended_arts.entity.client.armor.VoidSlayerArmorItem;
 import net.arcane.ascended_arts.item.AscendedToolTiers;
-import net.arcane.ascended_arts.item.custom.SkySplitterItem;
+
 
 import net.minecraft.resources.ResourceLocation;
 
@@ -19,8 +19,8 @@ public class AscendedAddonItems {
     public static final DeferredRegister<Item> ITEMS =
             DeferredRegister.create(ForgeRegistries.ITEMS, Ascended_arts.MOD_ID);
 
-    public static final RegistryObject<Item> TESTER =
-            ITEMS.register("tester", () -> new AscendedItem(new Item.Properties(), Tiers.DIAMOND));
+//    public static final RegistryObject<Item> TESTER =
+//            ITEMS.register("tester", () -> new AscendedItem(new Item.Properties(), Tiers.DIAMOND));
 
     public static final RegistryObject<Item> CLOTH =
             ITEMS.register("cloth", () -> new Item(new Item.Properties().stacksTo(64)));
@@ -42,7 +42,7 @@ public class AscendedAddonItems {
     public static final RegistryObject<Item> WOODEN_JIAN =
             ITEMS.register("wooden_jian", () -> new AscendedItem(new Item.Properties(), AscendedToolTiers.WoodPlus));
     public static final RegistryObject<Item> SKYSPLITTER_JIAN =
-            ITEMS.register("skysplitter_jian", () -> new SkySplitterItem(new Item.Properties().fireResistant(), AscendedToolTiers.Mythos));
+            ITEMS.register("skysplitter_jian", () -> new AscendedItem(new Item.Properties().fireResistant().rarity(Rarity.EPIC), AscendedToolTiers.Mythos));
     public static final RegistryObject<Item> SMALL_WOODEN_SCYTHE =
             ITEMS.register("small_wooden_scythe", () -> new AscendedSmallScytheItem(new Item.Properties(), AscendedToolTiers.WoodPlus));
     public static final RegistryObject<Item> SMALL_IRON_SCYTHE =

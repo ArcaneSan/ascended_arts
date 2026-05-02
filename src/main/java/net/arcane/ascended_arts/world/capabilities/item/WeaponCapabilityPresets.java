@@ -76,7 +76,6 @@ public class WeaponCapabilityPresets {
                 .livingMotionModifier(Styles.OCHS, LivingMotions.RUN, AscendedAnimations.BIPED_RUN_SCYTHE)
                 .livingMotionModifier(Styles.OCHS, LivingMotions.SLEEP, AscendedAnimations.BIPED_SCYTHE_SLEEP)
                 .livingMotionModifier(Styles.OCHS, LivingMotions.SNEAK, AscendedAnimations.BIPED_SNEAK_SCYTHE)
-                .livingMotionModifier(Styles.OCHS, LivingMotions.SWIM, AscendedAnimations.BIPED_SCYTHE_SWIM)
                 .livingMotionModifier(Styles.OCHS, LivingMotions.CREATIVE_IDLE, AscendedAnimations.BIPED_HOLD_SCYTHE)
                 .livingMotionModifier(Styles.OCHS, LivingMotions.CREATIVE_FLY, AscendedAnimations.BIPED_RUN_SCYTHE)
                 .livingMotionModifier(Styles.OCHS, LivingMotions.BLOCK, AscendedAnimations.SCYTHE_GUARD)
