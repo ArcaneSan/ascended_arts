@@ -28,16 +28,13 @@ public class CelestialOnslaughtSkill extends WeaponInnateSkill {
     public final AssetAccessor<? extends AttackAnimation> first;
     public final AssetAccessor<? extends AttackAnimation> second;
     public final AssetAccessor<? extends AttackAnimation> third;
-    public final AssetAccessor<? extends AttackAnimation> fail;
-    public final AssetAccessor<? extends AttackAnimation> land;
 
     public CelestialOnslaughtSkill (SkillBuilder<? extends WeaponInnateSkill> builder) {
         super(builder);
         this.first = AscendedAnimations.CELESTIAL_ONSLAUGHT_FIRST;
         this.second = AscendedAnimations.CELESTIAL_ONSLAUGHT_SECOND;
         this.third = AscendedAnimations.CELESTIAL_ONSLAUGHT_THIRD;
-        this.fail = AscendedAnimations.CELESTIAL_ONSLAUGHT_FAIL;
-        this.land = AscendedAnimations.CELESTIAL_ONSLAUGHT_SECOND_LAND;
+
     }
 
     @Override
@@ -51,10 +48,7 @@ public class CelestialOnslaughtSkill extends WeaponInnateSkill {
                     event.getPlayerPatch().reserveAnimation(this.second);
                     event.getPlayerPatch().getCurrentlyActuallyHitEntities().clear();
 
-                }else {
-                    event.getPlayerPatch().getServerAnimator().getPlayerFor(null).reset();
-                    event.getPlayerPatch().reserveAnimation(this.fail);
-                    event.getPlayerPatch().getCurrentlyActuallyHitEntities().clear();
+
                 }
             }
             if (AscendedAnimations.CELESTIAL_ONSLAUGHT_SECOND.equals(event.getAnimation())) {
@@ -65,10 +59,7 @@ public class CelestialOnslaughtSkill extends WeaponInnateSkill {
                     event.getPlayerPatch().reserveAnimation(this.third);
                     event.getPlayerPatch().getCurrentlyActuallyHitEntities().clear();
 
-                }else {
-                    event.getPlayerPatch().getServerAnimator().getPlayerFor(null).reset();
-                    event.getPlayerPatch().reserveAnimation(this.land);
-                    event.getPlayerPatch().getCurrentlyActuallyHitEntities().clear();
+
                 }
             }
         });

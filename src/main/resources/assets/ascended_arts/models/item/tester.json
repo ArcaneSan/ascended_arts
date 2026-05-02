@@ -4,7 +4,8 @@
   "base": {
     "parent": "ascended_arts:item/template_jian",
     "textures": {
-      "layer0": "ascended_arts:item/tester"
+      "layer0": "ascended_arts:item/tester",
+      "layer1": "ascended_arts:item/tester_sp"
     }
   },
   "perspectives": {

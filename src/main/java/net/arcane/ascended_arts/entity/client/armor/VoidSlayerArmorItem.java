@@ -68,7 +68,7 @@ public class VoidSlayerArmorItem extends ArmorItem implements IDyeable {
 
         @Override
         public float getKnockbackResistance() {
-            return 2;
+            return 0.3F;
         }
 
         public static final VoidSlayerArmorItem.Material INSTANCE = new VoidSlayerArmorItem.Material();

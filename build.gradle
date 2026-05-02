@@ -98,7 +98,6 @@ minecraft {
         client {
             // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
             property 'forge.enabledGameTestNamespaces', mod_id
-
         }
 
         server {
@@ -143,9 +142,9 @@ repositories {
 
     // If you have mod jar dependencies in ./libs, you can declare them as a repository like so.
     // See https://docs.gradle.org/current/userguide/declaring_repositories.html#sub:flat_dir_resolver
-     flatDir {
-         dir 'libs'
-     }
+    flatDir {
+        dir 'libs'
+    }
     maven {
         url "https://cursemaven.com"
         content {
@@ -171,16 +170,15 @@ dependencies {
     // then special handling is done to allow a setup of a vanilla dependency without the use of an external repository.
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
 //    implementation fg.deobf("curse.maven:epic-fight-mod-405076:6878218")
-    implementation fg.deobf("curse.maven:epic-fight-mod-405076:7345468")
-    //epic fight skill tree
-    implementation fg.deobf("curse.maven:epic-fight-skill-tree-1295882:7303977")
-
+    implementation fg.deobf("curse.maven:epic-fight-mod-405076:6921772")
+    implementation fg.deobf("curse.maven:epic-fight-skill-tree-1295882:7916852")
     //geckolib
     implementation fg.deobf("curse.maven:geckolib-388172:6789487")
+//    implementation fg.deobf("software.bernie.geckolib:geckolib-forge-${minecraft_version}:${geckolib_version}")
     implementation("com.eliotlash.mclib:mclib:20")
 
 //   corail tombstone
-//    implementation fg.deobf("curse.maven:corail-tombstone-243707:6900426")
+//    implementation fg.deobf("curse.maven:corail-tombstone-243707:6956885")
 
 //   supplementaries
 //    implementation fg.deobf("curse.maven:selene-499980:6935940")

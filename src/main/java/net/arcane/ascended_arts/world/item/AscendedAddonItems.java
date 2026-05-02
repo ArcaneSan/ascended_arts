@@ -1,12 +1,14 @@
 package net.arcane.ascended_arts.world.item;
 
 import net.arcane.ascended_arts.Ascended_arts;
+
 import net.arcane.ascended_arts.entity.client.armor.*;
 import net.arcane.ascended_arts.entity.client.armor.VoidSlayerArmorItem;
-import net.arcane.ascended_arts.item.AscendedArmorMaterials;
 import net.arcane.ascended_arts.item.AscendedToolTiers;
 import net.arcane.ascended_arts.item.custom.SkySplitterItem;
+
 import net.minecraft.resources.ResourceLocation;
+
 import net.minecraft.world.item.*;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;

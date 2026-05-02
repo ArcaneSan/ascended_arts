@@ -48,12 +48,12 @@ public class FloatingPassive extends PassiveSkill {
                     double zOffset = (random.nextDouble() - 0.3) * 0.3;
                     Vec3 basePos = getJointWithTranslation(Minecraft.getInstance().player, player, new Vec3f(0F, -1F, -0.3F), Armatures.BIPED.get().rootJoint);
                     List<Vec3> positions = new ArrayList<>();
-                    positions.add(getJointWithTranslation(Minecraft.getInstance().player, player, new Vec3f(0F, 0.2F, 0.2F), Armatures.BIPED.get().thighL));
-                    positions.add(getJointWithTranslation(Minecraft.getInstance().player, player, new Vec3f(0F, 0.2F, 0.2F), Armatures.BIPED.get().thighR));
+                    positions.add(getJointWithTranslation(Minecraft.getInstance().player, player, new Vec3f(0F, 0.2F, 0.2F), Armatures.BIPED.get().legL));
+                    positions.add(getJointWithTranslation(Minecraft.getInstance().player, player, new Vec3f(0F, 0.2F, 0.2F), Armatures.BIPED.get().legR));
                     for (Vec3 pos : positions) {
                         if (pos != null) {
                             Vec3 ovalPos = pos.add(xOffset, yOffset, zOffset);
-                            Particle particle = Minecraft.getInstance().particleEngine.createParticle(ParticleTypes.ENCHANT, ovalPos.x, ovalPos.y, ovalPos.z, player.getDeltaMovement().x, 0.052F, player.getDeltaMovement().z);
+                            Particle particle = Minecraft.getInstance().particleEngine.createParticle(ParticleTypes.CHERRY_LEAVES, ovalPos.x, ovalPos.y, ovalPos.z, player.getDeltaMovement().x, 0.052F, player.getDeltaMovement().z);
                             if (particle != null) {
                                 particle.setLifetime(6);
                             }
@@ -61,13 +61,13 @@ public class FloatingPassive extends PassiveSkill {
                     }
 
                 }
-                MobEffectInstance slowfallEffect = new MobEffectInstance(MobEffects.SLOW_FALLING, 5, 0, true, false);
-                player.addEffect(slowfallEffect);
+                MobEffectInstance speedEffect = new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 1, 0, true, false);
+                player.addEffect(speedEffect);
             } else {
-                if (player.hasEffect(MobEffects.SLOW_FALLING)) {
-                    MobEffectInstance effect = player.getEffect(MobEffects.SLOW_FALLING);
+                if (player.hasEffect(MobEffects.MOVEMENT_SPEED)) {
+                    MobEffectInstance effect = player.getEffect(MobEffects.MOVEMENT_SPEED);
                     if (effect != null && effect.getDuration() < 10) {
-                        player.removeEffect(MobEffects.SLOW_FALLING);
+                        player.removeEffect(MobEffects.MOVEMENT_SPEED);
                     }
                 }
             }
@@ -78,10 +78,10 @@ public class FloatingPassive extends PassiveSkill {
     public void onRemoved(SkillContainer container) {
         super.onRemoved(container);
         LivingEntity player = container.getExecutor().getOriginal();
-        if (player != null && player.hasEffect(MobEffects.SLOW_FALLING)) {
-            MobEffectInstance effect = player.getEffect(MobEffects.SLOW_FALLING);
+        if (player != null && player.hasEffect(MobEffects.MOVEMENT_SPEED)) {
+            MobEffectInstance effect = player.getEffect(MobEffects.MOVEMENT_SPEED);
             if (effect != null && effect.getDuration() < 10) {
-                player.removeEffect(MobEffects.SLOW_FALLING);
+                player.removeEffect(MobEffects.MOVEMENT_SPEED);
             }
         }
 

@@ -14,7 +14,9 @@ import net.minecraftforge.fml.common.Mod;
 import yesman.epicfight.api.animation.LivingMotions;
 import yesman.epicfight.api.forgeevent.WeaponCapabilityPresetRegistryEvent;
 import yesman.epicfight.gameasset.Animations;
+import yesman.epicfight.gameasset.EpicFightSkills;
 import yesman.epicfight.gameasset.EpicFightSounds;
+import yesman.epicfight.skill.Skill;
 import yesman.epicfight.world.capabilities.EpicFightCapabilities;
 import yesman.epicfight.world.capabilities.item.CapabilityItem;
 import yesman.epicfight.world.capabilities.item.CapabilityItem.Styles;
@@ -88,15 +90,15 @@ public class WeaponCapabilityPresets {
                 .canBePlacedOffhand(true)
                 .hitSound(EpicFightSounds.BLADE_HIT.get())
                 .swingSound(EpicFightSounds.WHOOSH.get())
-                .innateSkill(Styles.ONE_HAND, (itemstack) -> AscendedSkills.CHASING_SWEEP)
-                .innateSkill(Styles.TWO_HAND, (itemStack -> AscendedSkills.UNRELENTING_ASSAULT))
+                .innateSkill(Styles.ONE_HAND, (itemstack) -> EpicFightSkills.SWEEPING_EDGE)
+                .innateSkill(Styles.TWO_HAND, (itemStack -> EpicFightSkills.DANCING_EDGE))
                 .newStyleCombo(Styles.ONE_HAND,AscendedAnimations.S_SCYTHE_AUTO, AscendedAnimations.S_SCYTHE_AUTO_2, AscendedAnimations.S_SCYTHE_AUTO_3, AscendedAnimations.S_SCYTHE_AUTO_2, AscendedAnimations.S_SCYTHE_AUTO_3, AscendedAnimations.S_SCYTHE_AUTO_2, AscendedAnimations.S_SCYTHE_AUTO_3, AscendedAnimations.S_SCYTHE_DASH, AscendedAnimations.S_SCYTHE_AIRSLASH)
-                .newStyleCombo(Styles.TWO_HAND, AscendedAnimations.S_SCYTHE_AUTO, AscendedAnimations.S_DUAL_SCYTHE_AUTO_2, AscendedAnimations.S_DUAL_SCYTHE_AUTO_3, AscendedAnimations.S_DUAL_SCYTHE_AUTO_2, AscendedAnimations.S_DUAL_SCYTHE_AUTO_3, AscendedAnimations.S_DUAL_SCYTHE_AUTO_2, AscendedAnimations.S_DUAL_SCYTHE_AUTO_3, AscendedAnimations.S_DUAL_SCYTHE_DASH, AscendedAnimations.S_DUAL_SCYTHE_AIRSLASH)
+                .newStyleCombo(Styles.TWO_HAND, AscendedAnimations.S_SCYTHE_AUTO, AscendedAnimations.S_DUAL_SCYTHE_AUTO_2, AscendedAnimations.S_DUAL_SCYTHE_AUTO_3, AscendedAnimations.S_DUAL_SCYTHE_AUTO_2, AscendedAnimations.S_DUAL_SCYTHE_AUTO_3, AscendedAnimations.S_DUAL_SCYTHE_AUTO_2, AscendedAnimations.S_DUAL_SCYTHE_AUTO_3, Animations.SWORD_DUAL_DASH, AscendedAnimations.S_DUAL_SCYTHE_AIRSLASH)
                 .livingMotionModifier(Styles.COMMON, LivingMotions.IDLE, AscendedAnimations.BIPED_S_SCYTHE_HOLD)
                 .livingMotionModifier(Styles.COMMON, LivingMotions.KNEEL, AscendedAnimations.BIPED_S_SCYTHE_KNEEL)
-                .livingMotionModifier(Styles.COMMON, LivingMotions.WALK, AscendedAnimations.BIPED_S_SCYTHE_WALK)
-                .livingMotionModifier(Styles.COMMON, LivingMotions.RUN, AscendedAnimations.BIPED_S_SCYTHE_RUN)
-                .livingMotionModifier(Styles.COMMON, LivingMotions.SNEAK, AscendedAnimations.BIPED_S_SCYTHE_SNEAK)
+                .livingMotionModifier(Styles.COMMON, LivingMotions.WALK, Animations.BIPED_WALK)
+                .livingMotionModifier(Styles.COMMON, LivingMotions.RUN, Animations.BIPED_RUN_DUAL)
+                .livingMotionModifier(Styles.COMMON, LivingMotions.SNEAK, Animations.BIPED_SNEAK)
                 .weaponCombinationPredicator((entitypatch) -> EpicFightCapabilities.getItemStackCapability(entitypatch.getOriginal().getOffhandItem()).getWeaponCategory() == AscendedWeaponCategories.SWEEPING_SCYTHE);
         return builder;
     };

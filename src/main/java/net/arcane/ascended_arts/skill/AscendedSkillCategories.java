@@ -19,7 +19,7 @@ public enum AscendedSkillCategories implements SkillCategory {
         this.shouldSync = shouldSyncronizedAllPlayers;
         this.modifiable = modifiable;
         this.id = SkillCategory.ENUM_MANAGER.assign(this);
-        this.bookIcon = SkillCategory.DEFAULT_BOOK_ICON;
+        this.bookIcon = bookIcon();
     }
 
     AscendedSkillCategories(boolean shouldSave, boolean shouldSyncronizedAllPlayers, boolean modifiable, ResourceLocation bookIcon) {
@@ -50,7 +50,7 @@ public enum AscendedSkillCategories implements SkillCategory {
         return this.id;
     }
 
-    @Override
+
     public ResourceLocation bookIcon() {
         return this.bookIcon;
     }

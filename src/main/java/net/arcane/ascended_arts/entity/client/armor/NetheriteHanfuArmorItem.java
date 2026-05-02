@@ -62,12 +62,12 @@ public class NetheriteHanfuArmorItem extends ArmorItem implements IDyeable {
 
         @Override
         public float getToughness() {
-            return 5;
+            return 4;
         }
 
         @Override
         public float getKnockbackResistance() {
-            return 2;
+            return 0.2F;
         }
 
         public static final NetheriteHanfuArmorItem.Material INSTANCE = new NetheriteHanfuArmorItem.Material();

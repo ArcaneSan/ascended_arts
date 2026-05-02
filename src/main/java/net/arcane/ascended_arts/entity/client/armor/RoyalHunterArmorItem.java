@@ -67,7 +67,7 @@ public class RoyalHunterArmorItem extends ArmorItem implements IDyeable {
 
         @Override
         public float getKnockbackResistance() {
-            return 1;
+            return 0.3F;
         }
 
         public static final RoyalHunterArmorItem.Material INSTANCE = new RoyalHunterArmorItem.Material();
