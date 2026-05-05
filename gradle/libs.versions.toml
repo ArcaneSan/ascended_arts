@@ -8,6 +8,7 @@ epicskills = "20.2.7-1.20.1"
 
 # Version tags on Modrinth (usually the actual version number or a specific ID)
 embeddium = "0.3.31+mc1.20.1"
+wom = "2.0.15-mc1.20.1-forge"
 
 mcSafeResources = "0.0.2"
 modPublish = "1.1.0"
@@ -16,6 +17,7 @@ modPublish = "1.1.0"
 
 [libraries]
 
+wom = {module = "maven.modrinth:weapons-of-miracles", version.ref = "wom"}
 embeddium = { module = "maven.modrinth:embeddium", version.ref = "embeddium" }
 epicSkills = { module = "maven.modrinth:epic-fight-skill-tree", version.ref = "epicskills"}
 epicFight = { module = "maven.modrinth:epic-fight", version.ref = "epic-fight" }

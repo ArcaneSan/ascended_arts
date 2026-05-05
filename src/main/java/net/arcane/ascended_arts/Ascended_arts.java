@@ -7,7 +7,9 @@ import net.arcane.ascended_arts.gameasset.AscendedSkills;
 import net.arcane.ascended_arts.recipes.AARecipes;
 import net.arcane.ascended_arts.skill.AscendedSkillDataKeys;
 import net.arcane.ascended_arts.skill.AscendedSkillSlots;
+import net.arcane.ascended_arts.skill.guard.AscendedCompatEFN;
 import net.arcane.ascended_arts.skill.guard.AscendedCompatSkills;
+import net.arcane.ascended_arts.skill.guard.AscendedCompatWoM;
 import net.arcane.ascended_arts.world.capabilities.item.AscendedWeaponCategories;
 
 import net.arcane.ascended_arts.world.item.AscendedAddonItems;
@@ -16,8 +18,7 @@ import net.arcane.ascended_arts.world.item.AscendedCreativeTab;
 import com.mojang.logging.LogUtils;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
+
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -37,6 +38,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 import org.slf4j.Logger;
 import yesman.epicfight.api.animation.LivingMotion;
+import yesman.epicfight.compat.ICompatModule;
 import yesman.epicfight.main.EpicFightSharedConstants;
 import yesman.epicfight.skill.SkillSlot;
 import yesman.epicfight.world.capabilities.item.WeaponCategory;
@@ -63,6 +65,16 @@ public class Ascended_arts {
 
         if (EpicFightSharedConstants.isPhysicalClient() && ModList.get().isLoaded("epicskills")) {
             EpicSkillsCompat.registerCategorySlotTexture();
+        }
+        if (ModList.get().isLoaded("efn")) {
+            ICompatModule.loadCompatModule(eventBus, AscendedCompatEFN.class);
+            modEventBus.addListener(AscendedCompatEFN::forceGuard);
+            DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> modEventBus.addListener(AscendedCompatEFN::onIconCreate));
+        }
+        if (ModList.get().isLoaded("wom")) {
+            ICompatModule.loadCompatModule(eventBus, AscendedCompatWoM.class);
+            modEventBus.addListener(AscendedCompatWoM::buildSkillEvent);
+            DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> modEventBus.addListener(AscendedCompatWoM::regIcon));
         }
 
         DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> modEventBus.addListener(AscendedCompatSkills::onIconCreate));

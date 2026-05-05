@@ -118,6 +118,7 @@ repositories {
 dependencies {
     //Highly recommend a version catalog
 
+    modCompileOnly(libs.wom)
     modRuntimeOnly(libs.embeddium)
     modImplementation(libs.epicFight)
     modImplementation(libs.epicSkills)

@@ -2,6 +2,7 @@ package net.arcane.ascended_arts.skill.weaponpassive;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.Particle;
+import net.minecraft.client.renderer.EffectInstance;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -59,15 +60,14 @@ public class FloatingPassive extends PassiveSkill {
                             }
                         }
                     }
-
                 }
-                MobEffectInstance speedEffect = new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 1, 0, true, false);
-                player.addEffect(speedEffect);
+                MobEffectInstance slowfallEffect = new MobEffectInstance(MobEffects.SLOW_FALLING, 5, 0, true, false);
+                player.addEffect(slowfallEffect);
             } else {
-                if (player.hasEffect(MobEffects.MOVEMENT_SPEED)) {
-                    MobEffectInstance effect = player.getEffect(MobEffects.MOVEMENT_SPEED);
+                if (player.hasEffect(MobEffects.SLOW_FALLING)) {
+                    MobEffectInstance effect = player.getEffect(MobEffects.SLOW_FALLING);
                     if (effect != null && effect.getDuration() < 10) {
-                        player.removeEffect(MobEffects.MOVEMENT_SPEED);
+                        player.removeEffect(MobEffects.SLOW_FALLING);
                     }
                 }
             }
@@ -78,10 +78,10 @@ public class FloatingPassive extends PassiveSkill {
     public void onRemoved(SkillContainer container) {
         super.onRemoved(container);
         LivingEntity player = container.getExecutor().getOriginal();
-        if (player != null && player.hasEffect(MobEffects.MOVEMENT_SPEED)) {
-            MobEffectInstance effect = player.getEffect(MobEffects.MOVEMENT_SPEED);
+        if (player != null && player.hasEffect(MobEffects.SLOW_FALLING)) {
+            MobEffectInstance effect = player.getEffect(MobEffects.SLOW_FALLING);
             if (effect != null && effect.getDuration() < 10) {
-                player.removeEffect(MobEffects.MOVEMENT_SPEED);
+                player.removeEffect(MobEffects.SLOW_FALLING);
             }
         }
 
