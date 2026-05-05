@@ -67,7 +67,7 @@ public class WeaponCapabilityPresets {
                 .canBePlacedOffhand(false)
                 .hitSound(EpicFightSounds.BLADE_HIT.get())
                 .swingSound(EpicFightSounds.WHOOSH_BIG.get())
-                .passiveSkill(AscendedSkills.FLOATING_PASSIVE)
+                .passiveSkill(AscendedSkills.LIFESTEAL_PASSIVE)
                 .innateSkill(Styles.OCHS, (itemstack) -> AscendedSkills.REAPING_GRASP)
                 .newStyleCombo(Styles.OCHS, AscendedAnimations.SCYTHE_AUTO_1, AscendedAnimations.SCYTHE_AUTO_2, AscendedAnimations.SCYTHE_AUTO_3, AscendedAnimations.SCYTHE_AUTO_4, AscendedAnimations.SCYTHE_DASH, AscendedAnimations.SCYTHE_AIRSLASH)
                 .livingMotionModifier(Styles.OCHS, LivingMotions.IDLE, AscendedAnimations.BIPED_HOLD_SCYTHE)

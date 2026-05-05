@@ -6,6 +6,7 @@ import net.arcane.ascended_arts.skill.weaponinnate.*;
 import net.arcane.ascended_arts.skill.weaponpassive.FloatingPassive;
 
 
+import net.arcane.ascended_arts.skill.weaponpassive.LifeStealPassive;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.RegisterEvent;
@@ -30,6 +31,7 @@ public class AscendedSkills {
     public static Skill CELESTIAL_PUNISHMENT;
     public static Skill CELESTIAL_ONSLAUGHT;
     public static Skill FLOATING_PASSIVE;
+    public static Skill LIFESTEAL_PASSIVE;
     public static Skill REAPING_GRASP;
     public static Skill QI_BUILDING;
 
@@ -92,6 +94,7 @@ public class AscendedSkills {
 
 
         FLOATING_PASSIVE = modRegistry.build("floating_passive", FloatingPassive::new, PassiveSkill.createPassiveBuilder().setCategory(SkillCategories.WEAPON_PASSIVE).setActivateType(Skill.ActivateType.ONE_SHOT));
+        LIFESTEAL_PASSIVE = modRegistry.build("lifesteal_passive", LifeStealPassive::new, PassiveSkill.createPassiveBuilder().setCategory(SkillCategories.WEAPON_PASSIVE).setActivateType(Skill.ActivateType.ONE_SHOT));
 
 
 

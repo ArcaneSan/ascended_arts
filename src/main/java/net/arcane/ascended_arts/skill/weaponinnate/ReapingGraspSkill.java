@@ -4,6 +4,7 @@ import net.arcane.ascended_arts.gameasset.AscendedAnimations;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import yesman.epicfight.api.animation.types.AttackAnimation;
 import yesman.epicfight.api.asset.AssetAccessor;
@@ -37,6 +38,7 @@ public class ReapingGraspSkill extends WeaponInnateSkill {
 
     @Override
     public void onInitiate(SkillContainer container) {
+
         container.getExecutor().getEventListener().addEventListener(PlayerEventListener.EventType.ATTACK_ANIMATION_END_EVENT, EVENT_UUID, (event) ->{
             if (AscendedAnimations.REAPING_GRASP_1.equals(event.getAnimation())) {
                 List<LivingEntity> hurtEntities = event.getPlayerPatch().getCurrentlyActuallyHitEntities();
