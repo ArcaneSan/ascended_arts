@@ -12,8 +12,8 @@ public class AscendedArtsSkillTreeProvider extends SkillTreeProvider {
         super(pOutput);
     }
 
-    @Override
-    protected void buildSkillTreePages(Consumer<SkillTreePageBuilder> writer) {
+
+    protected void buildSkillTreePages(Consumer<SkillTreeProvider.SkillTreePageBuilder> writer) {
         writer.accept(
                 newPage(Ascended_arts.MOD_ID, "path_to_ascension")
                         .menuBarColor(255, 215, 0)

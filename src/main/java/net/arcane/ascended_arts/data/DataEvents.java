@@ -8,7 +8,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 
 
-@EventBusSubscriber(modid = Ascended_arts.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = Ascended_arts.MOD_ID)
 public final class DataEvents {
 
     @SubscribeEvent

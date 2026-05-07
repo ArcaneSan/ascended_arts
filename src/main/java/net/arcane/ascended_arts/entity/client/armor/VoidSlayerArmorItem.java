@@ -4,14 +4,13 @@ import net.arcane.ascended_arts.Ascended_arts;
 import net.arcane.ascended_arts.Util.AscendedMaterials;
 import net.arcane.ascended_arts.Util.IDyeable;
 import net.arcane.ascended_arts.entity.client.ClientRegistry;
-import net.arcane.ascended_arts.entity.client.model.RoyalHunterArmorModel;
 import net.arcane.ascended_arts.entity.client.model.VoidSlayerArmorModel;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.sounds.SoundEvent;
+
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;

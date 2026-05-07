@@ -25,6 +25,10 @@ public class AscendedArtsLootTables {
                     .add(LootItem.lootTableItem(AscendedAddonItems.ROYAL_HUNTER_ROBES.get()))
                     .add(LootItem.lootTableItem(AscendedAddonItems.ROYAL_HUNTER_LEGGINGS.get()))
                     .add(LootItem.lootTableItem(AscendedAddonItems.ROYAL_HUNTER_BOOTS.get()))
+                    .add(LootItem.lootTableItem(AscendedAddonItems.VOID_SLAYER_HALO.get()))
+                    .add(LootItem.lootTableItem(AscendedAddonItems.VOID_SLAYER_ROBES.get()))
+                    .add(LootItem.lootTableItem(AscendedAddonItems.VOID_SLAYER_LEGGINGS.get()))
+                    .add(LootItem.lootTableItem(AscendedAddonItems.VOID_SLAYER_BOOTS.get()))
                     .build());
         }
         if (event.getName().equals(BuiltInLootTables.ABANDONED_MINESHAFT)){
@@ -35,6 +39,10 @@ public class AscendedArtsLootTables {
                     .add(LootItem.lootTableItem(AscendedAddonItems.ROYAL_HUNTER_ROBES.get()))
                     .add(LootItem.lootTableItem(AscendedAddonItems.ROYAL_HUNTER_LEGGINGS.get()))
                     .add(LootItem.lootTableItem(AscendedAddonItems.ROYAL_HUNTER_BOOTS.get()))
+                    .add(LootItem.lootTableItem(AscendedAddonItems.VOID_SLAYER_HALO.get()))
+                    .add(LootItem.lootTableItem(AscendedAddonItems.VOID_SLAYER_ROBES.get()))
+                    .add(LootItem.lootTableItem(AscendedAddonItems.VOID_SLAYER_LEGGINGS.get()))
+                    .add(LootItem.lootTableItem(AscendedAddonItems.VOID_SLAYER_BOOTS.get()))
                     .build());
         }
         if (event.getName().equals(BuiltInLootTables.END_CITY_TREASURE)){
@@ -49,6 +57,10 @@ public class AscendedArtsLootTables {
                     .add(LootItem.lootTableItem(AscendedAddonItems.ROYAL_HUNTER_ROBES.get()))
                     .add(LootItem.lootTableItem(AscendedAddonItems.ROYAL_HUNTER_LEGGINGS.get()))
                     .add(LootItem.lootTableItem(AscendedAddonItems.ROYAL_HUNTER_BOOTS.get()))
+                    .add(LootItem.lootTableItem(AscendedAddonItems.VOID_SLAYER_HALO.get()))
+                    .add(LootItem.lootTableItem(AscendedAddonItems.VOID_SLAYER_ROBES.get()))
+                    .add(LootItem.lootTableItem(AscendedAddonItems.VOID_SLAYER_LEGGINGS.get()))
+                    .add(LootItem.lootTableItem(AscendedAddonItems.VOID_SLAYER_BOOTS.get()))
                     .build());
         }
     }

@@ -10,7 +10,7 @@ public enum AscendedSkillSlots implements SkillSlot {
     final SkillCategory category;
     final int id;
 
-    AscendedSkillSlots(AscendedSkillCategories category){
+    AscendedSkillSlots(SkillCategory category){
         this.category = category;
         this.id = SkillSlot.ENUM_MANAGER.assign(this);
     }

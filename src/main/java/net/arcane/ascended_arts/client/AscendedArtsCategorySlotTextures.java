@@ -5,13 +5,13 @@ import com.yesman.epicskills.client.gui.screen.CategorySlotTexture;
 public enum AscendedArtsCategorySlotTextures implements CategorySlotTexture {
 
     ASCENSION_PATH(6, 6, 44, 44);
-    private int offsetX;
-    private int offsetY;
-    private int texWidth;
-    private int texHeight;
-    private int universalOrder;
+    private final int offsetX;
+    private final int offsetY;
+    private final int texWidth;
+    private final int texHeight;
+    private final int universalOrder;
 
-    private AscendedArtsCategorySlotTextures(int offsetX, int offsetY, int texWidth, int texHeight) {
+    AscendedArtsCategorySlotTextures(int offsetX, int offsetY, int texWidth, int texHeight) {
         this.offsetX = offsetX;
         this.offsetY = offsetY;
         this.texWidth = texWidth;

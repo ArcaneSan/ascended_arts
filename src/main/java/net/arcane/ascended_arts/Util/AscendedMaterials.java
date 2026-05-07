@@ -2,6 +2,7 @@ package net.arcane.ascended_arts.Util;
 
 import net.arcane.ascended_arts.Ascended_arts;
 import net.arcane.ascended_arts.world.item.AscendedAddonItems;
+
 import net.minecraft.Util;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -12,6 +13,7 @@ import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.EnumMap;
@@ -22,8 +24,8 @@ public class AscendedMaterials {
     public static final DeferredRegister<ArmorMaterial> MATERIALS =
             DeferredRegister.create(BuiltInRegistries.ARMOR_MATERIAL, Ascended_arts.MOD_ID);
 
-    public static final Holder<ArmorMaterial> VOID_SLAYER = MATERIALS.register("void_slayer", () -> register(
-            "void_slayer",
+    public static final Holder<ArmorMaterial> VOID_SLAYER = MATERIALS.register("void_slayer_armor", () -> register(
+            "void_slayer_armor",
             Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
                 map.put(ArmorItem.Type.HELMET, 4);
                 map.put(ArmorItem.Type.CHESTPLATE, 9);
@@ -37,8 +39,8 @@ public class AscendedMaterials {
             () -> Ingredient.of(new ItemStack(Items.PHANTOM_MEMBRANE))
     ));
 
-    public static final Holder<ArmorMaterial> ROYAL_HUNTER = MATERIALS.register("royal_hunter", () -> register(
-            "royal_hunter",
+    public static final Holder<ArmorMaterial> ROYAL_HUNTER = MATERIALS.register("royal_hunter_armor", () -> register(
+            "royal_hunter_armor",
             Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
                 map.put(ArmorItem.Type.HELMET, 4);
                 map.put(ArmorItem.Type.CHESTPLATE, 9);
@@ -52,8 +54,8 @@ public class AscendedMaterials {
             () -> Ingredient.of(new ItemStack(Items.PHANTOM_MEMBRANE))
     ));
 
-    public static final Holder<ArmorMaterial> NETHERITE_HANFU = MATERIALS.register("netherite_hanfu", () -> register(
-            "netherite_hanfu",
+    public static final Holder<ArmorMaterial> NETHERITE_HANFU = MATERIALS.register("netherite", () -> register(
+            "armored_robes",
             Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
                 map.put(ArmorItem.Type.HELMET, 3);
                 map.put(ArmorItem.Type.CHESTPLATE, 8);
@@ -66,8 +68,8 @@ public class AscendedMaterials {
             0.2f,
             () -> Ingredient.of(new ItemStack(Items.NETHERITE_INGOT))
     ));
-    public static final Holder<ArmorMaterial> DIAMOND_HANFU = MATERIALS.register("diamond_hanfu", () -> register(
-            "diamond_hanfu",
+    public static final Holder<ArmorMaterial> DIAMOND_HANFU = MATERIALS.register("diamond", () -> register(
+            "armored_robes",
             Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
                 map.put(ArmorItem.Type.HELMET, 3);
                 map.put(ArmorItem.Type.CHESTPLATE, 8);
@@ -80,8 +82,8 @@ public class AscendedMaterials {
             0.1f,
             () -> Ingredient.of(new ItemStack(Items.DIAMOND))
     ));
-    public static final Holder<ArmorMaterial> GOLD_HANFU = MATERIALS.register("gold_hanfu", () -> register(
-            "gold_hanfu",
+    public static final Holder<ArmorMaterial> GOLD_HANFU = MATERIALS.register("gold", () -> register(
+            "armored_robes",
             Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
                 map.put(ArmorItem.Type.HELMET, 2);
                 map.put(ArmorItem.Type.CHESTPLATE, 5);
@@ -94,8 +96,8 @@ public class AscendedMaterials {
             0.0f,
             () -> Ingredient.of(new ItemStack(Items.GOLD_INGOT))
     ));
-    public static final Holder<ArmorMaterial> IRON_HANFU = MATERIALS.register("iron_hanfu", () -> register(
-            "iron_hanfu",
+    public static final Holder<ArmorMaterial> IRON_HANFU = MATERIALS.register("iron", () -> register(
+            "armored_robes",
             Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
                 map.put(ArmorItem.Type.HELMET, 2);
                 map.put(ArmorItem.Type.CHESTPLATE, 6);
@@ -108,8 +110,8 @@ public class AscendedMaterials {
             0.0f,
             () -> Ingredient.of(new ItemStack(Items.IRON_INGOT))
     ));
-    public static final Holder<ArmorMaterial> HANFU_ROBES = MATERIALS.register("hanfu_robes", () -> register(
-            "hanfu_robes",
+    public static final Holder<ArmorMaterial> HANFU_ROBES = MATERIALS.register("unarmored_robes", () -> register(
+            "unarmored_robes",
             Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
                 map.put(ArmorItem.Type.HELMET, 1);
                 map.put(ArmorItem.Type.CHESTPLATE, 3);
