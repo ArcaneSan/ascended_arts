@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.UUID;
 
 public class QiBuildingSkill extends AscensionSkill {
-    public static final IdentifierProvider ASHEN_DECORATIONS = IdentifierProvider.constant(EpicFightMod.identifier("stamina_pillager_ashen"));
+
 
     protected float regenRate;
 

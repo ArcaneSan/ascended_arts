@@ -78,7 +78,7 @@ public class HanfuArmorItem extends ArmorItem implements IDyeable {
                                                       @NotNull EquipmentSlot slot,
                                                       ArmorMaterial.@NotNull Layer layer, boolean innerModel) {
         DyeColor dyeColor = getColor(stack);
-        return ResourceLocation.fromNamespaceAndPath(Ascended_arts.MOD_ID, ":textures/entity/unarmored_robes/" + dyeColor.getName() + ".png");
+        return ResourceLocation.fromNamespaceAndPath(Ascended_arts.MOD_ID, "textures/entity/unarmored_robes/" + dyeColor.getName() + ".png");
     }
 
 

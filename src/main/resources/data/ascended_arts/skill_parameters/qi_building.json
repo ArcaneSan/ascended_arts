@@ -3,16 +3,14 @@
   "attribute_modifiers": [
     {
       "attribute": "minecraft:generic.attack_damage",
-      "name": "qi_building_skill_stat",
-      "uuid": "89a938db-f471-4ca6-986b-7d32756b92e2",
-      "operation": "multiply_total",
+      "id": "ascended_arts:qi_building_modifier",
+      "operation": "add_multiplied_total",
       "amount": 0.1
     },
     {
       "attribute": "epicfight:staminar",
-      "name": "qi_building_skill_stat",
-      "uuid": "89a938db-f471-4ca6-986b-7d32756b92e2",
-      "operation": "addition",
+      "id": "ascended_arts:qi_building_modifier",
+      "operation": "add_value",
       "amount": 3.0
     }
   ]

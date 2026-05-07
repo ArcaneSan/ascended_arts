@@ -37,7 +37,7 @@ private AscendedSkills () {}
 
 
     public static final DeferredHolder<Skill, QiBuildingSkill> QI_BUILDING = REGISTRY.register("qi_building", key ->
-            AscensionSkill.createBuilder(QiBuildingSkill::new).build(key));
+            QiBuildingSkill.createAscensionBuilder(QiBuildingSkill::new).build(key));
 
 
     public static final DeferredHolder <Skill, CelestialPunishmentSkill> CELESTIAL_PUNISHMENT = REGISTRY.register("celestial_punishment", key ->

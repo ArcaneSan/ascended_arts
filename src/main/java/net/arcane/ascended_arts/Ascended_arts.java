@@ -41,7 +41,7 @@ public class Ascended_arts {
     // Define mod id in a common place for everything to reference
     public static final String MOD_ID = "ascended_arts";
     private static final Logger LOGGER = LogUtils.getLogger();
-    public static AscendedAnimations.ClientProxy proxy;
+
 
     public static @NotNull ResourceLocation identifier(@NotNull final String path) {
         return ResourceLocation.fromNamespaceAndPath(MOD_ID, path);

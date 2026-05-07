@@ -15,7 +15,7 @@ import yesman.epicfight.skill.passive.PassiveSkill;
 import java.util.function.Function;
 
 public abstract class AscensionSkill extends Skill {
-    public static SkillBuilder<?> createAscensionBuilder(Function<SkillBuilder<?>, ? extends PassiveSkill> constructor) {
+    public static SkillBuilder<?> createAscensionBuilder(Function<SkillBuilder<?>, ? extends AscensionSkill> constructor) {
         return new SkillBuilder<>(constructor).setCategory(AscendedSkillCategories.ASCENSION_PATH).setResource(Resource.NONE);
     }
 

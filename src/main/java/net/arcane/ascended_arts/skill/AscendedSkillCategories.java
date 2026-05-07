@@ -12,7 +12,7 @@ public enum AscendedSkillCategories implements SkillCategory {
     final boolean Sync;
     final boolean Modifiable;
     final int ID;
-    ResourceLocation bookIcon = null;
+    ResourceLocation bookIcon;
 
     AscendedSkillCategories(boolean ShouldSave, boolean ShouldSync, boolean Modifiable)
     {
@@ -56,10 +56,7 @@ public enum AscendedSkillCategories implements SkillCategory {
 
     @Override
     public ResourceLocation bookIcon() {
-        if (bookIcon != null)
-        {
-            return bookIcon;
-        }
-        return SkillCategory.super.bookIcon();
+        return bookIcon == null ? SkillCategory.DEFAULT_BOOK_ICON : bookIcon;
+
     }
 }

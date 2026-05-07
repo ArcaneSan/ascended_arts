@@ -8,6 +8,7 @@ import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.Particle;
 import net.minecraft.core.particles.ParticleTypes;
 
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
@@ -645,22 +646,7 @@ public class AscendedAnimations {
 
 
     }
-    public interface IProxy {
-        @Nullable
-        Entity getClientPlayer();
-    }
-    public static class ClientProxy implements IProxy {
-        @Override
-        public Entity getClientPlayer() {
-            return Minecraft.getInstance().player;
-        }
-    }
-    public static class ServerProxy implements IProxy {
-        @Override
-        public Entity getClientPlayer() {
-            return null;
-        }
-    }
+
     // Particles and stuff
     public static class ReusableEvents {
         private static final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
@@ -686,97 +672,18 @@ public class AscendedAnimations {
         };
         private static final AnimationEvent.E0 ENDER_IMAGE = (entitypatch, self, params) -> {
             Entity entity = entitypatch.getOriginal();
-            entity.level().addParticle(
-                    EpicFightParticles.WHITE_AFTERIMAGE.get(),
-                    entity.getX(),
-                    entity.getY(),
-                    entity.getZ(),
-                    Double.longBitsToDouble(entity.getId()),
-                    0,
-                    0
-            );
+            entity.level().addParticle(EpicFightParticles.WHITE_AFTERIMAGE.get(), entity.getX(), entity.getY(), entity.getZ(), Double.longBitsToDouble(entity.getId()), 0, 0);
+            entity.playSound(SoundEvents.FOX_TELEPORT, 1F, 1.2F);
         };
 
         //cherry
-        private static final AnimationEvent.E0 CHERRY_PARTICLES = (entitypatch, self, params) -> {
-            Entity playerEntity = Ascended_arts.proxy.getClientPlayer();
-            playerEntity.playSound(SoundEvents.AMETHYST_BLOCK_CHIME, 1F, 1.2F);
-            if (playerEntity != null) {
-                spawnCherryParticlesFollowingPlayer(playerEntity);
+        public static final AnimationEvent.E0 CHERRY_PARTICLES = (entitypatch, self, params) -> {
+            if (!entitypatch.isLogicalClient()) {
+                Entity entity = entitypatch.getOriginal();
+                ((ServerLevel)entity.level()).sendParticles(ParticleTypes.CHERRY_LEAVES, entity.xo, entity.yo + 1.0, entity.zo, 10, 0.45, 0.45, 0.45, 0.05);
             }
         };
-        private static final AnimationEvent.E0 CHERRY_PARTICLES_TINY = (entitypatch, self, params) -> {
-            Entity playerEntity = Ascended_arts.proxy.getClientPlayer();
-            if (playerEntity != null) {
-                spawnCherryParticlesFollowingPlayer_Tiny(playerEntity);
-            }
-        };
-        private static final AnimationEvent.E0 FIRE_PARTICLES_HANDL = (entitypatch, self, params) -> {
-            Entity entity = entitypatch.getOriginal();
-            Entity playerEntity = Ascended_arts.proxy.getClientPlayer();
-            if (playerEntity != null) {
-                int numParticles = 5;
-                for (int i = 0; i < numParticles; i++) {
-                    Vec3 wep = getJointWithTranslation(Minecraft.getInstance().player, entity, new Vec3f(0F, 0F, 0F), Armatures.BIPED.get().handL);
-                    if (wep != null) {
-                        Vec3 direction = playerEntity.getLookAngle().normalize();
-                        double t = (double)i / numParticles;
-                        Vec3 point = wep.add(direction.scale(t * 2));
-                        Particle particle1 = Minecraft.getInstance().particleEngine.createParticle(ParticleTypes.FLAME,
-                                point.x, point.y, point.z,
-                                0,
-                                0,
-                                0
-                        );
-                        Particle particle2 = Minecraft.getInstance().particleEngine.createParticle(ParticleTypes.SMOKE,
-                                point.x, point.y, point.z,
-                                0,
-                                0,
-                                0
-                        );
-                        if (particle1 != null & particle2 != null) {
-                            particle1.scale(0.86F);
-                            particle1.setLifetime(12);
-                            particle2.scale(0.86F);
-                            particle2.setLifetime(8);
-                        }
-                    }
-                }
-            }
-        };
-        private static final AnimationEvent.E0 FIRE_PARTICLES_LEGR = (entitypatch, self, params) -> {
-            Entity entity = entitypatch.getOriginal();
-            Entity playerEntity = Ascended_arts.proxy.getClientPlayer();
-            if (playerEntity != null) {
-                int numParticles = 2;
-                for (int i = 0; i < numParticles; i++) {
-                    Vec3 wep = getJointWithTranslation(Minecraft.getInstance().player, entity, new Vec3f(0F, 0F, 0F), Armatures.BIPED.get().legR);
-                    if (wep != null) {
-                        Vec3 direction = playerEntity.getLookAngle().normalize();
-                        double t = (double)i / numParticles;
-                        Vec3 point = wep.add(direction.scale(t * 2));
-                        Particle particle1 = Minecraft.getInstance().particleEngine.createParticle(ParticleTypes.FLAME,
-                                point.x, point.y, point.z,
-                                0,
-                                0,
-                                0
-                        );
-                        Particle particle2 = Minecraft.getInstance().particleEngine.createParticle(ParticleTypes.SMOKE,
-                                point.x, point.y, point.z,
-                                0,
-                                0,
-                                0
-                        );
-                        if (particle1 != null & particle2 != null) {
-                            particle1.scale(0.86F);
-                            particle1.setLifetime(6);
-                            particle2.scale(0.86F);
-                            particle2.setLifetime(3);
-                        }
-                    }
-                }
-            }
-        };
+
 
         //PARTICLE SPAWNERS
         private static void spawnParticlesEnder(Entity entity, RandomSource random) {
