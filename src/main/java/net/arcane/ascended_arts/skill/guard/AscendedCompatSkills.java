@@ -92,9 +92,10 @@ public class AscendedCompatSkills {
         if (event.getRegistryName().equals(EpicFightSkills.EMERGENCY_ESCAPE.getId())) {
             if (event.getSkillBuilder() instanceof EmergencyEscapeSkill.Builder builder) {
                 builder.addAvailableWeaponCategory(AscendedWeaponCategories.JIAN)
-                .addAvailableWeaponCategory(AscendedWeaponCategories.SCYTHE)
-                .addAvailableWeaponCategory(AscendedWeaponCategories.SWEEPING_SCYTHE);
-                System.out.println("[AscenededCompatSkills] You may now take emergency escape");
+                        .addAvailableWeaponCategory(AscendedWeaponCategories.SCYTHE)
+                        .addAvailableWeaponCategory(AscendedWeaponCategories.SWEEPING_SCYTHE);
+                System.out.println("[AscendedCompatSkills] You may escape now");
+
             }
         }
     }
@@ -121,6 +122,7 @@ public class AscendedCompatSkills {
     public static void onWeaponCategoryIconCreation(RegisterWeaponCategoryIconEvent icon) {
         icon.registerCategory(AscendedWeaponCategories.JIAN, new ItemStack(AscendedAddonItems.IRON_JIAN.get()));
         icon.registerCategory(AscendedWeaponCategories.SCYTHE, new ItemStack(AscendedAddonItems.ETHERVEIL_SCYTHE.get()));
+        icon.registerCategory(AscendedWeaponCategories.SWEEPING_SCYTHE, new ItemStack(AscendedAddonItems.SMALL_IRON_SCYTHE.get()));
         System.out.println("[AscendedCompatSkills] Skill icons have been actualized");
     }
 }

@@ -52,9 +52,8 @@ public class WeaponCapabilityPresets {
                 .livingMotionModifier(Styles.TWO_HAND, LivingMotions.SNEAK, AscendedAnimations.BIPED_SNEAK_DUAL_JIAN)
                 .livingMotionModifier(Styles.COMMON, LivingMotions.CREATIVE_IDLE, AscendedAnimations.BIPED_FLY_JIAN)
                 .livingMotionModifier(Styles.COMMON, LivingMotions.CREATIVE_FLY, AscendedAnimations.BIPED_FLY_JIAN)
-                .livingMotionModifier(Styles.TWO_HAND, LivingMotions.BLOCK, AscendedAnimations.DUAL_JIAN_GUARD)
+                .livingMotionModifier(Styles.TWO_HAND, LivingMotions.BLOCK, AscendedAnimations.DUAL_JIAN_GUARD);
 
-                .weaponCombinationPredicator((entitypatch) -> EpicFightCapabilities.getItemStackCapability(entitypatch.getOriginal().getOffhandItem()).getWeaponCategory() == AscendedWeaponCategories.JIAN);
 
         return builder;
     };
@@ -77,8 +76,7 @@ public class WeaponCapabilityPresets {
                 .livingMotionModifier(Styles.OCHS, LivingMotions.SNEAK, AscendedAnimations.BIPED_SNEAK_SCYTHE)
                 .livingMotionModifier(Styles.OCHS, LivingMotions.CREATIVE_IDLE, AscendedAnimations.BIPED_HOLD_SCYTHE)
                 .livingMotionModifier(Styles.OCHS, LivingMotions.CREATIVE_FLY, AscendedAnimations.BIPED_RUN_SCYTHE)
-                .livingMotionModifier(Styles.OCHS, LivingMotions.BLOCK, AscendedAnimations.SCYTHE_GUARD)
-                .weaponCombinationPredicator((entitypatch) -> EpicFightCapabilities.getItemStackCapability(entitypatch.getOriginal().getOffhandItem()).getWeaponCategory() == AscendedWeaponCategories.SCYTHE);
+                .livingMotionModifier(Styles.OCHS, LivingMotions.BLOCK, AscendedAnimations.SCYTHE_GUARD);
       return builder;
     };
     public static Function<Item, WeaponCapability.Builder> SWEEPING_SCYTHE = (item) -> {
@@ -86,6 +84,7 @@ public class WeaponCapabilityPresets {
                 .category(AscendedWeaponCategories.SWEEPING_SCYTHE)
                 .styleProvider((playerpatch) -> playerpatch.getHoldingItemCapability(InteractionHand.OFF_HAND).getWeaponCategory() == AscendedWeaponCategories.SWEEPING_SCYTHE ? Styles.TWO_HAND : Styles.ONE_HAND)                .collider(AscendedColliderPreset.SWEEPING_SCYTHE)
                 .canBePlacedOffhand(true)
+                .collider(AscendedColliderPreset.SWEEPING_SCYTHE)
                 .hitSound(EpicFightSounds.BLADE_HIT.get())
                 .swingSound(EpicFightSounds.WHOOSH.get())
                 .innateSkill(Styles.ONE_HAND, (itemstack) -> EpicFightSkills.SWEEPING_EDGE.get())
@@ -96,8 +95,7 @@ public class WeaponCapabilityPresets {
                 .livingMotionModifier(Styles.COMMON, LivingMotions.KNEEL, AscendedAnimations.BIPED_S_SCYTHE_KNEEL)
                 .livingMotionModifier(Styles.COMMON, LivingMotions.WALK, Animations.BIPED_WALK)
                 .livingMotionModifier(Styles.COMMON, LivingMotions.RUN, Animations.BIPED_RUN_DUAL)
-                .livingMotionModifier(Styles.COMMON, LivingMotions.SNEAK, Animations.BIPED_SNEAK)
-                .weaponCombinationPredicator((entitypatch) -> EpicFightCapabilities.getItemStackCapability(entitypatch.getOriginal().getOffhandItem()).getWeaponCategory() == AscendedWeaponCategories.SWEEPING_SCYTHE);
+                .livingMotionModifier(Styles.COMMON, LivingMotions.SNEAK, Animations.BIPED_SNEAK);
         return builder;
     };
     public static Function<Item, WeaponCapability.Builder> SUP_FLUTE = (item) -> {
@@ -110,8 +108,7 @@ public class WeaponCapabilityPresets {
                 .livingMotionModifier(Styles.OCHS, LivingMotions.RUN, AscendedAnimations.FLUTE_IDLE)
                 .livingMotionModifier(Styles.OCHS, LivingMotions.WALK, AscendedAnimations.FLUTE_IDLE)
                 .livingMotionModifier(Styles.OCHS, LivingMotions.SNEAK, AscendedAnimations.FLUTE_IDLE)
-                .livingMotionModifier(Styles.OCHS, LivingMotions.KNEEL, AscendedAnimations.FLUTE_IDLE)
-                .weaponCombinationPredicator((entitypatch) -> EpicFightCapabilities.getItemStackCapability(entitypatch.getOriginal().getOffhandItem()).getWeaponCategory() == AscendedWeaponCategories.SUP_FLUTE);
+                .livingMotionModifier(Styles.OCHS, LivingMotions.KNEEL, AscendedAnimations.FLUTE_IDLE);
                 return builder;
     };
     public static Function<Item, WeaponCapability.Builder> PRAY = (item) -> {
@@ -124,8 +121,7 @@ public class WeaponCapabilityPresets {
               .livingMotionModifier(Styles.OCHS, LivingMotions.KNEEL, AscendedAnimations.PRAYER_IDLE)
               .livingMotionModifier(Styles.OCHS, LivingMotions.SNEAK, AscendedAnimations.PRAYER_IDLE)
               .livingMotionModifier(Styles.OCHS, LivingMotions.WALK, AscendedAnimations.PRAYER_IDLE)
-              .livingMotionModifier(Styles.OCHS, LivingMotions.RUN, AscendedAnimations.PRAYER_IDLE)
-              .weaponCombinationPredicator((entitypatch) -> EpicFightCapabilities.getItemStackCapability(entitypatch.getOriginal().getOffhandItem()).getWeaponCategory() == AscendedWeaponCategories.PRAY);
+              .livingMotionModifier(Styles.OCHS, LivingMotions.RUN, AscendedAnimations.PRAYER_IDLE);
       return builder;
     };
 
