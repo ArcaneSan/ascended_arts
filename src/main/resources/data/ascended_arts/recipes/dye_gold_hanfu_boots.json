@@ -2,7 +2,7 @@
   "type": "ascended_arts:dye",
   "ingredients": [
     {
-      "tag": "forge:dyes"
+      "tag": "c:dyes"
     },
     {
       "item": "ascended_arts:gold_hanfu_boots"

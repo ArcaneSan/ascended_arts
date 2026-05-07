@@ -2,7 +2,7 @@
   "type": "ascended_arts:dye",
   "ingredients": [
     {
-      "tag": "forge:dyes"
+      "tag": "c:dyes"
     },
     {
       "item": "ascended_arts:netherite_hanfu_robe"

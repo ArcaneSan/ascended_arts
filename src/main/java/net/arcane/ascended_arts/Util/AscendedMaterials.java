@@ -54,8 +54,8 @@ public class AscendedMaterials {
             () -> Ingredient.of(new ItemStack(Items.PHANTOM_MEMBRANE))
     ));
 
-    public static final Holder<ArmorMaterial> NETHERITE_HANFU = MATERIALS.register("netherite", () -> register(
-            "armored_robes",
+    public static final Holder<ArmorMaterial> NETHERITE_HANFU = MATERIALS.register("netherite_hanfu", () -> register(
+            "netherite_hanfu",
             Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
                 map.put(ArmorItem.Type.HELMET, 3);
                 map.put(ArmorItem.Type.CHESTPLATE, 8);
@@ -68,8 +68,8 @@ public class AscendedMaterials {
             0.2f,
             () -> Ingredient.of(new ItemStack(Items.NETHERITE_INGOT))
     ));
-    public static final Holder<ArmorMaterial> DIAMOND_HANFU = MATERIALS.register("diamond", () -> register(
-            "armored_robes",
+    public static final Holder<ArmorMaterial> DIAMOND_HANFU = MATERIALS.register("diamond_hanfu", () -> register(
+            "diamond_hanfu",
             Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
                 map.put(ArmorItem.Type.HELMET, 3);
                 map.put(ArmorItem.Type.CHESTPLATE, 8);

@@ -46,6 +46,7 @@ public class IronHanfuArmorItem extends ArmorItem implements IDyeable {
     @Override
     public void initializeClient(Consumer<net.neoforged.neoforge.client.extensions.common.IClientItemExtensions> consumer) {
         consumer.accept(new net.neoforged.neoforge.client.extensions.common.IClientItemExtensions() {
+
             public @NotNull ArmoredRobeModel getHumanoidedArmorModel(@NotNull LivingEntity entity,
                                                                      @NotNull ItemStack itemStack,
                                                                      @NotNull EquipmentSlot armorSlot,

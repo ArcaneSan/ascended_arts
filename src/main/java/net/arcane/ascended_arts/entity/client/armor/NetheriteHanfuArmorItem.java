@@ -19,6 +19,7 @@ import net.minecraft.world.item.*;
 
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
+import net.neoforged.neoforge.client.extensions.common.IClientItemExtensions;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -38,13 +39,10 @@ public class NetheriteHanfuArmorItem extends ArmorItem implements IDyeable {
 
     @OnlyIn(Dist.CLIENT)
     @Override
-    public void initializeClient(Consumer<net.neoforged.neoforge.client.extensions.common.IClientItemExtensions> consumer) {
-        consumer.accept(new net.neoforged.neoforge.client.extensions.common.IClientItemExtensions() {
-
-            public @NotNull ArmoredRobeModel getHumanoidedArmorModel(@NotNull LivingEntity entity,
-                                                                     @NotNull ItemStack itemStack,
-                                                                     @NotNull EquipmentSlot armorSlot,
-                                                                     @NotNull HumanoidModel _default){
+    public void initializeClient(Consumer<IClientItemExtensions> consumer) {
+        consumer.accept(new IClientItemExtensions() {
+            @Override
+            public @NotNull ArmoredRobeModel getHumanoidArmorModel(@NotNull LivingEntity entity, @NotNull ItemStack itemStack, @NotNull EquipmentSlot armorSlot, @NotNull HumanoidModel _default) {
                 float pticks = Minecraft.getInstance().getFrameTimeNs();
                 float f = Mth.rotLerp(pticks, entity.yBodyRotO, entity.yBodyRot);
                 float f1 = Mth.rotLerp(pticks, entity.yHeadRotO, entity.yHeadRot);
@@ -54,9 +52,7 @@ public class NetheriteHanfuArmorItem extends ArmorItem implements IDyeable {
                 ClientRegistry.ARMORED_ROBE_MODEL.copyFromDefault(_default);
                 ClientRegistry.ARMORED_ROBE_MODEL.setupAnim(entity, entity.walkAnimation.position(), entity.walkAnimation.speed(), entity.tickCount + pticks, netHeadYaw, netHeadPitch);
                 return ClientRegistry.ARMORED_ROBE_MODEL;
-
             }
-
         });
     }
 

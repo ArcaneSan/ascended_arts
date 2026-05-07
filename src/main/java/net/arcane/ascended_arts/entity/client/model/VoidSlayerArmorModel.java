@@ -6,6 +6,8 @@ import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
+import net.minecraft.util.Mth;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 
 public class VoidSlayerArmorModel extends ArmorModel {
@@ -152,6 +154,15 @@ public class VoidSlayerArmorModel extends ArmorModel {
 
     @Override
     public void setupAnim(LivingEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+        float f = 1.0F;
+        if (entity.getFallFlyingTicks() > 4) {
+            f = (float)entity.getDeltaMovement().lengthSqr();
+            f = f / 0.2F;
+            f = f * f * f;
+        }
+        if (f < 1.0F) {
+            f = 1.0F;
+        }
 
 
 

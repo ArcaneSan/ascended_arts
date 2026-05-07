@@ -8,11 +8,8 @@ import net.arcane.ascended_arts.item.AscendedToolTiers;
 
 
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.ArmorItem;
-import net.minecraft.world.item.Item;
+import net.minecraft.world.item.*;
 
-import net.minecraft.world.item.Rarity;
-import net.minecraft.world.item.SmithingTemplateItem;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredItem;
@@ -32,31 +29,31 @@ public class AscendedAddonItems {
     public static final DeferredItem<Item> HANFU_UPGRADE =
              ITEMS.register("hanfu_upgrade", () -> new Item(new Item.Properties().fireResistant().rarity(Rarity.UNCOMMON).stacksTo(16)));
     public static final DeferredItem<AscendedItem> IRON_JIAN =
-             ITEMS.register("iron_jian", () -> new AscendedItem(AscendedToolTiers.IRONPLUS, new Item.Properties()));
+             ITEMS.register("iron_jian", () -> new AscendedItem(AscendedToolTiers.IRONPLUS, new Item.Properties().attributes(AscendedItem.createAscendedNormalAttributes(Tiers.IRON))));
     public static final DeferredItem<Item> GREATSWORD =
-            ITEMS.register("greatsword", () -> new AscendLargeItem(AscendedToolTiers.MYTHOS, new Item.Properties().rarity(Rarity.RARE).fireResistant()));
+            ITEMS.register("greatsword", () -> new AscendLargeItem(AscendedToolTiers.MYTHOS, new Item.Properties().rarity(Rarity.RARE).fireResistant().attributes(AscendLargeItem.createAscendedLargeAttributes(Tiers.NETHERITE))));
     public static final DeferredItem<Item> ETHERVEIL_SCYTHE =
-            ITEMS.register("etherveil_scythe", () -> new AscendLargeItem(AscendedToolTiers.MYTHOS, new Item.Properties().fireResistant()));
+            ITEMS.register("etherveil_scythe", () -> new AscendLargeItem(AscendedToolTiers.MYTHOS, new Item.Properties().fireResistant().attributes(AscendLargeItem.createAscendedLargeAttributes(Tiers.NETHERITE))));
     public static final DeferredItem<Item> DIAMOND_JIAN =
-            ITEMS.register("diamond_jian", () -> new AscendedItem(AscendedToolTiers.DIAMONDPLUS, new Item.Properties()));
+            ITEMS.register("diamond_jian", () -> new AscendedItem(AscendedToolTiers.DIAMONDPLUS, new Item.Properties().attributes(AscendedItem.createAscendedNormalAttributes(Tiers.DIAMOND))));
     public static final DeferredItem<Item> NETHERITE_JIAN =
-            ITEMS.register("netherite_jian", () -> new AscendedItem(AscendedToolTiers.NETHERITEPLUS, new Item.Properties().fireResistant()));
+            ITEMS.register("netherite_jian", () -> new AscendedItem(AscendedToolTiers.NETHERITEPLUS, new Item.Properties().fireResistant().attributes(AscendedItem.createAscendedNormalAttributes(Tiers.NETHERITE))));
     public static final DeferredItem<Item> GOLDEN_JIAN =
-            ITEMS.register("golden_jian", () -> new AscendedItem(AscendedToolTiers.GOLDPLUS, new Item.Properties()));
+            ITEMS.register("golden_jian", () -> new AscendedItem(AscendedToolTiers.GOLDPLUS, new Item.Properties().attributes(AscendedItem.createAscendedNormalAttributes(Tiers.GOLD))));
     public static final DeferredItem<Item> WOODEN_JIAN =
-            ITEMS.register("wooden_jian", () -> new AscendedItem( AscendedToolTiers.WOODPLUS, new Item.Properties()));
+            ITEMS.register("wooden_jian", () -> new AscendedItem( AscendedToolTiers.WOODPLUS, new Item.Properties().attributes(AscendedItem.createAscendedNormalAttributes(Tiers.WOOD))));
     public static final DeferredItem<Item> SKYSPLITTER_JIAN =
-            ITEMS.register("skysplitter_jian", () -> new AscendedItem(AscendedToolTiers.MYTHOS, new Item.Properties().fireResistant().rarity(Rarity.EPIC)));
+            ITEMS.register("skysplitter_jian", () -> new AscendedItem(AscendedToolTiers.MYTHOS, new Item.Properties().fireResistant().rarity(Rarity.EPIC).attributes(AscendedItem.createAscendedNormalAttributes(Tiers.NETHERITE))));
     public static final DeferredItem<Item> SMALL_WOODEN_SCYTHE =
-            ITEMS.register("small_wooden_scythe", () -> new AscendedSmallScytheItem(AscendedToolTiers.WOODPLUS, new Item.Properties()));
+            ITEMS.register("small_wooden_scythe", () -> new AscendedSmallScytheItem(AscendedToolTiers.WOODPLUS, new Item.Properties().attributes(AscendedSmallScytheItem.createAscendedSmallAttributes(Tiers.WOOD))));
     public static final DeferredItem<Item> SMALL_IRON_SCYTHE =
-            ITEMS.register("small_iron_scythe", () -> new AscendedSmallScytheItem(AscendedToolTiers.IRONPLUS, new Item.Properties()));
+            ITEMS.register("small_iron_scythe", () -> new AscendedSmallScytheItem(AscendedToolTiers.IRONPLUS, new Item.Properties().attributes(AscendedSmallScytheItem.createAscendedSmallAttributes(Tiers.IRON))));
     public static final DeferredItem<Item> SMALL_GOLDEN_SCYTHE =
-            ITEMS.register("small_golden_scythe", () -> new AscendedSmallScytheItem(AscendedToolTiers.GOLDPLUS, new Item.Properties()));
+            ITEMS.register("small_golden_scythe", () -> new AscendedSmallScytheItem(AscendedToolTiers.GOLDPLUS, new Item.Properties().attributes(AscendedSmallScytheItem.createAscendedSmallAttributes(Tiers.GOLD))));
     public static final DeferredItem<Item> SMALL_DIAMOND_SCYTHE =
-            ITEMS.register("small_diamond_scythe", () -> new AscendedSmallScytheItem(AscendedToolTiers.DIAMONDPLUS, new Item.Properties()));
+            ITEMS.register("small_diamond_scythe", () -> new AscendedSmallScytheItem(AscendedToolTiers.DIAMONDPLUS, new Item.Properties().attributes(AscendedSmallScytheItem.createAscendedSmallAttributes(Tiers.DIAMOND))));
     public static final DeferredItem<Item> SMALL_NETHERITE_SCYTHE =
-            ITEMS.register("small_netherite_scythe", () -> new AscendedSmallScytheItem(AscendedToolTiers.NETHERITEPLUS, new Item.Properties().fireResistant()));
+            ITEMS.register("small_netherite_scythe", () -> new AscendedSmallScytheItem(AscendedToolTiers.NETHERITEPLUS, new Item.Properties().fireResistant().attributes(AscendedSmallScytheItem.createAscendedSmallAttributes(Tiers.NETHERITE))));
 
    public static final DeferredItem<RoyalHunterArmorItem> ROYAL_HUNTER_MASK =
             ITEMS.register("royal_hunter_mask", () -> new RoyalHunterArmorItem(ArmorItem.Type.HELMET, new Item.Properties().fireResistant().rarity(Rarity.EPIC)));
@@ -75,7 +72,7 @@ public class AscendedAddonItems {
     public static final DeferredItem<VoidSlayerArmorItem> VOID_SLAYER_BOOTS =
             ITEMS.register("void_slayer_boots", () -> new VoidSlayerArmorItem(ArmorItem.Type.BOOTS, new Item.Properties().fireResistant().rarity(Rarity.EPIC)));
 
-    public static final DeferredItem<HanfuArmorItem> HANFU_HOOD =
+    public static final DeferredItem<Item> HANFU_HOOD =
             ITEMS.register("hanfu_hood", () -> new HanfuArmorItem(ArmorItem.Type.HELMET, new Item.Properties()));
     public static final DeferredItem<HanfuArmorItem> HANFU_ROBE =
             ITEMS.register("hanfu_robe", () -> new HanfuArmorItem(ArmorItem.Type.CHESTPLATE, new Item.Properties()));

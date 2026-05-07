@@ -99,7 +99,7 @@ public class AscendedCompatSkills {
         }
     }
 
-    public static void onIdentitySkillCreate(SkillBuilderModificationEvent event) {
+    public static void onMeteorSlamSkillCreation(SkillBuilderModificationEvent event) {
         if (event.getRegistryName().equals(EpicFightSkills.METEOR_SLAM.getId())) {
             if (event.getSkillBuilder() instanceof MeteorSlamSkill.Builder builder) {
                 builder.addSlamMotion(AscendedWeaponCategories.SCYTHE, (item, player) -> Animations.METEOR_SLAM);

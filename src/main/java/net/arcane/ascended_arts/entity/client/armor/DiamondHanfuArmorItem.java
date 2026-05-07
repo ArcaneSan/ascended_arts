@@ -44,11 +44,8 @@ public class DiamondHanfuArmorItem extends ArmorItem implements IDyeable {
     @Override
     public void initializeClient(Consumer<IClientItemExtensions> consumer) {
         consumer.accept(new IClientItemExtensions() {
-
-            public @NotNull ArmoredRobeModel getHumanoidedArmorModel(@NotNull LivingEntity entity,
-                                                                     @NotNull ItemStack itemStack,
-                                                                     @NotNull EquipmentSlot armorSlot,
-                                                                     @NotNull HumanoidModel _default){
+            @Override
+            public @NotNull ArmoredRobeModel getHumanoidArmorModel(@NotNull LivingEntity entity, @NotNull ItemStack itemStack, @NotNull EquipmentSlot armorSlot, @NotNull HumanoidModel _default) {
                 float pticks = Minecraft.getInstance().getFrameTimeNs();
                 float f = Mth.rotLerp(pticks, entity.yBodyRotO, entity.yBodyRot);
                 float f1 = Mth.rotLerp(pticks, entity.yHeadRotO, entity.yHeadRot);
@@ -59,7 +56,6 @@ public class DiamondHanfuArmorItem extends ArmorItem implements IDyeable {
                 ClientRegistry.ARMORED_ROBE_MODEL.setupAnim(entity, entity.walkAnimation.position(), entity.walkAnimation.speed(), entity.tickCount + pticks, netHeadYaw, netHeadPitch);
                 return ClientRegistry.ARMORED_ROBE_MODEL;
             }
-
         });
     }
 

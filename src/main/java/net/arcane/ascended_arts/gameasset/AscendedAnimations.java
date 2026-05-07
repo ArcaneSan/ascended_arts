@@ -143,6 +143,8 @@ public class AscendedAnimations {
     public static AnimationManager.AnimationAccessor<AttackAnimation> REAPING_GRASP_1_END;
     public static AnimationManager.AnimationAccessor<AttackAnimation> REAPING_GRASP_2_END;
 
+    public static AnimationManager.AnimationAccessor<EmoteAnimation> BIPED_DAB;
+
 
 
    // public static AnimationManager.AnimationAccessor<BasicAttackAnimation> TESTER;
@@ -212,6 +214,13 @@ public class AscendedAnimations {
 
         BIPED_S_SCYTHE_HOLD = builder.nextAccessor("biped/living/ss/sweeping_scythe_idle", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED));
         BIPED_S_SCYTHE_KNEEL = builder.nextAccessor("biped/living/ss/sweeping_scythe_kneel", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED));
+
+        BIPED_DAB = builder.nextAccessor("biped/emote/dab", (accessor) ->
+                new EmoteAnimation(0.1F, accessor, Armatures.BIPED)
+                        .addEvents(AnimationProperty.StaticAnimationProperty.ON_BEGIN_EVENTS, AnimationEvent.SimpleEvent.create(Animations.ReusableSources.SET_TOOLS_BACK, AnimationEvent.Side.CLIENT))
+                        .addEvents(AnimationProperty.StaticAnimationProperty.ON_END_EVENTS, AnimationEvent.SimpleEvent.create(Animations.ReusableSources.REVERT_TO_HANDS, AnimationEvent.Side.CLIENT))
+                        .addProperty(AnimationProperty.StaticAnimationProperty.FIXED_HEAD_ROTATION, true)
+        );
 
         JIAN_GUARD = builder.nextAccessor("biped/skill/jian/jian_guard", (accessor) -> new StaticAnimation(0.15F, true, accessor, Armatures.BIPED));
         DUAL_JIAN_GUARD = builder.nextAccessor("biped/skill/jian/jian_dual_guard", (accessor) -> new StaticAnimation(0.15F, true, accessor, Armatures.BIPED));

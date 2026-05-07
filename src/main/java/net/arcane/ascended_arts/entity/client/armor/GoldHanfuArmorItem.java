@@ -10,13 +10,13 @@ import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.sounds.SoundEvent;
+
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.*;
-import net.minecraft.world.item.crafting.Ingredient;
+
 
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
@@ -45,11 +45,8 @@ public class GoldHanfuArmorItem extends ArmorItem implements IDyeable {
     @Override
     public void initializeClient(Consumer<IClientItemExtensions> consumer) {
         consumer.accept(new IClientItemExtensions() {
-
-            public @NotNull ArmoredRobeModel getHumanoidedArmorModel(@NotNull LivingEntity entity,
-                                                                     @NotNull ItemStack itemStack,
-                                                                     @NotNull EquipmentSlot armorSlot,
-                                                                     @NotNull HumanoidModel _default){
+            @Override
+            public @NotNull ArmoredRobeModel getHumanoidArmorModel(@NotNull LivingEntity entity, @NotNull ItemStack itemStack, @NotNull EquipmentSlot armorSlot, @NotNull HumanoidModel _default) {
                 float pticks = Minecraft.getInstance().getFrameTimeNs();
                 float f = Mth.rotLerp(pticks, entity.yBodyRotO, entity.yBodyRot);
                 float f1 = Mth.rotLerp(pticks, entity.yHeadRotO, entity.yHeadRot);
@@ -59,9 +56,7 @@ public class GoldHanfuArmorItem extends ArmorItem implements IDyeable {
                 ClientRegistry.ARMORED_ROBE_MODEL.copyFromDefault(_default);
                 ClientRegistry.ARMORED_ROBE_MODEL.setupAnim(entity, entity.walkAnimation.position(), entity.walkAnimation.speed(), entity.tickCount + pticks, netHeadYaw, netHeadPitch);
                 return ClientRegistry.ARMORED_ROBE_MODEL;
-
             }
-
         });
     }
 

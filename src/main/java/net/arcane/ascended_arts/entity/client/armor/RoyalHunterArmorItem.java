@@ -4,20 +4,19 @@ import net.arcane.ascended_arts.Ascended_arts;
 import net.arcane.ascended_arts.Util.AscendedMaterials;
 import net.arcane.ascended_arts.Util.IDyeable;
 import net.arcane.ascended_arts.entity.client.ClientRegistry;
-import net.arcane.ascended_arts.entity.client.model.ArmoredRobeModel;
+
 import net.arcane.ascended_arts.entity.client.model.RoyalHunterArmorModel;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.sounds.SoundEvent;
+
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.*;
-import net.minecraft.world.item.crafting.Ingredient;
 
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
@@ -43,10 +42,8 @@ public class RoyalHunterArmorItem extends ArmorItem implements IDyeable {
     @Override
     public void initializeClient(Consumer<IClientItemExtensions> consumer) {
         consumer.accept(new IClientItemExtensions() {
-            public @NotNull RoyalHunterArmorModel getHumanoidedArmorModel(@NotNull LivingEntity entity,
-                                                                     @NotNull ItemStack itemStack,
-                                                                     @NotNull EquipmentSlot armorSlot,
-                                                                     @NotNull HumanoidModel _default){
+            @Override
+            public @NotNull RoyalHunterArmorModel getHumanoidArmorModel(@NotNull LivingEntity entity, @NotNull ItemStack itemStack, @NotNull EquipmentSlot armorSlot, @NotNull HumanoidModel _default) {
                 float pticks = Minecraft.getInstance().getFrameTimeNs();
                 float f = Mth.rotLerp(pticks, entity.yBodyRotO, entity.yBodyRot);
                 float f1 = Mth.rotLerp(pticks, entity.yHeadRotO, entity.yHeadRot);
@@ -56,7 +53,6 @@ public class RoyalHunterArmorItem extends ArmorItem implements IDyeable {
                 ClientRegistry.ROYAL_HUNTER_ARMOR_MODEL.copyFromDefault(_default);
                 ClientRegistry.ROYAL_HUNTER_ARMOR_MODEL.setupAnim(entity, entity.walkAnimation.position(), entity.walkAnimation.speed(), entity.tickCount + pticks, netHeadYaw, netHeadPitch);
                 return ClientRegistry.ROYAL_HUNTER_ARMOR_MODEL;
-
             }
         });
     }

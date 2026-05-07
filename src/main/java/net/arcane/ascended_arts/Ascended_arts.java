@@ -68,7 +68,7 @@ public class Ascended_arts {
         EpicFightEventHooks.Registry.MODIFY_SKILL_BUILDER.registerEvent(AscendedCompatSkills::onParrySkillCreation);
         EpicFightEventHooks.Registry.MODIFY_SKILL_BUILDER.registerEvent(AscendedCompatSkills::onEFNParrySkillCreation);
         EpicFightEventHooks.Registry.MODIFY_SKILL_BUILDER.registerEvent(AscendedCompatSkills::onEmergencyEscapeSkillCreation);
-        EpicFightEventHooks.Registry.MODIFY_SKILL_BUILDER.registerEvent(AscendedCompatSkills::onIdentitySkillCreate);
+        EpicFightEventHooks.Registry.MODIFY_SKILL_BUILDER.registerEvent(AscendedCompatSkills::onMeteorSlamSkillCreation);
         EpicFightEventHooks.Registry.MODIFY_SKILL_BUILDER.registerEvent(AscendedCompatSkills::onSwordMasterSkillCreation);
         EpicFightClientEventHooks.Registry.WEAPON_CATEGORY_ICON.registerEvent(AscendedCompatSkills::onWeaponCategoryIconCreation);
         EpicFightEventHooks.Registry.WEAPON_CAPABILITY_PRESET.registerEvent(WeaponCapabilityPresets::registerMovesets);
