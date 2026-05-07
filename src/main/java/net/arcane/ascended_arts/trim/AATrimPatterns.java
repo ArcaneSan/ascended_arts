@@ -4,13 +4,14 @@ import net.arcane.ascended_arts.Ascended_arts;
 import net.arcane.ascended_arts.world.item.AscendedAddonItems;
 import net.minecraft.Util;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstapContext;
+import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.armortrim.TrimPattern;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.neoforge.registries.DeferredItem;
+
 
 public class AATrimPatterns {
     public static final ResourceKey<TrimPattern> COAST_HANFU = ResourceKey.create(Registries.TRIM_PATTERN,
@@ -46,30 +47,30 @@ public class AATrimPatterns {
     public static final ResourceKey<TrimPattern> SILENCE_HANFU = ResourceKey.create(Registries.TRIM_PATTERN,
             ResourceLocation.fromNamespaceAndPath(Ascended_arts.MOD_ID, "silence_hanfu"));
 
-    public static void bootstrap(BootstapContext<TrimPattern> context) {
-        register(context, AscendedAddonItems.SILENCE_HANFU_SMITHING_TEMPLATE.get(), SILENCE_HANFU);
-        register(context, AscendedAddonItems.COAST_HANFU_SMITHING_TEMPLATE.get(), COAST_HANFU);
-        register(context, AscendedAddonItems.DUNE_HANFU_SMITHING_TEMPLATE.get(), DUNE_HANFU);
-        register(context, AscendedAddonItems.EYE_HANFU_SMITHING_TEMPLATE.get(), EYE_HANFU);
-        register(context, AscendedAddonItems.HOST_HANFU_SMITHING_TEMPLATE.get(), HOST_HANFU);
-        register(context, AscendedAddonItems.RAISER_HANFU_SMITHING_TEMPLATE.get(), RAISER_HANFU);
-        register(context, AscendedAddonItems.RIB_HANFU_SMITHING_TEMPLATE.get(), RIB_HANFU);
-        register(context, AscendedAddonItems.SENTRY_HANFU_SMITHING_TEMPLATE.get(), SENTRY_HANFU);
-        register(context, AscendedAddonItems.SNOUT_HANFU_SMITHING_TEMPLATE.get(), SNOUT_HANFU);
-        register(context, AscendedAddonItems.SPIRE_HANFU_SMITHING_TEMPLATE.get(), SPIRE_HANFU);
-        register(context, AscendedAddonItems.SHAPER_HANFU_SMITHING_TEMPLATE.get(), SHAPER_HANFU);
-        register(context, AscendedAddonItems.TIDE_HANFU_SMITHING_TEMPLATE.get(), TIDE_HANFU);
-        register(context, AscendedAddonItems.VEX_HANFU_SMITHING_TEMPLATE.get(), VEX_HANFU);
-        register(context, AscendedAddonItems.WARD_HANFU_SMITHING_TEMPLATE.get(), WARD_HANFU);
-        register(context, AscendedAddonItems.WAYFINDER_HANFU_SMITHING_TEMPLATE.get(), WAYFINDER_HANFU);
-        register(context, AscendedAddonItems.WILD_HANFU_SMITHING_TEMPLATE.get(), WILD_HANFU);
+    public static void bootstrap(BootstrapContext<TrimPattern> context) {
+        register(context, AscendedAddonItems.SILENCE_HANFU_SMITHING_TEMPLATE, SILENCE_HANFU);
+        register(context, AscendedAddonItems.COAST_HANFU_SMITHING_TEMPLATE, COAST_HANFU);
+        register(context, AscendedAddonItems.DUNE_HANFU_SMITHING_TEMPLATE, DUNE_HANFU);
+        register(context, AscendedAddonItems.EYE_HANFU_SMITHING_TEMPLATE, EYE_HANFU);
+        register(context, AscendedAddonItems.HOST_HANFU_SMITHING_TEMPLATE, HOST_HANFU);
+        register(context, AscendedAddonItems.RAISER_HANFU_SMITHING_TEMPLATE, RAISER_HANFU);
+        register(context, AscendedAddonItems.RIB_HANFU_SMITHING_TEMPLATE, RIB_HANFU);
+        register(context, AscendedAddonItems.SENTRY_HANFU_SMITHING_TEMPLATE, SENTRY_HANFU);
+        register(context, AscendedAddonItems.SNOUT_HANFU_SMITHING_TEMPLATE, SNOUT_HANFU);
+        register(context, AscendedAddonItems.SPIRE_HANFU_SMITHING_TEMPLATE, SPIRE_HANFU);
+        register(context, AscendedAddonItems.SHAPER_HANFU_SMITHING_TEMPLATE, SHAPER_HANFU);
+        register(context, AscendedAddonItems.TIDE_HANFU_SMITHING_TEMPLATE, TIDE_HANFU);
+        register(context, AscendedAddonItems.VEX_HANFU_SMITHING_TEMPLATE, VEX_HANFU);
+        register(context, AscendedAddonItems.WARD_HANFU_SMITHING_TEMPLATE, WARD_HANFU);
+        register(context, AscendedAddonItems.WAYFINDER_HANFU_SMITHING_TEMPLATE, WAYFINDER_HANFU);
+        register(context, AscendedAddonItems.WILD_HANFU_SMITHING_TEMPLATE, WILD_HANFU);
     }
 
 
 
-    private static void register(BootstapContext<TrimPattern> context, Item item,ResourceKey<TrimPattern> key) {
-        TrimPattern trimPattern = new TrimPattern(key.location(), ForgeRegistries.ITEMS.getHolder(item).get(),
-                Component.translatable(Util.makeDescriptionId("trim_pattern", key.location())));
+    private static void register(BootstrapContext<TrimPattern> context, DeferredItem<Item> item, ResourceKey<TrimPattern> key) {
+        TrimPattern trimPattern = new TrimPattern(key.location(), item.getDelegate(),
+                Component.translatable(Util.makeDescriptionId("trim_pattern", key.location())), false);
         context.register(key, trimPattern);
     }
 }

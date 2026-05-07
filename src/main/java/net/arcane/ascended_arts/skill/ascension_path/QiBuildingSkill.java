@@ -3,79 +3,67 @@ package net.arcane.ascended_arts.skill.ascension_path;
 import net.arcane.ascended_arts.skill.AscendedSkillCategories;
 import net.arcane.ascended_arts.world.item.AscendedCreativeTab;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import yesman.epicfight.gameasset.EpicFightSounds;
+
+import yesman.epicfight.api.event.EntityEventListener;
+import yesman.epicfight.api.event.EpicFightEventHooks;
+import yesman.epicfight.api.event.IdentifierProvider;
+import yesman.epicfight.api.utils.side.ClientOnly;
+import yesman.epicfight.main.EpicFightMod;
 import yesman.epicfight.network.EntityPairingPacketTypes;
 import yesman.epicfight.network.EpicFightNetworkManager;
 import yesman.epicfight.network.server.SPEntityPairingPacket;
+import yesman.epicfight.registry.entries.EpicFightSounds;
 import yesman.epicfight.skill.SkillBuilder;
 import yesman.epicfight.skill.SkillContainer;
-import yesman.epicfight.world.entity.eventlistener.PlayerEventListener;
 
 import java.util.List;
 import java.util.UUID;
 
 public class QiBuildingSkill extends AscensionSkill {
+    public static final IdentifierProvider ASHEN_DECORATIONS = IdentifierProvider.constant(EpicFightMod.identifier("stamina_pillager_ashen"));
 
-    private static final UUID EVENT_UUID = UUID.fromString("89a938db-f471-4ca6-986b-7d32756b92e2");
+    protected float regenRate;
 
-    protected float regenPercentage;
-
-    public QiBuildingSkill(Builder builder) {
+    public QiBuildingSkill(SkillBuilder<?> builder) {
         super(builder);
     }
 
-    public static Builder createQiBuildingBuilder() {
-        return (new Builder())
-                .setCategory(AscendedSkillCategories.ASCENSION_PATH)
-                .setCreativeTab(AscendedCreativeTab.Ascended_Arts_Tab.get())
-                .setResource(Resource.NONE);
-    }
-
-    public static class Builder extends SkillBuilder<QiBuildingSkill> {
-
+    @Override
+    public void loadDatapackParameters(CompoundTag parameters) {
+        super.loadDatapackParameters(parameters);
+        this.regenRate = parameters.getFloat("regen_rate");
     }
 
     @Override
-    public void setParams(CompoundTag parameters) {
-        super.setParams(parameters);
-        this.regenPercentage = parameters.getFloat("regen_rate");
+    public void onInitiate(SkillContainer container, EntityEventListener eventListener) {
+        super.onInitiate(container, eventListener);
+
+        eventListener.registerEvent(
+                EpicFightEventHooks.Entity.KILL_ENTITY,
+                event -> {
+                    float currentStamina = container.getExecutor().getStamina();
+                    float staminaLoss = container.getExecutor().getMaxStamina() - currentStamina;
+                    container.getExecutor().setStamina(currentStamina + Math.min(staminaLoss * this.regenRate * 0.01F, 2.0F));
+                    event.getKilledEntity().playSound(EpicFightSounds.STAMINA_PILLAGER_DEATH.get());
+                    EpicFightNetworkManager.sendToAllPlayerTrackingThisEntity(new SPEntityPairingPacket(event.getKilledEntity().getId(), EntityPairingPacketTypes.STAMINA_PILLAGER_BODY_ASHES), event.getKilledEntity());
+
+                    SPEntityPairingPacket pairingPacket = new SPEntityPairingPacket(container.getExecutor().getOriginal().getId(), EntityPairingPacketTypes.FLASH_WHITE);
+
+                    // durationTick, maxOverlay, maxBrightness, disableRedOverlay
+                    pairingPacket.buffer().writeInt(8);
+                    pairingPacket.buffer().writeInt(3);
+                    pairingPacket.buffer().writeInt(6);
+                    pairingPacket.buffer().writeBoolean(false);
+
+                    EpicFightNetworkManager.sendToAllPlayerTrackingThisEntityWithSelf(pairingPacket, container.getServerExecutor().getOriginal());
+                },
+                this
+        );
     }
 
-    @Override
-    public void onInitiate(SkillContainer container) {
-        super.onInitiate(container);
-
-        container.getExecutor().getEventListener().addEventListener(PlayerEventListener.EventType.PLAYER_KILLED_EVENT, EVENT_UUID, (event) -> {
-            float currentStamina = event.getPlayerPatch().getStamina();
-            float staminaLoss = event.getPlayerPatch().getMaxStamina() - currentStamina;
-            event.getPlayerPatch().setStamina(currentStamina + Math.min(staminaLoss * this.regenPercentage * 0.01F, 2.0F));
-            event.getKilledEntity().playSound(EpicFightSounds.STAMINA_PILLAGER_DEATH.get());
-            EpicFightNetworkManager.sendToAllPlayerTrackingThisEntity(new SPEntityPairingPacket(event.getKilledEntity().getId(), EntityPairingPacketTypes.STAMINA_PILLAGER_BODY_ASHES), event.getKilledEntity());
-
-            SPEntityPairingPacket pairingPacket = new SPEntityPairingPacket(event.getPlayerPatch().getOriginal().getId(), EntityPairingPacketTypes.FLASH_WHITE);
-
-            // durationTick, maxOverlay, maxBrightness, disableRedOverlay
-            pairingPacket.getBuffer().writeInt(8);
-            pairingPacket.getBuffer().writeInt(3);
-            pairingPacket.getBuffer().writeInt(6);
-            pairingPacket.getBuffer().writeBoolean(false);
-
-            EpicFightNetworkManager.sendToAllPlayerTrackingThisEntityWithSelf(pairingPacket, event.getPlayerPatch().getOriginal());
-        });
-    }
-
-    @Override
-    public void onRemoved(SkillContainer container) {
-        super.onRemoved(container);
-
-        container.getExecutor().getEventListener().removeListener(PlayerEventListener.EventType.PLAYER_KILLED_EVENT, EVENT_UUID);
-    }
-
-    @OnlyIn(Dist.CLIENT)
+    @Override @ClientOnly
     public List<Object> getTooltipArgsOfScreen(List<Object> list) {
-        list.add(String.format("%.0f", this.regenPercentage));
+        list.add(String.format("%.0f", this.regenRate));
 
         return list;
     }

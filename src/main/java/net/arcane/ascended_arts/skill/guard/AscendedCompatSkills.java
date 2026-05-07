@@ -8,17 +8,16 @@ import net.arcane.ascended_arts.world.item.AscendedAddonItems;
 
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
 
 
-import yesman.epicfight.api.client.forgeevent.WeaponCategoryIconRegisterEvent;
-import yesman.epicfight.api.forgeevent.SkillBuildEvent;
-import yesman.epicfight.api.forgeevent.SkillBuildEvent.ModRegistryWorker.SkillCreateEvent;
+import net.neoforged.bus.api.SubscribeEvent;
+
+import yesman.epicfight.api.client.event.types.registry.RegisterWeaponCategoryIconEvent;
+import yesman.epicfight.api.event.types.registry.SkillBuilderModificationEvent;
 import yesman.epicfight.gameasset.Animations;
+import yesman.epicfight.registry.entries.EpicFightSkills;
 import yesman.epicfight.skill.guard.GuardSkill;
+
 import yesman.epicfight.skill.guard.ParryingSkill;
 import yesman.epicfight.skill.identity.MeteorSlamSkill;
 import yesman.epicfight.skill.passive.EmergencyEscapeSkill;
@@ -29,86 +28,97 @@ import yesman.epicfight.world.capabilities.item.CapabilityItem;
 import java.util.List;
 
 
-@Mod.EventBusSubscriber(modid = Ascended_arts.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class AscendedCompatSkills {
-    public static void forceGuard(SkillBuildEvent bus) {
+
+    public static void onGuardSkillCreation(SkillBuilderModificationEvent event) {
+        if (event.getRegistryName().equals(EpicFightSkills.GUARD.getId())) {
+            if ((event.getSkillBuilder() instanceof GuardSkill.Builder builder)) {
+                builder.addGuardMotion(AscendedWeaponCategories.JIAN, (itemCap, playerPatch) -> itemCap.getStyle(playerPatch) == CapabilityItem.Styles.ONE_HAND ?
+                                AscendedAnimations.JIAN_GUARD_HIT : AscendedAnimations.JIAN_DUAL_GUARD_HIT)
+                        .addGuardBreakMotion(AscendedWeaponCategories.JIAN, (item, player) -> {
+                            return AscendedAnimations.JIAN_GUARD_BREAK;
+                        });
+                builder.addGuardMotion(AscendedWeaponCategories.SCYTHE, (item, player) -> {
+                    return AscendedAnimations.SCYTHE_GUARD_HIT;
+                }).addGuardBreakMotion(AscendedWeaponCategories.SCYTHE, (item, player) -> {
+                    return Animations.BIPED_COMMON_NEUTRALIZED;
+                });
+                System.out.println("[AscendedCompatSkills] Guard animations have been actualized");
+            }
+        }
     }
+        public static void onParrySkillCreation(SkillBuilderModificationEvent event) {
+            if (event.getRegistryName().equals(EpicFightSkills.PARRYING.getId())) {
+                if ((event.getSkillBuilder() instanceof GuardSkill.Builder builder)) {
 
-    @SubscribeEvent
-    public static void onGuardSkillCreate(SkillCreateEvent<GuardSkill.Builder> event) {
-        System.out.println("[AscendedCompatSkills] Skill being built: " + event.getRegistryName());
-        if (event.getRegistryName().equals(ResourceLocation.fromNamespaceAndPath("epicfight","guard"))) {
-            GuardSkill.Builder builder = event.getSkillBuilder();
+                    builder.addGuardMotion(AscendedWeaponCategories.JIAN, (item, player) -> {
+                        return AscendedAnimations.JIAN_GUARD_HIT;
+                    }).addGuardBreakMotion(AscendedWeaponCategories.JIAN, (item, player) -> {
+                        return AscendedAnimations.JIAN_GUARD_BREAK;
+                    }).addAdvancedGuardMotion(AscendedWeaponCategories.JIAN, (itemCap, playerPatch) -> itemCap.getStyle(playerPatch) == CapabilityItem.Styles.ONE_HAND ?
+                            List.of(AscendedAnimations.JIAN_GUARD_PARRY_1, AscendedAnimations.JIAN_GUARD_PARRY_2)
+                            : List.of(AscendedAnimations.JIAN_DUAL_GUARD_PARRY_1, AscendedAnimations.JIAN_DUAL_GUARD_PARRY_2)
+                    );
+                    builder.addGuardMotion(AscendedWeaponCategories.SCYTHE, (item, player) -> {
+                        return AscendedAnimations.SCYTHE_GUARD_HIT;
+                    }).addGuardBreakMotion(AscendedWeaponCategories.SCYTHE, (item, player) -> {
+                        return Animations.BIPED_COMMON_NEUTRALIZED;
+                    }).addAdvancedGuardMotion(AscendedWeaponCategories.SCYTHE, (item, player) -> {
+                        return List.of(AscendedAnimations.SCYTHE_GUARD_PARRY_1, AscendedAnimations.SCYTHE_GUARD_PARRY_2);
+                    });
+                    System.out.println("[AscendedCompatSkills] Parrying animations have been actualized");
+                }
+            }
+        }
 
+    public static  void onEFNParrySkillCreation(SkillBuilderModificationEvent event) {
+        if (event.getRegistryName().equals(ResourceLocation.fromNamespaceAndPath("efn","efn_parry"))) {
+            GuardSkill.Builder builder = (ParryingSkill.Builder) event.getSkillBuilder();
             builder.addGuardMotion(AscendedWeaponCategories.JIAN, (itemCap, playerPatch) -> itemCap.getStyle(playerPatch) == CapabilityItem.Styles.ONE_HAND ?
-                    AscendedAnimations.JIAN_GUARD_HIT : AscendedAnimations.JIAN_DUAL_GUARD_HIT)
-            .addGuardBreakMotion(AscendedWeaponCategories.JIAN, (item, player) -> {
-                return AscendedAnimations.JIAN_GUARD_BREAK;
-            });
-            builder.addGuardMotion(AscendedWeaponCategories.SCYTHE, (item, player) -> {
-                return AscendedAnimations.SCYTHE_GUARD_HIT;
-            }).addGuardBreakMotion(AscendedWeaponCategories.SCYTHE, (item, player) -> {
-               return Animations.BIPED_COMMON_NEUTRALIZED;
-            });
-            System.out.println("[AscendedCompatSkills] Guard animations have been actualized");
-        }
-    }
-    @SubscribeEvent
-    public static void onParrySkillCreate(SkillCreateEvent<ParryingSkill.Builder> event) {
-        if(event.getRegistryName().equals(ResourceLocation.fromNamespaceAndPath("epicfight", "parrying"))) {
-            GuardSkill.Builder builder = event.getSkillBuilder();
-
-            builder.addGuardMotion(AscendedWeaponCategories.JIAN, (item, player) -> {
-                return AscendedAnimations.JIAN_GUARD_HIT;
-            }).addGuardBreakMotion(AscendedWeaponCategories.JIAN, (item, player) -> {
-                return AscendedAnimations.JIAN_GUARD_BREAK;
-            }).addAdvancedGuardMotion(AscendedWeaponCategories.JIAN, (itemCap, playerPatch) ->  itemCap.getStyle(playerPatch) == CapabilityItem.Styles.ONE_HAND ?
-                    List.of(AscendedAnimations.JIAN_GUARD_PARRY_1, AscendedAnimations.JIAN_GUARD_PARRY_2)
-                    : List.of(AscendedAnimations.JIAN_DUAL_GUARD_PARRY_1, AscendedAnimations.JIAN_DUAL_GUARD_PARRY_2)
-            );
-            builder.addGuardMotion(AscendedWeaponCategories.SCYTHE, (item, player) -> {
-                return AscendedAnimations.SCYTHE_GUARD_HIT;
-            }).addGuardBreakMotion(AscendedWeaponCategories.SCYTHE, (item, player) -> {
-                return Animations.BIPED_COMMON_NEUTRALIZED;
-            }).addAdvancedGuardMotion(AscendedWeaponCategories.SCYTHE, (item, player) -> {
-                return List.of(AscendedAnimations.SCYTHE_GUARD_PARRY_1, AscendedAnimations.SCYTHE_GUARD_PARRY_2);
-            });
-            System.out.println("[AscendedCompatSkills] Parrying animations have been actualized");
+                            AscendedAnimations.JIAN_GUARD_HIT : AscendedAnimations.JIAN_DUAL_GUARD_HIT)
+                    .addGuardBreakMotion(AscendedWeaponCategories.JIAN, (item, player) -> {
+                        return AscendedAnimations.JIAN_GUARD_BREAK;
+                    }).
+                    addAdvancedGuardMotion(AscendedWeaponCategories.JIAN, (itemCap, playerPatch) -> itemCap.getStyle(playerPatch) == CapabilityItem.Styles.ONE_HAND ?
+                List.of(AscendedAnimations.JIAN_GUARD_PARRY_1, AscendedAnimations.JIAN_GUARD_PARRY_2)
+                : List.of(AscendedAnimations.JIAN_DUAL_GUARD_PARRY_1, AscendedAnimations.JIAN_DUAL_GUARD_PARRY_2)
+        );
+            System.out.println("[AscendedCompatSkills] Enhanced Parry animations have been actualized");
         }
     }
 
 
-    @SubscribeEvent
-    public static void onScapeSkillCreate(SkillCreateEvent<EmergencyEscapeSkill.Builder> event) {
-        if (event.getRegistryName().equals(ResourceLocation.fromNamespaceAndPath("epicfight", "emergency_escape"))) {
-            EmergencyEscapeSkill.Builder builder = event.getSkillBuilder();
-            builder.addAvailableWeaponCategory(AscendedWeaponCategories.JIAN);
-            builder.addAvailableWeaponCategory(AscendedWeaponCategories.SCYTHE);
-            builder.addAvailableWeaponCategory(AscendedWeaponCategories.SWEEPING_SCYTHE);
-            System.out.println("[AscenededCompatSkills] You may now take emergency escape");
-        }
-    }
-    @SubscribeEvent
-    public static void onIdentitySkillCreate(SkillCreateEvent<MeteorSlamSkill.Builder> event) {
-        if (event.getRegistryName().equals(ResourceLocation.fromNamespaceAndPath("epicfight", "meteor_slam"))) {
-            MeteorSlamSkill.Builder builder = event.getSkillBuilder();
-            builder.addSlamMotion(AscendedWeaponCategories.SCYTHE, (item, player) -> Animations.METEOR_SLAM);
-            System.out.println("[AscenededCompatSkills] You may now SLAM IT");
+    public static void onEmergencyEscapeSkillCreation(SkillBuilderModificationEvent event) {
+        if (event.getRegistryName().equals(EpicFightSkills.EMERGENCY_ESCAPE.getId())) {
+            if (event.getSkillBuilder() instanceof EmergencyEscapeSkill.Builder builder) {
+                builder.addAvailableWeaponCategory(AscendedWeaponCategories.JIAN)
+                .addAvailableWeaponCategory(AscendedWeaponCategories.SCYTHE)
+                .addAvailableWeaponCategory(AscendedWeaponCategories.SWEEPING_SCYTHE);
+                System.out.println("[AscenededCompatSkills] You may now take emergency escape");
+            }
         }
     }
 
-    @SubscribeEvent
-    public static void onSwordSkillCreate(SkillCreateEvent<SwordmasterSkill.Builder> event) {
-        if (event.getRegistryName().equals(ResourceLocation.fromNamespaceAndPath("epicfight", "swordmaster"))) {
-            SwordmasterSkill.Builder builder = event.getSkillBuilder();
-            builder.addAvailableWeaponCategory(AscendedWeaponCategories.JIAN);
-            System.out.println("[AscenededCompatSkills] You are now a Swordmaster");
+    public static void onIdentitySkillCreate(SkillBuilderModificationEvent event) {
+        if (event.getRegistryName().equals(EpicFightSkills.METEOR_SLAM.getId())) {
+            if (event.getSkillBuilder() instanceof MeteorSlamSkill.Builder builder) {
+                builder.addSlamMotion(AscendedWeaponCategories.SCYTHE, (item, player) -> Animations.METEOR_SLAM);
+                System.out.println("[AscenededCompatSkills] You may now SLAM IT");
+            }
         }
     }
 
-    @SubscribeEvent
-    @OnlyIn(Dist.CLIENT)
-    public static void onIconCreate(WeaponCategoryIconRegisterEvent icon){
+
+    public static void onSwordMasterSkillCreation(SkillBuilderModificationEvent event) {
+        if (event.getRegistryName().equals(EpicFightSkills.SWORD_MASTER.getId())) {
+            if (event.getSkillBuilder() instanceof SwordmasterSkill.Builder builder) {
+                builder.addAvailableWeaponCategory(AscendedWeaponCategories.JIAN);
+                System.out.println("[AscenededCompatSkills] You are now a Swordmaster");
+            }
+        }
+    }
+
+    public static void onWeaponCategoryIconCreation(RegisterWeaponCategoryIconEvent icon) {
         icon.registerCategory(AscendedWeaponCategories.JIAN, new ItemStack(AscendedAddonItems.IRON_JIAN.get()));
         icon.registerCategory(AscendedWeaponCategories.SCYTHE, new ItemStack(AscendedAddonItems.ETHERVEIL_SCYTHE.get()));
         System.out.println("[AscendedCompatSkills] Skill icons have been actualized");

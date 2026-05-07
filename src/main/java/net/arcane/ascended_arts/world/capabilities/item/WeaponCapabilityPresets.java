@@ -8,15 +8,17 @@ import net.arcane.ascended_arts.gameasset.AscendedSkills;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.item.Item;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
 
+
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
 import yesman.epicfight.api.animation.LivingMotions;
-import yesman.epicfight.api.forgeevent.WeaponCapabilityPresetRegistryEvent;
+
+import yesman.epicfight.api.event.types.registry.WeaponCapabilityPresetRegistryEvent;
 import yesman.epicfight.gameasset.Animations;
-import yesman.epicfight.gameasset.EpicFightSkills;
-import yesman.epicfight.gameasset.EpicFightSounds;
-import yesman.epicfight.skill.Skill;
+
+import yesman.epicfight.registry.entries.EpicFightSkills;
+import yesman.epicfight.registry.entries.EpicFightSounds;
 import yesman.epicfight.world.capabilities.EpicFightCapabilities;
 import yesman.epicfight.world.capabilities.item.CapabilityItem;
 import yesman.epicfight.world.capabilities.item.CapabilityItem.Styles;
@@ -24,12 +26,9 @@ import yesman.epicfight.world.capabilities.item.WeaponCapability;
 
 import java.util.function.Function;
 
-@Mod.EventBusSubscriber(modid = Ascended_arts.MOD_ID , bus = Mod.EventBusSubscriber.Bus.MOD)
 
 public class WeaponCapabilityPresets {
-
-
-    public static final Function<Item, CapabilityItem.Builder> JIAN = (item) -> {
+    public static final Function<Item, WeaponCapability.Builder> JIAN = (item) -> {
         WeaponCapability.Builder builder = WeaponCapability.builder()
                 .category(AscendedWeaponCategories.JIAN) // Updated to use custom category
                 .styleProvider((playerpatch) -> playerpatch.getHoldingItemCapability(InteractionHand.OFF_HAND).getWeaponCategory() == AscendedWeaponCategories.JIAN ? Styles.TWO_HAND : Styles.ONE_HAND)
@@ -37,9 +36,9 @@ public class WeaponCapabilityPresets {
                 .canBePlacedOffhand(true)
                 .newStyleCombo(Styles.ONE_HAND, AscendedAnimations.JIAN_AUTO_1, AscendedAnimations.JIAN_AUTO_2, AscendedAnimations.JIAN_AUTO_3,AscendedAnimations.JIAN_AUTO_4, AscendedAnimations.JIAN_DASH, AscendedAnimations.JIAN_AIRSLASH)
                 .newStyleCombo(Styles.TWO_HAND, AscendedAnimations.DUAL_JIAN_AUTO_1, AscendedAnimations.DUAL_JIAN_AUTO_2, AscendedAnimations.DUAL_JIAN_AUTO_3, AscendedAnimations.DUAL_JIAN_AUTO_4, AscendedAnimations.DUAL_JIAN_DASH, AscendedAnimations.DUAL_JIAN_AIRSLASH)
-                .innateSkill(Styles.ONE_HAND, (itemstack) -> AscendedSkills.CELESTIAL_PUNISHMENT)
-                .innateSkill(Styles.TWO_HAND, (itemstack) -> AscendedSkills.CELESTIAL_ONSLAUGHT)
-                .passiveSkill(AscendedSkills.FLOATING_PASSIVE)
+                .innateSkill(Styles.ONE_HAND, (itemstack) -> AscendedSkills.CELESTIAL_PUNISHMENT.get())
+                .innateSkill(Styles.TWO_HAND, (itemstack) -> AscendedSkills.CELESTIAL_ONSLAUGHT.get())
+                .passiveSkill(AscendedSkills.FLOATING_PASSIVE.get())
                 .livingMotionModifier(Styles.ONE_HAND, LivingMotions.IDLE, AscendedAnimations.BIPED_HOLD_JIAN)
                 .livingMotionModifier(Styles.TWO_HAND, LivingMotions.IDLE, AscendedAnimations.BIPED_HOLD_DUAL_JIAN)
                 .livingMotionModifier(Styles.ONE_HAND, LivingMotions.WALK, AscendedAnimations.BIPED_WALK_JIAN)
@@ -59,7 +58,7 @@ public class WeaponCapabilityPresets {
 
         return builder;
     };
-    public static Function<Item, CapabilityItem.Builder> SCYTHE = (item) -> {
+    public static Function<Item, WeaponCapability.Builder> SCYTHE = (item) -> {
         WeaponCapability.Builder builder = WeaponCapability.builder()
                 .category(AscendedWeaponCategories.SCYTHE)
                 .styleProvider((playerpatch) -> Styles.OCHS)
@@ -67,8 +66,8 @@ public class WeaponCapabilityPresets {
                 .canBePlacedOffhand(false)
                 .hitSound(EpicFightSounds.BLADE_HIT.get())
                 .swingSound(EpicFightSounds.WHOOSH_BIG.get())
-                .passiveSkill(AscendedSkills.FLOATING_PASSIVE)
-                .innateSkill(Styles.OCHS, (itemstack) -> AscendedSkills.REAPING_GRASP)
+                .passiveSkill(AscendedSkills.LIFESTEAL_PASSIVE.get())
+                .innateSkill(Styles.OCHS, (itemstack) -> AscendedSkills.REAPING_GRASP.get())
                 .newStyleCombo(Styles.OCHS, AscendedAnimations.SCYTHE_AUTO_1, AscendedAnimations.SCYTHE_AUTO_2, AscendedAnimations.SCYTHE_AUTO_3, AscendedAnimations.SCYTHE_AUTO_4, AscendedAnimations.SCYTHE_DASH, AscendedAnimations.SCYTHE_AIRSLASH)
                 .livingMotionModifier(Styles.OCHS, LivingMotions.IDLE, AscendedAnimations.BIPED_HOLD_SCYTHE)
                 .livingMotionModifier(Styles.OCHS, LivingMotions.KNEEL, AscendedAnimations.BIPED_KNEEL_SCYTHE)
@@ -82,15 +81,15 @@ public class WeaponCapabilityPresets {
                 .weaponCombinationPredicator((entitypatch) -> EpicFightCapabilities.getItemStackCapability(entitypatch.getOriginal().getOffhandItem()).getWeaponCategory() == AscendedWeaponCategories.SCYTHE);
       return builder;
     };
-    public static Function<Item, CapabilityItem.Builder> SWEEPING_SCYTHE = (item) -> {
+    public static Function<Item, WeaponCapability.Builder> SWEEPING_SCYTHE = (item) -> {
         WeaponCapability.Builder builder = WeaponCapability.builder()
                 .category(AscendedWeaponCategories.SWEEPING_SCYTHE)
                 .styleProvider((playerpatch) -> playerpatch.getHoldingItemCapability(InteractionHand.OFF_HAND).getWeaponCategory() == AscendedWeaponCategories.SWEEPING_SCYTHE ? Styles.TWO_HAND : Styles.ONE_HAND)                .collider(AscendedColliderPreset.SWEEPING_SCYTHE)
                 .canBePlacedOffhand(true)
                 .hitSound(EpicFightSounds.BLADE_HIT.get())
                 .swingSound(EpicFightSounds.WHOOSH.get())
-                .innateSkill(Styles.ONE_HAND, (itemstack) -> EpicFightSkills.SWEEPING_EDGE)
-                .innateSkill(Styles.TWO_HAND, (itemStack -> EpicFightSkills.DANCING_EDGE))
+                .innateSkill(Styles.ONE_HAND, (itemstack) -> EpicFightSkills.SWEEPING_EDGE.get())
+                .innateSkill(Styles.TWO_HAND, (itemStack -> EpicFightSkills.DANCING_EDGE.get()))
                 .newStyleCombo(Styles.ONE_HAND,AscendedAnimations.S_SCYTHE_AUTO, AscendedAnimations.S_SCYTHE_AUTO_2, AscendedAnimations.S_SCYTHE_AUTO_3, AscendedAnimations.S_SCYTHE_AUTO_2, AscendedAnimations.S_SCYTHE_AUTO_3, AscendedAnimations.S_SCYTHE_AUTO_2, AscendedAnimations.S_SCYTHE_AUTO_3, AscendedAnimations.S_SCYTHE_DASH, AscendedAnimations.S_SCYTHE_AIRSLASH)
                 .newStyleCombo(Styles.TWO_HAND, AscendedAnimations.S_SCYTHE_AUTO, AscendedAnimations.S_DUAL_SCYTHE_AUTO_2, AscendedAnimations.S_DUAL_SCYTHE_AUTO_3, AscendedAnimations.S_DUAL_SCYTHE_AUTO_2, AscendedAnimations.S_DUAL_SCYTHE_AUTO_3, AscendedAnimations.S_DUAL_SCYTHE_AUTO_2, AscendedAnimations.S_DUAL_SCYTHE_AUTO_3, Animations.SWORD_DUAL_DASH, AscendedAnimations.S_DUAL_SCYTHE_AIRSLASH)
                 .livingMotionModifier(Styles.COMMON, LivingMotions.IDLE, AscendedAnimations.BIPED_S_SCYTHE_HOLD)
@@ -101,8 +100,8 @@ public class WeaponCapabilityPresets {
                 .weaponCombinationPredicator((entitypatch) -> EpicFightCapabilities.getItemStackCapability(entitypatch.getOriginal().getOffhandItem()).getWeaponCategory() == AscendedWeaponCategories.SWEEPING_SCYTHE);
         return builder;
     };
-    public static Function<Item, CapabilityItem.Builder> SUP_FLUTE = (item) -> {
-        CapabilityItem.Builder builder = WeaponCapability.builder()
+    public static Function<Item, WeaponCapability.Builder> SUP_FLUTE = (item) -> {
+        WeaponCapability.Builder builder = WeaponCapability.builder()
                 .category(AscendedWeaponCategories.SUP_FLUTE)
                 .styleProvider((playerpatch) -> Styles.OCHS)
                 .canBePlacedOffhand(true)
@@ -115,8 +114,8 @@ public class WeaponCapabilityPresets {
                 .weaponCombinationPredicator((entitypatch) -> EpicFightCapabilities.getItemStackCapability(entitypatch.getOriginal().getOffhandItem()).getWeaponCategory() == AscendedWeaponCategories.SUP_FLUTE);
                 return builder;
     };
-    public static Function<Item, CapabilityItem.Builder> PRAY = (item) -> {
-      CapabilityItem.Builder builder = WeaponCapability.builder()
+    public static Function<Item, WeaponCapability.Builder> PRAY = (item) -> {
+      WeaponCapability.Builder builder = WeaponCapability.builder()
               .category(AscendedWeaponCategories.PRAY)
               .styleProvider((playerpatch) -> Styles.OCHS)
               .canBePlacedOffhand(true)

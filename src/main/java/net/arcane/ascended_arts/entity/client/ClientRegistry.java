@@ -8,12 +8,13 @@ import net.arcane.ascended_arts.entity.client.model.RoyalHunterArmorModel;
 import net.arcane.ascended_arts.entity.client.model.VoidSlayerArmorModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.EntityRenderersEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 
-@Mod.EventBusSubscriber(modid = Ascended_arts.MOD_ID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
+
+@EventBusSubscriber(modid = Ascended_arts.MOD_ID, value = Dist.CLIENT, bus = EventBusSubscriber.Bus.MOD)
 
 public class ClientRegistry {
     public static final ModelLayerLocation ROBE_LAYER = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath("ascended_arts", "unarmored_robes"), "main");

@@ -3,11 +3,12 @@ package net.arcane.ascended_arts.data;
 import com.yesman.epicskills.common.data.SkillTreeProvider;
 import net.arcane.ascended_arts.Ascended_arts;
 import net.minecraft.data.DataProvider;
-import net.minecraftforge.data.event.GatherDataEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.data.event.GatherDataEvent;
 
-@Mod.EventBusSubscriber(modid = Ascended_arts.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
+
+@EventBusSubscriber(modid = Ascended_arts.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
 public final class DataEvents {
 
     @SubscribeEvent

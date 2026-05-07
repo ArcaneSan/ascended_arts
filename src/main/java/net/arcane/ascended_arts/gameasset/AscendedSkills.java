@@ -1,23 +1,26 @@
 package net.arcane.ascended_arts.gameasset;
 
 import net.arcane.ascended_arts.Ascended_arts;
+
+import net.arcane.ascended_arts.skill.ascension_path.AscensionSkill;
 import net.arcane.ascended_arts.skill.ascension_path.QiBuildingSkill;
 import net.arcane.ascended_arts.skill.weaponinnate.*;
 import net.arcane.ascended_arts.skill.weaponpassive.FloatingPassive;
 
 
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.registries.RegisterEvent;
+import net.arcane.ascended_arts.skill.weaponpassive.LifeStealPassive;
 
+
+
+import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.DeferredRegister;
 import yesman.epicfight.api.animation.property.AnimationProperty;
-import yesman.epicfight.api.forgeevent.SkillBuildEvent;
-import yesman.epicfight.api.utils.math.ValueModifier;
-import yesman.epicfight.skill.Skill;
-import yesman.epicfight.skill.SkillCategories;
-import yesman.epicfight.skill.passive.PassiveSkill;
-import yesman.epicfight.skill.weaponinnate.WeaponInnateSkill;
 
+import yesman.epicfight.api.utils.math.ValueModifier;
+import yesman.epicfight.registry.EpicFightRegistries;
+import yesman.epicfight.skill.SkillCategories;
+import yesman.epicfight.skill.weaponinnate.WeaponInnateSkill;
+import yesman.epicfight.skill.Skill;
 import yesman.epicfight.world.damagesource.EpicFightDamageTypeTags;
 import yesman.epicfight.world.damagesource.ExtraDamageInstance;
 import yesman.epicfight.world.damagesource.StunType;
@@ -25,26 +28,20 @@ import yesman.epicfight.world.damagesource.StunType;
 
 import java.util.Set;
 
-@Mod.EventBusSubscriber(modid = Ascended_arts.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class AscendedSkills {
-    public static Skill CELESTIAL_PUNISHMENT;
-    public static Skill CELESTIAL_ONSLAUGHT;
-    public static Skill FLOATING_PASSIVE;
-    public static Skill REAPING_GRASP;
-    public static Skill QI_BUILDING;
+private AscendedSkills () {}
+
+    public static final DeferredRegister<Skill> REGISTRY =
+            DeferredRegister.create(EpicFightRegistries.Keys.SKILL, Ascended_arts.MOD_ID);
 
 
 
-
-    @SubscribeEvent
-    public static void buildSkillEvent(SkillBuildEvent build) {
-        SkillBuildEvent.ModRegistryWorker modRegistry = build.createRegistryWorker(Ascended_arts.MOD_ID);
-
-        QI_BUILDING = modRegistry.build("qi_building", QiBuildingSkill::new, QiBuildingSkill.createQiBuildingBuilder());
+    public static final DeferredHolder<Skill, QiBuildingSkill> QI_BUILDING = REGISTRY.register("qi_building", key ->
+            AscensionSkill.createBuilder(QiBuildingSkill::new).build(key));
 
 
-        WeaponInnateSkill celestial_punishment = modRegistry.build("celestial_punishment", CelestialPunishmentSkill :: new, WeaponInnateSkill.createWeaponInnateBuilder());
-        celestial_punishment
+    public static final DeferredHolder <Skill, CelestialPunishmentSkill> CELESTIAL_PUNISHMENT = REGISTRY.register("celestial_punishment", key ->
+            WeaponInnateSkill.createWeaponInnateBuilder(CelestialPunishmentSkill::new).setCategory(SkillCategories.WEAPON_INNATE)
                 .newProperty()
                 .addProperty(AnimationProperty.AttackPhaseProperty.MAX_STRIKES_MODIFIER, ValueModifier.setter(5))
                 .addProperty(AnimationProperty.AttackPhaseProperty.STUN_TYPE, StunType.HOLD)
@@ -55,11 +52,12 @@ public class AscendedSkills {
                 .addProperty(AnimationProperty.AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(8))
                 .newProperty()
                 .addProperty(AnimationProperty.AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.setter(100))
-                .addProperty(AnimationProperty.AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE, EpicFightDamageTypeTags.GUARD_PUNCTURE, EpicFightDamageTypeTags.FINISHER));
-        CELESTIAL_PUNISHMENT = celestial_punishment;
+                .addProperty(AnimationProperty.AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE, EpicFightDamageTypeTags.GUARD_PUNCTURE, EpicFightDamageTypeTags.FINISHER))
+                    .build(key)
+    );
 
-        WeaponInnateSkill celestial_onslaught = modRegistry.build("celestial_onslaught", CelestialOnslaughtSkill :: new, WeaponInnateSkill.createWeaponInnateBuilder());
-        celestial_onslaught
+    public static final DeferredHolder <Skill, CelestialOnslaughtSkill> CELESTIAL_ONSLAUGHT= REGISTRY.register("celestial_onslaught", key ->
+            WeaponInnateSkill.createWeaponInnateBuilder(CelestialOnslaughtSkill::new).setCategory(SkillCategories.WEAPON_INNATE)
                 .newProperty()
                 .addProperty(AnimationProperty.AttackPhaseProperty.MAX_STRIKES_MODIFIER, ValueModifier.setter(5))
                 .addProperty(AnimationProperty.AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.adder(6))
@@ -76,32 +74,33 @@ public class AscendedSkills {
                 .addProperty(AnimationProperty.AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.setter(100))
                 .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.adder(10))
                 .addProperty(AnimationProperty.AttackPhaseProperty.EXTRA_DAMAGE, Set.of(ExtraDamageInstance.SWEEPING_EDGE_ENCHANTMENT.create()))
-                .addProperty(AnimationProperty.AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE, EpicFightDamageTypeTags.GUARD_PUNCTURE, EpicFightDamageTypeTags.FINISHER));
-        CELESTIAL_ONSLAUGHT = celestial_onslaught;
+                .addProperty(AnimationProperty.AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE, EpicFightDamageTypeTags.GUARD_PUNCTURE, EpicFightDamageTypeTags.FINISHER))
+                    .build(key)
 
-        WeaponInnateSkill reaping_grasp = modRegistry.build("reaping_grasp", ReapingGraspSkill :: new, WeaponInnateSkill.createWeaponInnateBuilder());
-        reaping_grasp
+    );
+
+    public static final DeferredHolder <Skill, ReapingGraspSkill> REAPING_GRASP = REGISTRY.register("reaping_grasp", key ->
+            WeaponInnateSkill.createWeaponInnateBuilder(ReapingGraspSkill::new).setCategory(SkillCategories.WEAPON_INNATE)
                 .newProperty()
                 .addProperty(AnimationProperty.AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.setter(50))
                 .addProperty(AnimationProperty.AttackPhaseProperty.MAX_STRIKES_MODIFIER, ValueModifier.adder(2))
                 .newProperty()
                 .addProperty(AnimationProperty.AttackPhaseProperty.MAX_STRIKES_MODIFIER, ValueModifier.adder(2))
                 .addProperty(AnimationProperty.AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.setter(75))
-                .addProperty(AnimationProperty.AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE, EpicFightDamageTypeTags.GUARD_PUNCTURE, EpicFightDamageTypeTags.FINISHER));
-        REAPING_GRASP = reaping_grasp;
+                .addProperty(AnimationProperty.AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE, EpicFightDamageTypeTags.GUARD_PUNCTURE, EpicFightDamageTypeTags.FINISHER))
+                    .build(key)
+
+    );
 
 
-        FLOATING_PASSIVE = modRegistry.build("floating_passive", FloatingPassive::new, PassiveSkill.createPassiveBuilder().setCategory(SkillCategories.WEAPON_PASSIVE).setActivateType(Skill.ActivateType.ONE_SHOT));
+    public static DeferredHolder <Skill, FloatingPassive> FLOATING_PASSIVE = REGISTRY.register("floating_passive", key ->
+                FloatingPassive.createBuilder(FloatingPassive::new).setCategory(SkillCategories.WEAPON_PASSIVE).setActivateType(Skill.ActivateType.ONE_SHOT).build(key));
+    public static DeferredHolder <Skill, LifeStealPassive> LIFESTEAL_PASSIVE = REGISTRY.register("lifesteal_passive", key ->
+            LifeStealPassive.createPassiveBuilder(LifeStealPassive::new).setCategory(SkillCategories.WEAPON_PASSIVE).setActivateType(Skill.ActivateType.ONE_SHOT).build(key));
 
 
 
-    }
 
-    public AscendedSkills() {
 
-    }
-    public static void registerAscendedSkills(RegisterEvent bus) {
-
-    }
 
 }

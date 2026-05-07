@@ -1,95 +1,51 @@
 package net.arcane.ascended_arts.entity.client.armor;
 
 import net.arcane.ascended_arts.Ascended_arts;
+import net.arcane.ascended_arts.Util.AscendedMaterials;
 import net.arcane.ascended_arts.Util.IDyeable;
 import net.arcane.ascended_arts.entity.client.ClientRegistry;
 import net.arcane.ascended_arts.entity.client.model.ArmoredRobeModel;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.HumanoidModel;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
-import net.minecraft.sounds.SoundEvent;
+import net.minecraft.resources.ResourceLocation;
+
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.*;
-import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.client.extensions.common.IClientItemExtensions;
+
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Consumer;
 
 public class NetheriteHanfuArmorItem extends ArmorItem implements IDyeable {
-    private static final int[] MAX_DAMAGE_ARRAY = new int[]{14, 16, 17, 12};
-
-    public static class Material implements ArmorMaterial {
-
-        @Override
-        public int getDurabilityForType(Type slot) {
-            return MAX_DAMAGE_ARRAY[slot.getSlot().getIndex()] * 47;
-        }
-
-        @Override
-        public int getDefenseForType(Type slot) {
-            return switch (slot) {
-                case CHESTPLATE -> 8;
-                case HELMET, BOOTS -> 3;
-                case LEGGINGS -> 6;
-            };
-        }
-
-        @Override
-        public int getEnchantmentValue() {
-            return 30;
-        }
-
-        @Override
-        public @NotNull SoundEvent getEquipSound() {
-            return ArmorMaterials.NETHERITE.getEquipSound();
-        }
-
-        @Override
-        public @NotNull Ingredient getRepairIngredient() {
-            return Ingredient.of(new ItemStack(Items.DIAMOND));
-        }
-
-        @Override
-        public @NotNull String getName() {
-            return Ascended_arts.MOD_ID + ":armored_robes";
-        }
-
-        @Override
-        public float getToughness() {
-            return 4;
-        }
-
-        @Override
-        public float getKnockbackResistance() {
-            return 0.2F;
-        }
-
-        public static final NetheriteHanfuArmorItem.Material INSTANCE = new NetheriteHanfuArmorItem.Material();
-    }
-
     public NetheriteHanfuArmorItem(Type slot, Properties builderIn) {
-        super(NetheriteHanfuArmorItem.Material.INSTANCE, slot, builderIn);
+        super(AscendedMaterials.NETHERITE_HANFU, slot, builderIn.stacksTo(1).durability(slot.getDurability(47))
+                .component(DataComponents.BASE_COLOR, DyeColor.WHITE));
     }
     @Override
     public @NotNull Component getName(@NotNull ItemStack pStack) {
         var og = super.getName(pStack);
-        if (!(pStack.hasTag() && pStack.getTag().contains("color"))) return og;
+        if (getColor(pStack) == DyeColor.WHITE) return og;
         return Component.literal(og.getString() + " (" + Component.translatable(getColor(pStack).getName()).getString() + ")");
     }
 
     @OnlyIn(Dist.CLIENT)
     @Override
-    public void initializeClient(Consumer<IClientItemExtensions> consumer) {
-        consumer.accept(new IClientItemExtensions() {
-            @Override
-            public @NotNull ArmoredRobeModel getHumanoidArmorModel(LivingEntity entity, ItemStack itemStack, EquipmentSlot armorSlot, HumanoidModel _default) {
-                float pticks = Minecraft.getInstance().getFrameTime();
+    public void initializeClient(Consumer<net.neoforged.neoforge.client.extensions.common.IClientItemExtensions> consumer) {
+        consumer.accept(new net.neoforged.neoforge.client.extensions.common.IClientItemExtensions() {
+
+            public @NotNull ArmoredRobeModel getHumanoidedArmorModel(@NotNull LivingEntity entity,
+                                                                     @NotNull ItemStack itemStack,
+                                                                     @NotNull EquipmentSlot armorSlot,
+                                                                     @NotNull HumanoidModel _default){
+                float pticks = Minecraft.getInstance().getFrameTimeNs();
                 float f = Mth.rotLerp(pticks, entity.yBodyRotO, entity.yBodyRot);
                 float f1 = Mth.rotLerp(pticks, entity.yHeadRotO, entity.yHeadRot);
                 float netHeadYaw = f1 - f;
@@ -105,15 +61,15 @@ public class NetheriteHanfuArmorItem extends ArmorItem implements IDyeable {
     }
 
     private DyeColor getColor(ItemStack stack) {
-        var tag = stack.getOrCreateTag();
-        return tag.contains("color") ? DyeColor.byId(tag.getInt("color")) : DyeColor.WHITE;
+        return stack.getOrDefault(DataComponents.BASE_COLOR,DyeColor.WHITE);
     }
 
 
-    @OnlyIn(Dist.CLIENT)
     @Override
-    public String getArmorTexture(ItemStack stack, Entity entity, EquipmentSlot slot, String type) {
+    public @Nullable ResourceLocation getArmorTexture(@NotNull ItemStack stack, @NotNull Entity entity,
+                                                      @NotNull EquipmentSlot slot,
+                                                      ArmorMaterial.@NotNull Layer layer, boolean innerModel) {
         DyeColor dyeColor = getColor(stack);
-        return Ascended_arts.MOD_ID + ":textures/entity/armored_robes/netherite/" + dyeColor.getName() + ".png";
+        return ResourceLocation.fromNamespaceAndPath(Ascended_arts.MOD_ID, ":textures/entity/armored_robes/netherite/" + dyeColor.getName() + ".png");
     }
 }

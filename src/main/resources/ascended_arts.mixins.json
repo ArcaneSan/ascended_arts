@@ -2,13 +2,15 @@
   "required": true,
   "minVersion": "0.8",
   "package": "net.arcane.ascended_arts.mixin",
-  "compatibilityLevel": "JAVA_8",
-  "refmap": "ascended_arts.refmap.json",
+  "compatibilityLevel": "JAVA_21",
   "mixins": [
   ],
   "client": [
   ],
   "injectors": {
     "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
   }
 }

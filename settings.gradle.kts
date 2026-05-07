@@ -7,14 +7,15 @@ pluginManagement {
             }
         }
     }
+
     repositories {
-        strictMaven("https://maven.neoforged.net/releases", "net.neoforged")
+        mavenLocal()
         gradlePluginPortal()
+        strictMaven("https://maven.neoforged.net/releases", "net.neoforged")
     }
 }
-
 plugins {
-    id("org.gradle.toolchains.foojay-resolver-convention") version "0.5.0"
+    id("org.gradle.toolchains.foojay-resolver-convention") version "1.0.0"
 }
 
 rootProject.name = "Ascended Arts"

@@ -1,19 +1,17 @@
 package net.arcane.ascended_arts.world.item;
 
-import net.minecraft.world.item.Item;
+
 import net.minecraft.world.item.Tier;
-import net.minecraft.world.level.block.state.BlockState;
-import yesman.epicfight.world.item.WeaponItem;
+import net.minecraft.world.item.component.ItemAttributeModifiers;
+import yesman.epicfight.world.item.TieredWeaponItem;
 
-public class AscendedItem extends WeaponItem {
-    public AscendedItem(Item.Properties build, Tier materialIn) {
-        super(materialIn, 3, -2.2F, build);
+
+public class AscendedItem extends TieredWeaponItem {
+    public static ItemAttributeModifiers createAscendedNormalAttributes(Tier tier) {
+        return TieredWeaponItem.createAttributes(tier, 3.0F, -2.2F, 0.0F);
     }
 
-    @Override
-    public boolean isCorrectToolForDrops(BlockState blockIn) {
-
-        return true;
+    public AscendedItem(Tier tier, Properties properties) {
+        super(tier, properties);
     }
-
 }

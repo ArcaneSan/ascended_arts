@@ -1,32 +1,36 @@
 package net.arcane.ascended_arts.skill.weaponinnate;
 
 import net.arcane.ascended_arts.gameasset.AscendedAnimations;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import yesman.epicfight.api.animation.types.AttackAnimation;
 import yesman.epicfight.api.asset.AssetAccessor;
+import yesman.epicfight.api.event.EntityEventListener;
+import yesman.epicfight.api.event.EpicFightEventHooks;
 import yesman.epicfight.skill.SkillBuilder;
 import yesman.epicfight.skill.SkillContainer;
+import yesman.epicfight.skill.SkillSlots;
 import yesman.epicfight.skill.weaponinnate.WeaponInnateSkill;
 import yesman.epicfight.world.capabilities.entitypatch.player.PlayerPatch;
 import yesman.epicfight.world.capabilities.item.CapabilityItem;
-import yesman.epicfight.world.entity.eventlistener.PlayerEventListener;
+
 
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
 public class ReapingGraspSkill extends WeaponInnateSkill {
-    private static final UUID EVENT_UUID = UUID.fromString("2eb10151-66a4-47e7-8e4b-25cb5cdd5670");
     public final AssetAccessor<? extends AttackAnimation> first;
     public final AssetAccessor<? extends AttackAnimation> second;
     public final AssetAccessor<? extends AttackAnimation> end1;
     public final AssetAccessor<? extends AttackAnimation> end2;
 
 
-    public ReapingGraspSkill(SkillBuilder<? extends WeaponInnateSkill> builder) {
+    public ReapingGraspSkill(WeaponInnateSkill.Builder<?> builder) {
         super(builder);
         this.first = AscendedAnimations.REAPING_GRASP_1;
         this.second = AscendedAnimations.REAPING_GRASP_2;
@@ -36,42 +40,40 @@ public class ReapingGraspSkill extends WeaponInnateSkill {
     }
 
     @Override
-    public void onInitiate(SkillContainer container) {
-        container.getExecutor().getEventListener().addEventListener(PlayerEventListener.EventType.ATTACK_ANIMATION_END_EVENT, EVENT_UUID, (event) ->{
-            if (AscendedAnimations.REAPING_GRASP_1.equals(event.getAnimation())) {
-                List<LivingEntity> hurtEntities = event.getPlayerPatch().getCurrentlyActuallyHitEntities();
+    public void onInitiate(SkillContainer container, EntityEventListener eventListener) {
+        super.onInitiate(container, eventListener);
+        List<LivingEntity> hurtEntities = container.getExecutor().getCurrentlyActuallyHitEntities();
+        SkillContainer innateSkill = container.getExecutor().getSkill(SkillSlots.WEAPON_INNATE);
+        eventListener.registerEvent(EpicFightEventHooks.Animation.END, (event) -> {
+            if (this.first.equals(event.getAnimation())) {
+                if (!hurtEntities.isEmpty() && hurtEntities.getFirst().isAlive()) {
+                    container.getExecutor().reserveAnimation(this.second);
+                    container.getExecutor().getServerAnimator().getPlayerFor(null).reset();
+                }
 
-                if (!hurtEntities.isEmpty() && hurtEntities.get(0).isAlive()){
-                    event.getPlayerPatch().getCurrentlyActuallyHitEntities().clear();
-                    event.getPlayerPatch().getServerAnimator().getPlayerFor(null).reset();
-                    event.getPlayerPatch().reserveAnimation(this.second);
-                    event.getPlayerPatch().getCurrentlyActuallyHitEntities();
-                }else {
-                    event.getPlayerPatch().getCurrentlyActuallyHitEntities().clear();
-                    event.getPlayerPatch().getServerAnimator().getPlayerFor(null).reset();
-                    event.getPlayerPatch().reserveAnimation(this.end1);
+                if (!container.getExecutor().isLogicalClient()) {
+                    if (innateSkill != null && innateSkill.getSkill() != null && eventListener.getEntityPatch().isLastAttackSuccess() && hurtEntities.getFirst().isDeadOrDying()) {
+                        innateSkill.getSkill().setConsumptionSynchronize(innateSkill, this.consumption * 0.75F);
+                    }
                 }
             }
-            if (AscendedAnimations.REAPING_GRASP_2.equals(event.getAnimation())) {
-                    event.getPlayerPatch().getServerAnimator().getPlayerFor(null).reset();
-                    event.getPlayerPatch().reserveAnimation(this.end2);
-
-
+            if (this.second.equals(event.getAnimation())){
+                if (!hurtEntities.isEmpty() && hurtEntities.getFirst().isAlive()) {
+                    container.getExecutor().reserveAnimation(this.end2);
+                    container.getExecutor().getServerAnimator().getPlayerFor(null).reset();
+                }
             }
-
-
-        });
+            if (this.second.equals(event.getAnimation()) || this.end2.equals(event.getAnimation())) {
+                container.getExecutor().getCurrentlyActuallyHitEntities().clear();}
+        }, this);
     }
 
-    @Override
-    public void onRemoved(SkillContainer container) {
-        container.getExecutor().getEventListener().removeListener(PlayerEventListener.EventType.ATTACK_ANIMATION_END_EVENT, EVENT_UUID);
-    }
+
 
     @Override
-    public void executeOnServer(SkillContainer container, FriendlyByteBuf args) {
+    public void executeOnServer(SkillContainer container, CompoundTag arguments) {
         container.getExecutor().playAnimationSynchronized(this.first, 0);
-        super.executeOnServer(container, args);
+        super.executeOnServer(container, arguments);
     }
 
     @Override

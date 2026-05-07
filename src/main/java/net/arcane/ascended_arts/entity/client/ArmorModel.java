@@ -75,14 +75,14 @@ public abstract class ArmorModel extends HumanoidModel<LivingEntity> {
         } else return ImmutableList.of();
     }
 
-    @Override
+
     public void renderToBuffer(@NotNull PoseStack matrixStack, @NotNull VertexConsumer buffer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
         if (slot == LEGS){
             this.leggings.copyFrom(this.body);
             this.rightLegging.copyFrom(this.rightLeg);
             this.leftLegging.copyFrom(this.leftLeg);
         }
-        super.renderToBuffer(matrixStack, buffer, packedLight, packedOverlay, red, green, blue, alpha);
+        super.renderToBuffer(matrixStack, buffer, packedLight, packedOverlay);
     }
 
     public void copyFromDefault(HumanoidModel<?> model) {
