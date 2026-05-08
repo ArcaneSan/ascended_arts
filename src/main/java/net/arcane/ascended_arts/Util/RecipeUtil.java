@@ -37,6 +37,7 @@ public class RecipeUtil {
         if (object instanceof Item) return new ItemStack((Item) object);
         else if (object instanceof Block) return new ItemStack((Block) object);
         else if (object instanceof ItemStack) return ((ItemStack) object).copy();
+            //TODO: tags
         else return ItemStack.EMPTY;
     }
 

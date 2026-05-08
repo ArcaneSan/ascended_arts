@@ -32,7 +32,7 @@ public class AscendedItemTagsProvider extends ItemTagsProvider {
                         AscendedAddonItems.ETHERVEIL_SCYTHE.get(),
                         AscendedAddonItems.SKYSPLITTER_JIAN.get()
                 );
-/*        this.tag(ItemTags.HEAD_ARMOR)
+        this.tag(ItemTags.HEAD_ARMOR)
                 .add(
                         AscendedAddonItems.HANFU_HOOD.get(),
                         AscendedAddonItems.IRON_HANFU_HOOD.get(),
@@ -71,7 +71,7 @@ public class AscendedItemTagsProvider extends ItemTagsProvider {
                         AscendedAddonItems.NETHERITE_HANFU_BOOTS.get(),
                         AscendedAddonItems.ROYAL_HUNTER_BOOTS.get(),
                         AscendedAddonItems.VOID_SLAYER_BOOTS.get()
-                );*/
+                );
 
     }
 

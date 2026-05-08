@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "base": {
+    "item": "minecraft:netherite_leggings"
+  },
+  "addition" : {
+    "item": "ascended_arts:hanfu_pants"
+  },
+  "result": {
+    "id": "ascended_arts:netherite_hanfu_pants"
+  },
+  "template": {
+    "item": "ascended_arts:hanfu_upgrade"
+  }
+}

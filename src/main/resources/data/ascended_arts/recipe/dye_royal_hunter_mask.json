@@ -1,0 +1,14 @@
+{
+  "type": "ascended_arts:dye",
+  "ingredients": [
+    {
+      "tag": "c:dyes"
+    },
+    {
+      "item": "ascended_arts:royal_hunter_mask"
+    }
+  ],
+  "result": {
+    "id": "ascended_arts:royal_hunter_mask"
+  }
+}

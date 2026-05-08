@@ -22,11 +22,11 @@ public final class DataEvents {
         private DataEvents() {}
 
         @SubscribeEvent
-        public static void ascended$gatherData(GatherDataEvent event) {
+        public static void gatherData(GatherDataEvent event) {
             DataGenerator gen = event.getGenerator();
             PackOutput packOutput = gen.getPackOutput();
-            CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
             ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
+            CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
             EpicFightBlockTagsProvider blockTagsProvider = new EpicFightBlockTagsProvider(packOutput, lookupProvider, existingFileHelper);;
 
             gen.addProvider(event.includeServer(), new AscendedItemTagsProvider(packOutput, lookupProvider, blockTagsProvider.contentsGetter(), existingFileHelper));

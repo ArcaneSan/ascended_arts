@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+  [
+    "   ",
+    "BS ",
+    "SB "
+  ],
+  "key":
+  {
+    "B": { "item" : "minecraft:string" },
+    "S": { "item" : "minecraft:white_wool" }
+  },
+  "result":
+  {
+    "id" : "ascended_arts:cloth",
+    "count" : 4
+  }
+}

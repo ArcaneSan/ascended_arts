@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+  [
+    "AAA",
+    "ABA",
+    "AAA"
+  ],
+  "key":
+  {
+    "A": { "item" : "ascended_arts:cloth" },
+    "B": { "item" : "minecraft:eye_armor_trim_smithing_template" }
+  },
+  "result":
+  {
+    "id" : "ascended_arts:eye_hanfu_armor_trim_smithing_template"
+  }
+}

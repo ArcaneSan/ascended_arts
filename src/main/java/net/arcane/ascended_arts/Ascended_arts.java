@@ -6,6 +6,7 @@ import net.arcane.ascended_arts.Util.AscendedMaterials;
 import net.arcane.ascended_arts.compat.EpicSkillsCompat;
 import net.arcane.ascended_arts.gameasset.AscendedAnimations;
 import net.arcane.ascended_arts.gameasset.AscendedSkills;
+import net.arcane.ascended_arts.recipes.AARecipes;
 import net.arcane.ascended_arts.skill.AscendedSkillCategories;
 import net.arcane.ascended_arts.skill.AscendedSkillSlots;
 import net.arcane.ascended_arts.skill.guard.AscendedCompatSkills;
@@ -55,6 +56,9 @@ public class Ascended_arts {
         AscendedAddonItems.register(bus);
         AscendedCreativeTab.register(bus);
         bus.addListener(AscendedAnimations::registerAnimations);
+        AARecipes.RECIPE_TYPES.register(bus);
+        AARecipes.RECIPE_SERIALIZERS.register(bus);
+
 
         AscendedSkills.REGISTRY.register(bus);
         WeaponCategory.ENUM_MANAGER.registerEnumCls(MOD_ID, AscendedWeaponCategories.class);
@@ -75,12 +79,6 @@ public class Ascended_arts {
         EpicFightEventHooks.Registry.MODIFY_SKILL_BUILDER.registerEvent(AscendedCompatSkills::onSwordMasterSkillCreation, 2);
         EpicFightClientEventHooks.Registry.WEAPON_CATEGORY_ICON.registerEvent(AscendedCompatSkills::onWeaponCategoryIconCreation ,1);
         EpicFightEventHooks.Registry.WEAPON_CAPABILITY_PRESET.registerEvent(WeaponCapabilityPresets::registerMovesets, 3);
-
-
-
-
-
-
         // Register our mod's ModConfigSpec so that FML can create and load the config file for us
 
     }
@@ -88,6 +86,7 @@ public class Ascended_arts {
     private void doCommonStuff(final FMLCommonSetupEvent event){
 
     }
+
 
     private void commonSetup(final FMLCommonSetupEvent event) {
         // Some common setup code
