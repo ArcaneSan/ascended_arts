@@ -64,8 +64,11 @@
   "yellow" : "Yellow",
 
   "emote.ascended_arts.dab": "Dab",
+  "emote.ascended_arts.backflip": "Backflip",
+
 
   "weapon_category.epicfight.jian": "Jian",
+  "weapon_category.epicfight.scythe": "Scythe",
 
   "skill.ascended_arts.celestial_punishment" : "Celestial Punishment",
   "skill.ascended_arts.celestial_punishment.tooltip" : "Pin the foes down and slice them from above",
