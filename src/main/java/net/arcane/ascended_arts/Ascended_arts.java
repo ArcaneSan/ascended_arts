@@ -10,8 +10,7 @@ import net.arcane.ascended_arts.recipes.AARecipes;
 import net.arcane.ascended_arts.skill.AscendedSkillCategories;
 import net.arcane.ascended_arts.skill.AscendedSkillSlots;
 import net.arcane.ascended_arts.skill.guard.AscendedCompatSkills;
-import net.arcane.ascended_arts.world.capabilities.item.AscendedWeaponCategories;
-import net.arcane.ascended_arts.world.capabilities.item.WeaponCapabilityPresets;
+import net.arcane.ascended_arts.world.capabilities.item.*;
 import net.arcane.ascended_arts.world.item.AscendedAddonItems;
 import net.arcane.ascended_arts.world.item.AscendedCreativeTab;
 import net.minecraft.client.Minecraft;
@@ -80,6 +79,8 @@ public class Ascended_arts {
         EpicFightClientEventHooks.Registry.WEAPON_CATEGORY_ICON.registerEvent(AscendedCompatSkills::onWeaponCategoryIconCreation ,1);
         EpicFightEventHooks.Registry.WEAPON_CAPABILITY_PRESET.registerEvent(WeaponCapabilityPresets::registerMovesets, 3);
         // Register our mod's ModConfigSpec so that FML can create and load the config file for us
+        AscendedArtsItemCapabilityPreset.REGISTRY.register(bus);
+        AscendedArtsMovesets.REGISTRY.register(bus);
 
     }
 

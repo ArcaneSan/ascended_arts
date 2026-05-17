@@ -3,12 +3,9 @@
   {
     "common":
     {
-      "armor_negation":6.0,
       "impact":0.5,
-      "max_strikes":4
+      "max_strikes":1
     }
   },
-  "hit_particle":"blunt",
-  "hit_sound":"entity.hit.blunt",
   "type":"ascended_arts:jian"
 }

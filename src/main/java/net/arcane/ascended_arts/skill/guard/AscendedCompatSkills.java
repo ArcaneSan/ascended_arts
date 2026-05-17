@@ -33,7 +33,7 @@ public class AscendedCompatSkills {
     public static void onGuardSkillCreation(SkillBuilderModificationEvent event) {
         if (event.getRegistryName().equals(EpicFightSkills.GUARD.getId())) {
             if ((event.getSkillBuilder() instanceof GuardSkill.Builder builder)) {
-                builder.addGuardMotion(AscendedWeaponCategories.JIAN, (itemCap, playerPatch) -> itemCap.getStyle(playerPatch) == CapabilityItem.Styles.ONE_HAND ?
+                /*builder.addGuardMotion(AscendedWeaponCategories.JIAN, (itemCap, playerPatch) -> itemCap.getStyle(playerPatch) == CapabilityItem.Styles.ONE_HAND ?
                                 AscendedAnimations.JIAN_GUARD_HIT : AscendedAnimations.JIAN_DUAL_GUARD_HIT)
                         .addGuardBreakMotion(AscendedWeaponCategories.JIAN, (item, player) -> {
                             return AscendedAnimations.JIAN_GUARD_BREAK;
@@ -42,7 +42,7 @@ public class AscendedCompatSkills {
                     return AscendedAnimations.SCYTHE_GUARD_HIT;
                 }).addGuardBreakMotion(AscendedWeaponCategories.SCYTHE, (item, player) -> {
                     return Animations.BIPED_COMMON_NEUTRALIZED;
-                });
+                });*/
                 System.out.println("[AscendedCompatSkills] Guard animations have been actualized");
             }
         }
@@ -51,7 +51,7 @@ public class AscendedCompatSkills {
             if (event.getRegistryName().equals(EpicFightSkills.PARRYING.getId())) {
                 if ((event.getSkillBuilder() instanceof GuardSkill.Builder builder)) {
 
-                    builder.addGuardMotion(AscendedWeaponCategories.JIAN, (item, player) -> {
+                    /*builder.addGuardMotion(AscendedWeaponCategories.JIAN, (item, player) -> {
                         return AscendedAnimations.JIAN_GUARD_HIT;
                     }).addGuardBreakMotion(AscendedWeaponCategories.JIAN, (item, player) -> {
                         return AscendedAnimations.JIAN_GUARD_BREAK;
@@ -65,7 +65,7 @@ public class AscendedCompatSkills {
                         return Animations.BIPED_COMMON_NEUTRALIZED;
                     }).addAdvancedGuardMotion(AscendedWeaponCategories.SCYTHE, (item, player) -> {
                         return List.of(AscendedAnimations.SCYTHE_GUARD_PARRY_1, AscendedAnimations.SCYTHE_GUARD_PARRY_2);
-                    });
+                    });*/
                     System.out.println("[AscendedCompatSkills] Parrying animations have been actualized");
                 }
             }

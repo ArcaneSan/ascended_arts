@@ -53,6 +53,9 @@ public class CelestialOnslaughtSkill extends WeaponInnateSkill {
                     container.getExecutor().reserveAnimation(this.second);
                     container.getExecutor().getServerAnimator().getPlayerFor(null).reset();
                 }
+                if (!eventListener.getEntityPatch().isLastAttackSuccess() && !this.second.equals(event.getAnimation()) && !this.third.equals(event.getAnimation())){
+                    container.getExecutor().reserveAnimation(this.third);
+                }
 
                 if (!container.getExecutor().isLogicalClient()) {
                     if (innateSkill != null && innateSkill.getSkill() != null && eventListener.getEntityPatch().isLastAttackSuccess() && hurtEntities.getFirst().isDeadOrDying()) {
