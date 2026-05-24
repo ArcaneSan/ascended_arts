@@ -77,10 +77,10 @@ public class Ascended_arts {
         EpicFightEventHooks.Registry.MODIFY_SKILL_BUILDER.registerEvent(AscendedCompatSkills::onMeteorSlamSkillCreation, 1);
         EpicFightEventHooks.Registry.MODIFY_SKILL_BUILDER.registerEvent(AscendedCompatSkills::onSwordMasterSkillCreation, 2);
         EpicFightClientEventHooks.Registry.WEAPON_CATEGORY_ICON.registerEvent(AscendedCompatSkills::onWeaponCategoryIconCreation ,1);
-        EpicFightEventHooks.Registry.WEAPON_CAPABILITY_PRESET.registerEvent(WeaponCapabilityPresets::registerMovesets, 3);
         // Register our mod's ModConfigSpec so that FML can create and load the config file for us
         AscendedArtsItemCapabilityPreset.REGISTRY.register(bus);
         AscendedArtsMovesets.REGISTRY.register(bus);
+        AscendedArtsProviderConditionals.REGISTRY.register(bus);
 
     }
 

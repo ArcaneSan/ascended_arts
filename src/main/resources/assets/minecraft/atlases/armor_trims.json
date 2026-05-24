@@ -35,6 +35,10 @@
         "trims/models/armor/raiser_leggings",
         "trims/models/armor/host",
         "trims/models/armor/host_leggings",
+        "trims/models/armor/flow",
+        "trims/models/armor/flow_leggings",
+        "trims/models/armor/bolt",
+        "trims/models/armor/bolt_leggings",
 
         "ascended_arts:trims/models/armor/silence_hanfu",
         "ascended_arts:trims/models/armor/silence_hanfu_leggings",
@@ -67,7 +71,11 @@
         "ascended_arts:trims/models/armor/raiser_hanfu",
         "ascended_arts:trims/models/armor/raiser_hanfu_leggings",
         "ascended_arts:trims/models/armor/host_hanfu",
-        "ascended_arts:trims/models/armor/host_hanfu_leggings"
+        "ascended_arts:trims/models/armor/host_hanfu_leggings",
+        "ascended_arts:trims/models/armor/bolt_hanfu",
+        "ascended_arts:trims/models/armor/bolt_hanfu_leggings",
+        "ascended_arts:trims/models/armor/flow_hanfu",
+        "ascended_arts:trims/models/armor/flow_hanfu_leggings"
       ],
       "palette_key": "trims/color_palettes/trim_palette",
       "permutations": {

@@ -66,6 +66,8 @@
   "emote.ascended_arts.dab": "Dab",
   "emote.ascended_arts.backflip": "Backflip",
   "emote.ascended_arts.bringitaround": "Bring it Around",
+  "emote.ascended_arts.dogeza": "Dogeza",
+
 
 
   "weapon_category.epicfight.jian": "Jian",
@@ -83,22 +85,52 @@
   "skill.epicfight.ascension_path.category" : "Inner Cultivation",
   "skill.ascended_arts.qi_building.tooltip" : "The first step towards ascension. You aren't too much different from a mortal, with a small bonus. Regain %s%% of missing stamina when killing your target.",
 
-  "item.ascended_arts.silence_hanfu_armor_trim_smithing_template" : "Silence for Hanfu Armor Only",
-  "item.ascended_arts.coast_hanfu_armor_trim_smithing_template" : "Coast for Hanfu Armor Only",
-  "item.ascended_arts.dune_hanfu_armor_trim_smithing_template" : "Dune for Hanfu Armor Only",
-  "item.ascended_arts.eye_hanfu_armor_trim_smithing_template" : "Eye for Hanfu Armor Only",
-  "item.ascended_arts.host_hanfu_armor_trim_smithing_template" : "Host for Hanfu Armor Only",
-  "item.ascended_arts.raiser_hanfu_armor_trim_smithing_template" : "Raiser for Hanfu Armor Only",
-  "item.ascended_arts.rib_hanfu_armor_trim_smithing_template" : "Rib for Hanfu Armor Only",
-  "item.ascended_arts.sentry_hanfu_armor_trim_smithing_template" : "Sentry for Hanfu Armor Only",
-  "item.ascended_arts.shaper_hanfu_armor_trim_smithing_template" : "Shaper for Hanfu Armor Only",
-  "item.ascended_arts.snout_hanfu_armor_trim_smithing_template" : "Snout for Hanfu Armor Only",
-  "item.ascended_arts.spire_hanfu_armor_trim_smithing_template" : "Spire for Hanfu Armor Only",
-  "item.ascended_arts.tide_hanfu_armor_trim_smithing_template" : "Tide for Hanfu Armor Only",
-  "item.ascended_arts.vex_hanfu_armor_trim_smithing_template" : "Vex for Hanfu Armor Only",
-  "item.ascended_arts.ward_hanfu_armor_trim_smithing_template" : "Ward for Hanfu Armor Only",
-  "item.ascended_arts.wayfinder_hanfu_armor_trim_smithing_template" : "Wayfinder for Hanfu Armor Only",
-  "item.ascended_arts.wild_hanfu_armor_trim_smithing_template" : "Wild for Hanfu Armor Only"
+  "item.ascended_arts.silence_hanfu_armor_trim_smithing_template" : "Hanfu Smithing Template",
+  "item.ascended_arts.coast_hanfu_armor_trim_smithing_template" : "Hanfu Smithing Template",
+  "item.ascended_arts.dune_hanfu_armor_trim_smithing_template" : "Hanfu Smithing Template",
+  "item.ascended_arts.eye_hanfu_armor_trim_smithing_template" : "Hanfu Smithing Template",
+  "item.ascended_arts.host_hanfu_armor_trim_smithing_template" : "Hanfu Smithing Template",
+  "item.ascended_arts.raiser_hanfu_armor_trim_smithing_template" : "Hanfu Smithing Template",
+  "item.ascended_arts.rib_hanfu_armor_trim_smithing_template" : "Hanfu Smithing Template",
+  "item.ascended_arts.sentry_hanfu_armor_trim_smithing_template" : "Hanfu Smithing Template",
+  "item.ascended_arts.shaper_hanfu_armor_trim_smithing_template" : "Hanfu Smithing Template",
+  "item.ascended_arts.snout_hanfu_armor_trim_smithing_template" : "Hanfu Smithing Template",
+  "item.ascended_arts.spire_hanfu_armor_trim_smithing_template" : "Hanfu Smithing Template",
+  "item.ascended_arts.tide_hanfu_armor_trim_smithing_template" : "Hanfu Smithing Template",
+  "item.ascended_arts.vex_hanfu_armor_trim_smithing_template" : "Hanfu Smithing Template",
+  "item.ascended_arts.ward_hanfu_armor_trim_smithing_template" : "Hanfu Smithing Template",
+  "item.ascended_arts.wayfinder_hanfu_armor_trim_smithing_template" : "Hanfu Smithing Template",
+  "item.ascended_arts.wild_hanfu_armor_trim_smithing_template" : "Hanfu Smithing Template",
+  "item.ascended_arts.bolt_hanfu_armor_trim_smithing_template" : "Hanfu Smithing Template",
+  "item.ascended_arts.flow_hanfu_armor_trim_smithing_template" : "Hanfu Smithing Template",
+  "trim_pattern.ascended_arts.silence_hanfu" : "Hanfu Silence Armor Trim",
+  "trim_pattern.ascended_arts.coast_hanfu" : "Hanfu Coast Armor Trim",
+  "trim_pattern.ascended_arts.dune_hanfu" : "Hanfu Dune Armor Trim",
+  "trim_pattern.ascended_arts.eye_hanfu" : "Hanfu Eye Armor Trim",
+  "trim_pattern.ascended_arts.host_hanfu" : "Hanfu Host Armor Trim",
+  "trim_pattern.ascended_arts.raiser_hanfu" : "Hanfu Raiser Armor Trim",
+  "trim_pattern.ascended_arts.rib_hanfu" : "Hanfu Rib Armor Trim",
+  "trim_pattern.ascended_arts.sentry_hanfu" : "Hanfu Sentry Armor Trim",
+  "trim_pattern.ascended_arts.shaper_hanfu" : "Hanfu Shaper Armor Trim",
+  "trim_pattern.ascended_arts.snout_hanfu" : "Hanfu Snout Armor Trim",
+  "trim_pattern.ascended_arts.spire_hanfu" : "Hanfu Spire Armor Trim",
+  "trim_pattern.ascended_arts.tide_hanfu" : "Hanfu Tide Armor Trim",
+  "trim_pattern.ascended_arts.vex_hanfu" : "Hanfu Vex Armor Trim",
+  "trim_pattern.ascended_arts.ward_hanfu" : "Hanfu Ward Armor Trim",
+  "trim_pattern.ascended_arts.wayfinder_hanfu" : "Hanfu Wayfinder Armor Trim",
+  "trim_pattern.ascended_arts.wild_hanfu" : "Hanfu Wild Armor Trim",
+  "trim_pattern.ascended_arts.bolt_hanfu" : "Hanfu Bolt Armor Trim",
+  "trim_pattern.ascended_arts.flow_hanfu" : "Hanfu Flow Armor Trim"
+
+
+
+
+
+
+
+
+
+
 
 
 

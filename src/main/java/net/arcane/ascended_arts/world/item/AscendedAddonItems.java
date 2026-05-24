@@ -162,6 +162,12 @@ public class AscendedAddonItems {
     public static final DeferredItem<Item> SHAPER_HANFU_SMITHING_TEMPLATE =
             ITEMS.register("shaper_hanfu_armor_trim_smithing_template", () ->
                     SmithingTemplateItem.createArmorTrimTemplate(ResourceLocation.fromNamespaceAndPath(Ascended_arts.MOD_ID, "shaper_hanfu")));
+    public static final DeferredItem<Item> BOLT_HANFU_SMITHING_TEMPLATE =
+            ITEMS.register("bolt_hanfu_armor_trim_smithing_template", () ->
+                    SmithingTemplateItem.createArmorTrimTemplate(ResourceLocation.fromNamespaceAndPath(Ascended_arts.MOD_ID, "bolt_hanfu")));
+    public static final DeferredItem<Item> FLOW_HANFU_SMITHING_TEMPLATE =
+            ITEMS.register("flow_hanfu_armor_trim_smithing_template", () ->
+                    SmithingTemplateItem.createArmorTrimTemplate(ResourceLocation.fromNamespaceAndPath(Ascended_arts.MOD_ID, "flow_hanfu")));
 
 
     public static void register(IEventBus eventBus) {

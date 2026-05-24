@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures" : {
+    "layer0": "ascended_arts:item/flow_hanfu_armor_trim_smithing_template"
+  }
+}

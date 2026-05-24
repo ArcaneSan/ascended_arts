@@ -18,13 +18,13 @@ public final class AscendedArtsItemCapabilityPreset {
 
     public static final DeferredWeapon JIAN = REGISTRY.registerWeapon("jian",
             () ->  WeaponCapability.builder()
-                    .category(CapabilityItem.WeaponCategories.SWORD)
+                    .category(AscendedWeaponCategories.JIAN)
                     .hitSound(EpicFightSounds.BLADE_HIT)
                     .collider(AscendedColliderPreset.JIAN)
                     .setTierValues(0, 0, 0.0, 0.0)
                     .addMoveset(CapabilityItem.Styles.ONE_HAND, AscendedArtsMovesets.JIAN_1H)
                     .addMoveset(CapabilityItem.Styles.TWO_HAND, AscendedArtsMovesets.JIAN_DUAL)
-                    .addConditionals(EpicFightProviderConditionals.DUAL_SWORDS, EpicFightProviderConditionals.DEFAULT_1H_WIELD_STYLE)
+                    .addConditionals(AscendedArtsProviderConditionals.DUAL_JIAN, EpicFightProviderConditionals.DEFAULT_1H_WIELD_STYLE)
                     .addTag(Ascended_arts.identifier("jian"))
     );
     public static final DeferredWeapon SCYTHE = REGISTRY.registerWeapon("scythe",
