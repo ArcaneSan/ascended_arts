@@ -4,9 +4,9 @@
   "snapshot_time_stamp": 0.0,
   "preview_camera_transform": {
     "x_translation": 0.0,
-    "y_translation": 1.0,
+    "y_translation": 0.5,
     "x_rotation": 0.0,
-    "y_rotation": -180.0,
+    "y_rotation": -120.0,
     "zoom": -3.0
   }
 }

@@ -94,6 +94,10 @@ sourceSets.main {
 dependencies {
     implementation(libs.epicFight)
     implementation(libs.epicskills)
+
+   /* implementation(libs.malum)
+    implementation(libs.lodestone)
+    implementation(libs.curios)*/
 }
 
 val generateModMetadata = tasks.register<ProcessResources>("generateModMetadata") {
@@ -153,7 +157,7 @@ val TaskContainer.jar: TaskProvider<Jar>
 //    discord {
 //        username.set("APIMaker4000")
 //        webhookUrl.set(providers.environmentVariable("DISCORD_WEBHOOK"))
- //       avatarUrl.set("")
+//       avatarUrl.set("")
 //    }
 //}
 

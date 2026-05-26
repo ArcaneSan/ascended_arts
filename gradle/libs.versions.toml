@@ -5,10 +5,19 @@ epic-fight = "21.17.2-mc1.21.1-neoforge"
 epicskills = "21.3.1-1.21.1"
 modPublish = "1.1.0"
 
+#Malum
+#malum = "1.8.2"
+#lodestone = "1.8.2"
+#curios = "9.5.1+1.21.1"
+
 [libraries]
 
 epicFight = { module = "maven.modrinth:epic-fight", version.ref = "epic-fight" }
 epicskills = { module = "maven.modrinth:epic-fight-skill-tree", version.ref = "epicskills"}
+
+#malum = {module = "maven.modrinth:malum", version.ref = "malum"}
+#lodestone = {module = "maven.modrinth:lodestonelib", version.ref = "lodestone"}
+#curios = {module = "maven.modrinth:curios", version.ref = "curios"}
 
 [plugins]
 eclipse = { id = "eclipse"}

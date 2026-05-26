@@ -4,9 +4,9 @@
     "common":
     {
       "armor_negation":20.0,
-      "impact":1.8,
-      "max_strikes":8
+      "impact":1.0,
+      "max_strikes":2
     }
   },
-  "type":"ascended_arts:sweeping_scythe"
+  "type":"epicfight:sword"
 }
