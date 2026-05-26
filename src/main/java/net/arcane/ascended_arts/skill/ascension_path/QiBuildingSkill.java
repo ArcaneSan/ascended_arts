@@ -1,14 +1,12 @@
 package net.arcane.ascended_arts.skill.ascension_path;
 
-import net.arcane.ascended_arts.skill.AscendedSkillCategories;
-import net.arcane.ascended_arts.world.item.AscendedCreativeTab;
 import net.minecraft.nbt.CompoundTag;
 
 import yesman.epicfight.api.event.EntityEventListener;
 import yesman.epicfight.api.event.EpicFightEventHooks;
-import yesman.epicfight.api.event.IdentifierProvider;
+
 import yesman.epicfight.api.utils.side.ClientOnly;
-import yesman.epicfight.main.EpicFightMod;
+
 import yesman.epicfight.network.EntityPairingPacketTypes;
 import yesman.epicfight.network.EpicFightNetworkManager;
 import yesman.epicfight.network.server.SPEntityPairingPacket;
@@ -17,7 +15,7 @@ import yesman.epicfight.skill.SkillBuilder;
 import yesman.epicfight.skill.SkillContainer;
 
 import java.util.List;
-import java.util.UUID;
+
 
 public class QiBuildingSkill extends AscensionSkill {
 

@@ -78,14 +78,14 @@
   "skill.ascended_arts.celestial_onslaught" : "Celestial Onslaught",
   "skill.ascended_arts.celestial_onslaught.tooltip" : "Relentless strikes and dive",
   "skill.ascended_arts.reaping_grasp" : "Reaping Grasp",
-  "skill.ascended_arts.reaping_grasp_tooltip": "Swift additional strikes",
+  "skill.ascended_arts.reaping_grasp.tooltip": "Swift additional strikes",
 
   "skill_tree.ascended_arts.path_to_ascension": "Path to Ascension",
 
   "skill.ascended_arts.qi_building" : "Qi Building",
   "epicfight.skill_slot.ascension_path": "Path to Ascension",
   "skill.epicfight.category.ascension_path" : "Inner Cultivation",
-  "skill.ascended_arts.qi_building.tooltip" : "The first step towards ascension. You aren't too much different from a mortal, with a small bonus. Regain %s%% of missing stamina when killing your target.",
+  "skill.ascended_arts.qi_building.tooltip" : "The first step towards ascension. You aren't too much different from a mortal, with a small bonus.\n\nRegain %s%% of missing stamina when killing your target.",
 
   "item.ascended_arts.silence_hanfu_armor_trim_smithing_template" : "Hanfu Smithing Template",
   "item.ascended_arts.coast_hanfu_armor_trim_smithing_template" : "Hanfu Smithing Template",
