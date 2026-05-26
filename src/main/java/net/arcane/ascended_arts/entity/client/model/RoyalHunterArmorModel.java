@@ -69,7 +69,7 @@ public class RoyalHunterArmorModel extends ArmorModel {
 
         PartDefinition shoulder_r1 = armorRightArm.addOrReplaceChild("shoulder_r1", CubeListBuilder.create().texOffs(54, 63).addBox(-2.5F, -2.5F, -3.0F, 4.0F, 5.0F, 6.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(-2.1F, -0.2F, 0.0F, 0.0F, 0.0F, 0.2618F));
 
-        PartDefinition armorLeftLeg = left_leg.addOrReplaceChild("armorLeftLeg", CubeListBuilder.create().texOffs(29, 65).addBox(-2.25F, -0.1F, -2.5F, 4.75F, 10.0F, 5.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 0.0F, 0.0F));
+        PartDefinition armorLeftLeg = left_leg.addOrReplaceChild("armorLeftLeg", CubeListBuilder.create().texOffs(29, 65).addBox(-2.25F, -0.1F, -2.5F, 5F, 10.0F, 5.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 0.0F, 0.0F));
 
         PartDefinition leftleg_r1 = armorLeftLeg.addOrReplaceChild("leftleg_r1", CubeListBuilder.create().texOffs(109, 67).addBox(-0.5F, -2.7F, -0.2F, 1.0F, 5.4F, 6.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(1.6F, 1.9F, -3.15F, 0.0F, 0.0F, -0.48F));
 
@@ -82,7 +82,7 @@ public class RoyalHunterArmorModel extends ArmorModel {
 
         PartDefinition leftbootleaf_r1 = armorLeftBoot.addOrReplaceChild("leftbootleaf_r1", CubeListBuilder.create().texOffs(65, 100).mirror().addBox(-0.1F, -1.625F, -1.55F, 0.0F, 5.0F, 3.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offsetAndRotation(3.2115F, 9.3742F, 1.4902F, -1.0893F, 0.0774F, 0.0404F));
 
-        PartDefinition armorRightLeg = right_leg.addOrReplaceChild("armorRightLeg", CubeListBuilder.create().texOffs(62, 5).addBox(-2.5F, -0.1F, -2.5F, 4.75F, 10.0F, 5.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 0.0F, 0.0F));
+        PartDefinition armorRightLeg = right_leg.addOrReplaceChild("armorRightLeg", CubeListBuilder.create().texOffs(62, 5).addBox(-2.75F, -0.1F, -2.5F, 5F, 10.0F, 5.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 0.0F, 0.0F));
 
         PartDefinition rightleg_r1 = armorRightLeg.addOrReplaceChild("rightleg_r1", CubeListBuilder.create().texOffs(109, 67).mirror().addBox(-0.5F, -2.7F, -0.2F, 1.0F, 5.4F, 6.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offsetAndRotation(-1.6F, 1.9F, -3.15F, 0.0F, 0.0F, 0.48F));
 
