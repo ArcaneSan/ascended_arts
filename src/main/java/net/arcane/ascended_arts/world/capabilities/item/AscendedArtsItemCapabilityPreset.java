@@ -56,13 +56,13 @@ public final class AscendedArtsItemCapabilityPreset {
                     .addConditionals(EpicFightProviderConditionals.DEFAULT_1H_WIELD_STYLE)
                     .addTag(Ascended_arts.identifier("flute"))
     );
-    public static final DeferredWeapon COMPAT_PRAY = REGISTRY.registerWeapon("pray",
+    public static final DeferredWeapon PRAY = REGISTRY.registerWeapon("pray",
             () -> WeaponCapability.builder()
                     .category(CapabilityItem.WeaponCategories.NOT_WEAPON)
                     .hitSound(EpicFightSounds.BLUNT_HIT)
                     .addMoveset(CapabilityItem.Styles.ONE_HAND, AscendedArtsMovesets.PRAY)
                     .addConditionals(EpicFightProviderConditionals.DEFAULT_1H_WIELD_STYLE)
-                    .addTag(Ascended_arts.identifier("compat_pray"))
+                    .addTag(Ascended_arts.identifier("pray"))
     );
 
 }
