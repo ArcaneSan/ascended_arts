@@ -98,6 +98,9 @@ dependencies {
    /* implementation(libs.malum)
     implementation(libs.lodestone)
     implementation(libs.curios)*/
+
+/*    implementation(libs.supp)
+    implementation(libs.moon)*/
 }
 
 val generateModMetadata = tasks.register<ProcessResources>("generateModMetadata") {

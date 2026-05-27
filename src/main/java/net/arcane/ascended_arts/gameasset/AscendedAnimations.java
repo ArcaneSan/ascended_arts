@@ -123,6 +123,11 @@ public class AscendedAnimations {
     public static AnimationManager.AnimationAccessor<AttackAnimation> S_SCYTHE_AUTO_3;
     public static AnimationManager.AnimationAccessor<AirSlashAnimation> S_SCYTHE_AIRSLASH;
 
+    public static AnimationManager.AnimationAccessor<StaticAnimation> S_SCYTHE_GUARD;
+    public static AnimationManager.AnimationAccessor<GuardAnimation> S_SCYTHE_GUARD_HIT;
+    public static AnimationManager.AnimationAccessor<GuardAnimation> S_SCYTHE_GUARD_PARRY;
+    public static AnimationManager.AnimationAccessor<GuardAnimation> S_SCYTHE_GUARD_PARRY_DUAL;
+
     public static AnimationManager.AnimationAccessor<DashAttackAnimation> S_DUAL_SCYTHE_DASH;
     public static AnimationManager.AnimationAccessor<AttackAnimation> S_DUAL_SCYTHE_AUTO_2;
     public static AnimationManager.AnimationAccessor<AttackAnimation> S_DUAL_SCYTHE_AUTO_3;
@@ -232,8 +237,10 @@ public class AscendedAnimations {
 
         JIAN_GUARD = builder.nextAccessor("biped/skill/jian/jian_guard", (accessor) -> new StaticAnimation(0.15F, true, accessor, Armatures.BIPED));
         DUAL_JIAN_GUARD = builder.nextAccessor("biped/skill/jian/jian_dual_guard", (accessor) -> new StaticAnimation(0.15F, true, accessor, Armatures.BIPED));
+        S_SCYTHE_GUARD = builder.nextAccessor("biped/skill/s_scythe/s_scythe_guard", (accessor) -> new StaticAnimation(0.15F, true, accessor, Armatures.BIPED));
         JIAN_GUARD_HIT = builder.nextAccessor("biped/skill/jian/jian_guard_hit", (accessor) -> new GuardAnimation(0.03F, accessor, Armatures.BIPED));
         JIAN_DUAL_GUARD_HIT = builder.nextAccessor("biped/skill/jian/jian_dual_guard_hit", (accessor) -> new GuardAnimation(0.03F, accessor, Armatures.BIPED));
+        S_SCYTHE_GUARD_HIT = builder.nextAccessor("biped/skill/s_scythe/s_scythe_guard_hit", (accessor) -> new GuardAnimation(0.03F, accessor, Armatures.BIPED));
         JIAN_GUARD_BREAK = builder.nextAccessor("biped/skill/jian/jian_guard_break", (accessor) -> new LongHitAnimation(0.05F, accessor, Armatures.BIPED));
         DUAL_JIAN_GUARD_HIT = builder.nextAccessor("biped/skill/jian/jian_dual_guard_hit", (accessor) -> new GuardAnimation(0, accessor, Armatures.BIPED));
         SCYTHE_GUARD = builder.nextAccessor("biped/skill/scythe/scythe_guard", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED)
@@ -274,6 +281,8 @@ public class AscendedAnimations {
 
         SCYTHE_GUARD_PARRY_1 = builder.nextAccessor("biped/skill/scythe/scythe_guard_parry_1", (accessor) -> new GuardAnimation(0.02F, accessor, Armatures.BIPED));
         SCYTHE_GUARD_PARRY_2 = builder.nextAccessor("biped/skill/scythe/scythe_guard_parry_2", (accessor) -> new GuardAnimation(0.02F, accessor, Armatures.BIPED));
+        S_SCYTHE_GUARD_PARRY = builder.nextAccessor("biped/skill/s_scythe/s_scythe_guard_parry", (accessor) -> new GuardAnimation(0.02F, accessor, Armatures.BIPED));
+        S_SCYTHE_GUARD_PARRY_DUAL = builder.nextAccessor("biped/skill/s_scythe/s_scythe_guard_parry_dual", (accessor) -> new GuardAnimation(0.02F, accessor, Armatures.BIPED));
 
         //change times once they work
         JIAN_AUTO_1 = builder.nextAccessor("biped/combat/jian/jian_auto_1", (accessor) ->
