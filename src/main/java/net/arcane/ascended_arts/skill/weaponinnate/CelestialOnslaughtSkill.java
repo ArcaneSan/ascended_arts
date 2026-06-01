@@ -13,6 +13,7 @@ import yesman.epicfight.api.animation.types.AttackAnimation;
 import yesman.epicfight.api.asset.AssetAccessor;
 import yesman.epicfight.skill.SkillBuilder;
 import yesman.epicfight.skill.SkillContainer;
+import yesman.epicfight.skill.SkillSlots;
 import yesman.epicfight.skill.weaponinnate.WeaponInnateSkill;
 import yesman.epicfight.world.capabilities.entitypatch.player.PlayerPatch;
 import yesman.epicfight.world.capabilities.item.CapabilityItem;
@@ -27,39 +28,37 @@ public class CelestialOnslaughtSkill extends WeaponInnateSkill {
     private static final UUID EVENT_UUID = UUID.fromString("1d993f97-eb4c-4f38-bf31-3f48df103582");
     public final AssetAccessor<? extends AttackAnimation> first;
     public final AssetAccessor<? extends AttackAnimation> second;
-    public final AssetAccessor<? extends AttackAnimation> third;
+    public final AssetAccessor<? extends AttackAnimation> miss;
 
     public CelestialOnslaughtSkill (SkillBuilder<? extends WeaponInnateSkill> builder) {
         super(builder);
-        this.first = AscendedAnimations.CELESTIAL_ONSLAUGHT_FIRST;
-        this.second = AscendedAnimations.CELESTIAL_ONSLAUGHT_SECOND;
-        this.third = AscendedAnimations.CELESTIAL_ONSLAUGHT_THIRD;
+        this.first = AscendedAnimations.CELESTIAL_DIVE;
+        this.second = AscendedAnimations.CELESTIAL_ONSLAUGHT;
+        this.miss = AscendedAnimations.CELESTIAL_DIVE_MISS;
 
     }
 
     @Override
     public void onInitiate(SkillContainer container) {
+        super.onInitiate(container);
         container.getExecutor().getEventListener().addEventListener(PlayerEventListener.EventType.ATTACK_ANIMATION_END_EVENT, EVENT_UUID, (event) -> {
-            if (AscendedAnimations.CELESTIAL_ONSLAUGHT_FIRST.equals(event.getAnimation())) {
+            if (AscendedAnimations.CELESTIAL_DIVE.equals(event.getAnimation())) {
                 List<LivingEntity> hurtEntities = event.getPlayerPatch().getCurrentlyActuallyHitEntities();
+                SkillContainer innateSkill = container.getExecutor().getSkill(SkillSlots.WEAPON_INNATE);
 
                 if (!hurtEntities.isEmpty() && hurtEntities.get(0).isAlive()) {
                     event.getPlayerPatch().getServerAnimator().getPlayerFor(null).reset();
                     event.getPlayerPatch().reserveAnimation(this.second);
                     event.getPlayerPatch().getCurrentlyActuallyHitEntities().clear();
-
-
-                }
-            }
-            if (AscendedAnimations.CELESTIAL_ONSLAUGHT_SECOND.equals(event.getAnimation())) {
-                List<LivingEntity> hurtEntities = event.getPlayerPatch().getCurrentlyActuallyHitEntities();
-
-                if (!hurtEntities.isEmpty() && hurtEntities.get(0).isAlive()) {
+                } else {
                     event.getPlayerPatch().getServerAnimator().getPlayerFor(null).reset();
-                    event.getPlayerPatch().reserveAnimation(this.third);
+                    event.getPlayerPatch().reserveAnimation(this.miss);
                     event.getPlayerPatch().getCurrentlyActuallyHitEntities().clear();
-
-
+                    if (!container.getExecutor().isLogicalClient()) {
+                        if (innateSkill != null && innateSkill.getSkill() != null && event.getPlayerPatch().isLastAttackSuccess()) {
+                            innateSkill.getSkill().setConsumptionSynchronize(innateSkill, innateSkill.getResource() + this.consumption * 0.75F);
+                        }
+                    }
                 }
             }
         });
@@ -85,9 +84,9 @@ public class CelestialOnslaughtSkill extends WeaponInnateSkill {
     @Override
     public List<Component> getTooltipOnItem(ItemStack itemStack, CapabilityItem cap, PlayerPatch<?> playerCap) {
         List<Component> list = super.getTooltipOnItem(itemStack, cap, playerCap);
-        this.generateTooltipforPhase(list, itemStack, cap, playerCap, (Map) this.properties.get(0), "kick");
+        this.generateTooltipforPhase(list, itemStack, cap, playerCap, (Map) this.properties.get(0), "dive");
         this.generateTooltipforPhase(list, itemStack, cap, playerCap, (Map) this.properties.get(1), "slash");
-        this.generateTooltipforPhase(list, itemStack, cap, playerCap, (Map) this.properties.get(2), "Slam");
+
 
         return list;
     }
@@ -96,7 +95,7 @@ public class CelestialOnslaughtSkill extends WeaponInnateSkill {
     public WeaponInnateSkill registerPropertiesToAnimation() {
         this.first.get().phases[0].addProperties(this.properties.get(0).entrySet());
         this.second.get().phases[0].addProperties(this.properties.get(1).entrySet());
-        this.third.get().phases[0].addProperties(this.properties.get(2).entrySet());
+
         return this;
     }
 
