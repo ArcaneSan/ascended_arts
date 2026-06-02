@@ -62,21 +62,40 @@
   "red" : "Red",
   "white" : "White",
   "yellow" : "Yellow",
+  "amber" : "Amber",
+  "aqua": "Aqua",
+  "coral": "Coral",
+  "forest": "Forest",
+  "ginger": "Ginger",
+  "indigo": "Indigo",
+  "maroon": "Maroon",
+  "mint": "Mint",
+  "navy": "Navy",
+  "olive": "Olive",
+  "rose": "Rose",
+  "slate": "Slate",
+  "tan": "Tan",
+  "teal": "Teal",
+  "verdant": "Verdant",
 
 
   "epicfight.weapon_category.jian": "Jian",
+  "epicfight.weapon_category.scythe": "Scythe",
+
 
   "skill.ascended_arts.celestial_punishment" : "Celestial Punishment",
   "skill.ascended_arts.celestial_punishment.tooltip" : "Pin the foes down and slice them from above",
   "skill.ascended_arts.celestial_onslaught" : "Celestial Onslaught",
   "skill.ascended_arts.celestial_onslaught.tooltip" : "Shred your foes from the heavens",
+  "skill.ascended_arts.reaping_grasp" : "Reaping Grasp",
+  "skill.ascended_arts.reaping_grasp.tooltip": "Swift additional strikes",
 
   "skill_tree.ascended_arts.path_to_ascension": "Path to Ascension",
 
   "skill.ascended_arts.qi_building" : "Qi Building",
   "epicfight.skill_slot.ascension_path": "Path to Ascension",
   "skill.epicfight.ascension_path.category" : "Inner Cultivation",
-  "skill.ascended_arts.qi_building.tooltip" : "The first step towards ascension. You aren't too much different from a mortal, with a small bonus. Regain %s%% of missing stamina when killing your target.",
+  "skill.ascended_arts.qi_building.tooltip" : "The first step towards ascension. You aren't too much different from a mortal, with a small bonus. \n\n Regain %s%% of missing stamina when killing your target.",
 
   "trim_pattern.ascended_arts.silence_hanfu" : "Silence for Hanfu Armor Only",
   "trim_pattern.ascended_arts.coast_hanfu" : "Coast for Hanfu Armor Only",
