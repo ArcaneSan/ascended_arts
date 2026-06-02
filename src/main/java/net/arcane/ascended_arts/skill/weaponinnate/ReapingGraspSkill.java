@@ -1,12 +1,19 @@
 package net.arcane.ascended_arts.skill.weaponinnate;
 
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import net.arcane.ascended_arts.gameasset.AscendedAnimations;
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import yesman.epicfight.api.animation.AnimationManager;
 import yesman.epicfight.api.animation.types.AttackAnimation;
+import yesman.epicfight.api.animation.types.DynamicAnimation;
+import yesman.epicfight.api.animation.types.EntityState;
+import yesman.epicfight.api.animation.types.StaticAnimation;
 import yesman.epicfight.api.asset.AssetAccessor;
 import yesman.epicfight.skill.SkillBuilder;
 import yesman.epicfight.skill.SkillContainer;
@@ -21,74 +28,62 @@ import java.util.UUID;
 
 public class ReapingGraspSkill extends WeaponInnateSkill {
     private static final UUID EVENT_UUID = UUID.fromString("2eb10151-66a4-47e7-8e4b-25cb5cdd5670");
-    public final AssetAccessor<? extends AttackAnimation> first;
-    public final AssetAccessor<? extends AttackAnimation> second;
-    public final AssetAccessor<? extends AttackAnimation> end1;
-    public final AssetAccessor<? extends AttackAnimation> end2;
-
+    private final Map<AnimationManager.AnimationAccessor<? extends StaticAnimation>, AnimationManager.AnimationAccessor<? extends AttackAnimation>> comboAnimation = Maps.newHashMap();
 
     public ReapingGraspSkill(SkillBuilder<? extends WeaponInnateSkill> builder) {
         super(builder);
-        this.first = AscendedAnimations.REAPING_GRASP_1;
-        this.second = AscendedAnimations.REAPING_GRASP_2;
-        this.end1 = AscendedAnimations.REAPING_GRASP_1_END;
-        this.end2 = AscendedAnimations.REAPING_GRASP_2_END;
-
     }
 
     @Override
     public void onInitiate(SkillContainer container) {
-
-        container.getExecutor().getEventListener().addEventListener(PlayerEventListener.EventType.ATTACK_ANIMATION_END_EVENT, EVENT_UUID, (event) ->{
-            if (AscendedAnimations.REAPING_GRASP_1.equals(event.getAnimation())) {
-                List<LivingEntity> hurtEntities = event.getPlayerPatch().getCurrentlyActuallyHitEntities();
-
-                if (!hurtEntities.isEmpty() && hurtEntities.get(0).isAlive()){
-                    event.getPlayerPatch().getCurrentlyActuallyHitEntities().clear();
-                    event.getPlayerPatch().getServerAnimator().getPlayerFor(null).reset();
-                    event.getPlayerPatch().reserveAnimation(this.second);
-                    event.getPlayerPatch().getCurrentlyActuallyHitEntities();
-                }else {
-                    event.getPlayerPatch().getCurrentlyActuallyHitEntities().clear();
-                    event.getPlayerPatch().getServerAnimator().getPlayerFor(null).reset();
-                    event.getPlayerPatch().reserveAnimation(this.end1);
-                }
-            }
-            if (AscendedAnimations.REAPING_GRASP_2.equals(event.getAnimation())) {
-                    event.getPlayerPatch().getServerAnimator().getPlayerFor(null).reset();
-                    event.getPlayerPatch().reserveAnimation(this.end2);
-
-
-            }
-
-
-        });
+        super.onInitiate(container);
     }
 
     @Override
     public void onRemoved(SkillContainer container) {
-        container.getExecutor().getEventListener().removeListener(PlayerEventListener.EventType.ATTACK_ANIMATION_END_EVENT, EVENT_UUID);
     }
 
     @Override
     public void executeOnServer(SkillContainer container, FriendlyByteBuf args) {
-        container.getExecutor().playAnimationSynchronized(this.first, 0);
-        super.executeOnServer(container, args);
+        AssetAccessor<? extends DynamicAnimation> animation = container.getExecutor().getAnimator().getPlayerFor(null).getAnimation();
+
+        if (this.comboAnimation.containsKey(animation)) {
+            container.getExecutor().playAnimationSynchronized(this.comboAnimation.get(animation), 0.0F);
+            super.executeOnServer(container, args);
+        }
+    }
+
+    @Override
+    public boolean checkExecuteCondition(SkillContainer container) {
+        EntityState playerState = container.getExecutor().getEntityState();
+
+        return this.comboAnimation.containsKey(container.getExecutor().getAnimator().getPlayerFor(null).getAnimation()) && playerState.canUseSkill() && playerState.inaction();
     }
 
     @Override
     public List<Component> getTooltipOnItem(ItemStack itemStack, CapabilityItem cap, PlayerPatch<?> playerCap) {
-        List<Component> list = super.getTooltipOnItem(itemStack, cap, playerCap);
-        this.generateTooltipforPhase(list, itemStack, cap, playerCap, (Map) this.properties.get(0), "Cut");
-        this.generateTooltipforPhase(list, itemStack, cap, playerCap, (Map) this.properties.get(1), "Slash");
+        List<Component> list = Lists.newArrayList();
+        String traslatableText = this.getTranslationKey();
+
+        list.add(Component.translatable(traslatableText).withStyle(ChatFormatting.WHITE).append(Component.literal(String.format("[%.0f]", this.consumption)).withStyle(ChatFormatting.AQUA)));
+        list.add(Component.translatable(traslatableText + ".tooltip", this.maxStackSize).withStyle(ChatFormatting.DARK_GRAY));
+
+        this.generateTooltipforPhase(list, itemStack, cap, playerCap, this.properties.get(0), "Each Strike:");
         return list;
     }
 
 
     @Override
     public WeaponInnateSkill registerPropertiesToAnimation() {
-        this.first.get().phases[0].addProperties(this.properties.get(0).entrySet());
-        this.second.get().phases[0].addProperties(this.properties.get(1).entrySet());
+        this.comboAnimation.clear();
+        this.comboAnimation.put(AscendedAnimations.SCYTHE_AUTO_1, AscendedAnimations.REAPING_GRASP_1);
+        this.comboAnimation.put(AscendedAnimations.SCYTHE_AUTO_2, AscendedAnimations.REAPING_GRASP_2);
+        this.comboAnimation.put(AscendedAnimations.SCYTHE_AUTO_3, AscendedAnimations.REAPING_GRASP_3);
+        this.comboAnimation.put(AscendedAnimations.SCYTHE_AUTO_4, AscendedAnimations.REAPING_GRASP_4);
+
+        this.comboAnimation.values().forEach((animation) -> {
+            animation.get().phases[0].addProperties(this.properties.get(0).entrySet());
+        });
         return this;
     }
 }

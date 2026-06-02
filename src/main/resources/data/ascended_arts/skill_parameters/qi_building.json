@@ -14,6 +14,14 @@
       "uuid": "89a938db-f471-4ca6-986b-7d32756b92e2",
       "operation": "addition",
       "amount": 3.0
+    },
+    {
+      "attribute": "minecraft:generic.max_health",
+      "name": "qi_building_skill_stat",
+      "uuid": "89a938db-f471-4ca6-986b-7d32756b92e2",
+      "operation": "addition",
+      "amount": 4.0
     }
+
   ]
 }
