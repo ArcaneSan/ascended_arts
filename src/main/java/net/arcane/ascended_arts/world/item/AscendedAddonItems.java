@@ -30,8 +30,8 @@ public class AscendedAddonItems {
              ITEMS.register("hanfu_upgrade", () -> new Item(new Item.Properties().fireResistant().rarity(Rarity.UNCOMMON).stacksTo(16)));
     public static final DeferredItem<AscendedItem> IRON_JIAN =
              ITEMS.register("iron_jian", () -> new AscendedItem(AscendedToolTiers.IRONPLUS, new Item.Properties().attributes(AscendedItem.createAscendedNormalAttributes(Tiers.IRON))));
-    public static final DeferredItem<Item> GREATSWORD =
-            ITEMS.register("greatsword", () -> new AscendLargeItem(AscendedToolTiers.MYTHOS, new Item.Properties().rarity(Rarity.RARE).fireResistant().attributes(AscendLargeItem.createAscendedLargeAttributes(Tiers.NETHERITE))));
+    public static final DeferredItem<Item> REGRET =
+            ITEMS.register("regret", () -> new AscendLargeItem(AscendedToolTiers.MYTHOS, new Item.Properties().rarity(Rarity.RARE).fireResistant().attributes(AscendLargeItem.createAscendedLargeAttributes(Tiers.NETHERITE))));
     public static final DeferredItem<Item> ETHERVEIL_SCYTHE =
             ITEMS.register("etherveil_scythe", () -> new AscendLargeItem(AscendedToolTiers.MYTHOS, new Item.Properties().fireResistant().attributes(AscendLargeItem.createAscendedLargeAttributes(Tiers.NETHERITE))));
     public static final DeferredItem<Item> DIAMOND_JIAN =

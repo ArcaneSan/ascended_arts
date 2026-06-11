@@ -79,6 +79,10 @@ public class AscendedAnimations {
     public static AnimationManager.AnimationAccessor<StaticAnimation> BIPED_S_SCYTHE_HOLD;
     public static AnimationManager.AnimationAccessor<StaticAnimation> BIPED_S_SCYTHE_KNEEL;
 
+    public static AnimationManager.AnimationAccessor<StaticAnimation> BIPED_HOLD_REGRET;
+    public static AnimationManager.AnimationAccessor<MovementAnimation> BIPED_WALK_REGRET;
+    public static AnimationManager.AnimationAccessor<MovementAnimation> BIPED_RUN_REGRET;
+
 
     public static AnimationManager.AnimationAccessor<StaticAnimation> JIAN_GUARD;
     public static AnimationManager.AnimationAccessor<GuardAnimation> JIAN_GUARD_HIT;
@@ -199,12 +203,17 @@ public class AscendedAnimations {
         BIPED_SNEAK_DUAL_JIAN = builder.nextAccessor("biped/living/jian/jian_dual_sneak", (accessor) -> new MovementAnimation(true, accessor, Armatures.BIPED));
         BIPED_RUN_DUAL_JIAN = builder.nextAccessor("biped/living/jian/jian_dual_run", (accessor) -> new MovementAnimation(true, accessor, Armatures.BIPED));
         BIPED_FLY_JIAN = builder.nextAccessor("biped/living/jian/jian_fly", (accessor) -> new MovementAnimation(true, accessor, Armatures.BIPED));
+
         BIPED_WALK_SCYTHE = builder.nextAccessor("biped/living/scythe/scythe_walk", (accessor) -> new MovementAnimation(true, accessor, Armatures.BIPED));
         BIPED_RUN_SCYTHE = builder.nextAccessor("biped/living/scythe/scythe_run", (accessor) -> new MovementAnimation(true, accessor, Armatures.BIPED));
         BIPED_HOLD_SCYTHE = builder.nextAccessor("biped/living/scythe/scythe_idle", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED));
         BIPED_KNEEL_SCYTHE = builder.nextAccessor("biped/living/scythe/scythe_kneel", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED));
         BIPED_SNEAK_SCYTHE = builder.nextAccessor("biped/living/scythe/scythe_sneak", (accessor) -> new MovementAnimation(true, accessor, Armatures.BIPED));
         BIPED_SCYTHE_SLEEP = builder.nextAccessor("biped/living/scythe/scythe_sleep", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED));
+
+        BIPED_HOLD_REGRET = builder.nextAccessor("biped/living/regret/regret_idle", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED));
+        BIPED_WALK_REGRET = builder.nextAccessor("biped/living/regret/regret_walk", (accessor) -> new MovementAnimation(true, accessor, Armatures.BIPED));
+        BIPED_RUN_REGRET = builder.nextAccessor("biped/living/regret/regret_run", (accessor) -> new MovementAnimation(true, accessor, Armatures.BIPED));
 
 
         BIPED_S_SCYTHE_HOLD = builder.nextAccessor("biped/living/ss/sweeping_scythe_idle", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED));

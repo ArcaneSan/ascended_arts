@@ -12,6 +12,7 @@ import java.util.function.Function;
 public enum AscendedWeaponCategories implements WeaponCategory, Function<Item, CapabilityItem.Builder> {
     JIAN,
     SCYTHE,
+    REGRET,
     SWEEPING_SCYTHE,
     SUP_FLUTE,
     PRAY;

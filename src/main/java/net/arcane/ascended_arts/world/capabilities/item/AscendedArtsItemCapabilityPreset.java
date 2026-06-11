@@ -37,6 +37,17 @@ public final class AscendedArtsItemCapabilityPreset {
                     .addConditionals(EpicFightProviderConditionals.DEFAULT_2H_WIELD_STYLE)
                     .addTag(Ascended_arts.identifier("scythe"))
     );
+    public static final DeferredWeapon REGRET = REGISTRY.registerWeapon("regret",
+            () ->WeaponCapability.builder()
+                    .category(CapabilityItem.WeaponCategories.GREATSWORD)
+                    .hitSound(EpicFightSounds.BLUNT_HIT)
+                    .swingSound(EpicFightSounds.WHOOSH_BIG)
+                    .collider(AscendedColliderPreset.GREATSWORD)
+                    .setTierValues(0, 0, 0.0, 0.0)
+                    .addMoveset(CapabilityItem.Styles.TWO_HAND, AscendedArtsMovesets.REGRET_2H)
+                    .addConditionals(EpicFightProviderConditionals.DEFAULT_2H_WIELD_STYLE)
+                    .addTag(Ascended_arts.identifier("regret"))
+    );
     public static final DeferredWeapon SWEEPING_SCYTHE = REGISTRY.registerWeapon("sweeping_scythe",
             () -> WeaponCapability.builder()
                     .category(CapabilityItem.WeaponCategories.SWORD)

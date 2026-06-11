@@ -57,7 +57,7 @@ public class AscendedCreativeTab {
                         output.accept(AscendedAddonItems.NETHERITE_HANFU_PANTS.get());
                         output.accept(AscendedAddonItems.NETHERITE_HANFU_BOOTS.get());
 
-                        output.accept(AscendedAddonItems.GREATSWORD.get());
+                        output.accept(AscendedAddonItems.REGRET.get());
                         output.accept(AscendedAddonItems.ETHERVEIL_SCYTHE.get());
                         output.accept(AscendedAddonItems.SKYSPLITTER_JIAN.get());
 

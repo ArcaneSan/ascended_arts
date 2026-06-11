@@ -78,6 +78,17 @@ public class AscendedArtsMovesets
                             AscendedAnimations.SCYTHE_AUTO_4, AscendedAnimations.SCYTHE_DASH, AscendedAnimations.SCYTHE_AIRSLASH)
                     .addInnateSkill((itemstack, playerPatch) -> AscendedSkills.REAPING_GRASP.get())
     );
+
+    public static final DeferredMoveset REGRET_2H = REGISTRY.registerMoveset("regret",
+            () -> Moveset.builder()
+                    .addLivingMotionsRecursive(AscendedAnimations.BIPED_HOLD_REGRET,
+                            LivingMotions.IDLE, LivingMotions.CREATIVE_IDLE, LivingMotions.CREATIVE_FLY,
+                            LivingMotions.SWIM, LivingMotions.JUMP)
+                    .addLivingMotionsRecursive(AscendedAnimations.BIPED_RUN_REGRET,
+                            LivingMotions.RUN, LivingMotions.CHASE)
+                    .addLivingMotionModifier(LivingMotions.WALK, AscendedAnimations.BIPED_WALK_REGRET)
+
+    );
     public static final DeferredMoveset S_SCYTHE = REGISTRY.registerMoveset("s_scythe",
             () -> Moveset.builder()
                     .addLivingMotionModifier(LivingMotions.IDLE, AscendedAnimations.BIPED_S_SCYTHE_HOLD)

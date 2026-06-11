@@ -1,0 +1,18 @@
+{
+  "loader": "neoforge:separate_transforms",
+  "gui_light": "front",
+  "base": {
+    "parent": "ascended_arts:item/regret_3d"
+  },
+  "perspectives": {
+    "gui": {
+      "parent": "ascended_arts:item/regret_2d"
+    },
+    "ground": {
+      "parent": "ascended_arts:item/regret_2d"
+    },
+    "fixed": {
+      "parent": "ascended_arts:item/regret_2d"
+    }
+  }
+}
