@@ -37,7 +37,6 @@ public class AscendedArtsMovesets
                             AscendedAnimations.JIAN_AUTO_4, AscendedAnimations.JIAN_DASH, AscendedAnimations.JIAN_AIRSLASH
                     )
                     .addInnateSkill((itemstack, playerPatch) -> AscendedSkills.CELESTIAL_PUNISHMENT.get())
-                    .setPassiveSkill(AscendedSkills.FLOATING_PASSIVE)
     );
     public static final DeferredMoveset JIAN_DUAL = REGISTRY.registerMoveset("jian_dual",
             () -> Moveset.builder()
@@ -56,7 +55,6 @@ public class AscendedArtsMovesets
                             AscendedAnimations.DUAL_JIAN_AUTO_1, AscendedAnimations.DUAL_JIAN_AUTO_2, AscendedAnimations.DUAL_JIAN_AUTO_3,
                             AscendedAnimations.DUAL_JIAN_AUTO_4, AscendedAnimations.DUAL_JIAN_DASH, AscendedAnimations.DUAL_JIAN_AIRSLASH)
                     .addInnateSkill((itemstack, playerPatch) -> AscendedSkills.CELESTIAL_ONSLAUGHT.get())
-                    .setPassiveSkill(AscendedSkills.FLOATING_PASSIVE)
 
             );
     public static final DeferredMoveset SCYTHE_2H = REGISTRY.registerMoveset("scythe",
@@ -83,10 +81,12 @@ public class AscendedArtsMovesets
             () -> Moveset.builder()
                     .addLivingMotionsRecursive(AscendedAnimations.BIPED_HOLD_REGRET,
                             LivingMotions.IDLE, LivingMotions.CREATIVE_IDLE, LivingMotions.CREATIVE_FLY,
-                            LivingMotions.SWIM, LivingMotions.JUMP)
+                            LivingMotions.SWIM, LivingMotions.JUMP, LivingMotions.KNEEL)
                     .addLivingMotionsRecursive(AscendedAnimations.BIPED_RUN_REGRET,
                             LivingMotions.RUN, LivingMotions.CHASE)
-                    .addLivingMotionModifier(LivingMotions.WALK, AscendedAnimations.BIPED_WALK_REGRET)
+                    .addLivingMotionsRecursive(AscendedAnimations.BIPED_WALK_REGRET,
+                            LivingMotions.WALK)
+                    .addLivingMotionModifier(LivingMotions.SLEEP, AscendedAnimations.BIPED_SLEEP_REGRET)
 
     );
     public static final DeferredMoveset S_SCYTHE = REGISTRY.registerMoveset("s_scythe",

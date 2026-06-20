@@ -5,7 +5,8 @@ import net.minecraft.resources.ResourceLocation;
 import yesman.epicfight.skill.SkillCategory;
 
 public enum AscendedSkillCategories implements SkillCategory {
-    ASCENSION_PATH(true, true, true, Ascended_arts.identifier("skillbook_ascension"));
+    ASCENSION_PATH(true, true, true, Ascended_arts.identifier("skillbook_ascension")),
+    MARTIAL_SECT(true, true, true, Ascended_arts.identifier("skillbook_martial"));
 
 
     final boolean Save;
@@ -56,7 +57,10 @@ public enum AscendedSkillCategories implements SkillCategory {
 
     @Override
     public ResourceLocation bookIcon() {
-        return bookIcon == null ? SkillCategory.DEFAULT_BOOK_ICON : bookIcon;
-
+        if (bookIcon != null)
+        {
+            return bookIcon;
+        }
+        return SkillCategory.super.bookIcon();
     }
 }

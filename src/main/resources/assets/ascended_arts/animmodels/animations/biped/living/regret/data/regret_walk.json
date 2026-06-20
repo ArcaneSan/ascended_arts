@@ -5,7 +5,7 @@
       "masks":
       [
         {
-          "livingmotion":"IDLE",
+          "livingmotion":"ALL",
           "type":"none"
         }
       ]
@@ -17,10 +17,6 @@
         {
           "livingmotion":"ALL",
           "type":"arms"
-        },
-        {
-          "livingmotion": "SNEAK",
-          "type": "arms"
         }
       ]
     }

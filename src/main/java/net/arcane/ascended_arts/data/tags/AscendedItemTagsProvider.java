@@ -72,6 +72,16 @@ public class AscendedItemTagsProvider extends ItemTagsProvider {
                         AscendedAddonItems.ROYAL_HUNTER_BOOTS.get(),
                         AscendedAddonItems.VOID_SLAYER_BOOTS.get()
                 );
+        this.tag(ItemTags.FREEZE_IMMUNE_WEARABLES)
+                .add(
+                        AscendedAddonItems.HANFU_BOOTS.get(),
+                        AscendedAddonItems.IRON_HANFU_BOOTS.get(),
+                        AscendedAddonItems.GOLD_HANFU_BOOTS.get(),
+                        AscendedAddonItems.DIAMOND_HANFU_BOOTS.get(),
+                        AscendedAddonItems.NETHERITE_HANFU_BOOTS.get(),
+                        AscendedAddonItems.ROYAL_HUNTER_BOOTS.get(),
+                        AscendedAddonItems.VOID_SLAYER_BOOTS.get()
+                );
 
     }
 

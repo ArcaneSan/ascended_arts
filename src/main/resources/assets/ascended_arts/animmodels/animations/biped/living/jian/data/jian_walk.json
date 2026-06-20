@@ -5,22 +5,18 @@
       "masks":
       [
         {
-          "livingmotion":"IDLE",
+          "livingmotion":"ALL",
           "type":"none"
         }
       ]
     },
     "composite": {
-      "priority":"MIDDLE",
+      "priority":"LOWEST",
       "masks":
       [
         {
           "livingmotion":"ALL",
           "type":"arms"
-        },
-        {
-          "livingmotion": "SNEAK",
-          "type": "arms"
         }
       ]
     }

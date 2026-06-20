@@ -4,6 +4,7 @@ package net.arcane.ascended_arts.data;
 import net.arcane.ascended_arts.Ascended_arts;
 import net.arcane.ascended_arts.data.tags.AscendedItemTagsProvider;
 
+
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
@@ -30,5 +31,7 @@ public final class DataEvents {
             EpicFightBlockTagsProvider blockTagsProvider = new EpicFightBlockTagsProvider(packOutput, lookupProvider, existingFileHelper);;
 
             gen.addProvider(event.includeServer(), new AscendedItemTagsProvider(packOutput, lookupProvider, blockTagsProvider.contentsGetter(), existingFileHelper));
+
+
         }
     }

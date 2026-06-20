@@ -27,10 +27,10 @@ public class AscendedMaterials {
     public static final Holder<ArmorMaterial> VOID_SLAYER = MATERIALS.register("void_slayer_armor", () -> register(
             "void_slayer_armor",
             Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
-                map.put(ArmorItem.Type.HELMET, 4);
-                map.put(ArmorItem.Type.CHESTPLATE, 9);
-                map.put(ArmorItem.Type.LEGGINGS, 7);
-                map.put(ArmorItem.Type.BOOTS, 4);
+                map.put(ArmorItem.Type.HELMET, 9);
+                map.put(ArmorItem.Type.CHESTPLATE, 14);
+                map.put(ArmorItem.Type.LEGGINGS, 12);
+                map.put(ArmorItem.Type.BOOTS, 9);
             }),
             40,
             SoundEvents.ARMOR_EQUIP_ELYTRA,
@@ -42,10 +42,10 @@ public class AscendedMaterials {
     public static final Holder<ArmorMaterial> ROYAL_HUNTER = MATERIALS.register("royal_hunter_armor", () -> register(
             "royal_hunter_armor",
             Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
-                map.put(ArmorItem.Type.HELMET, 4);
-                map.put(ArmorItem.Type.CHESTPLATE, 9);
-                map.put(ArmorItem.Type.LEGGINGS, 7);
-                map.put(ArmorItem.Type.BOOTS, 4);
+                map.put(ArmorItem.Type.HELMET, 9);
+                map.put(ArmorItem.Type.CHESTPLATE, 14);
+                map.put(ArmorItem.Type.LEGGINGS, 12);
+                map.put(ArmorItem.Type.BOOTS, 9);
             }),
             40,
             SoundEvents.ARMOR_EQUIP_ELYTRA,

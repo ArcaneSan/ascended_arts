@@ -2,6 +2,7 @@ package net.arcane.ascended_arts.gameasset;
 
 import net.arcane.ascended_arts.Ascended_arts;
 
+import net.arcane.ascended_arts.skill.MartialSect.PlumBlossomSect;
 import net.arcane.ascended_arts.skill.ascension_path.AscensionSkill;
 import net.arcane.ascended_arts.skill.ascension_path.QiBuildingSkill;
 import net.arcane.ascended_arts.skill.weaponinnate.*;
@@ -38,6 +39,8 @@ private AscendedSkills () {}
 
     public static final DeferredHolder<Skill, QiBuildingSkill> QI_BUILDING = REGISTRY.register("qi_building", key ->
             QiBuildingSkill.createAscensionBuilder(QiBuildingSkill::new).build(key));
+    public static final DeferredHolder<Skill, PlumBlossomSect> PLUM_BLOSSOM_SECT = REGISTRY.register("plum_blossom", key ->
+            PlumBlossomSect.createMartialSectBuilder(PlumBlossomSect::new).build(key));
 
 
     public static final DeferredHolder <Skill, CelestialPunishmentSkill> CELESTIAL_PUNISHMENT = REGISTRY.register("celestial_punishment", key ->

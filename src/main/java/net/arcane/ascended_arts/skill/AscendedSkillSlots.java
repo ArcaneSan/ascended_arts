@@ -5,7 +5,8 @@ import yesman.epicfight.skill.SkillSlot;
 
 public enum AscendedSkillSlots implements SkillSlot {
 
-    ASCENSION_PATH(AscendedSkillCategories.ASCENSION_PATH);
+    ASCENSION_PATH(AscendedSkillCategories.ASCENSION_PATH),
+    MARTIAL_SECT(AscendedSkillCategories.MARTIAL_SECT);
 
     final SkillCategory category;
     final int id;

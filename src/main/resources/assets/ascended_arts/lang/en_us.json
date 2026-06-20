@@ -96,10 +96,14 @@
   "skill.ascended_arts.reaping_grasp.tooltip": "Swift additional strikes",
 
   "skill_tree.ascended_arts.path_to_ascension": "Path to Ascension",
+  "epicfight.skill_slot.martial_sect": "Martial Sect",
 
+  "skill.ascended_arts.plum_blossom": "Hua Sect",
+  "skill.ascended_arts.plum_blossom.tooltip": "The Rightous Path of the Mount Hua Sect \n\nShow your graceful movements with plum blossom leaves as you run, while falling slower at the same time",
   "skill.ascended_arts.qi_building" : "Qi Building",
   "epicfight.skill_slot.ascension_path": "Path to Ascension",
   "skill.epicfight.category.ascension_path" : "Inner Cultivation",
+  "skill.epicfight.category.martial_sect": "Martial Sect",
   "skill.ascended_arts.qi_building.tooltip" : "The first step towards ascension. You aren't too much different from a mortal, with a small bonus.\n\nRegain %s%% of missing stamina when killing your target.",
 
   "item.ascended_arts.silence_hanfu_armor_trim_smithing_template" : "Hanfu Smithing Template",

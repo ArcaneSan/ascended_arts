@@ -1,33 +1,34 @@
 modLoader="javafml" #mandatory
-loaderVersion="${loader_version_range}"
-license="${mod_license}"
-issueTrackerURL="https://github.com/Forixaim/Epic-Fight-Battle-Arts/issues"
-[[mods]] #mandatory
-modId="${mod_id}"
-version="${mod_version}"
-displayName="${mod_name}"
-#updateJSONURL="https://change.me.example.invalid/updates.json" #optional
-logoFile=""
-credits="Arcane Kiros"
-authors="${mod_authors}" #optional
+loaderVersion="[1,)"
+license="${license}"
+issueTrackerURL="${issueTracker}"
+[[mods]]
+modId="${modId}"
+version="${modVersion}"
+displayName="${displayName}"
+#logoFile= "${modId}_title.png"
+credits="Epic Fight"
+authors="${authors}"
 
-description='''${mod_description}'''
-[[dependencies."${mod_id}"]]
+description="${description}"
+[[dependencies."${modId}"]]
 modId="epicfight"
 mandatory=true
-versionRange="[21.16,)"
+versionRange="[21.17,)"
 ordering="AFTER"
 side="BOTH"
-[[dependencies."${mod_id}"]]
+
+[[dependencies."${modId}"]]
 modId = "neoforge"
 type = "required"
-versionRange = "[21,)"
+versionRange = "[${neoforgeVersion},)"
 ordering = "NONE"
 side = "BOTH"
-[[dependencies."${mod_id}"]]
+
+[[dependencies."${modId}"]]
 modId = "minecraft"
 type = "required"
-versionRange = "${minecraft_version_range}"
+versionRange = "[${minecraft}]"
 ordering = "NONE"
 side = "BOTH"
 

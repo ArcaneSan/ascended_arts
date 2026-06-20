@@ -83,6 +83,8 @@ public class AscendedAnimations {
     public static AnimationManager.AnimationAccessor<MovementAnimation> BIPED_WALK_REGRET;
     public static AnimationManager.AnimationAccessor<MovementAnimation> BIPED_RUN_REGRET;
 
+    public static AnimationManager.AnimationAccessor<StaticAnimation> BIPED_SLEEP_REGRET;
+
 
     public static AnimationManager.AnimationAccessor<StaticAnimation> JIAN_GUARD;
     public static AnimationManager.AnimationAccessor<GuardAnimation> JIAN_GUARD_HIT;
@@ -214,6 +216,9 @@ public class AscendedAnimations {
         BIPED_HOLD_REGRET = builder.nextAccessor("biped/living/regret/regret_idle", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED));
         BIPED_WALK_REGRET = builder.nextAccessor("biped/living/regret/regret_walk", (accessor) -> new MovementAnimation(true, accessor, Armatures.BIPED));
         BIPED_RUN_REGRET = builder.nextAccessor("biped/living/regret/regret_run", (accessor) -> new MovementAnimation(true, accessor, Armatures.BIPED));
+        BIPED_SLEEP_REGRET = builder.nextAccessor("biped/living/regret/regret_sleep", (accessor) -> new StaticAnimation(0.16F, true, accessor, Armatures.BIPED));
+
+
 
 
         BIPED_S_SCYTHE_HOLD = builder.nextAccessor("biped/living/ss/sweeping_scythe_idle", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED));

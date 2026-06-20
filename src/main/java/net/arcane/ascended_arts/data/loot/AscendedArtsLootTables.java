@@ -7,6 +7,7 @@ import net.minecraft.world.level.storage.loot.BuiltInLootTables;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCondition;
+import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.LootTableLoadEvent;
@@ -16,8 +17,27 @@ import net.neoforged.neoforge.event.LootTableLoadEvent;
 public class AscendedArtsLootTables {
 
     @SubscribeEvent
-    public static void modifyVanillaLootPools(final LootTableLoadEvent event) {
-        if (event.getName().equals(BuiltInLootTables.ANCIENT_CITY)){
+    public static void onLootTableRegistry(final LootTableLoadEvent event) {
+
+        if (event.getName().equals(BuiltInLootTables.END_CITY_TREASURE.location())) {
+            event.getTable().addPool(LootPool.lootPool().when(LootItemRandomChanceCondition.randomChance(0.20F))
+                    .add(LootItem.lootTableItem(AscendedAddonItems.ROYAL_HUNTER_MASK.get()))
+                    .add(LootItem.lootTableItem(AscendedAddonItems.ROYAL_HUNTER_ROBES.get()))
+                    .add(LootItem.lootTableItem(AscendedAddonItems.ROYAL_HUNTER_LEGGINGS.get()))
+                    .add(LootItem.lootTableItem(AscendedAddonItems.ROYAL_HUNTER_BOOTS.get()))
+                    .add(LootItem.lootTableItem(AscendedAddonItems.VOID_SLAYER_HALO.get()))
+                    .add(LootItem.lootTableItem(AscendedAddonItems.VOID_SLAYER_ROBES.get()))
+                    .add(LootItem.lootTableItem(AscendedAddonItems.VOID_SLAYER_LEGGINGS.get()))
+                    .add(LootItem.lootTableItem(AscendedAddonItems.VOID_SLAYER_BOOTS.get()))
+                    .build());
+        }
+        if (event.getName().equals(BuiltInLootTables.END_CITY_TREASURE.location())) {
+            event.getTable().addPool(LootPool.lootPool().when(LootItemRandomChanceCondition.randomChance(0.30F))
+                    .add(LootItem.lootTableItem(AscendedAddonItems.SKYSPLITTER_JIAN.get()))
+                    .add(LootItem.lootTableItem(AscendedAddonItems.ETHERVEIL_SCYTHE.get()))
+                    .build());
+        }
+        if (event.getName().equals(BuiltInLootTables.ANCIENT_CITY.location())) {
             event.getTable().addPool(LootPool.lootPool().when(LootItemRandomChanceCondition.randomChance(0.15F))
                     .add(LootItem.lootTableItem(AscendedAddonItems.SKYSPLITTER_JIAN.get()))
                     .add(LootItem.lootTableItem(AscendedAddonItems.ETHERVEIL_SCYTHE.get()))
@@ -31,7 +51,7 @@ public class AscendedArtsLootTables {
                     .add(LootItem.lootTableItem(AscendedAddonItems.VOID_SLAYER_BOOTS.get()))
                     .build());
         }
-        if (event.getName().equals(BuiltInLootTables.ABANDONED_MINESHAFT)){
+        if (event.getName().equals(BuiltInLootTables.ABANDONED_MINESHAFT.location())){
             event.getTable().addPool(LootPool.lootPool().when(LootItemRandomChanceCondition.randomChance(0.05F))
                     .add(LootItem.lootTableItem(AscendedAddonItems.SKYSPLITTER_JIAN.get()))
                     .add(LootItem.lootTableItem(AscendedAddonItems.ETHERVEIL_SCYTHE.get()))
@@ -45,25 +65,14 @@ public class AscendedArtsLootTables {
                     .add(LootItem.lootTableItem(AscendedAddonItems.VOID_SLAYER_BOOTS.get()))
                     .build());
         }
-        if (event.getName().equals(BuiltInLootTables.END_CITY_TREASURE)){
-            event.getTable().addPool(LootPool.lootPool().when(LootItemRandomChanceCondition.randomChance(0.30F))
-                    .add(LootItem.lootTableItem(AscendedAddonItems.SKYSPLITTER_JIAN.get()))
-                    .add(LootItem.lootTableItem(AscendedAddonItems.ETHERVEIL_SCYTHE.get()))
-                    .build());
-        }
-        if (event.getName().equals(BuiltInLootTables.END_CITY_TREASURE)) {
-            event.getTable().addPool(LootPool.lootPool().when(LootItemRandomChanceCondition.randomChance(0.20F))
-                    .add(LootItem.lootTableItem(AscendedAddonItems.ROYAL_HUNTER_MASK.get()))
-                    .add(LootItem.lootTableItem(AscendedAddonItems.ROYAL_HUNTER_ROBES.get()))
-                    .add(LootItem.lootTableItem(AscendedAddonItems.ROYAL_HUNTER_LEGGINGS.get()))
-                    .add(LootItem.lootTableItem(AscendedAddonItems.ROYAL_HUNTER_BOOTS.get()))
-                    .add(LootItem.lootTableItem(AscendedAddonItems.VOID_SLAYER_HALO.get()))
-                    .add(LootItem.lootTableItem(AscendedAddonItems.VOID_SLAYER_ROBES.get()))
-                    .add(LootItem.lootTableItem(AscendedAddonItems.VOID_SLAYER_LEGGINGS.get()))
-                    .add(LootItem.lootTableItem(AscendedAddonItems.VOID_SLAYER_BOOTS.get()))
-                    .build());
-        }
     }
+
+
+
+
+
+
+
 
 
 }
