@@ -86,7 +86,12 @@ public class AscendedArtsMovesets
                             LivingMotions.RUN, LivingMotions.CHASE)
                     .addLivingMotionsRecursive(AscendedAnimations.BIPED_WALK_REGRET,
                             LivingMotions.WALK)
+                    .addLivingMotionModifier(LivingMotions.SNEAK, AscendedAnimations.BIPED_SNEAK_REGRET)
                     .addLivingMotionModifier(LivingMotions.SLEEP, AscendedAnimations.BIPED_SLEEP_REGRET)
+                    .addLivingMotionModifier(LivingMotions.BLOCK, AscendedAnimations.REGRET_GUARD)
+                    .addGuardAnimations(GuardSkill.BlockType.GUARD, AscendedAnimations.REGRET_GUARD_HIT)
+                    .addGuardAnimations(GuardSkill.BlockType.ADVANCED_GUARD, AscendedAnimations.REGRET_GUARD_PARRY_1,
+                            AscendedAnimations.REGRET_GUARD_PARRY_2)
 
     );
     public static final DeferredMoveset S_SCYTHE = REGISTRY.registerMoveset("s_scythe",

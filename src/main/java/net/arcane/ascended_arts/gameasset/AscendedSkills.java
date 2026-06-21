@@ -4,6 +4,7 @@ import net.arcane.ascended_arts.Ascended_arts;
 
 import net.arcane.ascended_arts.skill.MartialSect.PlumBlossomSect;
 import net.arcane.ascended_arts.skill.ascension_path.AscensionSkill;
+import net.arcane.ascended_arts.skill.ascension_path.FoundationBuildingSkill;
 import net.arcane.ascended_arts.skill.ascension_path.QiBuildingSkill;
 import net.arcane.ascended_arts.skill.weaponinnate.*;
 import net.arcane.ascended_arts.skill.weaponpassive.FloatingPassive;
@@ -39,6 +40,8 @@ private AscendedSkills () {}
 
     public static final DeferredHolder<Skill, QiBuildingSkill> QI_BUILDING = REGISTRY.register("qi_building", key ->
             QiBuildingSkill.createAscensionBuilder(QiBuildingSkill::new).build(key));
+    public static final DeferredHolder<Skill, FoundationBuildingSkill> FOUNDATION_BUILDING = REGISTRY.register("foundation_building", key ->
+        FoundationBuildingSkill.createAscensionBuilder(FoundationBuildingSkill::new).build(key));
     public static final DeferredHolder<Skill, PlumBlossomSect> PLUM_BLOSSOM_SECT = REGISTRY.register("plum_blossom", key ->
             PlumBlossomSect.createMartialSectBuilder(PlumBlossomSect::new).build(key));
 

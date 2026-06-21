@@ -1,3 +1,6 @@
+import org.gradle.internal.classpath.Instrumented.systemProperty
+import org.gradle.internal.impldep.org.bouncycastle.asn1.cms.CMSObjectIdentifiers.data
+
 plugins {
     alias(libs.plugins.javalib)
     alias(libs.plugins.eclipse)
@@ -77,6 +80,11 @@ neoForge {
             systemProperty("forge.logging.markers", "REGISTRIES")
             logLevel = org.slf4j.event.Level.DEBUG
         }
+        create("data") {
+            data()
+            programArguments.addAll("--mod", mod_id, "--all", "--output", file("src/generated/resources").absolutePath)
+        }
+
     }
 
     mods {
