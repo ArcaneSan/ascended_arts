@@ -52,7 +52,7 @@ public class AscendedArtsSkillTreeProvider extends SkillTreeProvider {
                                 EntityPredicate.Builder.entity()
                                         .subPredicate(
                                                 PlayerPredicate.Builder.player()
-                                                        .addStat(Stats.BLOCK_MINED, Blocks.CHERRY_LEAVES.builtInRegistryHolder(), MinMaxBounds.Ints.atLeast(2000))
+                                                        .addStat(Stats.BLOCK_MINED, Blocks.CHERRY_LEAVES.builtInRegistryHolder(), MinMaxBounds.Ints.atLeast(2500))
                                                         .build()
                                         )
                                         .build()

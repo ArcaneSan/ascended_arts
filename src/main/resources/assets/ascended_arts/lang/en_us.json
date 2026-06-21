@@ -110,7 +110,7 @@
   "skill.ascended_arts.qi_building.tooltip" : "The first step towards ascension. You aren't too much different from a mortal, with a small bonus.\n\nRegain %s%% of missing stamina when killing your target.",
   "skill.ascended_arts.foundation_building.tooltip": "The second step towards ascension. Truly stepping past the limits of any mortal. Better longevity, tougher skin, a stronger arm.\n\nRegen %s%% of missing stamina when killing your target",
   "unlock_tip.ascended_arts.ascension_path.foundation_building" : "Slay 20 evokers and absorb their mystical essence",
-  "unlock_tip.ascended_arts.martial_sect.plum_blossom": "Cut down 2000 leaves of the cherry tree to comprehend this sect.\n\n Blocks mined need a relog to complete :(",
+  "unlock_tip.ascended_arts.martial_sect.plum_blossom": "Cut down 2500 leaves of the cherry tree to comprehend this sect.\n\n Blocks mined need a relog to complete :(",
 
 
   "item.ascended_arts.silence_hanfu_armor_trim_smithing_template" : "Hanfu Smithing Template",
