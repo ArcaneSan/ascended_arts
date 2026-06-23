@@ -39,7 +39,6 @@ public class WeaponCapabilityPresets {
                 .newStyleCombo(Styles.TWO_HAND, AscendedAnimations.DUAL_JIAN_AUTO_1, AscendedAnimations.DUAL_JIAN_AUTO_2, AscendedAnimations.DUAL_JIAN_AUTO_3, AscendedAnimations.DUAL_JIAN_AUTO_4, AscendedAnimations.DUAL_JIAN_DASH, AscendedAnimations.DUAL_JIAN_AIRSLASH)
                 .innateSkill(Styles.ONE_HAND, (itemstack) -> AscendedSkills.CELESTIAL_PUNISHMENT)
                 .innateSkill(Styles.TWO_HAND, (itemstack) -> AscendedSkills.CELESTIAL_ONSLAUGHT)
-                .passiveSkill(AscendedSkills.FLOATING_PASSIVE)
                 .livingMotionModifier(Styles.ONE_HAND, LivingMotions.IDLE, AscendedAnimations.BIPED_HOLD_JIAN)
                 .livingMotionModifier(Styles.TWO_HAND, LivingMotions.IDLE, AscendedAnimations.BIPED_HOLD_DUAL_JIAN)
                 .livingMotionModifier(Styles.ONE_HAND, LivingMotions.WALK, AscendedAnimations.BIPED_WALK_JIAN)

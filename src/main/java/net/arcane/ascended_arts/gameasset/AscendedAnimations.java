@@ -317,18 +317,12 @@ public class AscendedAnimations {
         JIAN_AIRSLASH = builder.nextAccessor("biped/combat/jian/jian_airslash", (accessor) ->
                 new DashAttackAnimation(0.12F, 0.12F, 0.2F, 0.3F, 0.42F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
                         .addProperty(AnimationProperty.ActionAnimationProperty.MOVE_VERTICAL, true)
-                        .addProperty(AnimationProperty.AttackAnimationProperty.NO_GRAVITY_TIME, TimePairList.create(0.0F, 0.4F))
-                        .addEvents(
-                                AnimationEvent.InTimeEvent.create(0.5F, ReusableEvents.CHERRY_PARTICLES, AnimationEvent.Side.CLIENT)
-                        ));
+                        .addProperty(AnimationProperty.AttackAnimationProperty.NO_GRAVITY_TIME, TimePairList.create(0.0F, 0.4F)));
 
         JIAN_DASH = builder.nextAccessor("biped/combat/jian/jian_dash", (accessor) ->
                 new DashAttackAnimation(0.12F, 0.12F, 0.23F, 0.32F, 0.45F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
                         .addProperty(AnimationProperty.AttackAnimationProperty.CANCELABLE_MOVE, false)
-                        .addProperty(AnimationProperty.AttackAnimationProperty.NO_GRAVITY_TIME, TimePairList.create(0.0F, 0.4F))
-                        .addEvents(
-                                AnimationEvent.InTimeEvent.create(0.15F, ReusableEvents.CHERRY_PARTICLES, AnimationEvent.Side.CLIENT)
-                        ));
+                        .addProperty(AnimationProperty.AttackAnimationProperty.NO_GRAVITY_TIME, TimePairList.create(0.0F, 0.4F)));
 
         DUAL_JIAN_AIRSLASH = builder.nextAccessor("biped/combat/jian/jian_dual_airslash", (accessor) ->
                 new DashAttackAnimation(0.12F, accessor, Armatures.BIPED,
@@ -349,7 +343,7 @@ public class AscendedAnimations {
                         .addProperty(AnimationProperty.AttackAnimationProperty.CANCELABLE_MOVE, true)
                         .addProperty(AnimationProperty.AttackAnimationProperty.NO_GRAVITY_TIME, TimePairList.create(0.0F, 0.5F))
                         .addEvents(
-                                AnimationEvent.InTimeEvent.create(0.15F, ReusableEvents.CHERRY_PARTICLES, AnimationEvent.Side.CLIENT),
+                                AnimationEvent.InTimeEvent.create(0.15F, ReusableEvents.ENDER_PARTICLES, AnimationEvent.Side.CLIENT),
                                 AnimationEvent.InTimeEvent.create(0.17F, ReusableEvents.ENDER_IMAGE, AnimationEvent.Side.CLIENT)
                         ));
 
@@ -484,13 +478,13 @@ public class AscendedAnimations {
                         .addProperty(AnimationProperty.ActionAnimationProperty.MOVE_VERTICAL, true)
                         .addProperty(AnimationProperty.ActionAnimationProperty.CANCELABLE_MOVE, false)
                         .addEvents(
-                                AnimationEvent.InTimeEvent.create(0.06F, ReusableEvents.CHERRY_PARTICLES, AnimationEvent.Side.CLIENT),
+                                AnimationEvent.InTimeEvent.create(0.06F, ReusableEvents.ENDER_PARTICLES, AnimationEvent.Side.CLIENT),
                                 AnimationEvent.InTimeEvent.create(0.08F, ReusableEvents.ENDER_IMAGE, AnimationEvent.Side.CLIENT),
-                                AnimationEvent.InTimeEvent.create(0.24F, ReusableEvents.CHERRY_PARTICLES, AnimationEvent.Side.CLIENT),
+                                AnimationEvent.InTimeEvent.create(0.24F, ReusableEvents.ENDER_PARTICLES, AnimationEvent.Side.CLIENT),
                                 AnimationEvent.InTimeEvent.create(0.27F, ReusableEvents.ENDER_IMAGE, AnimationEvent.Side.CLIENT),
-                                AnimationEvent.InTimeEvent.create(0.36F, ReusableEvents.CHERRY_PARTICLES, AnimationEvent.Side.CLIENT),
+                                AnimationEvent.InTimeEvent.create(0.36F, ReusableEvents.ENDER_PARTICLES, AnimationEvent.Side.CLIENT),
                                 AnimationEvent.InTimeEvent.create(0.39F, ReusableEvents.ENDER_IMAGE, AnimationEvent.Side.CLIENT),
-                                AnimationEvent.InTimeEvent.create(0.54F, ReusableEvents.CHERRY_PARTICLES, AnimationEvent.Side.CLIENT),
+                                AnimationEvent.InTimeEvent.create(0.54F, ReusableEvents.ENDER_PARTICLES, AnimationEvent.Side.CLIENT),
                                 AnimationEvent.InTimeEvent.create(0.56F, ReusableEvents.ENDER_IMAGE, AnimationEvent.Side.CLIENT),
                                 AnimationEvent.InPeriodEvent.create(0.0F, 1F, (entitypatch, self, params) -> {
                                     ((LivingEntity) entitypatch.getOriginal()).resetFallDistance();
@@ -519,13 +513,13 @@ public class AscendedAnimations {
                         .addProperty(AnimationProperty.ActionAnimationProperty.MOVE_VERTICAL, true)
                         .addProperty(AnimationProperty.ActionAnimationProperty.CANCELABLE_MOVE, false)
                         .addEvents(
-                                AnimationEvent.InTimeEvent.create(0.06F, ReusableEvents.CHERRY_PARTICLES, AnimationEvent.Side.CLIENT),
+                                AnimationEvent.InTimeEvent.create(0.06F, ReusableEvents.ENDER_PARTICLES, AnimationEvent.Side.CLIENT),
                                 AnimationEvent.InTimeEvent.create(0.08F, ReusableEvents.ENDER_IMAGE, AnimationEvent.Side.CLIENT),
-                                AnimationEvent.InTimeEvent.create(0.24F, ReusableEvents.CHERRY_PARTICLES, AnimationEvent.Side.CLIENT),
+                                AnimationEvent.InTimeEvent.create(0.24F, ReusableEvents.ENDER_PARTICLES, AnimationEvent.Side.CLIENT),
                                 AnimationEvent.InTimeEvent.create(0.27F, ReusableEvents.ENDER_IMAGE, AnimationEvent.Side.CLIENT),
-                                AnimationEvent.InTimeEvent.create(0.56F, ReusableEvents.CHERRY_PARTICLES, AnimationEvent.Side.CLIENT),
+                                AnimationEvent.InTimeEvent.create(0.56F, ReusableEvents.ENDER_PARTICLES, AnimationEvent.Side.CLIENT),
                                 AnimationEvent.InTimeEvent.create(0.59F, ReusableEvents.ENDER_IMAGE, AnimationEvent.Side.CLIENT),
-                                AnimationEvent.InTimeEvent.create(0.94F, ReusableEvents.CHERRY_PARTICLES, AnimationEvent.Side.CLIENT),
+                                AnimationEvent.InTimeEvent.create(0.94F, ReusableEvents.ENDER_PARTICLES, AnimationEvent.Side.CLIENT),
                                 AnimationEvent.InTimeEvent.create(0.96F, ReusableEvents.ENDER_IMAGE, AnimationEvent.Side.CLIENT),
                                 AnimationEvent.InPeriodEvent.create(0.0F, 1.5F, (entitypatch, self, params) -> {
                                     ((LivingEntity) entitypatch.getOriginal()).resetFallDistance();

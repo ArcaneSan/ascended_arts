@@ -1,0 +1,13 @@
+{
+  "name":"ascended_arts:plum_blossom",
+  "fallback":"minecraft:empty",
+  "elements":[{
+    "weight":1,
+    "element":{
+      "location":"ascended_arts:plum_blossom/plum_blossom_shrine",
+      "processors":"minecraft:empty",
+      "projection":"rigid",
+      "element_type":"minecraft:single_pool_element"
+    }
+  }]
+}

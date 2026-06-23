@@ -5,7 +5,9 @@ import net.minecraft.resources.ResourceLocation;
 import yesman.epicfight.skill.SkillCategory;
 
 public enum AscendedSkillCategories implements SkillCategory {
-    ASCENSION_PATH(true, true, true, ResourceLocation.fromNamespaceAndPath(Ascended_arts.MOD_ID, "skillbook_ascension"));
+    ASCENSION_PATH(true, true, true, ResourceLocation.fromNamespaceAndPath(Ascended_arts.MOD_ID, "skillbook_ascension")),
+    MARTIAL_SECT(true, true, true, ResourceLocation.fromNamespaceAndPath(Ascended_arts.MOD_ID, "skillbook_martial"));
+
 
 
     final boolean shouldSave;

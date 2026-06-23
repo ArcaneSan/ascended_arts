@@ -1,0 +1,13 @@
+{
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 19011220,
+    "separation": 12,
+    "spacing": 34,
+    "spread_type": "triangular"
+  },
+  "structures": [{
+    "structure": "ascended_arts:plum_blossom_shrine",
+    "weight": 1
+  }]
+}

@@ -1,7 +1,9 @@
 package net.arcane.ascended_arts.gameasset;
 
 import net.arcane.ascended_arts.Ascended_arts;
+import net.arcane.ascended_arts.skill.ascension_path.FoundationBuildingSkill;
 import net.arcane.ascended_arts.skill.ascension_path.QiBuildingSkill;
+import net.arcane.ascended_arts.skill.martial_sect.PlumBlossomSect;
 import net.arcane.ascended_arts.skill.weaponinnate.*;
 import net.arcane.ascended_arts.skill.weaponpassive.FloatingPassive;
 
@@ -34,6 +36,8 @@ public class AscendedSkills {
     public static Skill LIFESTEAL_PASSIVE;
     public static Skill REAPING_GRASP;
     public static Skill QI_BUILDING;
+    public static Skill FOUNDATION_BUILDING;
+    public static Skill PLUM_BLOSSOM;
 
 
 
@@ -43,6 +47,8 @@ public class AscendedSkills {
         SkillBuildEvent.ModRegistryWorker modRegistry = build.createRegistryWorker(Ascended_arts.MOD_ID);
 
         QI_BUILDING = modRegistry.build("qi_building", QiBuildingSkill::new, QiBuildingSkill.createQiBuildingBuilder());
+        FOUNDATION_BUILDING = modRegistry.build("foundation_building", FoundationBuildingSkill::new, FoundationBuildingSkill.createFoundationBuildingBuilder());
+        PLUM_BLOSSOM = modRegistry.build("plum_blossom", PlumBlossomSect::new, PlumBlossomSect.createPlumBlossomBuilder());
 
 
         WeaponInnateSkill celestial_punishment = modRegistry.build("celestial_punishment", CelestialPunishmentSkill :: new, WeaponInnateSkill.createWeaponInnateBuilder());
