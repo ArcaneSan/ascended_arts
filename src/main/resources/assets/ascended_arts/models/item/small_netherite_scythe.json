@@ -2,17 +2,17 @@
   "loader": "neoforge:separate_transforms",
   "gui_light": "front",
   "base": {
-    "parent": "ascended_arts:item/small_netherite_scythe_3d"
+    "parent": "ascended_arts:item/template_jian",
+    "textures": {
+      "layer0": "ascended_arts:item/small_netherite_scythe"
+    }
   },
   "perspectives": {
     "gui": {
-      "parent": "ascended_arts:item/small_netherite_scythe_2d"
-    },
-    "ground": {
-      "parent": "ascended_arts:item/small_netherite_scythe_2d"
-    },
-    "fixed": {
-      "parent": "ascended_arts:item/small_netherite_scythe_2d"
+      "parent": "minecraft:item/handheld",
+      "textures": {
+        "layer0": "ascended_arts:item/small_netherite_scythe_gui"
+      }
     }
   }
 }

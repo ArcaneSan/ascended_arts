@@ -98,10 +98,12 @@ public class AscendedArtsMovesets
             () -> Moveset.builder()
                     .addLivingMotionModifier(LivingMotions.IDLE, AscendedAnimations.BIPED_S_SCYTHE_HOLD)
                     .addLivingMotionModifier(LivingMotions.KNEEL, AscendedAnimations.BIPED_S_SCYTHE_KNEEL)
+                    .addLivingMotionModifier(LivingMotions.WALK, AscendedAnimations.BIPED_S_SCYTHE_WALK)
+                    .addLivingMotionsRecursive(AscendedAnimations.BIPED_S_SCYTHE_RUN, LivingMotions.RUN, LivingMotions.CHASE)
+                    .addLivingMotionModifier(LivingMotions.SNEAK, AscendedAnimations.BIPED_S_SCYTHE_SNEAK)
                     .addComboAttacks(
                             AscendedAnimations.S_SCYTHE_AUTO, AscendedAnimations.S_SCYTHE_AUTO_2, AscendedAnimations.S_SCYTHE_AUTO_3,
-                            AscendedAnimations.S_SCYTHE_AUTO_2, AscendedAnimations.S_SCYTHE_AUTO_3, AscendedAnimations.S_SCYTHE_DASH,
-                            AscendedAnimations.S_SCYTHE_AIRSLASH
+                            AscendedAnimations.S_SCYTHE_AUTO_4, AscendedAnimations.S_SCYTHE_DASH, AscendedAnimations.S_SCYTHE_AIRSLASH
                     )
                     .addLivingMotionModifier(LivingMotions.BLOCK, AscendedAnimations.S_SCYTHE_GUARD)
                     .addGuardAnimations(GuardSkill.BlockType.GUARD, AscendedAnimations.S_SCYTHE_GUARD_HIT)
