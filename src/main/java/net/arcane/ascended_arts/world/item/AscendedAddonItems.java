@@ -24,6 +24,7 @@ public class AscendedAddonItems {
 //    public static final DeferredItem<Item> TESTER =
 //            ITEMS.register("tester", () -> new AscendedItem(new Item.Properties(), Tiers.DIAMOND));
 
+
     public static final DeferredItem<Item> CLOTH =
              ITEMS.register("cloth", () -> new Item(new Item.Properties().stacksTo(64)));
     public static final DeferredItem<Item> HANFU_UPGRADE =
@@ -169,6 +170,8 @@ public class AscendedAddonItems {
             ITEMS.register("flow_hanfu_armor_trim_smithing_template", () ->
                     SmithingTemplateItem.createArmorTrimTemplate(ResourceLocation.fromNamespaceAndPath(Ascended_arts.MOD_ID, "flow_hanfu")));
 
+    public static final DeferredItem<Item> BANNER_PATTERN_PLUM =
+            ITEMS.register("banner_pattern_plum_blossom", () -> new BannerPatternItem(AscendedTags.PATTERN_ITEM_PLUM, new Item.Properties().stacksTo(1)));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

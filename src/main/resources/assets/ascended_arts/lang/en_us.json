@@ -46,6 +46,10 @@
   "item.ascended_arts.void_slayer_leggings" : "Void Slayer leggings",
   "item.ascended_arts.void_slayer_boots" : "Void Slayer boots",
 
+  "item.ascended_arts.banner_pattern_plum_blossom": "Banner Pattern",
+  "item.ascended_arts.banner_pattern_plum_blossom.desc": "Plum Blossom",
+
+
   "black": "Black",
   "blue": "Blue",
   "brown" : "Brown",

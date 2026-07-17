@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+  [
+    "BBB",
+    "BSB",
+    "BBB"
+  ],
+  "key":
+  {
+    "B": { "item" : "minecraft:cherry_leaves" },
+    "S": { "item" : "ascended_arts:cloth" }
+  },
+  "result":
+  {
+    "id" : "ascended_arts:banner_pattern_plum_blossom",
+    "count" : 1
+  }
+}

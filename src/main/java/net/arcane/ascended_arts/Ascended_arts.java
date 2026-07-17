@@ -13,6 +13,7 @@ import net.arcane.ascended_arts.skill.guard.AscendedCompatSkills;
 import net.arcane.ascended_arts.world.capabilities.item.*;
 import net.arcane.ascended_arts.world.item.AscendedAddonItems;
 import net.arcane.ascended_arts.world.item.AscendedCreativeTab;
+import net.arcane.ascended_arts.world.item.AscendedTags;
 import net.minecraft.client.Minecraft;
 
 import net.minecraft.resources.ResourceLocation;
@@ -81,6 +82,7 @@ public class Ascended_arts {
         AscendedArtsItemCapabilityPreset.REGISTRY.register(bus);
         AscendedArtsMovesets.REGISTRY.register(bus);
         AscendedArtsProviderConditionals.REGISTRY.register(bus);
+        AscendedTags.initTags();
 
     }
 

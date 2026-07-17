@@ -89,6 +89,8 @@ public class AscendedCreativeTab {
                         output.accept(AscendedAddonItems.FLOW_HANFU_SMITHING_TEMPLATE.get());
                         output.accept(AscendedAddonItems.BOLT_HANFU_SMITHING_TEMPLATE.get());
 
+                        output.accept(AscendedAddonItems.BANNER_PATTERN_PLUM.get());
+
 
 
 
