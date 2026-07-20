@@ -145,11 +145,15 @@ public class AscendedAnimations {
     public static AnimationManager.AnimationAccessor<GuardAnimation> S_SCYTHE_GUARD_PARRY_2;
 
     public static AnimationManager.AnimationAccessor<DashAttackAnimation> S_DUAL_SCYTHE_DASH;
+    public static AnimationManager.AnimationAccessor<ComboAttackAnimation> S_DUAL_SCYTHE_AUTO_1;
     public static AnimationManager.AnimationAccessor<ComboAttackAnimation> S_DUAL_SCYTHE_AUTO_2;
     public static AnimationManager.AnimationAccessor<ComboAttackAnimation> S_DUAL_SCYTHE_AUTO_3;
+    public static AnimationManager.AnimationAccessor<ComboAttackAnimation> S_DUAL_SCYTHE_AUTO_4;
     public static AnimationManager.AnimationAccessor<AirSlashAnimation> S_DUAL_SCYTHE_AIRSLASH;
 
-    public static AnimationManager.AnimationAccessor<ComboAttackAnimation> CELESTIAL_DIVE;
+    public static AnimationManager.AnimationAccessor<AttackAnimation> CHASING_SWEEP;
+
+    public static AnimationManager.AnimationAccessor<AttackAnimation> CELESTIAL_DIVE;
     public static AnimationManager.AnimationAccessor<ComboAttackAnimation> CELESTIAL_DIVE_MISS;
     public static AnimationManager.AnimationAccessor<ComboAttackAnimation> CELESTIAL_PUNISHMENT;
     public static AnimationManager.AnimationAccessor<ComboAttackAnimation> CELESTIAL_ONSLAUGHT;
@@ -206,28 +210,28 @@ public class AscendedAnimations {
 
 
         //Every animation defined with his own hitbox timers and Properties
-        BIPED_HOLD_JIAN = builder.nextAccessor("biped/living/jian/jian_idle", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED));
-        BIPED_HOLD_DUAL_JIAN = builder.nextAccessor("biped/living/jian/jian_dual_idle", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED));
-        BIPED_WALK_JIAN = builder.nextAccessor("biped/living/jian/jian_walk", (accessor) -> new MovementAnimation(true, accessor, Armatures.BIPED));
-        BIPED_SNEAK_JIAN = builder.nextAccessor("biped/living/jian/jian_sneak", (accessor) -> new MovementAnimation(true, accessor, Armatures.BIPED));
-        BIPED_RUN_JIAN = builder.nextAccessor("biped/living/jian/jian_run", (accessor) -> new MovementAnimation(true, accessor, Armatures.BIPED));
-        BIPED_WALK_DUAL_JIAN = builder.nextAccessor("biped/living/jian/jian_dual_walk", (accessor) -> new MovementAnimation(true, accessor, Armatures.BIPED));
-        BIPED_SNEAK_DUAL_JIAN = builder.nextAccessor("biped/living/jian/jian_dual_sneak", (accessor) -> new MovementAnimation(true, accessor, Armatures.BIPED));
-        BIPED_RUN_DUAL_JIAN = builder.nextAccessor("biped/living/jian/jian_dual_run", (accessor) -> new MovementAnimation(true, accessor, Armatures.BIPED));
-        BIPED_FLY_JIAN = builder.nextAccessor("biped/living/jian/jian_fly", (accessor) -> new MovementAnimation(true, accessor, Armatures.BIPED));
+        BIPED_HOLD_JIAN = builder.nextAccessor("biped/living/jian/idle", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED));
+        BIPED_HOLD_DUAL_JIAN = builder.nextAccessor("biped/living/jian/dual_idle", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED));
+        BIPED_WALK_JIAN = builder.nextAccessor("biped/living/jian/walk", (accessor) -> new MovementAnimation(true, accessor, Armatures.BIPED));
+        BIPED_SNEAK_JIAN = builder.nextAccessor("biped/living/jian/sneak", (accessor) -> new MovementAnimation(true, accessor, Armatures.BIPED));
+        BIPED_RUN_JIAN = builder.nextAccessor("biped/living/jian/run", (accessor) -> new MovementAnimation(true, accessor, Armatures.BIPED));
+        BIPED_WALK_DUAL_JIAN = builder.nextAccessor("biped/living/jian/dual_walk", (accessor) -> new MovementAnimation(true, accessor, Armatures.BIPED));
+        BIPED_SNEAK_DUAL_JIAN = builder.nextAccessor("biped/living/jian/dual_sneak", (accessor) -> new MovementAnimation(true, accessor, Armatures.BIPED));
+        BIPED_RUN_DUAL_JIAN = builder.nextAccessor("biped/living/jian/dual_run", (accessor) -> new MovementAnimation(true, accessor, Armatures.BIPED));
+        BIPED_FLY_JIAN = builder.nextAccessor("biped/living/jian/fly", (accessor) -> new MovementAnimation(true, accessor, Armatures.BIPED));
 
-        BIPED_WALK_SCYTHE = builder.nextAccessor("biped/living/scythe/scythe_walk", (accessor) -> new MovementAnimation(true, accessor, Armatures.BIPED));
-        BIPED_RUN_SCYTHE = builder.nextAccessor("biped/living/scythe/scythe_run", (accessor) -> new MovementAnimation(true, accessor, Armatures.BIPED));
-        BIPED_HOLD_SCYTHE = builder.nextAccessor("biped/living/scythe/scythe_idle", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED));
-        BIPED_KNEEL_SCYTHE = builder.nextAccessor("biped/living/scythe/scythe_kneel", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED));
-        BIPED_SNEAK_SCYTHE = builder.nextAccessor("biped/living/scythe/scythe_sneak", (accessor) -> new MovementAnimation(true, accessor, Armatures.BIPED));
-        BIPED_SCYTHE_SLEEP = builder.nextAccessor("biped/living/scythe/scythe_sleep", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED));
+        BIPED_WALK_SCYTHE = builder.nextAccessor("biped/living/scythe/walk", (accessor) -> new MovementAnimation(true, accessor, Armatures.BIPED));
+        BIPED_RUN_SCYTHE = builder.nextAccessor("biped/living/scythe/run", (accessor) -> new MovementAnimation(true, accessor, Armatures.BIPED));
+        BIPED_HOLD_SCYTHE = builder.nextAccessor("biped/living/scythe/idle", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED));
+        BIPED_KNEEL_SCYTHE = builder.nextAccessor("biped/living/scythe/kneel", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED));
+        BIPED_SNEAK_SCYTHE = builder.nextAccessor("biped/living/scythe/sneak", (accessor) -> new MovementAnimation(true, accessor, Armatures.BIPED));
+        BIPED_SCYTHE_SLEEP = builder.nextAccessor("biped/living/scythe/sleep", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED));
 
-        BIPED_HOLD_REGRET = builder.nextAccessor("biped/living/regret/regret_idle", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED));
-        BIPED_WALK_REGRET = builder.nextAccessor("biped/living/regret/regret_walk", (accessor) -> new MovementAnimation(true, accessor, Armatures.BIPED));
-        BIPED_RUN_REGRET = builder.nextAccessor("biped/living/regret/regret_run", (accessor) -> new MovementAnimation(true, accessor, Armatures.BIPED));
-        BIPED_SNEAK_REGRET = builder.nextAccessor("biped/living/regret/regret_sneak", (accessor) -> new MovementAnimation(true, accessor, Armatures.BIPED));
-        BIPED_SLEEP_REGRET = builder.nextAccessor("biped/living/regret/regret_sleep", (accessor) -> new StaticAnimation(0.16F, true, accessor, Armatures.BIPED));
+        BIPED_HOLD_REGRET = builder.nextAccessor("biped/living/regret/idle", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED));
+        BIPED_WALK_REGRET = builder.nextAccessor("biped/living/regret/walk", (accessor) -> new MovementAnimation(true, accessor, Armatures.BIPED));
+        BIPED_RUN_REGRET = builder.nextAccessor("biped/living/regret/run", (accessor) -> new MovementAnimation(true, accessor, Armatures.BIPED));
+        BIPED_SNEAK_REGRET = builder.nextAccessor("biped/living/regret/sneak", (accessor) -> new MovementAnimation(true, accessor, Armatures.BIPED));
+        BIPED_SLEEP_REGRET = builder.nextAccessor("biped/living/regret/sleep", (accessor) -> new StaticAnimation(0.16F, true, accessor, Armatures.BIPED));
 
 
 
@@ -264,15 +268,15 @@ public class AscendedAnimations {
                         .addProperty(AnimationProperty.StaticAnimationProperty.FIXED_HEAD_ROTATION, true)
         );
 
-        JIAN_GUARD = builder.nextAccessor("biped/skill/jian/jian_guard", (accessor) -> new StaticAnimation(0.15F, true, accessor, Armatures.BIPED));
-        DUAL_JIAN_GUARD = builder.nextAccessor("biped/skill/jian/jian_dual_guard", (accessor) -> new StaticAnimation(0.15F, true, accessor, Armatures.BIPED));
+        JIAN_GUARD = builder.nextAccessor("biped/skill/jian/guard", (accessor) -> new StaticAnimation(0.15F, true, accessor, Armatures.BIPED));
+        DUAL_JIAN_GUARD = builder.nextAccessor("biped/skill/jian/dual_guard", (accessor) -> new StaticAnimation(0.15F, true, accessor, Armatures.BIPED));
         S_SCYTHE_GUARD = builder.nextAccessor("biped/skill/ss/guard", (accessor) -> new StaticAnimation(0.15F, true, accessor, Armatures.BIPED));
-        JIAN_GUARD_HIT = builder.nextAccessor("biped/skill/jian/jian_guard_hit", (accessor) -> new GuardAnimation(0.03F, accessor, Armatures.BIPED));
-        JIAN_DUAL_GUARD_HIT = builder.nextAccessor("biped/skill/jian/jian_dual_guard_hit", (accessor) -> new GuardAnimation(0.03F, accessor, Armatures.BIPED));
+        JIAN_GUARD_HIT = builder.nextAccessor("biped/skill/jian/guard_hit", (accessor) -> new GuardAnimation(0.03F, accessor, Armatures.BIPED));
+        JIAN_DUAL_GUARD_HIT = builder.nextAccessor("biped/skill/jian/dual_guard_hit", (accessor) -> new GuardAnimation(0.03F, accessor, Armatures.BIPED));
         S_SCYTHE_GUARD_HIT = builder.nextAccessor("biped/skill/ss/guard_hit", (accessor) -> new GuardAnimation(0.03F, accessor, Armatures.BIPED));
-        JIAN_GUARD_BREAK = builder.nextAccessor("biped/skill/jian/jian_guard_break", (accessor) -> new LongHitAnimation(0.05F, accessor, Armatures.BIPED));
-        DUAL_JIAN_GUARD_HIT = builder.nextAccessor("biped/skill/jian/jian_dual_guard_hit", (accessor) -> new GuardAnimation(0, accessor, Armatures.BIPED));
-        SCYTHE_GUARD = builder.nextAccessor("biped/skill/scythe/scythe_guard", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED)
+        JIAN_GUARD_BREAK = builder.nextAccessor("biped/skill/jian/guard_break", (accessor) -> new LongHitAnimation(0.05F, accessor, Armatures.BIPED));
+        DUAL_JIAN_GUARD_HIT = builder.nextAccessor("biped/skill/jian/dual_guard_hit", (accessor) -> new GuardAnimation(0, accessor, Armatures.BIPED));
+        SCYTHE_GUARD = builder.nextAccessor("biped/skill/scythe/guard", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED)
                 .addEvents(AnimationEvent.InPeriodEvent.create(0.0F, 0.2F, (entitypatch, self, params) -> {
                     ((LivingEntity)entitypatch.getOriginal()).isInWater();
                     if (entitypatch.getOriginal() instanceof Player) {
@@ -300,85 +304,85 @@ public class AscendedAnimations {
                         }
                     }
                 }, AnimationEvent.Side.CLIENT)));
-        REGRET_GUARD = builder.nextAccessor("biped/skill/regret/regret_guard", (accessor) -> new StaticAnimation(0.15F, true, accessor, Armatures.BIPED));
-        REGRET_GUARD_HIT = builder.nextAccessor("biped/skill/regret/regret_guard_hit", (accessor) -> new GuardAnimation(0, accessor, Armatures.BIPED));
-        SCYTHE_GUARD_HIT = builder.nextAccessor("biped/skill/scythe/scythe_guard_hit", (accessor) -> new GuardAnimation(0, accessor, Armatures.BIPED));
-        JIAN_GUARD_PARRY_1 = builder.nextAccessor("biped/skill/jian/jian_guard_hit_active_1", (accessor) -> new GuardAnimation(0.02F, accessor, Armatures.BIPED));
-        JIAN_GUARD_PARRY_2 = builder.nextAccessor("biped/skill/jian/jian_guard_hit_active_2", (accessor) -> new GuardAnimation(0.02F, accessor, Armatures.BIPED)
+        REGRET_GUARD = builder.nextAccessor("biped/skill/regret/guard", (accessor) -> new StaticAnimation(0.15F, true, accessor, Armatures.BIPED));
+        REGRET_GUARD_HIT = builder.nextAccessor("biped/skill/regret/guard_hit", (accessor) -> new GuardAnimation(0, accessor, Armatures.BIPED));
+        SCYTHE_GUARD_HIT = builder.nextAccessor("biped/skill/scythe/guard_hit", (accessor) -> new GuardAnimation(0, accessor, Armatures.BIPED));
+        JIAN_GUARD_PARRY_1 = builder.nextAccessor("biped/skill/jian/parry_1", (accessor) -> new GuardAnimation(0.02F, accessor, Armatures.BIPED));
+        JIAN_GUARD_PARRY_2 = builder.nextAccessor("biped/skill/jian/parry_2", (accessor) -> new GuardAnimation(0.02F, accessor, Armatures.BIPED)
                 .addProperty(AnimationProperty.AttackAnimationProperty.FIXED_MOVE_DISTANCE, true));
-        JIAN_DUAL_GUARD_PARRY_1 = builder.nextAccessor("biped/skill/jian/jian_dual_guard_hit_active_1", (accessor) -> new GuardAnimation(0.02F, accessor, Armatures.BIPED));
-        JIAN_DUAL_GUARD_PARRY_2 = builder.nextAccessor("biped/skill/jian/jian_dual_guard_hit_active_2", (accessor) -> new GuardAnimation(0.02F, accessor, Armatures.BIPED)
+        JIAN_DUAL_GUARD_PARRY_1 = builder.nextAccessor("biped/skill/jian/dual_parry_1", (accessor) -> new GuardAnimation(0.02F, accessor, Armatures.BIPED));
+        JIAN_DUAL_GUARD_PARRY_2 = builder.nextAccessor("biped/skill/jian/dual_parry_2", (accessor) -> new GuardAnimation(0.02F, accessor, Armatures.BIPED)
                 .addProperty(AnimationProperty.AttackAnimationProperty.FIXED_MOVE_DISTANCE, true));
 
-        SCYTHE_GUARD_PARRY_1 = builder.nextAccessor("biped/skill/scythe/scythe_guard_parry_1", (accessor) -> new GuardAnimation(0.02F, accessor, Armatures.BIPED));
-        SCYTHE_GUARD_PARRY_2 = builder.nextAccessor("biped/skill/scythe/scythe_guard_parry_2", (accessor) -> new GuardAnimation(0.02F, accessor, Armatures.BIPED));
-        REGRET_GUARD_PARRY_1 = builder.nextAccessor("biped/skill/regret/regret_guard_parry_1", (accessor) -> new GuardAnimation(0.02F, accessor, Armatures.BIPED));
-        REGRET_GUARD_PARRY_2 = builder.nextAccessor("biped/skill/regret/regret_guard_parry_2", (accessor) -> new GuardAnimation(0.02F, accessor, Armatures.BIPED));
+        SCYTHE_GUARD_PARRY_1 = builder.nextAccessor("biped/skill/scythe/parry_1", (accessor) -> new GuardAnimation(0.02F, accessor, Armatures.BIPED));
+        SCYTHE_GUARD_PARRY_2 = builder.nextAccessor("biped/skill/scythe/parry_2", (accessor) -> new GuardAnimation(0.02F, accessor, Armatures.BIPED));
+        REGRET_GUARD_PARRY_1 = builder.nextAccessor("biped/skill/regret/parry_1", (accessor) -> new GuardAnimation(0.02F, accessor, Armatures.BIPED));
+        REGRET_GUARD_PARRY_2 = builder.nextAccessor("biped/skill/regret/parry_2", (accessor) -> new GuardAnimation(0.02F, accessor, Armatures.BIPED));
         S_SCYTHE_GUARD_PARRY = builder.nextAccessor("biped/skill/ss/parry_1", (accessor) -> new GuardAnimation(0.02F, accessor, Armatures.BIPED));
         S_SCYTHE_GUARD_PARRY_2 = builder.nextAccessor("biped/skill/ss/parry_2", (accessor) -> new GuardAnimation(0.02F, accessor, Armatures.BIPED));
 
         //change times once they work
-        JIAN_AUTO_1 = builder.nextAccessor("biped/combat/jian/jian_auto_1", (accessor) ->
+        JIAN_AUTO_1 = builder.nextAccessor("biped/combat/jian/auto_1", (accessor) ->
                 new ComboAttackAnimation(0.12F, 0.1F, 0.2F, 0.3F, 0.6F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
                         .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.8F));
-        JIAN_AUTO_2 = builder.nextAccessor("biped/combat/jian/jian_auto_2", (accessor) ->
+        JIAN_AUTO_2 = builder.nextAccessor("biped/combat/jian/auto_2", (accessor) ->
                 new ComboAttackAnimation(0.12F, accessor, Armatures.BIPED,
                         new ComboAttackAnimation.Phase(0.0F, 0.0F, 0.1F, 0.2F, 0.25F, 0.28F, Armatures.BIPED.get().toolR, null),
                         new ComboAttackAnimation.Phase(0.29F, 0.29F, 0.3F, 0.4F, 0.45F, 0.49F, Armatures.BIPED.get().toolR, null))
                                 .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.8F));
-        JIAN_AUTO_3 = builder.nextAccessor("biped/combat/jian/jian_auto_3", (accessor) ->
+        JIAN_AUTO_3 = builder.nextAccessor("biped/combat/jian/auto_3", (accessor) ->
                 new ComboAttackAnimation(0.12F, accessor, Armatures.BIPED,
                         new ComboAttackAnimation.Phase(0.0F, 0.05F, 0.09F, 0.15F, 0.2F, 0.21F, Armatures.BIPED.get().toolR, null),
                         new ComboAttackAnimation.Phase(0.22F, 0.25F, 0.3F, 0.4F, 0.5F, 0.51F, Armatures.BIPED.get().toolR, null))
                         .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.8F));
-        JIAN_AUTO_4 = builder.nextAccessor("biped/combat/jian/jian_auto_4", (accessor) ->
+        JIAN_AUTO_4 = builder.nextAccessor("biped/combat/jian/auto_4", (accessor) ->
                 new ComboAttackAnimation(0.12F, 0.2F, 0.25F, 0.4F, 0.5F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
                         .addProperty(AnimationProperty.AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(3F))
                         .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.8F));
 
 
-        DUAL_JIAN_AUTO_1 = builder.nextAccessor("biped/combat/jian/jian_dual_auto_1", (accessor) ->
+        DUAL_JIAN_AUTO_1 = builder.nextAccessor("biped/combat/jian/dual_auto_1", (accessor) ->
                 new ComboAttackAnimation(0.12F, accessor, Armatures.BIPED,
                         new ComboAttackAnimation.Phase(0.0F, 0.12F, 0.16F, 0.23F, 0.24F, 0.241F, Armatures.BIPED.get().toolL, null),
                         new ComboAttackAnimation.Phase(0.242F, 0.12F, 0.24F, 0.35F, 0.36F, 0.37F, Armatures.BIPED.get().toolR, null))
                                 .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 2.0F));
 
-        DUAL_JIAN_AUTO_2 = builder.nextAccessor("biped/combat/jian/jian_dual_auto_2", (accessor) ->
+        DUAL_JIAN_AUTO_2 = builder.nextAccessor("biped/combat/jian/dual_auto_2", (accessor) ->
                 new ComboAttackAnimation(0.12F,accessor, Armatures.BIPED,
                         new ComboAttackAnimation.Phase( 0.0F, 0.12F,0.19F, 0.26F, 0.27F, 0.28F, Armatures.BIPED.get().toolR, null),
                         new ComboAttackAnimation.Phase(0.29F, 0.12F, 0.22F, 0.37F, 0.39F, 0.4F, Armatures.BIPED.get().toolL, null))
                         .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 2.0F));
 
-        DUAL_JIAN_AUTO_3 = builder.nextAccessor("biped/combat/jian/jian_dual_auto_3", (accessor) ->
+        DUAL_JIAN_AUTO_3 = builder.nextAccessor("biped/combat/jian/dual_auto_3", (accessor) ->
                 new ComboAttackAnimation(0.12F, accessor, Armatures.BIPED,
                         new ComboAttackAnimation.Phase(0.0F, 0.12F, 0.15F, 0.23F, 0.25F, 0.26F, Armatures.BIPED.get().toolR, null),
                         new ComboAttackAnimation.Phase(0.27F, 0.12F, 0.25F, 0.38F, 0.39F, 0.4F, Armatures.BIPED.get().toolL, null))
                         .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 2.0F));
-        DUAL_JIAN_AUTO_4 = builder.nextAccessor("biped/combat/jian/jian_dual_auto_4", (accessor) ->
+        DUAL_JIAN_AUTO_4 = builder.nextAccessor("biped/combat/jian/dual_auto_4", (accessor) ->
                 new ComboAttackAnimation(0.12F, accessor, Armatures.BIPED,
                         new ComboAttackAnimation.Phase(0.0F, 0.08F, 0.12F, 0.22F, 0.26F, 0.27F, InteractionHand.MAIN_HAND,
                                 ComboAttackAnimation.JointColliderPair.of(Armatures.BIPED.get().toolR, null), ComboAttackAnimation.JointColliderPair.of(Armatures.BIPED.get().toolL, null)))
                         .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 2.0F));
 
 
-        JIAN_AIRSLASH = builder.nextAccessor("biped/combat/jian/jian_airslash", (accessor) ->
+        JIAN_AIRSLASH = builder.nextAccessor("biped/combat/jian/airslash", (accessor) ->
                 new DashAttackAnimation(0.12F, 0.12F, 0.2F, 0.3F, 0.42F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
                         .addProperty(AnimationProperty.ActionAnimationProperty.MOVE_VERTICAL, true)
                         .addProperty(AnimationProperty.AttackAnimationProperty.NO_GRAVITY_TIME, TimePairList.create(0.0F, 0.4F)));
 
-        JIAN_DASH = builder.nextAccessor("biped/combat/jian/jian_dash", (accessor) ->
+        JIAN_DASH = builder.nextAccessor("biped/combat/jian/dash", (accessor) ->
                 new DashAttackAnimation(0.12F, 0.12F, 0.23F, 0.32F, 0.45F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
                         .addProperty(AnimationProperty.AttackAnimationProperty.CANCELABLE_MOVE, false)
                         .addProperty(AnimationProperty.AttackAnimationProperty.NO_GRAVITY_TIME, TimePairList.create(0.0F, 0.4F)));
 
-        DUAL_JIAN_AIRSLASH = builder.nextAccessor("biped/combat/jian/jian_dual_airslash", (accessor) ->
+        DUAL_JIAN_AIRSLASH = builder.nextAccessor("biped/combat/jian/dual_airslash", (accessor) ->
                 new DashAttackAnimation(0.12F, accessor, Armatures.BIPED,
                         new ComboAttackAnimation.Phase(0.0F, 0.05F, 0.08F, 0.21F, 0.22F, 0.23F, Armatures.BIPED.get().toolL, null),
                         new ComboAttackAnimation.Phase(0.232F, 0.12F, 0.21F, 0.3F, 0.31F, 0.45F, Armatures.BIPED.get().toolR, null))
                         .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.8F)
                         .addProperty(AnimationProperty.AttackAnimationProperty.NO_GRAVITY_TIME, TimePairList.create(0.1F, 0.50F)));
 
-        DUAL_JIAN_DASH = builder.nextAccessor("biped/combat/jian/jian_dual_dash", (accessor) ->
+        DUAL_JIAN_DASH = builder.nextAccessor("biped/combat/jian/dual_dash", (accessor) ->
                 new DashAttackAnimation(0.12F, accessor, Armatures.BIPED,
                         new ComboAttackAnimation.Phase(0.0F, 0.1F, 0.11F, 0.15F, 0.16F, 0.161F, InteractionHand.MAIN_HAND, Armatures.BIPED.get().torso, AscendedColliderPreset.DASH),
                         new ComboAttackAnimation.Phase(0.162F, 0.163F, 0.164F, 0.18F, 0.19F, 0.191F, InteractionHand.MAIN_HAND, Armatures.BIPED.get().torso, AscendedColliderPreset.DASH),
@@ -393,7 +397,7 @@ public class AscendedAnimations {
                                 AnimationEvent.InTimeEvent.create(0.07F, ReusableEvents.ENDER_IMAGE, AnimationEvent.Side.CLIENT)
                         ));
 
-        SCYTHE_DASH = builder.nextAccessor("biped/combat/scythe/scythe_dash", (accessor) ->
+        SCYTHE_DASH = builder.nextAccessor("biped/combat/scythe/dash", (accessor) ->
                 new DashAttackAnimation(0.12F, accessor, Armatures.BIPED,
                         new ComboAttackAnimation.Phase(0.0F, 0.2F, 0.3F, 0.48F, 0.49F, 0.5F, Armatures.BIPED.get().toolR, null))
                         .addProperty(AnimationProperty.AttackAnimationProperty.FIXED_MOVE_DISTANCE, true)
@@ -409,27 +413,27 @@ public class AscendedAnimations {
                                     }
                                 }, AnimationEvent.Side.BOTH))
                         .addState(EntityState.MOVEMENT_LOCKED, true));
-        SCYTHE_AIRSLASH = builder.nextAccessor("biped/combat/scythe/scythe_airslash", (accessor) ->
+        SCYTHE_AIRSLASH = builder.nextAccessor("biped/combat/scythe/airslash", (accessor) ->
                 new AirSlashAnimation(0.12F, accessor, Armatures.BIPED,
                         new ComboAttackAnimation.Phase(0.0F, 0.0F, 0.2F, 0.45F, 0.5F, 0.51F, Armatures.BIPED.get().toolR, null),
                         new ComboAttackAnimation.Phase(0.51F, 0.2F, 0.71F, 0.8F, 0.9F, 0.91F, Armatures.BIPED.get().toolR, null))
                         .addProperty(AnimationProperty.ActionAnimationProperty.NO_GRAVITY_TIME, TimePairList.create(0.0F, 1.0F)));
 
-        SCYTHE_AUTO_1 = builder.nextAccessor("biped/combat/scythe/scythe_auto_1", (accessor) ->
+        SCYTHE_AUTO_1 = builder.nextAccessor("biped/combat/scythe/auto_1", (accessor) ->
                 new ComboAttackAnimation(0.12F, 0.16F, 0.25F, 0.35F, 0.45F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
                         .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.2F));
-        SCYTHE_AUTO_2 = builder.nextAccessor("biped/combat/scythe/scythe_auto_2", (accessor) ->
+        SCYTHE_AUTO_2 = builder.nextAccessor("biped/combat/scythe/auto_2", (accessor) ->
                 new ComboAttackAnimation(0.12F,accessor, Armatures.BIPED,
                         new ComboAttackAnimation.Phase(0.0F, 0.05F, 0.1F, 0.16F, 0.17F, 0.171F, Armatures.BIPED.get().toolR, AscendedColliderPreset.SCYTHE_BOTTOM),
                         new ComboAttackAnimation.Phase(0.172F, 0.19F, 0.29F, 0.36F, 0.45F, 0.451F, Armatures.BIPED.get().toolR, null))
                         .addProperty(AnimationProperty.AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(25))
                         .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.2F));
-        SCYTHE_AUTO_3 = builder.nextAccessor("biped/combat/scythe/scythe_auto_3", (accessor) ->
+        SCYTHE_AUTO_3 = builder.nextAccessor("biped/combat/scythe/auto_3", (accessor) ->
                 new ComboAttackAnimation(0.12F, accessor, Armatures.BIPED,
                         new ComboAttackAnimation.Phase(0.0F, 0.15F, 0.19F, 0.26F, 0.27F, 0.271F, Armatures.BIPED.get().toolR, null),
                         new ComboAttackAnimation.Phase(0.272F, 0.35F, 0.42F, 0.55F, 0.65F, 0.651F, Armatures.BIPED.get().toolR, null))
                         .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.2F));
-        SCYTHE_AUTO_4 = builder.nextAccessor("biped/combat/scythe/scythe_auto_4", (accessor) ->
+        SCYTHE_AUTO_4 = builder.nextAccessor("biped/combat/scythe/auto_4", (accessor) ->
                 new ComboAttackAnimation(0.12F, 0.12F, 0.18F, 0.27F, 0.35F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
                         .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.2F));
 
@@ -465,19 +469,35 @@ public class AscendedAnimations {
                         new ComboAttackAnimation.Phase(0.13F, 0.13F, 0.15F, 0.3F, 0.35F, 0.37F, Armatures.BIPED.get().toolL, null))
                         .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.6F)
                         .addProperty(AnimationProperty.AttackAnimationProperty.NO_GRAVITY_TIME, TimePairList.create(0.0F, 0.3F)));
-        S_DUAL_SCYTHE_AUTO_2 = builder.nextAccessor("biped/combat/ss/sweeping_scythe_dual_auto_2",(accessor) ->
+        S_DUAL_SCYTHE_AUTO_1 = builder.nextAccessor("biped/combat/ss/dual_auto_1",(accessor) ->
                 new ComboAttackAnimation(0.12F, accessor, Armatures.BIPED,
-                        new ComboAttackAnimation.Phase(0.0F, 0.0F, 0.05F, 0.1F, 0.12F, 0.13F, Armatures.BIPED.get().toolR, null),
-                        new ComboAttackAnimation.Phase(0.13F, 0.13F, 0.15F, 0.25F, 0.29F, 0.3F, Armatures.BIPED.get().toolL, null))
+                        new ComboAttackAnimation.Phase(0.0F, 0.12F, 0.18F, 0.27F, 0.29F, 0.291F, Armatures.BIPED.get().toolL, null),
+                        new ComboAttackAnimation.Phase(0.292F, 0.31F, 0.36F, 0.49F, 0.51F, 0.52F, Armatures.BIPED.get().toolR, null))
                         .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.6F));
-        S_DUAL_SCYTHE_AUTO_3 = builder.nextAccessor("biped/combat/ss/sweeping_scythe_dual_auto_3",(accessor) ->
+        S_DUAL_SCYTHE_AUTO_2 = builder.nextAccessor("biped/combat/ss/dual_auto_2",(accessor) ->
                 new ComboAttackAnimation(0.12F, accessor, Armatures.BIPED,
-                        new ComboAttackAnimation.Phase(0.0F, 0.0F, 0.05F, 0.1F, 0.12F, 0.13F, Armatures.BIPED.get().toolL, null),
-                        new ComboAttackAnimation.Phase(0.13F, 0.13F, 0.15F, 0.25F, 0.29F, 0.3F, Armatures.BIPED.get().toolR, null))
+                        new ComboAttackAnimation.Phase(0.0F, 0.12F, 0.18F, 0.27F, 0.29F, 0.291F, InteractionHand.MAIN_HAND,
+                                AttackAnimation.JointColliderPair.of(Armatures.BIPED.get().toolR, null), AttackAnimation.JointColliderPair.of(Armatures.BIPED.get().toolL, null)),
+                        new ComboAttackAnimation.Phase(0.3F, 0.39F, 0.52F, 0.69F, 0.71F, 0.72F, Armatures.BIPED.get().toolL, null))
+                        .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.6F));
+        S_DUAL_SCYTHE_AUTO_3 = builder.nextAccessor("biped/combat/ss/dual_auto_3", (accessor) ->
+                new ComboAttackAnimation(0.12F, accessor, Armatures.BIPED,
+                       new AttackAnimation.Phase(0.0F, 0.19F, 0.29F, 0.39F, 0.41F, 0.42F, InteractionHand.MAIN_HAND,
+                        AttackAnimation.JointColliderPair.of(Armatures.BIPED.get().toolR, null), AttackAnimation.JointColliderPair.of(Armatures.BIPED.get().toolL, null)))
+                               .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.6F));
+        S_DUAL_SCYTHE_AUTO_4 = builder.nextAccessor("biped/combat/ss/dual_auto_4", (accessor) ->
+                new ComboAttackAnimation(0.12F, accessor, Armatures.BIPED,
+                        new AttackAnimation.Phase(0.0F, 0.12F, 0.22F, 0.32F, 0.34F, 0.341F, Armatures.BIPED.get().toolL, null),
+                        new AttackAnimation.Phase(0.342F, 0.39F, 0.45F, 0.59F, 0.64F, 0.65F, Armatures.BIPED.get().toolR, null))
                         .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.6F));
 
+        CHASING_SWEEP = builder.nextAccessor("biped/skill/ss/chasing_sweep", (accessor) ->
+                new AttackAnimation(0.12F, 0.12F, 0.25F, 0.45F, 0.5F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
+                        .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.6F)
+                        .addProperty(AnimationProperty.AttackAnimationProperty.FIXED_MOVE_DISTANCE, true));
+
         CELESTIAL_DIVE = builder.nextAccessor("biped/skill/jian/celestial_dive", (accessor) ->
-                new ComboAttackAnimation(0.12F, 0.2F, 0.25F, 0.4F, 0.42F, AscendedColliderPreset.KICK, Armatures.BIPED.get().legR, accessor, Armatures.BIPED)
+                new AttackAnimation(0.12F, 0.2F, 0.25F, 0.4F, 0.42F, AscendedColliderPreset.KICK, Armatures.BIPED.get().legR, accessor, Armatures.BIPED)
                         .addProperty(AnimationProperty.AttackPhaseProperty.HIT_PRIORITY, HitEntityList.Priority.TARGET)
                         .addProperty(AnimationProperty.AttackPhaseProperty.SWING_SOUND, EpicFightSounds.WHOOSH_BIG.get())
                         .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLUNT_HIT.get())

@@ -21,6 +21,7 @@ import yesman.epicfight.api.animation.property.AnimationProperty;
 import yesman.epicfight.api.utils.math.ValueModifier;
 import yesman.epicfight.registry.EpicFightRegistries;
 import yesman.epicfight.skill.SkillCategories;
+import yesman.epicfight.skill.weaponinnate.SimpleWeaponInnateSkill;
 import yesman.epicfight.skill.weaponinnate.WeaponInnateSkill;
 import yesman.epicfight.skill.Skill;
 import yesman.epicfight.world.damagesource.EpicFightDamageTypeTags;
@@ -100,9 +101,18 @@ private AscendedSkills () {}
 
     );
 
+    public static final DeferredHolder<Skill, SimpleWeaponInnateSkill> CHASING_SWEEP = REGISTRY.register("chasing_sweep", key ->
+            SimpleWeaponInnateSkill.createSimpleWeaponInnateBuilder()
+                    .setAnimations(AscendedAnimations.CHASING_SWEEP)
+                    .newProperty()
+                    .addProperty(AnimationProperty.AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.multiplier(1.6F))
+                    .addProperty(AnimationProperty.AttackPhaseProperty.EXTRA_DAMAGE, Set.of(ExtraDamageInstance.SWEEPING_EDGE_ENCHANTMENT.create()))
+                    .addProperty(AnimationProperty.AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE))
+                    .addProperty(AnimationProperty.AttackPhaseProperty.STUN_TYPE, StunType.KNOCKDOWN)
+                    .build(key));
 
-    public static DeferredHolder <Skill, FloatingPassive> FLOATING_PASSIVE = REGISTRY.register("floating_passive", key ->
-                FloatingPassive.createBuilder(FloatingPassive::new).setCategory(SkillCategories.WEAPON_PASSIVE).setActivateType(Skill.ActivateType.ONE_SHOT).build(key));
+
+
 
 
 

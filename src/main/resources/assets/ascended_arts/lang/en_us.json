@@ -100,6 +100,8 @@
   "skill.ascended_arts.celestial_onslaught.tooltip" : "Relentless strikes and dive",
   "skill.ascended_arts.reaping_grasp" : "Reaping Grasp",
   "skill.ascended_arts.reaping_grasp.tooltip": "Swift additional strikes",
+  "skill.ascended_arts.chasing_sweep": "Chasing Sweep",
+  "skill.ascended_arts.chasing_sweep.tooltip": "Dash forward and knock the foe down",
 
   "skill_tree.ascended_arts.path_to_ascension": "Path to Ascension",
   "epicfight.skill_slot.martial_sect": "Martial Sect",

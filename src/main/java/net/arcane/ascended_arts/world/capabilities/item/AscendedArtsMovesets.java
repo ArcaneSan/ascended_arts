@@ -108,15 +108,14 @@ public class AscendedArtsMovesets
                     .addLivingMotionModifier(LivingMotions.BLOCK, AscendedAnimations.S_SCYTHE_GUARD)
                     .addGuardAnimations(GuardSkill.BlockType.GUARD, AscendedAnimations.S_SCYTHE_GUARD_HIT)
                     .addGuardAnimations(GuardSkill.BlockType.ADVANCED_GUARD, AscendedAnimations.S_SCYTHE_GUARD_PARRY, AscendedAnimations.S_SCYTHE_GUARD_PARRY_2)
-                    .addInnateSkill((itemstack, playerPatch) -> EpicFightSkills.SWEEPING_EDGE.get())
+                    .addInnateSkill((itemstack, playerPatch) -> AscendedSkills.CHASING_SWEEP.get())
     );
     public static final DeferredMoveset S_SCYTHE_2 = REGISTRY.registerMoveset("s_scythe_2",
             () -> Moveset.builder()
                     .parent(S_SCYTHE)
                     .addComboAttacks(
-                            AscendedAnimations.S_SCYTHE_AUTO, AscendedAnimations.S_DUAL_SCYTHE_AUTO_2, AscendedAnimations.S_DUAL_SCYTHE_AUTO_3,
-                            AscendedAnimations.S_DUAL_SCYTHE_AUTO_2, AscendedAnimations.S_DUAL_SCYTHE_AUTO_3, Animations.SWORD_DUAL_DASH,
-                            AscendedAnimations.S_DUAL_SCYTHE_AIRSLASH
+                            AscendedAnimations.S_DUAL_SCYTHE_AUTO_1, AscendedAnimations.S_DUAL_SCYTHE_AUTO_2, AscendedAnimations.S_DUAL_SCYTHE_AUTO_3,
+                            AscendedAnimations.S_DUAL_SCYTHE_AUTO_4, Animations.SWORD_DUAL_DASH, AscendedAnimations.S_DUAL_SCYTHE_AIRSLASH
                     )
                     .addGuardAnimations(GuardSkill.BlockType.ADVANCED_GUARD, AscendedAnimations.S_SCYTHE_GUARD_PARRY_2)
                     .addInnateSkill((itemstack, playerPatch) -> EpicFightSkills.DANCING_EDGE.get())

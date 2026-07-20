@@ -7,55 +7,10 @@
   ],
   "placement": {
     "type": "minecraft:random_spread",
-    "spacing": 32,
-    "separation": 10,
-    "salt": 586556,
-
-    "allowed_terrain": {
-      "type": "minecraft:all_of",
-      "predicates": [
-
-        {
-          "type": "minecraft:heightmap",
-          "heightmap": "WORLD_SURFACE_WG"
-        },
-
-        {
-          "type": "minecraft:flat",
-          "max_deviation": 0,
-          "radius": 13
-        },
-
-        {
-          "type": "minecraft:block_predicate",
-          "predicate": {
-            "type": "minecraft:all_of",
-            "predicates": [
-              {
-                "type": "minecraft:inside_world_bounds"
-              },
-              {
-                "type": "minecraft:not",
-                "predicate": {
-                  "type": "minecraft:matching_blocks",
-                  "blocks": [
-                    "minecraft:water",
-                    "minecraft:flowing_water"
-                  ]
-                }
-              },
-              {
-                "type": "minecraft:matching_blocks",
-                "blocks": [
-                  "minecraft:grass_block",
-                  "minecraft:dirt",
-                  "minecraft:stone"
-                ]
-              }
-            ]
-          }
-        }
-      ]
-    }
+    "frequency": 0.004,
+    "frequency_reduction_method": "legacy_type_3",
+    "salt": 0,
+    "separation": 0,
+    "spacing": 1
   }
 }
