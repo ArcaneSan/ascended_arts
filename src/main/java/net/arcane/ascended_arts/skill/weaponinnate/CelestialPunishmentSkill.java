@@ -7,6 +7,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 
@@ -47,6 +48,7 @@ public class CelestialPunishmentSkill extends WeaponInnateSkill {
     @Override
     public void onInitiate(SkillContainer container, EntityEventListener eventListener) {
         super.onInitiate(container, eventListener);
+        LivingEntity player = container.getExecutor().getOriginal();
         List<LivingEntity> hurtEntities = container.getExecutor().getCurrentlyActuallyHitEntities();
         SkillContainer innateSkill = container.getExecutor().getSkill(SkillSlots.WEAPON_INNATE);
         eventListener.registerEvent(EpicFightEventHooks.Animation.END, (event) -> {
@@ -54,6 +56,8 @@ public class CelestialPunishmentSkill extends WeaponInnateSkill {
                 if (!hurtEntities.isEmpty() && hurtEntities.getFirst().isAlive()) {
                     container.getExecutor().reserveAnimation(this.second);
                     container.getExecutor().getServerAnimator().getPlayerFor(null).reset();
+                    MobEffectInstance absorptionEffect = new MobEffectInstance(MobEffects.ABSORPTION, 300, 4, true, false);
+                    player.addEffect(absorptionEffect);
                 }
                 if (!eventListener.getEntityPatch().isLastAttackSuccess() && !this.second.equals(event.getAnimation()) && !this.fail.equals(event.getAnimation())) {
                     container.getExecutor().reserveAnimation(this.fail);

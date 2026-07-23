@@ -101,6 +101,20 @@ private AscendedSkills () {}
 
     );
 
+    public static final DeferredHolder <Skill, SimpleWeaponInnateSkill> REPEATING_SWEEP = REGISTRY.register("repeating_sweep", key ->
+            SimpleWeaponInnateSkill.createSimpleWeaponInnateBuilder()
+                    .setAnimations(AscendedAnimations.REPEATING_SWEEP)
+                    .newProperty()
+                    .addProperty(AnimationProperty.AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.multiplier(1.6F))
+                    .addProperty(AnimationProperty.AttackPhaseProperty.MAX_STRIKES_MODIFIER, ValueModifier.adder(6))
+                    .addProperty(AnimationProperty.AttackPhaseProperty.STUN_TYPE, StunType.HOLD)
+                    .newProperty()
+                    .addProperty(AnimationProperty.AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.multiplier(1.6F))
+                    .addProperty(AnimationProperty.AttackPhaseProperty.EXTRA_DAMAGE, Set.of(ExtraDamageInstance.SWEEPING_EDGE_ENCHANTMENT.create()))
+                    .addProperty(AnimationProperty.AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE))
+                    .addProperty(AnimationProperty.AttackPhaseProperty.STUN_TYPE, StunType.HOLD)
+                    .build(key));
+
     public static final DeferredHolder<Skill, SimpleWeaponInnateSkill> CHASING_SWEEP = REGISTRY.register("chasing_sweep", key ->
             SimpleWeaponInnateSkill.createSimpleWeaponInnateBuilder()
                     .setAnimations(AscendedAnimations.CHASING_SWEEP)

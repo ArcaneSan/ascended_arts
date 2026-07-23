@@ -50,13 +50,13 @@ public final class AscendedArtsItemCapabilityPreset {
     );
     public static final DeferredWeapon SWEEPING_SCYTHE = REGISTRY.registerWeapon("sweeping_scythe",
             () -> WeaponCapability.builder()
-                    .category(CapabilityItem.WeaponCategories.SWORD)
+                    .category(AscendedWeaponCategories.SWEEPING_SCYTHE)
                     .hitSound(EpicFightSounds.BLADE_HIT)
                     .collider(AscendedColliderPreset.SWEEPING_SCYTHE)
                     .setTierValues(0, 0, 0.0, 0.0)
                     .addMoveset(CapabilityItem.Styles.ONE_HAND, AscendedArtsMovesets.S_SCYTHE)
                     .addMoveset(CapabilityItem.Styles.TWO_HAND, AscendedArtsMovesets.S_SCYTHE_2)
-                    .addConditionals(EpicFightProviderConditionals.DUAL_SWORDS, EpicFightProviderConditionals.DEFAULT_1H_WIELD_STYLE)
+                    .addConditionals(AscendedArtsProviderConditionals.DUAL_SCYTHE, EpicFightProviderConditionals.DEFAULT_1H_WIELD_STYLE)
                     .addTag(Ascended_arts.identifier("sweeping_scythe"))
     );
     public static final DeferredWeapon FLUTE = REGISTRY.registerWeapon("flute",

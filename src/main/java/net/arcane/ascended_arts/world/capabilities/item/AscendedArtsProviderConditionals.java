@@ -16,4 +16,8 @@ public class AscendedArtsProviderConditionals {
             "dual_jian",
             () -> ProviderConditional.createWeaponCategory(CapabilityItem.Styles.TWO_HAND, AscendedWeaponCategories.JIAN, InteractionHand.OFF_HAND, true)
     );
+    public static final DeferredConditional DUAL_SCYTHE = REGISTRY.registerConditional(
+            "dual_scythe",
+            () -> ProviderConditional.createWeaponCategory(CapabilityItem.Styles.TWO_HAND, AscendedWeaponCategories.SWEEPING_SCYTHE, InteractionHand.OFF_HAND, true)
+    );
 }

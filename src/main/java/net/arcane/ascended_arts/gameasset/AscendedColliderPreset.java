@@ -6,6 +6,7 @@ import com.google.common.collect.HashBiMap;
 import net.minecraft.resources.ResourceLocation;
 import yesman.epicfight.api.collider.Collider;
 import yesman.epicfight.api.collider.MultiOBBCollider;
+import yesman.epicfight.api.collider.OBBCollider;
 
 public class AscendedColliderPreset {
 
@@ -35,6 +36,8 @@ public class AscendedColliderPreset {
             new MultiOBBCollider(3, 0.2D, 0.65D, 0.5D, 0.0D, -0.15D, -0.7D));
     public static final Collider DASH = registerCollider(ResourceLocation.fromNamespaceAndPath(Ascended_arts.MOD_ID, "dash"),
             new MultiOBBCollider(3, 1.0D, 1.0D, 1.0D, 0.0D, 0.0D, 0D));
+    public static final Collider DUAL_S_AIRSLASH = registerCollider(ResourceLocation.fromNamespaceAndPath(Ascended_arts.MOD_ID, "dual_s_airslash"),
+            new OBBCollider(0.8D, 0.8D, 1.0D, 0D, 0.5D, -0.5D ));
     public static final Collider DIVE = registerCollider(ResourceLocation.fromNamespaceAndPath(Ascended_arts.MOD_ID, "dive"),
             new MultiOBBCollider(3, 2.0D, 2.0D, 2.0D, 0.0D, 0.0D, 0D));
 }

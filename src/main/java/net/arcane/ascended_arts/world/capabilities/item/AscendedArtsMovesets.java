@@ -115,10 +115,12 @@ public class AscendedArtsMovesets
                     .parent(S_SCYTHE)
                     .addComboAttacks(
                             AscendedAnimations.S_DUAL_SCYTHE_AUTO_1, AscendedAnimations.S_DUAL_SCYTHE_AUTO_2, AscendedAnimations.S_DUAL_SCYTHE_AUTO_3,
-                            AscendedAnimations.S_DUAL_SCYTHE_AUTO_4, Animations.SWORD_DUAL_DASH, AscendedAnimations.S_DUAL_SCYTHE_AIRSLASH
+                            AscendedAnimations.S_DUAL_SCYTHE_AUTO_4, AscendedAnimations.S_DUAL_SCYTHE_DASH, AscendedAnimations.S_DUAL_SCYTHE_AIRSLASH
                     )
-                    .addGuardAnimations(GuardSkill.BlockType.ADVANCED_GUARD, AscendedAnimations.S_SCYTHE_GUARD_PARRY_2)
-                    .addInnateSkill((itemstack, playerPatch) -> EpicFightSkills.DANCING_EDGE.get())
+                    .addLivingMotionModifier(LivingMotions.BLOCK, AscendedAnimations.S_DUAL_SCYTHE_GUARD)
+                    .addGuardAnimations(GuardSkill.BlockType.GUARD, AscendedAnimations.S_DUAL_SCYTHE_GUARD_HIT)
+                    .addGuardAnimations(GuardSkill.BlockType.ADVANCED_GUARD, AscendedAnimations.S_DUAL_SCYTHE_GUARD_PARRY, AscendedAnimations.S_DUAL_SCYTHE_GUARD_PARRY_2)
+                    .addInnateSkill((itemstack, playerPatch) -> AscendedSkills.REPEATING_SWEEP.get())
     );
     public static final DeferredMoveset SUP_FLUTE = REGISTRY.registerMoveset("flute",
             () -> Moveset.builder()
