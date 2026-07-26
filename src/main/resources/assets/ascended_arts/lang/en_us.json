@@ -104,6 +104,9 @@
   "skill.ascended_arts.chasing_sweep.tooltip": "Dash forward and knock the foe down",
   "skill.ascended_arts.repeating_sweep": "Repeating Sweep",
   "skill.ascended_arts.repeating_sweep.tooltip": "Dash forward and back",
+  "skill.ascended_arts.mountain_splitter": "Mountain Splitter",
+  "skill.ascended_arts.mountain_splitter.tooltip": "Split the mountain",
+
 
   "skill_tree.ascended_arts.path_to_ascension": "Path to Ascension",
   "epicfight.skill_slot.martial_sect": "Martial Sect",

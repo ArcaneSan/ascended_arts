@@ -92,6 +92,11 @@ public class AscendedArtsMovesets
                     .addGuardAnimations(GuardSkill.BlockType.GUARD, AscendedAnimations.REGRET_GUARD_HIT)
                     .addGuardAnimations(GuardSkill.BlockType.ADVANCED_GUARD, AscendedAnimations.REGRET_GUARD_PARRY_1,
                             AscendedAnimations.REGRET_GUARD_PARRY_2)
+                    .addComboAttacks(
+                            AscendedAnimations.REGRET_AUTO_1, AscendedAnimations.REGRET_AUTO_2, AscendedAnimations.REGRET_AUTO_3,
+                            AscendedAnimations.REGRET_AUTO_4, AscendedAnimations.REGRET_DASH, AscendedAnimations.REGRET_AIRSLASH
+                    )
+                    .addInnateSkill((itemstack, playerPatch) -> AscendedSkills.MOUNTAIN_SPLITTER.get())
 
     );
     public static final DeferredMoveset S_SCYTHE = REGISTRY.registerMoveset("s_scythe",

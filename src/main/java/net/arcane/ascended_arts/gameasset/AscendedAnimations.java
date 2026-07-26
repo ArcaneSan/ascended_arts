@@ -132,6 +132,13 @@ public class AscendedAnimations {
     public static AnimationManager.AnimationAccessor<ComboAttackAnimation> SCYTHE_AUTO_4;
     public static AnimationManager.AnimationAccessor<AirSlashAnimation> SCYTHE_AIRSLASH;
 
+    public static AnimationManager.AnimationAccessor<AirSlashAnimation> REGRET_AIRSLASH;
+    public static AnimationManager.AnimationAccessor<ComboAttackAnimation> REGRET_AUTO_1;
+    public static AnimationManager.AnimationAccessor<ComboAttackAnimation> REGRET_AUTO_2;
+    public static AnimationManager.AnimationAccessor<ComboAttackAnimation> REGRET_AUTO_3;
+    public static AnimationManager.AnimationAccessor<ComboAttackAnimation> REGRET_AUTO_4;
+    public static AnimationManager.AnimationAccessor<DashAttackAnimation> REGRET_DASH;
+
     public static AnimationManager.AnimationAccessor<DashAttackAnimation> S_SCYTHE_DASH;
     public static AnimationManager.AnimationAccessor<ComboAttackAnimation> S_SCYTHE_AUTO;
     public static AnimationManager.AnimationAccessor<ComboAttackAnimation> S_SCYTHE_AUTO_2;
@@ -163,6 +170,8 @@ public class AscendedAnimations {
     public static AnimationManager.AnimationAccessor<ComboAttackAnimation> CELESTIAL_PUNISHMENT;
     public static AnimationManager.AnimationAccessor<ComboAttackAnimation> CELESTIAL_ONSLAUGHT;
 
+    public static AnimationManager.AnimationAccessor<StaticAnimation> MOUNTAIN_SPLITTER_CHARGING;
+    public static AnimationManager.AnimationAccessor<AttackAnimation> MOUNTAIN_SPLITTER;
 
     public static AnimationManager.AnimationAccessor<ComboAttackAnimation> REAPING_GRASP_1;
     public static AnimationManager.AnimationAccessor<ComboAttackAnimation> REAPING_GRASP_2;
@@ -430,21 +439,46 @@ public class AscendedAnimations {
 
         SCYTHE_AUTO_1 = builder.nextAccessor("biped/combat/scythe/auto_1", (accessor) ->
                 new ComboAttackAnimation(0.12F, 0.16F, 0.25F, 0.35F, 0.45F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
-                        .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.2F));
+                        .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.4F));
         SCYTHE_AUTO_2 = builder.nextAccessor("biped/combat/scythe/auto_2", (accessor) ->
                 new ComboAttackAnimation(0.12F,accessor, Armatures.BIPED,
                         new ComboAttackAnimation.Phase(0.0F, 0.05F, 0.1F, 0.16F, 0.17F, 0.171F, Armatures.BIPED.get().toolR, AscendedColliderPreset.SCYTHE_BOTTOM),
                         new ComboAttackAnimation.Phase(0.172F, 0.19F, 0.29F, 0.36F, 0.45F, 0.451F, Armatures.BIPED.get().toolR, null))
                         .addProperty(AnimationProperty.AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(25))
-                        .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.2F));
+                        .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.4F));
         SCYTHE_AUTO_3 = builder.nextAccessor("biped/combat/scythe/auto_3", (accessor) ->
                 new ComboAttackAnimation(0.12F, accessor, Armatures.BIPED,
                         new ComboAttackAnimation.Phase(0.0F, 0.15F, 0.19F, 0.26F, 0.27F, 0.271F, Armatures.BIPED.get().toolR, null),
                         new ComboAttackAnimation.Phase(0.272F, 0.35F, 0.42F, 0.55F, 0.65F, 0.651F, Armatures.BIPED.get().toolR, null))
-                        .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.2F));
+                        .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.4F));
         SCYTHE_AUTO_4 = builder.nextAccessor("biped/combat/scythe/auto_4", (accessor) ->
                 new ComboAttackAnimation(0.12F, 0.12F, 0.18F, 0.27F, 0.35F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
-                        .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.2F));
+                        .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.4F));
+
+        REGRET_DASH = builder.nextAccessor("biped/combat/regret/dash", (accessor) ->
+                new DashAttackAnimation(0.12F, 0.12F, 0.16F, 0.30F, 0.38F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
+                        .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.6F));
+        REGRET_AIRSLASH = builder.nextAccessor("biped/combat/regret/airslash", (accessor) ->
+                new AirSlashAnimation(0.12F, 0.19F, 0.35F, 0.4F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
+                        .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.6F)
+                        .addEvents(AnimationEvent.InTimeEvent.create(0.4F, Animations.ReusableSources.FRACTURE_GROUND_SIMPLE, AnimationEvent.Side.CLIENT)
+                                .params(new Vec3f(0.0F, -3.00F, -2.20F), Armatures.BIPED.get().toolR, 2.1D, 0.45F)));
+        REGRET_AUTO_1 = builder.nextAccessor("biped/combat/regret/auto_1", (accessor) ->
+                new ComboAttackAnimation(0.12F, 0.12F, 0.2F, 0.35F, 0.4F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
+                        .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.6F));
+        REGRET_AUTO_2 = builder.nextAccessor("biped/combat/regret/auto_2", (accessor) ->
+                new ComboAttackAnimation(0.12F, 0.12F, 0.2F, 0.35F, 0.4F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
+                        .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.6F));
+        REGRET_AUTO_3 = builder.nextAccessor("biped/combat/regret/auto_3", (accessor) ->
+                new ComboAttackAnimation(0.12F, 0.12F, 0.25F, 0.43F, 0.5F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
+                        .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.6F)
+                        .addEvents(AnimationEvent.InTimeEvent.create(0.4F, Animations.ReusableSources.FRACTURE_GROUND_SIMPLE,
+                                AnimationEvent.Side.CLIENT).params(new Vec3f(0.00F, 0.64F, -2.24F), Armatures.BIPED.get().toolR, 2.1D, 0.55F)));
+        REGRET_AUTO_4 = builder.nextAccessor("biped/combat/regret/auto_4", (accessor) ->
+                new ComboAttackAnimation(0.12F, accessor, Armatures.BIPED,
+                        new AttackAnimation.Phase(0.0F, 0.05F, 0.07F, 0.15F, 0.17F, 0.18F, Armatures.BIPED.get().toolR, null),
+                        new AttackAnimation.Phase(0.19F, 0.25F, 0.37F, 0.49F, 0.55F, 0.57F, Armatures.BIPED.get().toolR, null))
+                        .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.6F));
 
         S_SCYTHE_DASH = builder.nextAccessor("biped/combat/ss/dash_atk", (accessor) ->
                 new DashAttackAnimation(0.12F, accessor, Armatures.BIPED,
@@ -615,6 +649,15 @@ public class AscendedAnimations {
                         )
                         .addState(EntityState.MOVEMENT_LOCKED, true)
         );
+
+        MOUNTAIN_SPLITTER_CHARGING = builder.nextAccessor("biped/skill/regret/mountain_splitter_charge", (accessor) ->
+                new StaticAnimation(0.15F, false, accessor, Armatures.BIPED)
+                        .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, Animations.ReusableSources.CHARGING));
+        MOUNTAIN_SPLITTER = builder.nextAccessor("biped/skill/regret/mountain_splitter", (accessor) ->
+                new AttackAnimation(0.15F, 0.11F, 0.14F, 0.35F, 0.45F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
+                        .addEvents(AnimationEvent.InTimeEvent.create(0.4F, Animations.ReusableSources.FRACTURE_GROUND_SIMPLE,
+                                AnimationEvent.Side.CLIENT).params(new Vec3f(0.00F, -3.0F, -3.0F), Armatures.BIPED.get().toolR, 5.1D, 0.3F)));
+
 
         REAPING_GRASP_1 = builder.nextAccessor("biped/skill/scythe/reaping_grasp_1", (accessor) ->
                 new ComboAttackAnimation(0.05F, 0.08F, 0.12F, 0.23F, 0.25F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)

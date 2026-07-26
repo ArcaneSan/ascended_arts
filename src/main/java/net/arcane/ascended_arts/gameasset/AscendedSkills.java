@@ -64,7 +64,7 @@ private AscendedSkills () {}
                     .build(key)
     );
 
-    public static final DeferredHolder <Skill, CelestialOnslaughtSkill> CELESTIAL_ONSLAUGHT= REGISTRY.register("celestial_onslaught", key ->
+    public static final DeferredHolder <Skill, CelestialOnslaughtSkill> CELESTIAL_ONSLAUGHT = REGISTRY.register("celestial_onslaught", key ->
             WeaponInnateSkill.createWeaponInnateBuilder(CelestialOnslaughtSkill::new).setCategory(SkillCategories.WEAPON_INNATE)
                     .newProperty()
                     .addProperty(AnimationProperty.AttackPhaseProperty.MAX_STRIKES_MODIFIER, ValueModifier.setter(1))
@@ -81,6 +81,16 @@ private AscendedSkills () {}
                     .build(key)
 
     );
+
+    public static final DeferredHolder <Skill, MountainSplitterSkill> MOUNTAIN_SPLITTER = REGISTRY.register("mountain_splitter", key ->
+            WeaponInnateSkill.createWeaponInnateBuilder(MountainSplitterSkill::new)
+                    .setActivateType(Skill.ActivateType.HELD)
+                    .newProperty()
+                    .addProperty(AnimationProperty.AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.multiplier(1.4F))
+                    .addProperty(AnimationProperty.AttackPhaseProperty.EXTRA_DAMAGE, Set.of(ExtraDamageInstance.SWEEPING_EDGE_ENCHANTMENT.create()))
+                    .addProperty(AnimationProperty.AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE))
+                    .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(3.0F))
+                    .build(key));
 
     public static final DeferredHolder <Skill, ReapingGraspSkill> REAPING_GRASP = REGISTRY.register("reaping_grasp", key ->
             WeaponInnateSkill.createWeaponInnateBuilder(ReapingGraspSkill::new).setCategory(SkillCategories.WEAPON_INNATE)

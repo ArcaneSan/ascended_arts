@@ -35,6 +35,7 @@ public class AscendedArtsLootTables {
             event.getTable().addPool(LootPool.lootPool().when(LootItemRandomChanceCondition.randomChance(0.30F))
                     .add(LootItem.lootTableItem(AscendedAddonItems.SKYSPLITTER_JIAN.get()))
                     .add(LootItem.lootTableItem(AscendedAddonItems.ETHERVEIL_SCYTHE.get()))
+                    .add(LootItem.lootTableItem(AscendedAddonItems.REGRET.get()))
                     .build());
         }
         if (event.getName().equals(BuiltInLootTables.ANCIENT_CITY.location())) {
@@ -63,6 +64,7 @@ public class AscendedArtsLootTables {
                     .add(LootItem.lootTableItem(AscendedAddonItems.VOID_SLAYER_ROBES.get()))
                     .add(LootItem.lootTableItem(AscendedAddonItems.VOID_SLAYER_LEGGINGS.get()))
                     .add(LootItem.lootTableItem(AscendedAddonItems.VOID_SLAYER_BOOTS.get()))
+                    .add(LootItem.lootTableItem(AscendedAddonItems.REGRET.get()))
                     .build());
         }
     }
