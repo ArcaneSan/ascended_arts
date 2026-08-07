@@ -39,7 +39,6 @@ public class WeaponCapabilityPresets {
                 .newStyleCombo(Styles.TWO_HAND, AscendedAnimations.DUAL_JIAN_AUTO_1, AscendedAnimations.DUAL_JIAN_AUTO_2, AscendedAnimations.DUAL_JIAN_AUTO_3, AscendedAnimations.DUAL_JIAN_AUTO_4, AscendedAnimations.DUAL_JIAN_DASH, AscendedAnimations.DUAL_JIAN_AIRSLASH)
                 .innateSkill(Styles.ONE_HAND, (itemstack) -> AscendedSkills.CELESTIAL_PUNISHMENT)
                 .innateSkill(Styles.TWO_HAND, (itemstack) -> AscendedSkills.CELESTIAL_ONSLAUGHT)
-                .passiveSkill(AscendedSkills.FLOATING_PASSIVE)
                 .livingMotionModifier(Styles.ONE_HAND, LivingMotions.IDLE, AscendedAnimations.BIPED_HOLD_JIAN)
                 .livingMotionModifier(Styles.TWO_HAND, LivingMotions.IDLE, AscendedAnimations.BIPED_HOLD_DUAL_JIAN)
                 .livingMotionModifier(Styles.ONE_HAND, LivingMotions.WALK, AscendedAnimations.BIPED_WALK_JIAN)
@@ -81,6 +80,28 @@ public class WeaponCapabilityPresets {
                 .weaponCombinationPredicator((entitypatch) -> EpicFightCapabilities.getItemStackCapability(entitypatch.getOriginal().getOffhandItem()).getWeaponCategory() == AscendedWeaponCategories.SCYTHE);
       return builder;
     };
+
+    public static Function<Item, CapabilityItem.Builder> REGRET = (item) -> {
+        WeaponCapability.Builder builder = WeaponCapability.builder()
+                .category(AscendedWeaponCategories.REGRET)
+                .styleProvider((playerpatch) -> Styles.OCHS)
+                .collider(AscendedColliderPreset.GREATSWORD)
+                .canBePlacedOffhand(false)
+                .hitSound(EpicFightSounds.BLADE_HIT.get())
+                .swingSound(EpicFightSounds.WHOOSH_BIG.get())
+                .innateSkill(Styles.OCHS, (itemstack) -> AscendedSkills.MOUNTAIN_SPLITTER)
+                .newStyleCombo(Styles.OCHS, AscendedAnimations.REGRET_AUTO_1, AscendedAnimations.REGRET_AUTO_2, AscendedAnimations.REGRET_AUTO_3, AscendedAnimations.REGRET_AUTO_4, AscendedAnimations.REGRET_DASH, AscendedAnimations.REGRET_AIRSLASH)
+                .livingMotionModifier(Styles.OCHS, LivingMotions.IDLE, AscendedAnimations.BIPED_HOLD_REGRET)
+                .livingMotionModifier(Styles.OCHS, LivingMotions.KNEEL, AscendedAnimations.BIPED_HOLD_REGRET)
+                .livingMotionModifier(Styles.OCHS, LivingMotions.WALK, AscendedAnimations.BIPED_WALK_REGRET)
+                .livingMotionModifier(Styles.OCHS, LivingMotions.RUN, AscendedAnimations.BIPED_RUN_REGRET)
+                .livingMotionModifier(Styles.OCHS, LivingMotions.SNEAK, AscendedAnimations.BIPED_SNEAK_REGRET)
+                .livingMotionModifier(Styles.OCHS, LivingMotions.SLEEP, AscendedAnimations.BIPED_SLEEP_REGRET)
+                .livingMotionModifier(Styles.OCHS, LivingMotions.BLOCK, AscendedAnimations.REGRET_GUARD)
+                .weaponCombinationPredicator((entitypatch) -> EpicFightCapabilities.getItemStackCapability(entitypatch.getOriginal().getOffhandItem()).getWeaponCategory() == AscendedWeaponCategories.REGRET);
+        return builder;
+    };
+
     public static Function<Item, CapabilityItem.Builder> SWEEPING_SCYTHE = (item) -> {
         WeaponCapability.Builder builder = WeaponCapability.builder()
                 .category(AscendedWeaponCategories.SWEEPING_SCYTHE)
@@ -88,15 +109,15 @@ public class WeaponCapabilityPresets {
                 .canBePlacedOffhand(true)
                 .hitSound(EpicFightSounds.BLADE_HIT.get())
                 .swingSound(EpicFightSounds.WHOOSH.get())
-                .innateSkill(Styles.ONE_HAND, (itemstack) -> EpicFightSkills.SWEEPING_EDGE)
-                .innateSkill(Styles.TWO_HAND, (itemStack -> EpicFightSkills.DANCING_EDGE))
-                .newStyleCombo(Styles.ONE_HAND,AscendedAnimations.S_SCYTHE_AUTO, AscendedAnimations.S_SCYTHE_AUTO_2, AscendedAnimations.S_SCYTHE_AUTO_3, AscendedAnimations.S_SCYTHE_AUTO_2, AscendedAnimations.S_SCYTHE_AUTO_3, AscendedAnimations.S_SCYTHE_AUTO_2, AscendedAnimations.S_SCYTHE_AUTO_3, AscendedAnimations.S_SCYTHE_DASH, AscendedAnimations.S_SCYTHE_AIRSLASH)
-                .newStyleCombo(Styles.TWO_HAND, AscendedAnimations.S_SCYTHE_AUTO, AscendedAnimations.S_DUAL_SCYTHE_AUTO_2, AscendedAnimations.S_DUAL_SCYTHE_AUTO_3, AscendedAnimations.S_DUAL_SCYTHE_AUTO_2, AscendedAnimations.S_DUAL_SCYTHE_AUTO_3, AscendedAnimations.S_DUAL_SCYTHE_AUTO_2, AscendedAnimations.S_DUAL_SCYTHE_AUTO_3, Animations.SWORD_DUAL_DASH, AscendedAnimations.S_DUAL_SCYTHE_AIRSLASH)
+                .innateSkill(Styles.ONE_HAND, (itemstack) -> AscendedSkills.CHASING_SWEEP)
+                .innateSkill(Styles.TWO_HAND, (itemStack -> AscendedSkills.REPEATING_SWEEP))
+                .newStyleCombo(Styles.ONE_HAND,AscendedAnimations.S_SCYTHE_AUTO, AscendedAnimations.S_SCYTHE_AUTO_2, AscendedAnimations.S_SCYTHE_AUTO_3, AscendedAnimations.S_SCYTHE_AUTO_4,  AscendedAnimations.S_SCYTHE_DASH, AscendedAnimations.S_SCYTHE_AIRSLASH)
+                .newStyleCombo(Styles.TWO_HAND, AscendedAnimations.S_DUAL_SCYTHE_AUTO_1, AscendedAnimations.S_DUAL_SCYTHE_AUTO_2, AscendedAnimations.S_DUAL_SCYTHE_AUTO_3, AscendedAnimations.S_DUAL_SCYTHE_AUTO_4, AscendedAnimations.S_DUAL_SCYTHE_DASH, AscendedAnimations.S_DUAL_SCYTHE_AIRSLASH)
                 .livingMotionModifier(Styles.COMMON, LivingMotions.IDLE, AscendedAnimations.BIPED_S_SCYTHE_HOLD)
                 .livingMotionModifier(Styles.COMMON, LivingMotions.KNEEL, AscendedAnimations.BIPED_S_SCYTHE_KNEEL)
-                .livingMotionModifier(Styles.COMMON, LivingMotions.WALK, Animations.BIPED_WALK)
-                .livingMotionModifier(Styles.COMMON, LivingMotions.RUN, Animations.BIPED_RUN_DUAL)
-                .livingMotionModifier(Styles.COMMON, LivingMotions.SNEAK, Animations.BIPED_SNEAK)
+                .livingMotionModifier(Styles.COMMON, LivingMotions.WALK, AscendedAnimations.BIPED_S_SCYTHE_WALK)
+                .livingMotionModifier(Styles.COMMON, LivingMotions.RUN, AscendedAnimations.BIPED_S_SCYTHE_RUN)
+                .livingMotionModifier(Styles.COMMON, LivingMotions.SNEAK, AscendedAnimations.BIPED_S_SCYTHE_SNEAK)
                 .weaponCombinationPredicator((entitypatch) -> EpicFightCapabilities.getItemStackCapability(entitypatch.getOriginal().getOffhandItem()).getWeaponCategory() == AscendedWeaponCategories.SWEEPING_SCYTHE);
         return builder;
     };
@@ -133,6 +154,7 @@ public class WeaponCapabilityPresets {
     public static void registerMovesets(WeaponCapabilityPresetRegistryEvent event) {
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Ascended_arts.MOD_ID,"jian"), JIAN);
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Ascended_arts.MOD_ID, "scythe"), SCYTHE);
+        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Ascended_arts.MOD_ID, "regret"), REGRET);
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Ascended_arts.MOD_ID, "sweeping_scythe"), SWEEPING_SCYTHE);
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Ascended_arts.MOD_ID, "flute"), SUP_FLUTE);
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Ascended_arts.MOD_ID, "compat_pray"), PRAY);

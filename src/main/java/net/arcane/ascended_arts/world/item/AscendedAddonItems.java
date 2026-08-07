@@ -29,8 +29,8 @@ public class AscendedAddonItems {
 
     public static final RegistryObject<Item> IRON_JIAN =
             ITEMS.register("iron_jian", () -> new AscendedItem(new Item.Properties(), AscendedToolTiers.IronPlus));
-    public static final RegistryObject<Item> GREATSWORD =
-            ITEMS.register("greatsword", () -> new AscendLargeItem(new Item.Properties().rarity(Rarity.RARE).fireResistant(), AscendedToolTiers.Mythos));
+    public static final RegistryObject<Item> REGRET =
+            ITEMS.register("regret", () -> new AscendLargeItem(new Item.Properties().rarity(Rarity.RARE).fireResistant(), AscendedToolTiers.Mythos));
     public static final RegistryObject<Item> ETHERVEIL_SCYTHE =
             ITEMS.register("etherveil_scythe", () -> new AscendLargeItem(new Item.Properties().fireResistant(), AscendedToolTiers.Mythos));
     public static final RegistryObject<Item> DIAMOND_JIAN =
@@ -145,6 +145,9 @@ public class AscendedAddonItems {
             ITEMS.register("wayfinder_hanfu_armor_trim_smithing_template", () -> SmithingTemplateItem.createArmorTrimTemplate(ResourceLocation.fromNamespaceAndPath(Ascended_arts.MOD_ID, "wayfinder_hanfu")));
     public static final RegistryObject<Item> SHAPER_HANFU_SMITHING_TEMPLATE =
             ITEMS.register("shaper_hanfu_armor_trim_smithing_template", () -> SmithingTemplateItem.createArmorTrimTemplate(ResourceLocation.fromNamespaceAndPath(Ascended_arts.MOD_ID, "shaper_hanfu")));
+
+    public static final RegistryObject<Item> BANNER_PATTERN_PLUM =
+            ITEMS.register("banner_pattern_plum_blossom", () -> new BannerPatternItem(AscendedTags.PATTERN_ITEM_PLUM, new Item.Properties().stacksTo(1)));
 
 
     public  static  void register(IEventBus eventBus) {

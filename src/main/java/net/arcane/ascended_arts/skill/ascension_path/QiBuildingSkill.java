@@ -29,7 +29,9 @@ public class QiBuildingSkill extends AscensionSkill {
     public static Builder createQiBuildingBuilder() {
         return (new Builder())
                 .setCategory(AscendedSkillCategories.ASCENSION_PATH)
+/*
                 .setCreativeTab(AscendedCreativeTab.Ascended_Arts_Tab.get())
+*/
                 .setResource(Resource.NONE);
     }
 

@@ -8,6 +8,61 @@
         30
       ],
       "skill": "ascended_arts:qi_building"
+    },
+    {
+      "ability_points": 15,
+      "conditions": {
+        "type_specific": {
+          "type": "player",
+          "stats": [
+            {
+              "type": "minecraft:killed",
+              "stat": "minecraft:evoker",
+              "value": {
+                "min": 20
+              }
+            }
+          ]
+        }
+      },
+      "custom_condition": false,
+      "hidden": false,
+      "parents": [
+        {
+          "skill": "ascended_arts:qi_building"
+        }
+      ],
+      "position_in_screen": [
+        20,
+        130
+      ],
+      "skill": "ascended_arts:foundation_building",
+      "unlock_tip": "unlock_tip.ascended_arts.ascension_path.foundation_building"
+    },
+    {
+      "ability_points": 10,
+      "conditions": {
+        "type_specific": {
+          "type": "player",
+          "stats": [
+            {
+              "type": "minecraft:mined",
+              "stat": "minecraft:cherry_leaves",
+              "value": {
+                "min": 2500
+              }
+            }
+          ]
+        }
+      },
+      "custom_condition": false,
+      "hidden": false,
+      "position_in_screen": [
+        160,
+        30
+      ],
+      "skill": "ascended_arts:plum_blossom",
+      "unlock_tip": "unlock_tip.ascended_arts.martial_sect.plum_blossom"
     }
   ]
 }

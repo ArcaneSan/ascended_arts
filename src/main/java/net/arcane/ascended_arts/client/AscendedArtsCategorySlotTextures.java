@@ -4,7 +4,8 @@ import com.yesman.epicskills.client.gui.screen.CategorySlotTexture;
 
 public enum AscendedArtsCategorySlotTextures implements CategorySlotTexture {
 
-    ASCENSION_PATH(6, 6, 44, 44);
+    ASCENSION_PATH(6, 6, 44, 44),
+    Martial_SECT(6, 6, 44, 44);
     private int offsetX;
     private int offsetY;
     private int texWidth;

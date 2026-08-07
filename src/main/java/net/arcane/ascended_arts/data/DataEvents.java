@@ -9,6 +9,7 @@ import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = Ascended_arts.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public final class DataEvents {
+    private DataEvents() {}
 
     @SubscribeEvent
     public static void ascended_arts$gatherData(GatherDataEvent event) {

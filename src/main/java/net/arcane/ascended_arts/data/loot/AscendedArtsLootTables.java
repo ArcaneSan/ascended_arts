@@ -22,6 +22,7 @@ public class AscendedArtsLootTables {
             event.getTable().addPool(LootPool.lootPool().when(LootItemRandomChanceCondition.randomChance(0.15F))
                     .add(LootItem.lootTableItem(AscendedAddonItems.SKYSPLITTER_JIAN.get()))
                     .add(LootItem.lootTableItem(AscendedAddonItems.ETHERVEIL_SCYTHE.get()))
+                    .add(LootItem.lootTableItem(AscendedAddonItems.REGRET.get()))
                     .add(LootItem.lootTableItem(AscendedAddonItems.ROYAL_HUNTER_MASK.get()))
                     .add(LootItem.lootTableItem(AscendedAddonItems.ROYAL_HUNTER_ROBES.get()))
                     .add(LootItem.lootTableItem(AscendedAddonItems.ROYAL_HUNTER_LEGGINGS.get()))
@@ -32,6 +33,7 @@ public class AscendedArtsLootTables {
             event.getTable().addPool(LootPool.lootPool().when(LootItemRandomChanceCondition.randomChance(0.05F))
                     .add(LootItem.lootTableItem(AscendedAddonItems.SKYSPLITTER_JIAN.get()))
                     .add(LootItem.lootTableItem(AscendedAddonItems.ETHERVEIL_SCYTHE.get()))
+                    .add(LootItem.lootTableItem(AscendedAddonItems.REGRET.get()))
                     .add(LootItem.lootTableItem(AscendedAddonItems.ROYAL_HUNTER_MASK.get()))
                     .add(LootItem.lootTableItem(AscendedAddonItems.ROYAL_HUNTER_ROBES.get()))
                     .add(LootItem.lootTableItem(AscendedAddonItems.ROYAL_HUNTER_LEGGINGS.get()))
@@ -42,6 +44,7 @@ public class AscendedArtsLootTables {
             event.getTable().addPool(LootPool.lootPool().when(LootItemRandomChanceCondition.randomChance(0.30F))
                     .add(LootItem.lootTableItem(AscendedAddonItems.SKYSPLITTER_JIAN.get()))
                     .add(LootItem.lootTableItem(AscendedAddonItems.ETHERVEIL_SCYTHE.get()))
+                    .add(LootItem.lootTableItem(AscendedAddonItems.REGRET.get()))
                     .build());
         }
         if (event.getName().equals(BuiltInLootTables.END_CITY_TREASURE)) {
