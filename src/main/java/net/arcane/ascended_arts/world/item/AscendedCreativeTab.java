@@ -86,7 +86,7 @@ public class AscendedCreativeTab {
                         output.accept(AscendedAddonItems.WAYFINDER_HANFU_SMITHING_TEMPLATE.get());
                         output.accept(AscendedAddonItems.WILD_HANFU_SMITHING_TEMPLATE.get());
 
-                        output.accept(AscendedAddonItems.BANNER_PATTERN_PLUM.get());
+//                        output.accept(AscendedAddonItems.BANNER_PATTERN_PLUM.get());
 
 
 

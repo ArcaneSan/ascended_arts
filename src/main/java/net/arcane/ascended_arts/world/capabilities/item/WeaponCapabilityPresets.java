@@ -118,6 +118,8 @@ public class WeaponCapabilityPresets {
                 .livingMotionModifier(Styles.COMMON, LivingMotions.WALK, AscendedAnimations.BIPED_S_SCYTHE_WALK)
                 .livingMotionModifier(Styles.COMMON, LivingMotions.RUN, AscendedAnimations.BIPED_S_SCYTHE_RUN)
                 .livingMotionModifier(Styles.COMMON, LivingMotions.SNEAK, AscendedAnimations.BIPED_S_SCYTHE_SNEAK)
+                .livingMotionModifier(Styles.ONE_HAND, LivingMotions.BLOCK, AscendedAnimations.S_SCYTHE_GUARD)
+                .livingMotionModifier(Styles.TWO_HAND, LivingMotions.BLOCK, AscendedAnimations.S_DUAL_SCYTHE_GUARD)
                 .weaponCombinationPredicator((entitypatch) -> EpicFightCapabilities.getItemStackCapability(entitypatch.getOriginal().getOffhandItem()).getWeaponCategory() == AscendedWeaponCategories.SWEEPING_SCYTHE);
         return builder;
     };

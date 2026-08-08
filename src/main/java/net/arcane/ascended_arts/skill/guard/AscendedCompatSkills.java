@@ -43,12 +43,22 @@ public class AscendedCompatSkills {
             builder.addGuardMotion(AscendedWeaponCategories.JIAN, (itemCap, playerPatch) -> itemCap.getStyle(playerPatch) == CapabilityItem.Styles.ONE_HAND ?
                     AscendedAnimations.JIAN_GUARD_HIT : AscendedAnimations.JIAN_DUAL_GUARD_HIT)
             .addGuardBreakMotion(AscendedWeaponCategories.JIAN, (item, player) -> {
-                return AscendedAnimations.JIAN_GUARD_BREAK;
+                return Animations.BIPED_COMMON_NEUTRALIZED;
             });
+            builder.addGuardMotion(AscendedWeaponCategories.SWEEPING_SCYTHE, (itemCap, playerPatch) -> itemCap.getStyle(playerPatch) == CapabilityItem.Styles.ONE_HAND ?
+                            AscendedAnimations.S_SCYTHE_GUARD_HIT : AscendedAnimations.S_DUAL_SCYTHE_GUARD_HIT)
+                    .addGuardBreakMotion(AscendedWeaponCategories.SWEEPING_SCYTHE, (item, player) -> {
+                        return Animations.BIPED_COMMON_NEUTRALIZED;
+                    });
             builder.addGuardMotion(AscendedWeaponCategories.SCYTHE, (item, player) -> {
                 return AscendedAnimations.SCYTHE_GUARD_HIT;
             }).addGuardBreakMotion(AscendedWeaponCategories.SCYTHE, (item, player) -> {
                return Animations.BIPED_COMMON_NEUTRALIZED;
+            });
+            builder.addGuardMotion(AscendedWeaponCategories.REGRET, (item, player) -> {
+                return AscendedAnimations.REGRET_GUARD_HIT;
+            }).addGuardBreakMotion(AscendedWeaponCategories.REGRET, (item, player) -> {
+                return Animations.BIPED_COMMON_NEUTRALIZED;
             });
             System.out.println("[AscendedCompatSkills] Guard animations have been actualized");
         }
@@ -61,10 +71,18 @@ public class AscendedCompatSkills {
             builder.addGuardMotion(AscendedWeaponCategories.JIAN, (item, player) -> {
                 return AscendedAnimations.JIAN_GUARD_HIT;
             }).addGuardBreakMotion(AscendedWeaponCategories.JIAN, (item, player) -> {
-                return AscendedAnimations.JIAN_GUARD_BREAK;
+                return Animations.BIPED_COMMON_NEUTRALIZED;
             }).addAdvancedGuardMotion(AscendedWeaponCategories.JIAN, (itemCap, playerPatch) ->  itemCap.getStyle(playerPatch) == CapabilityItem.Styles.ONE_HAND ?
                     List.of(AscendedAnimations.JIAN_GUARD_PARRY_1, AscendedAnimations.JIAN_GUARD_PARRY_2)
                     : List.of(AscendedAnimations.JIAN_DUAL_GUARD_PARRY_1, AscendedAnimations.JIAN_DUAL_GUARD_PARRY_2)
+            );
+            builder.addGuardMotion(AscendedWeaponCategories.SWEEPING_SCYTHE, (item, player) -> {
+                return AscendedAnimations.S_SCYTHE_GUARD_HIT;
+            }).addGuardBreakMotion(AscendedWeaponCategories.SWEEPING_SCYTHE, (item, player) -> {
+                return Animations.BIPED_COMMON_NEUTRALIZED;
+            }).addAdvancedGuardMotion(AscendedWeaponCategories.SWEEPING_SCYTHE, (itemCap, playerPatch) ->  itemCap.getStyle(playerPatch) == CapabilityItem.Styles.ONE_HAND ?
+                    List.of(AscendedAnimations.SCYTHE_GUARD_PARRY_1, AscendedAnimations.SCYTHE_GUARD_PARRY_2)
+                    : List.of(AscendedAnimations.S_DUAL_SCYTHE_GUARD_PARRY, AscendedAnimations.S_DUAL_SCYTHE_GUARD_PARRY_2)
             );
             builder.addGuardMotion(AscendedWeaponCategories.SCYTHE, (item, player) -> {
                 return AscendedAnimations.SCYTHE_GUARD_HIT;
@@ -72,6 +90,13 @@ public class AscendedCompatSkills {
                 return Animations.BIPED_COMMON_NEUTRALIZED;
             }).addAdvancedGuardMotion(AscendedWeaponCategories.SCYTHE, (item, player) -> {
                 return List.of(AscendedAnimations.SCYTHE_GUARD_PARRY_1, AscendedAnimations.SCYTHE_GUARD_PARRY_2);
+            });
+            builder.addGuardMotion(AscendedWeaponCategories.REGRET, (item, player) -> {
+                return AscendedAnimations.REGRET_GUARD_HIT;
+            }).addGuardBreakMotion(AscendedWeaponCategories.REGRET, (item, player) -> {
+                return Animations.BIPED_COMMON_NEUTRALIZED;
+            }).addAdvancedGuardMotion(AscendedWeaponCategories.REGRET, (item, player) -> {
+                return List.of(AscendedAnimations.REGRET_GUARD_PARRY_1, AscendedAnimations.REGRET_GUARD_PARRY_2);
             });
             System.out.println("[AscendedCompatSkills] Parrying animations have been actualized");
         }
@@ -93,6 +118,7 @@ public class AscendedCompatSkills {
         if (event.getRegistryName().equals(ResourceLocation.fromNamespaceAndPath("epicfight", "meteor_slam"))) {
             MeteorSlamSkill.Builder builder = event.getSkillBuilder();
             builder.addSlamMotion(AscendedWeaponCategories.SCYTHE, (item, player) -> Animations.METEOR_SLAM);
+            builder.addSlamMotion(AscendedWeaponCategories.REGRET, (item, player) -> Animations.METEOR_SLAM);
             System.out.println("[AscenededCompatSkills] You may now SLAM IT");
         }
     }
@@ -111,6 +137,7 @@ public class AscendedCompatSkills {
     public static void onIconCreate(WeaponCategoryIconRegisterEvent icon){
         icon.registerCategory(AscendedWeaponCategories.JIAN, new ItemStack(AscendedAddonItems.IRON_JIAN.get()));
         icon.registerCategory(AscendedWeaponCategories.SCYTHE, new ItemStack(AscendedAddonItems.ETHERVEIL_SCYTHE.get()));
+        icon.registerCategory(AscendedWeaponCategories.REGRET, new ItemStack(AscendedAddonItems.REGRET.get()));
         System.out.println("[AscendedCompatSkills] Skill icons have been actualized");
     }
 }

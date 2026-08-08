@@ -1,0 +1,15 @@
+{
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 20083232,
+    "separation": 16,
+    "spacing": 32,
+    "frequency": 0.004
+  },
+  "structures": [
+    {
+      "structure": "ascended_arts:grave_of_regret",
+      "weight": 1
+    }
+  ]
+}

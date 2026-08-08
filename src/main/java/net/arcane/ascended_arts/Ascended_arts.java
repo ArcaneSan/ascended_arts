@@ -17,6 +17,7 @@ import net.arcane.ascended_arts.world.item.AscendedCreativeTab;
 
 import com.mojang.logging.LogUtils;
 
+import net.arcane.ascended_arts.world.item.AscendedTags;
 import net.minecraft.client.Minecraft;
 
 import net.minecraftforge.api.distmarker.Dist;
@@ -96,6 +97,7 @@ public class Ascended_arts {
         } else {
             proxy = new AscendedAnimations.ServerProxy();
         }
+        AscendedTags.initTags();
     }
 
     private void doCommonStuff(final FMLCommonSetupEvent event){

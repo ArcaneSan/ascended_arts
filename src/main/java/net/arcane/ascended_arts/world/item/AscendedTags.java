@@ -10,6 +10,7 @@ public class AscendedTags {
     public static void initTags() {}
 
     public static final TagKey<BannerPattern> PATTERN_ITEM_PLUM =
-            TagKey.create(Registries.BANNER_PATTERN, ResourceLocation.fromNamespaceAndPath(Ascended_arts.MOD_ID, "pattern_item/plum_blossom"));
+            TagKey.create(Registries.BANNER_PATTERN, new ResourceLocation(Ascended_arts.MOD_ID, "pattern_item/plum_blossom"));
+
 }
 

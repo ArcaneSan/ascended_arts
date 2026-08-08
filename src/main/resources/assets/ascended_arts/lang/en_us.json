@@ -13,6 +13,7 @@
   "item.ascended_arts.small_netherite_scythe": "Small Netherite Scythe",
   "item.ascended_arts.etherveil_scythe": "Etherveil",
   "item.ascended_arts.skysplitter_jian": "Skysplitter",
+  "item.ascended_arts.regret": "Regret",
 
   "item.ascended_arts.iron_hanfu_hood" : "Iron Hanfu Hood",
   "item.ascended_arts.iron_hanfu_robe" : "Iron Hanfu Robes",
@@ -45,6 +46,12 @@
   "item.ascended_arts.void_slayer_robes" : "Void Slayer Robe",
   "item.ascended_arts.void_slayer_leggings" : "Void Slayer leggings",
   "item.ascended_arts.void_slayer_boots" : "Void Slayer boots",
+
+  "item.ascended_arts.banner_pattern_plum_blossom": "Banner Pattern",
+  "item.ascended_arts.banner_pattern_plum_blossom.desc": "Plum Blossom",
+  
+  "block.minecraft.banner.ascended_arts.plum_blossom": "Plum Blossom",
+
 
   "black": "Black",
   "blue": "Blue",
@@ -89,6 +96,12 @@
   "skill.ascended_arts.celestial_onslaught.tooltip" : "Shred your foes from the heavens",
   "skill.ascended_arts.reaping_grasp" : "Reaping Grasp",
   "skill.ascended_arts.reaping_grasp.tooltip": "Swift additional strikes",
+  "skill.ascended_arts.chasing_sweep": "Chasing Sweep",
+  "skill.ascended_arts.chasing_sweep.tooltip": "Dash forward and knock the foe down",
+  "skill.ascended_arts.repeating_sweep": "Repeating Sweep",
+  "skill.ascended_arts.repeating_sweep.tooltip": "Dash forward and back",
+  "skill.ascended_arts.mountain_splitter": "Mountain Splitter",
+  "skill.ascended_arts.mountain_splitter.tooltip": "Split the mountain",
 
   "attribute.name.generic.armor.skillbook_tooltip": "armor",
 
