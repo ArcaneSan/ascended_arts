@@ -30,7 +30,8 @@ public class AscendedItemTagsProvider extends ItemTagsProvider {
                         AscendedAddonItems.SMALL_DIAMOND_SCYTHE.get(),
                         AscendedAddonItems.SMALL_NETHERITE_SCYTHE.get(),
                         AscendedAddonItems.ETHERVEIL_SCYTHE.get(),
-                        AscendedAddonItems.SKYSPLITTER_JIAN.get()
+                        AscendedAddonItems.SKYSPLITTER_JIAN.get(),
+                        AscendedAddonItems.REGRET.get()
                 );
         this.tag(ItemTags.HEAD_ARMOR)
                 .add(
